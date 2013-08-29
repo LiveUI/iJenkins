@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class FTViewController;
+
+@class FTHomeViewController;
 
 @interface FTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) FTHomeViewController *viewController;
 
-@property (strong, nonatomic) FTViewController *viewController;
 
 @end
