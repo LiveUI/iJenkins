@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
+		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
+		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
+		15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15D245DC17CF9C2A00793614 /* InfoPlist.strings */; };
+		15D245E017CF9C2A00793614 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245DF17CF9C2A00793614 /* main.m */; };
+		15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245E317CF9C2A00793614 /* FTAppDelegate.m */; };
+		15D245E617CF9C2A00793614 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E517CF9C2A00793614 /* Default.png */; };
+		15D245E817CF9C2A00793614 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E717CF9C2A00793614 /* Default@2x.png */; };
+		15D245EA17CF9C2A00793614 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E917CF9C2A00793614 /* Default-568h@2x.png */; };
+		15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
+		15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTHomeViewController.m */; };
+		15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FE17CF9DA700793614 /* FTLoginViewController.m */; };
+		15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460217CF9DBB00793614 /* FTAccountsViewController.m */; };
+		15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460617CF9DD400793614 /* FTJobDetailViewController.m */; };
+		15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460D17CF9FB800793614 /* FTNoInternetConnectionViewController.m */; };
+		15D2461217CFA0E900793614 /* FTLang.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2461117CFA0E900793614 /* FTLang.m */; };
+		15D2461917CFA1B600793614 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461317CFA1B600793614 /* CoreText.framework */; };
+		15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461417CFA1B600793614 /* MessageUI.framework */; };
+		15D2461B17CFA1B600793614 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461517CFA1B600793614 /* QuartzCore.framework */; };
+		15D2461C17CFA1B600793614 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461617CFA1B600793614 /* Security.framework */; };
+		15D2461D17CFA1B600793614 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461717CFA1B600793614 /* Social.framework */; };
+		15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461817CFA1B600793614 /* SystemConfiguration.framework */; };
+		15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462317CFA21100793614 /* UIImage+Tools.m */; };
+		15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462517CFA21100793614 /* UIColor+Tools.m */; };
+		15D2462E17CFA21100793614 /* UILabel+DynamicHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462717CFA21100793614 /* UILabel+DynamicHeight.m */; };
+		15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462917CFA21100793614 /* UIView+Effects.m */; };
+		15D2463017CFA21100793614 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462B17CFA21100793614 /* UIView+Layout.m */; };
+		15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463617CFA61F00793614 /* FTListUsersViewController.m */; };
+		15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463917CFA62900793614 /* FTUserDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		15D245D717CF9C2A00793614 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iJenkins-Info.plist"; sourceTree = "<group>"; };
+		15D245DD17CF9C2A00793614 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		15D245DF17CF9C2A00793614 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iJenkins-Prefix.pch"; sourceTree = "<group>"; };
+		15D245E217CF9C2A00793614 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
+		15D245E317CF9C2A00793614 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
+		15D245E517CF9C2A00793614 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		15D245E717CF9C2A00793614 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		15D245E917CF9C2A00793614 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		15D245EB17CF9C2A00793614 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
+		15D245EC17CF9C2A00793614 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
+		15D245FA17CF9D9900793614 /* FTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTHomeViewController.h; sourceTree = "<group>"; };
+		15D245FB17CF9D9900793614 /* FTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTHomeViewController.m; sourceTree = "<group>"; };
+		15D245FD17CF9DA700793614 /* FTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoginViewController.h; sourceTree = "<group>"; };
+		15D245FE17CF9DA700793614 /* FTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoginViewController.m; sourceTree = "<group>"; };
+		15D2460117CF9DBB00793614 /* FTAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountsViewController.h; sourceTree = "<group>"; };
+		15D2460217CF9DBB00793614 /* FTAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountsViewController.m; sourceTree = "<group>"; };
+		15D2460517CF9DD400793614 /* FTJobDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobDetailViewController.h; sourceTree = "<group>"; };
+		15D2460617CF9DD400793614 /* FTJobDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobDetailViewController.m; sourceTree = "<group>"; };
+		15D2460C17CF9FB800793614 /* FTNoInternetConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNoInternetConnectionViewController.h; sourceTree = "<group>"; };
+		15D2460D17CF9FB800793614 /* FTNoInternetConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoInternetConnectionViewController.m; sourceTree = "<group>"; };
+		15D2461017CFA0E900793614 /* FTLang.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLang.h; sourceTree = "<group>"; };
+		15D2461117CFA0E900793614 /* FTLang.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLang.m; sourceTree = "<group>"; };
+		15D2461317CFA1B600793614 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		15D2461417CFA1B600793614 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		15D2461517CFA1B600793614 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		15D2461617CFA1B600793614 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		15D2461717CFA1B600793614 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		15D2461817CFA1B600793614 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		15D2462217CFA21100793614 /* UIImage+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tools.h"; sourceTree = "<group>"; };
+		15D2462317CFA21100793614 /* UIImage+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tools.m"; sourceTree = "<group>"; };
+		15D2462417CFA21100793614 /* UIColor+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Tools.h"; sourceTree = "<group>"; };
+		15D2462517CFA21100793614 /* UIColor+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Tools.m"; sourceTree = "<group>"; };
+		15D2462617CFA21100793614 /* UILabel+DynamicHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+DynamicHeight.h"; sourceTree = "<group>"; };
+		15D2462717CFA21100793614 /* UILabel+DynamicHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+DynamicHeight.m"; sourceTree = "<group>"; };
+		15D2462817CFA21100793614 /* UIView+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Effects.h"; sourceTree = "<group>"; };
+		15D2462917CFA21100793614 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
+		15D2462A17CFA21100793614 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		15D2462B17CFA21100793614 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		15D2463517CFA61F00793614 /* FTListUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTListUsersViewController.h; sourceTree = "<group>"; };
+		15D2463617CFA61F00793614 /* FTListUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTListUsersViewController.m; sourceTree = "<group>"; };
+		15D2463817CFA62900793614 /* FTUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUserDetailViewController.h; sourceTree = "<group>"; };
+		15D2463917CFA62900793614 /* FTUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUserDetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15D245CD17CF9C2A00793614 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15D2461917CFA1B600793614 /* CoreText.framework in Frameworks */,
+				15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */,
+				15D2461B17CFA1B600793614 /* QuartzCore.framework in Frameworks */,
+				15D2461C17CFA1B600793614 /* Security.framework in Frameworks */,
+				15D2461D17CFA1B600793614 /* Social.framework in Frameworks */,
+				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
+				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
+				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
+				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15D245C717CF9C2A00793614 = {
+			isa = PBXGroup;
+			children = (
+				15D245D917CF9C2A00793614 /* iJenkins */,
+				15D245D217CF9C2A00793614 /* Frameworks */,
+				15D245D117CF9C2A00793614 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15D245D117CF9C2A00793614 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15D245D017CF9C2A00793614 /* iJenkins.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15D245D217CF9C2A00793614 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15D2461317CFA1B600793614 /* CoreText.framework */,
+				15D2461417CFA1B600793614 /* MessageUI.framework */,
+				15D2461517CFA1B600793614 /* QuartzCore.framework */,
+				15D2461617CFA1B600793614 /* Security.framework */,
+				15D2461717CFA1B600793614 /* Social.framework */,
+				15D2461817CFA1B600793614 /* SystemConfiguration.framework */,
+				15D245D317CF9C2A00793614 /* UIKit.framework */,
+				15D245D517CF9C2A00793614 /* Foundation.framework */,
+				15D245D717CF9C2A00793614 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		15D245D917CF9C2A00793614 /* iJenkins */ = {
+			isa = PBXGroup;
+			children = (
+				15D2462117CFA1E300793614 /* Categories */,
+				15D2462017CFA1CC00793614 /* Configuration */,
+				15D2461F17CFA1C600793614 /* Views */,
+				15D2460917CF9F8C00793614 /* Libs */,
+				15D2460817CF9F8600793614 /* Data */,
+				15D245F617CF9C3C00793614 /* Controllers */,
+				15D245E217CF9C2A00793614 /* FTAppDelegate.h */,
+				15D245E317CF9C2A00793614 /* FTAppDelegate.m */,
+				15D245DA17CF9C2A00793614 /* Supporting Files */,
+			);
+			path = iJenkins;
+			sourceTree = "<group>";
+		};
+		15D245DA17CF9C2A00793614 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */,
+				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
+				15D245DF17CF9C2A00793614 /* main.m */,
+				15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */,
+				15D245E517CF9C2A00793614 /* Default.png */,
+				15D245E717CF9C2A00793614 /* Default@2x.png */,
+				15D245E917CF9C2A00793614 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		15D245F617CF9C3C00793614 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463217CFA5ED00793614 /* Users */,
+				15D2460A17CF9F9600793614 /* System */,
+				15D2460017CF9DAA00793614 /* Accounts */,
+				15D245F817CF9C5400793614 /* Home */,
+				15D245F717CF9C4500793614 /* Basic */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		15D245F717CF9C4500793614 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				15D245EB17CF9C2A00793614 /* FTViewController.h */,
+				15D245EC17CF9C2A00793614 /* FTViewController.m */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		15D245F817CF9C5400793614 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460417CF9DC300793614 /* Job detail */,
+				15D245FA17CF9D9900793614 /* FTHomeViewController.h */,
+				15D245FB17CF9D9900793614 /* FTHomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		15D245F917CF9C5B00793614 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				15D245FD17CF9DA700793614 /* FTLoginViewController.h */,
+				15D245FE17CF9DA700793614 /* FTLoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		15D2460017CF9DAA00793614 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460117CF9DBB00793614 /* FTAccountsViewController.h */,
+				15D2460217CF9DBB00793614 /* FTAccountsViewController.m */,
+			);
+			name = Accounts;
+			sourceTree = "<group>";
+		};
+		15D2460417CF9DC300793614 /* Job detail */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460517CF9DD400793614 /* FTJobDetailViewController.h */,
+				15D2460617CF9DD400793614 /* FTJobDetailViewController.m */,
+			);
+			name = "Job detail";
+			sourceTree = "<group>";
+		};
+		15D2460817CF9F8600793614 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463117CFA26B00793614 /* API */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		15D2460917CF9F8C00793614 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460F17CFA0C400793614 /* Languages */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		15D2460A17CF9F9600793614 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460B17CF9F9C00793614 /* Connection */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		15D2460B17CF9F9C00793614 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				15D2460C17CF9FB800793614 /* FTNoInternetConnectionViewController.h */,
+				15D2460D17CF9FB800793614 /* FTNoInternetConnectionViewController.m */,
+			);
+			name = Connection;
+			sourceTree = "<group>";
+		};
+		15D2460F17CFA0C400793614 /* Languages */ = {
+			isa = PBXGroup;
+			children = (
+				15D2461017CFA0E900793614 /* FTLang.h */,
+				15D2461117CFA0E900793614 /* FTLang.m */,
+			);
+			name = Languages;
+			sourceTree = "<group>";
+		};
+		15D2461F17CFA1C600793614 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		15D2462017CFA1CC00793614 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		15D2462117CFA1E300793614 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				15D2462217CFA21100793614 /* UIImage+Tools.h */,
+				15D2462317CFA21100793614 /* UIImage+Tools.m */,
+				15D2462417CFA21100793614 /* UIColor+Tools.h */,
+				15D2462517CFA21100793614 /* UIColor+Tools.m */,
+				15D2462617CFA21100793614 /* UILabel+DynamicHeight.h */,
+				15D2462717CFA21100793614 /* UILabel+DynamicHeight.m */,
+				15D2462817CFA21100793614 /* UIView+Effects.h */,
+				15D2462917CFA21100793614 /* UIView+Effects.m */,
+				15D2462A17CFA21100793614 /* UIView+Layout.h */,
+				15D2462B17CFA21100793614 /* UIView+Layout.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		15D2463117CFA26B00793614 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		15D2463217CFA5ED00793614 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463417CFA5FE00793614 /* User detail */,
+				15D2463317CFA5F700793614 /* List */,
+				15D245F917CF9C5B00793614 /* Login */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
+		15D2463317CFA5F700793614 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463517CFA61F00793614 /* FTListUsersViewController.h */,
+				15D2463617CFA61F00793614 /* FTListUsersViewController.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		15D2463417CFA5FE00793614 /* User detail */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463817CFA62900793614 /* FTUserDetailViewController.h */,
+				15D2463917CFA62900793614 /* FTUserDetailViewController.m */,
+			);
+			name = "User detail";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15D245CF17CF9C2A00793614 /* iJenkins */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "iJenkins" */;
+			buildPhases = (
+				15D245CC17CF9C2A00793614 /* Sources */,
+				15D245CD17CF9C2A00793614 /* Frameworks */,
+				15D245CE17CF9C2A00793614 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iJenkins;
+			productName = iJenkins;
+			productReference = 15D245D017CF9C2A00793614 /* iJenkins.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15D245C817CF9C2A00793614 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FT;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Fuerte Innovations";
+			};
+			buildConfigurationList = 15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "iJenkins" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 15D245C717CF9C2A00793614;
+			productRefGroup = 15D245D117CF9C2A00793614 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15D245CF17CF9C2A00793614 /* iJenkins */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15D245CE17CF9C2A00793614 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
+				15D245E617CF9C2A00793614 /* Default.png in Resources */,
+				15D245E817CF9C2A00793614 /* Default@2x.png in Resources */,
+				15D245EA17CF9C2A00793614 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15D245CC17CF9C2A00793614 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15D245E017CF9C2A00793614 /* main.m in Sources */,
+				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
+				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
+				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
+				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
+				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
+				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
+				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
+				15D2461217CFA0E900793614 /* FTLang.m in Sources */,
+				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
+				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
+				15D2462E17CFA21100793614 /* UILabel+DynamicHeight.m in Sources */,
+				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
+				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
+				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
+				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		15D245DC17CF9C2A00793614 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15D245DD17CF9C2A00793614 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15D245F117CF9C2A00793614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		15D245F217CF9C2A00793614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15D245F417CF9C2A00793614 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
+				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		15D245F517CF9C2A00793614 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
+				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "iJenkins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D245F117CF9C2A00793614 /* Debug */,
+				15D245F217CF9C2A00793614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "iJenkins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15D245F417CF9C2A00793614 /* Debug */,
+				15D245F517CF9C2A00793614 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 15D245C817CF9C2A00793614 /* Project object */;
+}

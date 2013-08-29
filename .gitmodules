@@ -1,0 +1,6 @@
+[submodule "Thirdparty/Lockbox"]
+	path = Thirdparty/Lockbox
+	url = git@github.com:granoff/Lockbox.git
+[submodule "Thirdparty/GCNetworkReachability"]
+	path = Thirdparty/GCNetworkReachability
+	url = git@github.com:GlennChiu/GCNetworkReachability.git
