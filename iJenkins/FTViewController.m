@@ -68,7 +68,7 @@
 #pragma mark Initialization
 
 - (void)setupView {
-    
+    [self.view setBackgroundColor:[UIColor colorWithHexString:@"EFEFF4"]];
 }
 
 - (id)init {

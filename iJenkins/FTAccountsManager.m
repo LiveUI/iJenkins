@@ -10,7 +10,7 @@
 #import "Lockbox.h"
 
 
-#define kFTAccountsManagerAccountsKey                                   @"FTAccountsManagerAccountsKey"
+#define kFTAccountsManagerAccountsKey                                   @"FTAccountsManagerAccountsKey2"
 
 
 static NSMutableArray *accounts = nil;
@@ -20,6 +20,14 @@ static FTAccountsManager *staticManager = nil;
 
 @implementation FTAccountsManager
 
+
+#pragma mark Paths
+
+- (NSString *)accountsFilePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return [documentsDirectory stringByAppendingPathComponent:@"accounts.plist"];
+}
 
 #pragma mark Object conversions
 
@@ -44,9 +52,11 @@ static FTAccountsManager *staticManager = nil;
 
 - (NSMutableArray *)accountsDataToObjects {
     if (accounts) return accounts;
-    dataAccounts = [NSMutableArray arrayWithArray:[Lockbox arrayForKey:kFTAccountsManagerAccountsKey]];
+    //dataAccounts = [NSMutableArray arrayWithArray:[Lockbox arrayForKey:kFTAccountsManagerAccountsKey]];
+    dataAccounts = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:[self accountsFilePath]]];
     NSMutableArray *arr = [NSMutableArray array];
     for (NSDictionary *d in dataAccounts) {
+        
         FTAccount *a = [self accountFromDictionary:d];
         [arr addObject:a];
     }
@@ -58,6 +68,7 @@ static FTAccountsManager *staticManager = nil;
 
 - (void)saveToKeychain {
     [Lockbox setArray:dataAccounts forKey:kFTAccountsManagerAccountsKey];
+    [dataAccounts writeToFile:[self accountsFilePath] atomically:YES];
 }
 
 - (void)addAccount:(FTAccount *)account {
@@ -84,19 +95,23 @@ static FTAccountsManager *staticManager = nil;
     return [self accountsDataToObjects];
 }
 
-- (void)createDemoAccount {
+- (FTAccount *)demoAccount {
     FTAccount *acc = [[FTAccount alloc] init];
     [acc setName:FTLangGet(@"Demo account")];
     [acc setHost:@"fuerteint.com"];
     [acc setPort:8800];
     [acc setUsername:@"rafiki270"];
     [acc setPassword:@"exploited"];
-    [self addAccount:acc];
+    return acc;
+}
+
+- (void)createDemoAccount {
+    [self addAccount:[self demoAccount]];
 }
 
 #pragma mark Initialization
 
-+ (id)sharedManager {
++ (FTAccountsManager *)sharedManager {
     if (staticManager) return staticManager;
     else {
         return [[FTAccountsManager alloc] init];

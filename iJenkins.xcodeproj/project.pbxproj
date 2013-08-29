@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510727F17CFEA6300FD083B /* FTAPIConnector.m */; };
+		1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728217CFEA6F00FD083B /* FTAPIDataObject.m */; };
+		1510728717CFEBB100FD083B /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728617CFEBB100FD083B /* FTConfig.m */; };
+		1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728917CFEBFA00FD083B /* NSString+URLTools.m */; };
+		1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */; };
+		1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728F17D0053200FD083B /* FTAPIJobDataObject.m */; };
+		1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729517D00C2C00FD083B /* FTAPIJobDetailDataObject.m */; };
+		1510729A17D00F6300FD083B /* FTJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729917D00F6300FD083B /* FTJobCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -42,6 +50,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1510727E17CFEA6300FD083B /* FTAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTAPIConnector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		1510727F17CFEA6300FD083B /* FTAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAPIConnector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		1510728117CFEA6F00FD083B /* FTAPIDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIDataObject.h; sourceTree = "<group>"; };
+		1510728217CFEA6F00FD083B /* FTAPIDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIDataObject.m; sourceTree = "<group>"; };
+		1510728517CFEBB100FD083B /* FTConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConfig.h; sourceTree = "<group>"; };
+		1510728617CFEBB100FD083B /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
+		1510728817CFEBFA00FD083B /* NSString+URLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLTools.h"; sourceTree = "<group>"; };
+		1510728917CFEBFA00FD083B /* NSString+URLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLTools.m"; sourceTree = "<group>"; };
+		1510728B17CFED4700FD083B /* FTAPIJobsDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobsDataObject.h; sourceTree = "<group>"; };
+		1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobsDataObject.m; sourceTree = "<group>"; };
+		1510728E17D0053200FD083B /* FTAPIJobDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobDataObject.h; sourceTree = "<group>"; };
+		1510728F17D0053200FD083B /* FTAPIJobDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobDataObject.m; sourceTree = "<group>"; };
+		1510729417D00C2C00FD083B /* FTAPIJobDetailDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobDetailDataObject.h; sourceTree = "<group>"; };
+		1510729517D00C2C00FD083B /* FTAPIJobDetailDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobDetailDataObject.m; sourceTree = "<group>"; };
+		1510729817D00F6300FD083B /* FTJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobCell.h; sourceTree = "<group>"; };
+		1510729917D00F6300FD083B /* FTJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -117,6 +141,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1510728417CFEAC200FD083B /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				1510728117CFEA6F00FD083B /* FTAPIDataObject.h */,
+				1510728217CFEA6F00FD083B /* FTAPIDataObject.m */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		1510729117D00C0100FD083B /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1510728B17CFED4700FD083B /* FTAPIJobsDataObject.h */,
+				1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		1510729217D00C0700FD083B /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				1510728E17D0053200FD083B /* FTAPIJobDataObject.h */,
+				1510728F17D0053200FD083B /* FTAPIJobDataObject.m */,
+			);
+			name = Job;
+			sourceTree = "<group>";
+		};
+		1510729317D00C0E00FD083B /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1510729417D00C2C00FD083B /* FTAPIJobDetailDataObject.h */,
+				1510729517D00C2C00FD083B /* FTAPIJobDetailDataObject.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		1510729717D00F4A00FD083B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1510729817D00F6300FD083B /* FTJobCell.h */,
+				1510729917D00F6300FD083B /* FTJobCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +274,7 @@
 		15D245F817CF9C5400793614 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1510729717D00F4A00FD083B /* Cells */,
 				15D2460417CF9DC300793614 /* Job detail */,
 				15D245FA17CF9D9900793614 /* FTHomeViewController.h */,
 				15D245FB17CF9D9900793614 /* FTHomeViewController.m */,
@@ -292,6 +362,8 @@
 		15D2462017CFA1CC00793614 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				1510728517CFEBB100FD083B /* FTConfig.h */,
+				1510728617CFEBB100FD083B /* FTConfig.m */,
 			);
 			name = Configuration;
 			sourceTree = "<group>";
@@ -307,6 +379,8 @@
 				15D2462917CFA21100793614 /* UIView+Effects.m */,
 				15D2462A17CFA21100793614 /* UIView+Layout.h */,
 				15D2462B17CFA21100793614 /* UIView+Layout.m */,
+				1510728817CFEBFA00FD083B /* NSString+URLTools.h */,
+				1510728917CFEBFA00FD083B /* NSString+URLTools.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -315,6 +389,9 @@
 			isa = PBXGroup;
 			children = (
 				15D2467C17CFE75700793614 /* Jobs */,
+				1510728417CFEAC200FD083B /* Basic */,
+				1510727E17CFEA6300FD083B /* FTAPIConnector.h */,
+				1510727F17CFEA6300FD083B /* FTAPIConnector.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -396,6 +473,9 @@
 		15D2467C17CFE75700793614 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				1510729317D00C0E00FD083B /* Detail */,
+				1510729217D00C0700FD083B /* Job */,
+				1510729117D00C0100FD083B /* List */,
 			);
 			name = Jobs;
 			sourceTree = "<group>";
@@ -467,20 +547,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D245E017CF9C2A00793614 /* main.m in Sources */,
+				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
+				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
 				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
+				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,
+				1510728717CFEBB100FD083B /* FTConfig.m in Sources */,
 				15D2461217CFA0E900793614 /* FTLang.m in Sources */,
+				1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */,
 				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
+				1510729A17D00F6300FD083B /* FTJobCell.m in Sources */,
 				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
+				1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */,
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
+				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "FTViewController.h"
+#import "FTAccountsViewController.h"
 
-@interface FTHomeViewController : FTViewController
+@interface FTHomeViewController : FTViewController <FTAccountsViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end

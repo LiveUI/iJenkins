@@ -11,8 +11,10 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "FTConfig.h"
     #import "FTAppDelegate.h"
     #import "FTLang.h"
+    #import "FTAPIConnector.h"
     #import "UIView+Layout.h"
     #import "UIColor+Tools.h"
 #endif

@@ -9,20 +9,22 @@
 #import "FTAccount.h"
 
 
-#define kAccountsManager                        [FTAccountsManager sharedManager];
+#define kAccountsManager                        [FTAccountsManager sharedManager]
 
 
 @interface FTAccountsManager : NSObject
 
+@property (nonatomic, strong) FTAccount *selectedAccount;
 
-+ (id)sharedManager;
+
++ (FTAccountsManager *)sharedManager;
 
 - (void)addAccount:(FTAccount *)account;
 - (void)removeAccount:(FTAccount *)account;
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex;
 - (NSArray *)accounts;
 
-- (void)createDemoAccount;
+- (FTAccount *)demoAccount;
 
 
 @end
