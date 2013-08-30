@@ -35,15 +35,17 @@
 		1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510730717D0F82D00FD083B /* UIFont+FontAwesome.m */; };
 		1510732017D0FACC00FD083B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1510731F17D0FACC00FD083B /* FontAwesome.ttf */; };
 		1510732417D0FEDD00FD083B /* FTAddAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */; };
+		1510732B17D10EFA00FD083B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732617D10EFA00FD083B /* Default-568h@2x.png */; };
+		1510732C17D10EFA00FD083B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732717D10EFA00FD083B /* Default.png */; };
+		1510732D17D10EFA00FD083B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732817D10EFA00FD083B /* Default@2x.png */; };
+		1510732E17D10EFA00FD083B /* Icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732917D10EFA00FD083B /* Icon114.png */; };
+		1510732F17D10EFA00FD083B /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732A17D10EFA00FD083B /* Icon120.png */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
 		15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15D245DC17CF9C2A00793614 /* InfoPlist.strings */; };
 		15D245E017CF9C2A00793614 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245DF17CF9C2A00793614 /* main.m */; };
 		15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245E317CF9C2A00793614 /* FTAppDelegate.m */; };
-		15D245E617CF9C2A00793614 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E517CF9C2A00793614 /* Default.png */; };
-		15D245E817CF9C2A00793614 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E717CF9C2A00793614 /* Default@2x.png */; };
-		15D245EA17CF9C2A00793614 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 15D245E917CF9C2A00793614 /* Default-568h@2x.png */; };
 		15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
 		15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTHomeViewController.m */; };
 		15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FE17CF9DA700793614 /* FTLoginViewController.m */; };
@@ -115,6 +117,11 @@
 		1510731F17D0FACC00FD083B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		1510732217D0FEDD00FD083B /* FTAddAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAddAccountViewController.h; sourceTree = "<group>"; };
 		1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAddAccountViewController.m; sourceTree = "<group>"; };
+		1510732617D10EFA00FD083B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		1510732717D10EFA00FD083B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		1510732817D10EFA00FD083B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		1510732917D10EFA00FD083B /* Icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon114.png; sourceTree = "<group>"; };
+		1510732A17D10EFA00FD083B /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,9 +132,6 @@
 		15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iJenkins-Prefix.pch"; sourceTree = "<group>"; };
 		15D245E217CF9C2A00793614 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
 		15D245E317CF9C2A00793614 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
-		15D245E517CF9C2A00793614 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		15D245E717CF9C2A00793614 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		15D245E917CF9C2A00793614 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		15D245EB17CF9C2A00793614 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
 		15D245EC17CF9C2A00793614 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
 		15D245FA17CF9D9900793614 /* FTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTHomeViewController.h; sourceTree = "<group>"; };
@@ -283,6 +287,7 @@
 		151072C517D0BA3400FD083B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1510732517D10EFA00FD083B /* System */,
 				151072DF17D0EE7100FD083B /* Fonts */,
 				151072C617D0BA3400FD083B /* WeatherIcons */,
 			);
@@ -345,6 +350,18 @@
 			name = "Add account";
 			sourceTree = "<group>";
 		};
+		1510732517D10EFA00FD083B /* System */ = {
+			isa = PBXGroup;
+			children = (
+				1510732617D10EFA00FD083B /* Default-568h@2x.png */,
+				1510732717D10EFA00FD083B /* Default.png */,
+				1510732817D10EFA00FD083B /* Default@2x.png */,
+				1510732917D10EFA00FD083B /* Icon114.png */,
+				1510732A17D10EFA00FD083B /* Icon120.png */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -403,9 +420,6 @@
 				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
 				15D245DF17CF9C2A00793614 /* main.m */,
 				15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */,
-				15D245E517CF9C2A00793614 /* Default.png */,
-				15D245E717CF9C2A00793614 /* Default@2x.png */,
-				15D245E917CF9C2A00793614 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -707,12 +721,14 @@
 				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
 				151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */,
 				151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
+				1510732B17D10EFA00FD083B /* Default-568h@2x.png in Resources */,
 				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
+				1510732C17D10EFA00FD083B /* Default.png in Resources */,
+				1510732F17D10EFA00FD083B /* Icon120.png in Resources */,
+				1510732D17D10EFA00FD083B /* Default@2x.png in Resources */,
+				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
 				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
-				15D245E617CF9C2A00793614 /* Default.png in Resources */,
-				15D245E817CF9C2A00793614 /* Default@2x.png in Resources */,
-				15D245EA17CF9C2A00793614 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

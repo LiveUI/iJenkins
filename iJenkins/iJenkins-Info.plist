@@ -8,6 +8,11 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon114.png</string>
+		<string>Icon120.png</string>
+	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.fuerteint.ijenkins</string>
 	<key>CFBundleInfoDictionaryVersion</key>
