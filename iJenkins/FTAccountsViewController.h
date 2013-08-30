@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "FTViewController.h"
+#import "FTAddAccountViewController.h"
 
 
 @class FTAccountsViewController, FTAccount;

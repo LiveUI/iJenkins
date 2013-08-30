@@ -41,7 +41,9 @@
 
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
-    NSLog(@"Data: %@", data);
+    
+    //NSLog(@"Data: %@", data);
+    
     _color = [data objectForKey:@"color"];
     _name = [data objectForKey:@"name"];
     _urlString = [data objectForKey:@"url"];

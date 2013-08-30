@@ -9,11 +9,25 @@
 #import "FTAPIDataObject.h"
 
 
-@class FTAPIJobDetailBuildDataObject;
+@class FTAPIJobDetailBuildDataObject, FTAPIJobDetailHealthDataObject;
 
 @interface FTAPIJobDetailDataObject : FTAPIDataObject <FTAPIDataAbstractObject>
 
+@property (nonatomic, strong) NSString *displayName;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic) BOOL buildable;
+
 @property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastCompletedBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastFailedBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastSuccessfulBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastUnstableBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *lastUnsuccessfulBuild;
+@property (nonatomic, strong) FTAPIJobDetailBuildDataObject *firstBuild;
+
+@property (nonatomic, strong) FTAPIJobDetailHealthDataObject *healthReport;
 
 - (id)initWithJobName:(NSString *)jobName;
 
@@ -25,6 +39,18 @@
 
 @property (nonatomic) NSInteger number;
 @property (nonatomic, strong) NSString *urlString;
+
+- (void)processData:(NSDictionary *)data;
+
+
+@end
+
+
+@interface FTAPIJobDetailHealthDataObject : NSObject
+
+@property (nonatomic) NSInteger score;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *iconUrl;
 
 - (void)processData:(NSDictionary *)data;
 

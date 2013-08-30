@@ -35,14 +35,21 @@
 #pragma mark Creating elements
 
 - (void)createIcons {
-    _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(10, 13, 28, 28)];
+    _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 14, 14)];
     [_statusColorView.layer setCornerRadius:(_statusColorView.height / 2)];
-    
     [self addSubview:_statusColorView];
+    
+    _buildScoreView = [[UIImageView alloc] initWithFrame:CGRectMake((_statusColorView.right + 10), 10, 14, 14)];
+    [self addSubview:_buildScoreView];
 }
 
 - (void)createBuildIdView {
-    
+    _buildIdView = [[UILabel alloc] initWithFrame:CGRectMake(10, (54 - 10 - 10), (_buildScoreView.right - 10), 10)];
+    [_buildIdView setTextColor:[UIColor grayColor]];
+    [_buildIdView setFont:[UIFont systemFontOfSize:10]];
+    [_buildIdView setTextAlignment:NSTextAlignmentLeft];
+    [_buildIdView setBackgroundColor:[UIColor clearColor]];
+    [self addSubview:_buildIdView];
 }
 
 - (void)createAllElements {
@@ -61,7 +68,10 @@
     else if ([_job.color isEqualToString:@"blue"]) {
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
     }
-    else if ([_job.color isEqualToString:@"gray"]) {
+    else if ([_job.color isEqualToString:@"blue_anime"]) {
+        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
+    }
+    else if ([_job.color isEqualToString:@"aborted"]) {
         [_statusColorView setBackgroundColor:[UIColor grayColor]];
     }
     else if ([_job.color isEqualToString:@"notbuilt"]) {
@@ -70,6 +80,11 @@
     else  {
         [_statusColorView setBackgroundColor:[UIColor orangeColor]];
     }
+}
+
+- (void)resetScoreIcon {
+    NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+    [_buildScoreView setImage:[UIImage imageNamed:iconName]];
 }
 
 - (void)setJob:(FTAPIJobDataObject *)job {
@@ -87,6 +102,11 @@
     [self resetStatusColor];
 }
 
+- (void)setDescriptionText:(NSString *)text {
+    text = [text stringByReplacingOccurrencesOfString:@"Build stability: " withString:@""];
+    [self.detailTextLabel setText:text];
+}
+
 #pragma mark Initialization
 
 - (void)setupView {
@@ -98,7 +118,9 @@
 #pragma mark Job data object delegate methods
 
 - (void)jobDataObject:(FTAPIJobDataObject *)object didFinishLoadingJobDetail:(FTAPIJobDetailDataObject *)detail {
-    [self.detailTextLabel setText:detail.lastBuild.urlString];
+    [self setDescriptionText:detail.healthReport.description];
+    [self resetScoreIcon];
+    [_buildIdView setText:[NSString stringWithFormat:@"#%d", detail.lastBuild.number]];
 }
 
 

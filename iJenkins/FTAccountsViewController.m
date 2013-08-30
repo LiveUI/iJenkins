@@ -8,6 +8,7 @@
 
 #import "FTAccountsViewController.h"
 #import "FTAccountsManager.h"
+#import "FTNoAccountCell.h"
 
 
 @interface FTAccountsViewController ()
@@ -54,7 +55,8 @@
 #pragma mark Actions
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
-    
+    FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
+    [self.navigationController pushViewController:c animated:YES];
 }
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
@@ -68,7 +70,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? _data.count : 1;
+    return (section == 0) ? ((_data.count > 0) ? _data.count : 1) : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -76,7 +78,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 54;
+    if (indexPath.section == 0 && _data.count == 0) {
+        return 100;
+    }
+    else {
+        return 54;
+    }
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,18 +96,32 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.section == 0);
+    if (indexPath.section == 0 && _data.count == 0) {
+        return NO;
+    }
+    else return (indexPath.section == 0);
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        FTAccount *acc = [_data objectAtIndex:indexPath.row];
+        [kAccountsManager removeAccount:acc];
+        [tableView reloadData];
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"cellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+- (UITableViewCell *)cellForNoAccount {
+    static NSString *identifier = @"noAccountCell";
+    FTNoAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTNoAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    return cell;
+}
+
+- (UITableViewCell *)accountCellForIndexPath:(NSIndexPath *)indexPath {
+    static NSString *identifier = @"accountCell";
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
@@ -109,12 +131,26 @@
     return cell;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && _data.count == 0) {
+        return [self cellForNoAccount];
+    }
+    else {
+        return [self accountCellForIndexPath:indexPath];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
-    [kAccountsManager setSelectedAccount:acc];
-    if ([_delegate respondsToSelector:@selector(accountsViewController:didSelectAccount:)]) {
-        [_delegate accountsViewController:self didSelectAccount:acc];
+    if (indexPath.section == 0 && _data.count == 0) {
+        [self didCLickAddItem:nil];
+    }
+    else {
+        FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
+        [kAccountsManager setSelectedAccount:acc];
+        if ([_delegate respondsToSelector:@selector(accountsViewController:didSelectAccount:)]) {
+            [_delegate accountsViewController:self didSelectAccount:acc];
+        }
     }
 }
 

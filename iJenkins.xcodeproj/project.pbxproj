@@ -18,7 +18,23 @@
 		1510729E17D084D800FD083B /* FTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729D17D084D800FD083B /* FTView.m */; };
 		151072A417D084FC00FD083B /* FTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072A317D084FC00FD083B /* FTLabel.m */; };
 		151072A817D0851D00FD083B /* FTBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072A717D0851D00FD083B /* FTBasicCell.m */; };
-		151072C217D0A55600FD083B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072C017D0A55600FD083B /* NSData+Base64.m */; };
+		151072C217D0A55600FD083B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072C017D0A55600FD083B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072C717D0BA3400FD083B /* IJ_health-00to19.png */; };
+		151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072C817D0BA3400FD083B /* IJ_health-00to19@2x.png */; };
+		151072D317D0BA3400FD083B /* IJ_health-20to39.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072C917D0BA3400FD083B /* IJ_health-20to39.png */; };
+		151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CA17D0BA3400FD083B /* IJ_health-20to39@2x.png */; };
+		151072D517D0BA3400FD083B /* IJ_health-40to59.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CB17D0BA3400FD083B /* IJ_health-40to59.png */; };
+		151072D617D0BA3400FD083B /* IJ_health-40to59@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CC17D0BA3400FD083B /* IJ_health-40to59@2x.png */; };
+		151072D717D0BA3400FD083B /* IJ_health-60to79.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CD17D0BA3400FD083B /* IJ_health-60to79.png */; };
+		151072D817D0BA3400FD083B /* IJ_health-60to79@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CE17D0BA3400FD083B /* IJ_health-60to79@2x.png */; };
+		151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072CF17D0BA3400FD083B /* IJ_health-80plus.png */; };
+		151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 151072D017D0BA3400FD083B /* IJ_health-80plus@2x.png */; };
+		151072DE17D0E17C00FD083B /* FTNoAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072DD17D0E17C00FD083B /* FTNoAccountCell.m */; };
+		1510731417D0F82D00FD083B /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072FF17D0F82C00FD083B /* FAImageView.m */; };
+		1510731617D0F82D00FD083B /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510730217D0F82D00FD083B /* NSString+FontAwesome.m */; };
+		1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510730717D0F82D00FD083B /* UIFont+FontAwesome.m */; };
+		1510732017D0FACC00FD083B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1510731F17D0FACC00FD083B /* FontAwesome.ttf */; };
+		1510732417D0FEDD00FD083B /* FTAddAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -78,6 +94,27 @@
 		151072A717D0851D00FD083B /* FTBasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBasicCell.m; sourceTree = "<group>"; };
 		151072C017D0A55600FD083B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		151072C117D0A55600FD083B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		151072C717D0BA3400FD083B /* IJ_health-00to19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-00to19.png"; sourceTree = "<group>"; };
+		151072C817D0BA3400FD083B /* IJ_health-00to19@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-00to19@2x.png"; sourceTree = "<group>"; };
+		151072C917D0BA3400FD083B /* IJ_health-20to39.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-20to39.png"; sourceTree = "<group>"; };
+		151072CA17D0BA3400FD083B /* IJ_health-20to39@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-20to39@2x.png"; sourceTree = "<group>"; };
+		151072CB17D0BA3400FD083B /* IJ_health-40to59.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-40to59.png"; sourceTree = "<group>"; };
+		151072CC17D0BA3400FD083B /* IJ_health-40to59@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-40to59@2x.png"; sourceTree = "<group>"; };
+		151072CD17D0BA3400FD083B /* IJ_health-60to79.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-60to79.png"; sourceTree = "<group>"; };
+		151072CE17D0BA3400FD083B /* IJ_health-60to79@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-60to79@2x.png"; sourceTree = "<group>"; };
+		151072CF17D0BA3400FD083B /* IJ_health-80plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-80plus.png"; sourceTree = "<group>"; };
+		151072D017D0BA3400FD083B /* IJ_health-80plus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IJ_health-80plus@2x.png"; sourceTree = "<group>"; };
+		151072DC17D0E17C00FD083B /* FTNoAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNoAccountCell.h; sourceTree = "<group>"; };
+		151072DD17D0E17C00FD083B /* FTNoAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoAccountCell.m; sourceTree = "<group>"; };
+		151072FE17D0F82C00FD083B /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAImageView.h; sourceTree = "<group>"; };
+		151072FF17D0F82C00FD083B /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAImageView.m; sourceTree = "<group>"; };
+		1510730117D0F82D00FD083B /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		1510730217D0F82D00FD083B /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		1510730617D0F82D00FD083B /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		1510730717D0F82D00FD083B /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+FontAwesome.m"; sourceTree = "<group>"; };
+		1510731F17D0FACC00FD083B /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		1510732217D0FEDD00FD083B /* FTAddAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAddAccountViewController.h; sourceTree = "<group>"; };
+		1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAddAccountViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +280,71 @@
 			name = Label;
 			sourceTree = "<group>";
 		};
+		151072C517D0BA3400FD083B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				151072DF17D0EE7100FD083B /* Fonts */,
+				151072C617D0BA3400FD083B /* WeatherIcons */,
+			);
+			path = Assets;
+			sourceTree = SOURCE_ROOT;
+		};
+		151072C617D0BA3400FD083B /* WeatherIcons */ = {
+			isa = PBXGroup;
+			children = (
+				151072C717D0BA3400FD083B /* IJ_health-00to19.png */,
+				151072C817D0BA3400FD083B /* IJ_health-00to19@2x.png */,
+				151072C917D0BA3400FD083B /* IJ_health-20to39.png */,
+				151072CA17D0BA3400FD083B /* IJ_health-20to39@2x.png */,
+				151072CB17D0BA3400FD083B /* IJ_health-40to59.png */,
+				151072CC17D0BA3400FD083B /* IJ_health-40to59@2x.png */,
+				151072CD17D0BA3400FD083B /* IJ_health-60to79.png */,
+				151072CE17D0BA3400FD083B /* IJ_health-60to79@2x.png */,
+				151072CF17D0BA3400FD083B /* IJ_health-80plus.png */,
+				151072D017D0BA3400FD083B /* IJ_health-80plus@2x.png */,
+			);
+			path = WeatherIcons;
+			sourceTree = "<group>";
+		};
+		151072DB17D0E16500FD083B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				151072DC17D0E17C00FD083B /* FTNoAccountCell.h */,
+				151072DD17D0E17C00FD083B /* FTNoAccountCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		151072DF17D0EE7100FD083B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1510731F17D0FACC00FD083B /* FontAwesome.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		151072E617D0F82C00FD083B /* ios-fontawesome */ = {
+			isa = PBXGroup;
+			children = (
+				151072FE17D0F82C00FD083B /* FAImageView.h */,
+				151072FF17D0F82C00FD083B /* FAImageView.m */,
+				1510730117D0F82D00FD083B /* NSString+FontAwesome.h */,
+				1510730217D0F82D00FD083B /* NSString+FontAwesome.m */,
+				1510730617D0F82D00FD083B /* UIFont+FontAwesome.h */,
+				1510730717D0F82D00FD083B /* UIFont+FontAwesome.m */,
+			);
+			path = "ios-fontawesome";
+			sourceTree = "<group>";
+		};
+		1510732117D0FEC200FD083B /* Add account */ = {
+			isa = PBXGroup;
+			children = (
+				1510732217D0FEDD00FD083B /* FTAddAccountViewController.h */,
+				1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */,
+			);
+			name = "Add account";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +398,7 @@
 		15D245DA17CF9C2A00793614 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				151072C517D0BA3400FD083B /* Assets */,
 				15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */,
 				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
 				15D245DF17CF9C2A00793614 /* main.m */,
@@ -351,6 +454,8 @@
 		15D2460017CF9DAA00793614 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
+				151072DB17D0E16500FD083B /* Cells */,
+				1510732117D0FEC200FD083B /* Add account */,
 				15D2460117CF9DBB00793614 /* FTAccountsViewController.h */,
 				15D2460217CF9DBB00793614 /* FTAccountsViewController.m */,
 			);
@@ -487,6 +592,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				151072E617D0F82C00FD083B /* ios-fontawesome */,
 				15D2463C17CFBD8E00793614 /* GCNetworkReachability */,
 				15D2464017CFBD8E00793614 /* Lockbox */,
 			);
@@ -592,7 +698,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151072D617D0BA3400FD083B /* IJ_health-40to59@2x.png in Resources */,
+				151072D317D0BA3400FD083B /* IJ_health-20to39.png in Resources */,
+				151072D817D0BA3400FD083B /* IJ_health-60to79@2x.png in Resources */,
+				1510732017D0FACC00FD083B /* FontAwesome.ttf in Resources */,
+				151072D717D0BA3400FD083B /* IJ_health-60to79.png in Resources */,
+				151072D517D0BA3400FD083B /* IJ_health-40to59.png in Resources */,
+				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
+				151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */,
+				151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
 				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
+				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
+				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
 				15D245E617CF9C2A00793614 /* Default.png in Resources */,
 				15D245E817CF9C2A00793614 /* Default@2x.png in Resources */,
 				15D245EA17CF9C2A00793614 /* Default-568h@2x.png in Resources */,
@@ -606,6 +723,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1510731417D0F82D00FD083B /* FAImageView.m in Sources */,
 				15D245E017CF9C2A00793614 /* main.m in Sources */,
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
@@ -615,13 +733,16 @@
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
+				1510732417D0FEDD00FD083B /* FTAddAccountViewController.m in Sources */,
 				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
 				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,
 				1510728717CFEBB100FD083B /* FTConfig.m in Sources */,
 				15D2461217CFA0E900793614 /* FTLang.m in Sources */,
 				151072C217D0A55600FD083B /* NSData+Base64.m in Sources */,
 				1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */,
+				1510731617D0F82D00FD083B /* NSString+FontAwesome.m in Sources */,
 				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
+				151072DE17D0E17C00FD083B /* FTNoAccountCell.m in Sources */,
 				1510729A17D00F6300FD083B /* FTJobCell.m in Sources */,
 				151072A417D084FC00FD083B /* FTLabel.m in Sources */,
 				1510729E17D084D800FD083B /* FTView.m in Sources */,
@@ -631,6 +752,7 @@
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
+				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,

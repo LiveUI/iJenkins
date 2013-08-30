@@ -15,6 +15,7 @@
     #import "FTAppDelegate.h"
     #import "FTLang.h"
     #import "FTAPIConnector.h"
+    #import "FAImageView.h"
     #import "UIView+Layout.h"
     #import "UIColor+Tools.h"
 #endif

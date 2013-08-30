@@ -10,7 +10,7 @@
 #import "Lockbox.h"
 
 
-#define kFTAccountsManagerAccountsKey                                   @"FTAccountsManagerAccountsKey2"
+#define kFTAccountsManagerAccountsKey                                   @"FTAccountsManagerAccountsKey3"
 
 
 static NSMutableArray *accounts = nil;
@@ -26,7 +26,7 @@ static FTAccountsManager *staticManager = nil;
 - (NSString *)accountsFilePath {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:@"accounts.plist"];
+    return [documentsDirectory stringByAppendingPathComponent:@"accounts0.plist"];
 }
 
 #pragma mark Object conversions
@@ -56,7 +56,6 @@ static FTAccountsManager *staticManager = nil;
     dataAccounts = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:[self accountsFilePath]]];
     NSMutableArray *arr = [NSMutableArray array];
     for (NSDictionary *d in dataAccounts) {
-        
         FTAccount *a = [self accountFromDictionary:d];
         [arr addObject:a];
     }
@@ -124,9 +123,6 @@ static FTAccountsManager *staticManager = nil;
     if (self) {
         staticManager = self;
         [self accounts];
-        if (!accounts || accounts.count == 0) {
-            [self createDemoAccount];
-        }
     }
     return self;
 }

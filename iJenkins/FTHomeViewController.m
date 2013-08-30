@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSMutableArray *finalData;
 
 @end
 
@@ -29,6 +30,7 @@
     [FTAPIConnector connectWithObject:jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         NSLog(@"Jobs: %@", jobsObject.jobs);
         _data = jobsObject.jobs;
+        _finalData = [NSMutableArray arrayWithArray:_data];
         [_tableView reloadData];
     }];
 }
@@ -100,7 +102,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? _data.count : 1;
+    return (section == 0) ? 1 : _data.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -112,32 +114,37 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return FTLangGet((section == 0) ? @"Jobs" : @"xxxxxxx");
+    return FTLangGet((section == 0) ? @"Overview" : @"Jobs");
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)cellForJobAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"cellIdentifier";
-    FTJobCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    FTJobCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
-    if (indexPath.section == 0) {
-        FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
-        [job setDelegate:cell];
-        [cell setJob:job];
-        [cell.textLabel setText:job.name];
-        [cell.detailTextLabel setText:(job.jobDetail.lastBuild.urlString ? job.jobDetail.lastBuild.urlString : FTLangGet(@"Loading ..."))];
-    }
+    FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
+    [job setDelegate:cell];
+    [cell setJob:job];
+    [cell.textLabel setText:job.name];
+    [cell setDescriptionText:(job.jobDetail.healthReport.description ? job.jobDetail.healthReport.description : FTLangGet(@"Loading ..."))];
     return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return [self cellForJobAtIndexPath:indexPath];
+    }
+    else if (indexPath.section == 1) {
+        return [self cellForJobAtIndexPath:indexPath];
+    }
+    else {
+        return nil;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
-//    [kAccountsManager setSelectedAccount:acc];
-//    if ([_delegate respondsToSelector:@selector(accountsViewController:didSelectAccount:)]) {
-//        [_delegate accountsViewController:self didSelectAccount:acc];
-//    }
 }
 
 

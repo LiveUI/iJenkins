@@ -4,3 +4,6 @@
 [submodule "Thirdparty/GCNetworkReachability"]
 	path = Thirdparty/GCNetworkReachability
 	url = git@github.com:GlennChiu/GCNetworkReachability.git
+[submodule "Thirdparty/ios-fontawesome"]
+	path = Thirdparty/ios-fontawesome
+	url = git@github.com:alexdrone/ios-fontawesome.git
