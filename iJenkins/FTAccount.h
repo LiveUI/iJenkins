@@ -29,5 +29,7 @@
 
 @property (nonatomic, strong) NSString *token;
 
+- (NSString *)baseUrl;
+
 
 @end

@@ -18,7 +18,7 @@
 @end
 
 
-@interface FTAccountsViewController : FTViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FTAccountsViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, FTAddAccountViewControllerDelegate>
 
 @property (nonatomic, weak) id <FTAccountsViewControllerDelegate> delegate;
 

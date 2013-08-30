@@ -23,6 +23,18 @@
 @implementation FTAccountsViewController
 
 
+#pragma mark Layout
+
+- (void)scrollToAccount:(FTAccount *)account {
+    
+}
+
+#pragma mark Data
+
+- (void)reloadData {
+    [_tableView reloadData];
+}
+
 #pragma mark Creating elements
 
 - (void)createTableView {
@@ -56,6 +68,8 @@
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
+    [c setDelegate:self];
+    [c setTitle:FTLangGet(@"New Instance")];
     [self.navigationController pushViewController:c animated:YES];
 }
 
@@ -96,7 +110,7 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && _data.count == 0) {
+    if ((indexPath.section == 0 && _data.count == 0) || indexPath.section) {
         return NO;
     }
     else return (indexPath.section == 0);
@@ -124,6 +138,7 @@
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     }
     FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
     [cell.textLabel setText:acc.name];
@@ -152,6 +167,27 @@
             [_delegate accountsViewController:self didSelectAccount:acc];
         }
     }
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
+    FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
+    [c setDelegate:self];
+    [c setTitle:acc.name];
+    [c setAccount:acc];
+    [self.navigationController pushViewController:c animated:YES];
+}
+
+#pragma mark Add account view controller delegate methods
+
+- (void)addAccountViewController:(FTAddAccountViewController *)controller didAddAccount:(FTAccount *)account {
+    [self reloadData];
+    [self scrollToAccount:account];
+}
+
+- (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
+    [self reloadData];
+    [self scrollToAccount:account];
 }
 
 

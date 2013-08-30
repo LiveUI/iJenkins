@@ -8,6 +8,10 @@
 
 #import "FTViewController.h"
 
+
 @interface FTJobDetailViewController : FTViewController
+
+@property (nonatomic, strong) FTAPIJobDataObject *job;
+
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "FTHomeViewController.h"
+#import "FTJobDetailViewController.h"
 #import "FTAccountsManager.h"
 #import "FTJobCell.h"
 
@@ -145,6 +146,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 1) {
+        FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
+        FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
+        [c setTitle:job.name];
+        [c setJob:job];
+        [self.navigationController pushViewController:c animated:YES];
+    }
 }
 
 

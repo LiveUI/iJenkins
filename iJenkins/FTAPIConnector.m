@@ -119,7 +119,7 @@
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
     _dataObject = data;
     NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"http://www.fuerteserver.com:8800/%@api/json", [data methodName]];
+    NSString *url = [NSString stringWithFormat:@"%@%@api/json", [kAccountsManager selectedAccount].baseUrl, [data methodName]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];

@@ -7,32 +7,70 @@
 //
 
 #import "FTAddAccountViewController.h"
+#import "FTAccountsManager.h"
+
 
 @interface FTAddAccountViewController ()
 
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *data;
+
 @end
+
 
 @implementation FTAddAccountViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+
+#pragma mark Creating elements
+
+- (void)createTableView {
+//    _data = [kAccountsManager accounts];
+//    _demoAccount = [kAccountsManager demoAccount];
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [_tableView setAutoresizingWidthAndHeight];
+    [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
+    [self.view addSubview:_tableView];
+}
+
+- (void)createTopButtons {
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(didCLickSaveNow:)];
+    [self.navigationItem setRightBarButtonItem:edit];
+}
+
+- (void)createAllElements {
+    [super createAllElements];
+    
+    [self createTableView];
+    [self createTopButtons];
+}
+
+#pragma mark Actions
+
+- (void)didCLickSaveNow:(UIBarButtonItem *)sender {
+    FTAccount *acc = [kAccountsManager demoAccount];
+    [kAccountsManager addAccount:acc];
+    
+    if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
+        [_delegate addAccountViewController:self didModifyAccount:acc];
     }
-    return self;
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+#pragma mark Table view delegate & data source methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 0;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
 }
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 
 @end
