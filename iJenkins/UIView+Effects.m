@@ -1,9 +1,9 @@
 //
 //  UIView+Tools.m
-//  PublishTheNews
+//  iJenkins
 //
 //  Created by Ondrej Rafaj on 20/02/2011.
-//  Copyright 2011 PublishTheNews.com. All rights reserved.
+//  Copyright 2011 Fuerte Innovations. All rights reserved.
 //
 
 #import "UIView+Effects.h"

@@ -21,6 +21,7 @@
 - (BOOL)isTablet;
 - (BOOL)isBigPhone;
 - (BOOL)isRetina;
+- (BOOL)isOS7;
 
 // Creating and configuring view
 - (void)setupView;

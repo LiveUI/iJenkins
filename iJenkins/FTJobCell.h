@@ -6,9 +6,13 @@
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "FTBasicCell.h"
 #import "FTAPIJobDataObject.h"
 
-@interface FTJobCell : UITableViewCell <FTAPIJobDataObjectDelegate>
+
+@interface FTJobCell : FTBasicCell <FTAPIJobDataObjectDelegate>
+
+@property (nonatomic, strong) FTAPIJobDataObject *job;
+
 
 @end

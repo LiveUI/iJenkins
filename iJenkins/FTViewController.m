@@ -59,6 +59,15 @@
     return ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] && ([UIScreen mainScreen].scale == 2.0));
 }
 
+- (BOOL)isOS7 {
+#if defined __IPHONE_7_0
+    return YES;
+#else
+    return NO;
+#endif
+    
+}
+
 #pragma mark Creating elements
 
 - (void)createAllElements {

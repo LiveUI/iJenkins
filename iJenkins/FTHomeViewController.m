@@ -124,6 +124,7 @@
     if (indexPath.section == 0) {
         FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
         [job setDelegate:cell];
+        [cell setJob:job];
         [cell.textLabel setText:job.name];
         [cell.detailTextLabel setText:(job.jobDetail.lastBuild.urlString ? job.jobDetail.lastBuild.urlString : FTLangGet(@"Loading ..."))];
     }

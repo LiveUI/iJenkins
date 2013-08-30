@@ -7,9 +7,11 @@
 //
 
 #import "FTAPIConnector.h"
+#import "FTAccountsManager.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import "NSString+URLTools.h"
+#import "NSData+Base64.h"
 
 
 #define kFTAPIConnectorDebug                                    YES
@@ -105,10 +107,19 @@
     return dataPayload;
 }
 
+- (NSString *)authString {
+    if (kAccountsManager.selectedAccount.username) {
+        NSString *authStr = [NSString stringWithFormat:@"%@:%@", kAccountsManager.selectedAccount.username, kAccountsManager.selectedAccount.password];
+        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
+        return [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
+    }
+    else return nil;
+}
+
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
     _dataObject = data;
     NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"http://fuerteserver.local:8800/%@api/json", [data methodName]];
+    NSString *url = [NSString stringWithFormat:@"http://www.fuerteserver.com:8800/%@api/json", [data methodName]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
@@ -117,6 +128,12 @@
     _url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     kFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
+    
+    NSString *auth = [self authString];
+    if (auth) {
+        [request setValue:auth forHTTPHeaderField:@"Authorization"];
+    }
+    
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];
     if ([data httpMethod] == FTHttpMethodPost || [data httpMethod] == FTHttpMethodPut) {
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];

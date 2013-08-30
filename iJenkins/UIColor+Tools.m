@@ -1,9 +1,9 @@
 //
 //  UIColor+Tools.m
-//  PublishTheNews
+//  iJenkins
 //
 //  Created by Ondrej Rafaj on 7.6.10.
-//  Copyright 2010 PublishTheNews.com. All rights reserved.
+//  Copyright 2010 Fuerte Innovations. All rights reserved.
 //
 
 #import "UIColor+Tools.h"
