@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
+typedef enum {
+    FTBasicCellLayoutTypeSmall,
+    FTBasicCellLayoutTypeDefault
+} FTBasicCellLayoutType;
+
+
 @interface FTBasicCell : UITableViewCell
+
+@property (nonatomic) FTBasicCellLayoutType layoutType;
 
 - (void)createAllElements;
 - (void)setupView;

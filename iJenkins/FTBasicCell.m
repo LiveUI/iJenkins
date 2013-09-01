@@ -12,6 +12,23 @@
 @implementation FTBasicCell
 
 
+#pragma mark Layout
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    if (_layoutType == FTBasicCellLayoutTypeSmall) {
+        [self.textLabel setFont:[UIFont systemFontOfSize:16]];
+        [self.textLabel setYOrigin:(self.textLabel.yOrigin + 2)];
+        
+        [self.detailTextLabel setFont:[UIFont systemFontOfSize:10]];
+        [self.detailTextLabel setYOrigin:(self.detailTextLabel.yOrigin - 2)];
+    }
+    [self.textLabel setTextColor:[UIColor colorWithHexString:@"454545"]];
+    [self.detailTextLabel setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
+    [self.textLabel sizeToFit];
+}
+
 #pragma mark Creating elements
 
 - (void)createAllElements {

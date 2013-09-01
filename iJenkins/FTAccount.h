@@ -25,9 +25,7 @@
 @property (nonatomic) double buildLogMaxSize;
 
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
-
-@property (nonatomic, strong) NSString *token;
+@property (nonatomic, strong) NSString *passwordOrToken;
 
 - (NSString *)baseUrl;
 

@@ -95,20 +95,16 @@
     [_originalDictionary setValue:username forKey:@"username"];
 }
 
-- (void)setPassword:(NSString *)password {
-    _password = password;
-    [_originalDictionary setValue:password forKey:@"password"];
-}
-
-- (void)setToken:(NSString *)token {
-    _token = token;
-    [_originalDictionary setValue:token forKey:@"token"];
+- (void)setPasswordOrToken:(NSString *)passwordOrToken {
+    _passwordOrToken = passwordOrToken;
+    [_originalDictionary setValue:passwordOrToken forKey:@"password"];
 }
 
 #pragma mark Getters
 
 - (NSString *)baseUrl {
-    return @"http://www.fuerteserver.com:8800/";
+    //return @"http://www.fuerteserver.com:8800/";
+    return @"http://fuerteserver.local:8800/";
 }
 
 #pragma mark Initialization

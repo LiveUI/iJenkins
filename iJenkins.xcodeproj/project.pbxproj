@@ -40,6 +40,10 @@
 		1510732D17D10EFA00FD083B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732817D10EFA00FD083B /* Default@2x.png */; };
 		1510732E17D10EFA00FD083B /* Icon114.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732917D10EFA00FD083B /* Icon114.png */; };
 		1510732F17D10EFA00FD083B /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 1510732A17D10EFA00FD083B /* Icon120.png */; };
+		1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510733517D20F8500FD083B /* FTBasicAccountCell.m */; };
+		1510733917D20FA100FD083B /* FTSwitchAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510733817D20FA100FD083B /* FTSwitchAccountCell.m */; };
+		1510733F17D2111100FD083B /* AccountDetailTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1510733E17D2111100FD083B /* AccountDetailTemplate.plist */; };
+		1510734217D28C4300FD083B /* FTTextAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734117D28C4300FD083B /* FTTextAccountCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -122,6 +126,13 @@
 		1510732817D10EFA00FD083B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		1510732917D10EFA00FD083B /* Icon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon114.png; sourceTree = "<group>"; };
 		1510732A17D10EFA00FD083B /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
+		1510733417D20F8500FD083B /* FTBasicAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBasicAccountCell.h; sourceTree = "<group>"; };
+		1510733517D20F8500FD083B /* FTBasicAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBasicAccountCell.m; sourceTree = "<group>"; };
+		1510733717D20FA100FD083B /* FTSwitchAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSwitchAccountCell.h; sourceTree = "<group>"; };
+		1510733817D20FA100FD083B /* FTSwitchAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTSwitchAccountCell.m; sourceTree = "<group>"; };
+		1510733E17D2111100FD083B /* AccountDetailTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AccountDetailTemplate.plist; sourceTree = "<group>"; };
+		1510734017D28C4300FD083B /* FTTextAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTTextAccountCell.h; sourceTree = "<group>"; };
+		1510734117D28C4300FD083B /* FTTextAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTTextAccountCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -287,6 +298,7 @@
 		151072C517D0BA3400FD083B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				1510733D17D210F700FD083B /* Data */,
 				1510732517D10EFA00FD083B /* System */,
 				151072DF17D0EE7100FD083B /* Fonts */,
 				151072C617D0BA3400FD083B /* WeatherIcons */,
@@ -344,6 +356,7 @@
 		1510732117D0FEC200FD083B /* Add account */ = {
 			isa = PBXGroup;
 			children = (
+				1510733017D20F3400FD083B /* Cells */,
 				1510732217D0FEDD00FD083B /* FTAddAccountViewController.h */,
 				1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */,
 			);
@@ -360,6 +373,51 @@
 				1510732A17D10EFA00FD083B /* Icon120.png */,
 			);
 			path = System;
+			sourceTree = "<group>";
+		};
+		1510733017D20F3400FD083B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1510733317D20F5B00FD083B /* Text */,
+				1510733217D20F5100FD083B /* Switch */,
+				1510733117D20F4900FD083B /* Basic */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		1510733117D20F4900FD083B /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				1510733417D20F8500FD083B /* FTBasicAccountCell.h */,
+				1510733517D20F8500FD083B /* FTBasicAccountCell.m */,
+			);
+			name = Basic;
+			sourceTree = "<group>";
+		};
+		1510733217D20F5100FD083B /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				1510733717D20FA100FD083B /* FTSwitchAccountCell.h */,
+				1510733817D20FA100FD083B /* FTSwitchAccountCell.m */,
+			);
+			name = Switch;
+			sourceTree = "<group>";
+		};
+		1510733317D20F5B00FD083B /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				1510734017D28C4300FD083B /* FTTextAccountCell.h */,
+				1510734117D28C4300FD083B /* FTTextAccountCell.m */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
+		1510733D17D210F700FD083B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1510733E17D2111100FD083B /* AccountDetailTemplate.plist */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -715,6 +773,7 @@
 				151072D617D0BA3400FD083B /* IJ_health-40to59@2x.png in Resources */,
 				151072D317D0BA3400FD083B /* IJ_health-20to39.png in Resources */,
 				151072D817D0BA3400FD083B /* IJ_health-60to79@2x.png in Resources */,
+				1510733F17D2111100FD083B /* AccountDetailTemplate.plist in Resources */,
 				1510732017D0FACC00FD083B /* FontAwesome.ttf in Resources */,
 				151072D717D0BA3400FD083B /* IJ_health-60to79.png in Resources */,
 				151072D517D0BA3400FD083B /* IJ_health-40to59.png in Resources */,
@@ -764,6 +823,7 @@
 				1510729E17D084D800FD083B /* FTView.m in Sources */,
 				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
 				1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */,
+				1510733917D20FA100FD083B /* FTSwitchAccountCell.m in Sources */,
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
@@ -771,10 +831,12 @@
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
+				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,
 				151072A817D0851D00FD083B /* FTBasicCell.m in Sources */,
 				15D2467B17CFBE5200793614 /* FTAccount.m in Sources */,
+				1510734217D28C4300FD083B /* FTTextAccountCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

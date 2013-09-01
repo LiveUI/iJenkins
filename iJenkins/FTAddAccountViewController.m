@@ -7,7 +7,8 @@
 //
 
 #import "FTAddAccountViewController.h"
-#import "FTAccountsManager.h"
+#import "FTTextAccountCell.h"
+#import "FTSwitchAccountCell.h"
 
 
 @interface FTAddAccountViewController ()
@@ -24,8 +25,8 @@
 #pragma mark Creating elements
 
 - (void)createTableView {
-//    _data = [kAccountsManager accounts];
-//    _demoAccount = [kAccountsManager demoAccount];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"AccountDetailTemplate" ofType:@"plist"];
+    _data = [NSArray arrayWithContentsOfFile:path];
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [_tableView setAutoresizingWidthAndHeight];
     [_tableView setDataSource:self];
@@ -58,18 +59,94 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_tableView reloadData];
+    
+    [NSTimer scheduledTimerWithTimeInterval:4 target:_tableView selector:@selector(reloadData) userInfo:Nil repeats:YES];
+}
+
 #pragma mark Table view delegate & data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return _data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return [[[_data objectAtIndex:section] objectForKey:@"items"] count];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return (section == 0) ? 44 : 24;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return FTLangGet([[_data objectAtIndex:section] objectForKey:@"name"]);
+}
+
+- (FTBasicAccountCell *)switchCell {
+    static NSString *identifier = @"switchCell";
+    FTSwitchAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTSwitchAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    return cell;
+}
+
+- (FTBasicAccountCell *)textCell {
+    static NSString *identifier = @"textCell";
+    FTTextAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTTextAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
+    return cell;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    NSDictionary *d = [[[_data objectAtIndex:indexPath.section] objectForKey:@"items"] objectAtIndex:indexPath.row];
+    FTBasicAccountCell *cell;
+    if ([[d objectForKey:@"type"] isEqualToString:@"switch"]) {
+        cell = [self switchCell];
+    }
+    else {
+        cell = [self textCell];
+    }
+    [cell setDelegate:self];
+    [cell setIndexPath:indexPath];
+    [cell setCellData:d];
+    [cell setAccount:_account];
+    return cell;
+}
+
+#pragma mark Basic account cell delegate methods
+
+- (void)basicAccountCell:(FTBasicAccountCell *)cell didStartEditing:(BOOL)editing {
+    [UIView animateWithDuration:0.3 animations:^{
+        if (editing) {
+            if (_tableView.height == self.view.height) {
+                [_tableView setHeight:(self.view.height - 216)];
+            }
+        }
+        else {
+            if (_tableView.height < self.view.height) {
+                [_tableView setHeight:(self.view.height)];
+            }
+        }
+        [_tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+    }];
+    
+}
+
+- (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
+    NSInteger index = [_data indexOfObject:cell.account];
+    NSLog(@"Index: %d for name: %@", index, cell.account.name);
 }
 
 

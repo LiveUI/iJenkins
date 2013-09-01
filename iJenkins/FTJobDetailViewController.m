@@ -7,7 +7,6 @@
 //
 
 #import "FTJobDetailViewController.h"
-#import "FTAccountsManager.h"
 
 
 @interface FTJobDetailViewController ()

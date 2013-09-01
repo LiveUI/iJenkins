@@ -12,6 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "FTConfig.h"
+    #import "FTAccountsManager.h"
     #import "FTAppDelegate.h"
     #import "FTLang.h"
     #import "FTAPIConnector.h"

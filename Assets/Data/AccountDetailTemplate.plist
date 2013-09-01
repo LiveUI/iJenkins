@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Server</string>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Instance name</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>My Jenkins Server</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>text</string>
+				<key>variable</key>
+				<string>name</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Host</string>
+				<key>description</key>
+				<string>Without http://</string>
+				<key>placeholder</key>
+				<string>jenking-example.com</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>url</string>
+				<key>variable</key>
+				<string>host</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Port</string>
+				<key>description</key>
+				<string>Left blank for default (8080)</string>
+				<key>placeholder</key>
+				<string>8080</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>int</string>
+				<key>variable</key>
+				<string>port</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>HTTP/S</string>
+				<key>description</key>
+				<string>Enable HTTPS</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>default</key>
+				<string>0</string>
+				<key>type</key>
+				<string>switch</string>
+				<key>variable</key>
+				<string>https</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Authentication</string>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Username</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>geeky_boy01</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>text</string>
+				<key>variable</key>
+				<string>username</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Password</string>
+				<key>description</key>
+				<string>Or API token</string>
+				<key>placeholder</key>
+				<string>mySup3rS3cr3tP4ssword</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>password</string>
+				<key>variable</key>
+				<string>passwordOrToken</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Advanced</string>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Path suffix</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>Optional url suffix</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>text</string>
+				<key>variable</key>
+				<string>pathSuffix</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Load max items</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>Max items in the list</string>
+				<key>default</key>
+				<string>200</string>
+				<key>type</key>
+				<string>int</string>
+				<key>variable</key>
+				<string>loadMaxItems</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Override Jenkins URL</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>default</key>
+				<string>1</string>
+				<key>type</key>
+				<string>switch</string>
+				<key>variable</key>
+				<string>overrideJenkinsUrl</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

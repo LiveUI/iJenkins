@@ -7,7 +7,6 @@
 //
 
 #import "FTAccountsViewController.h"
-#import "FTAccountsManager.h"
 #import "FTNoAccountCell.h"
 
 
@@ -68,6 +67,7 @@
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
+    [c setAccount:[[FTAccount alloc] init]];
     [c setDelegate:self];
     [c setTitle:FTLangGet(@"New Instance")];
     [self.navigationController pushViewController:c animated:YES];
@@ -135,9 +135,9 @@
 
 - (UITableViewCell *)accountCellForIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"accountCell";
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTBasicCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     }
     FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;

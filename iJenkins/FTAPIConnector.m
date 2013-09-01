@@ -7,7 +7,6 @@
 //
 
 #import "FTAPIConnector.h"
-#import "FTAccountsManager.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import "NSString+URLTools.h"
@@ -109,7 +108,7 @@
 
 - (NSString *)authString {
     if (kAccountsManager.selectedAccount.username) {
-        NSString *authStr = [NSString stringWithFormat:@"%@:%@", kAccountsManager.selectedAccount.username, kAccountsManager.selectedAccount.password];
+        NSString *authStr = [NSString stringWithFormat:@"%@:%@", kAccountsManager.selectedAccount.username, kAccountsManager.selectedAccount.passwordOrToken];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         return [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
     }

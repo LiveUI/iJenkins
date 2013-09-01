@@ -45,8 +45,7 @@ static FTAccountsManager *staticManager = nil;
     [acc setLoadMaxItems:[[dic valueForKey:@"loadMaxItems"] integerValue]];
     [acc setBuildLogMaxSize:[[dic valueForKey:@"buildLogMaxSize"] doubleValue]];
     [acc setUsername:[dic valueForKey:@"username"]];
-    [acc setPassword:[dic valueForKey:@"password"]];
-    [acc setToken:[dic valueForKey:@"token"]];
+    [acc setPasswordOrToken:[dic valueForKey:@"password"]];
     return acc;
 }
 
@@ -100,7 +99,7 @@ static FTAccountsManager *staticManager = nil;
     [acc setHost:@"fuerteint.com"];
     [acc setPort:8800];
     [acc setUsername:@"rafiki270"];
-    [acc setPassword:@"exploited"];
+    [acc setPasswordOrToken:@"exploited"];
     return acc;
 }
 

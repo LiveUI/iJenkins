@@ -7,6 +7,7 @@
 //
 
 #import "FTViewController.h"
+#import "FTBasicAccountCell.h"
 
 
 @class FTAccount, FTAddAccountViewController;
@@ -19,10 +20,9 @@
 @end
 
 
-@interface FTAddAccountViewController : FTViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FTAddAccountViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, FTBasicAccountCellDelegate>
 
 @property (nonatomic, strong) FTAccount *account;
-
 @property (nonatomic, weak) id <FTAddAccountViewControllerDelegate> delegate;
 
 

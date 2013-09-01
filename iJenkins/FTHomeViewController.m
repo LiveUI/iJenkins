@@ -8,7 +8,6 @@
 
 #import "FTHomeViewController.h"
 #import "FTJobDetailViewController.h"
-#import "FTAccountsManager.h"
 #import "FTJobCell.h"
 
 
@@ -123,6 +122,7 @@
     FTJobCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setLayoutType:FTBasicCellLayoutTypeDefault];
     }
     FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
     [job setDelegate:cell];
