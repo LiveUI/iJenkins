@@ -103,8 +103,8 @@
 #pragma mark Getters
 
 - (NSString *)baseUrl {
-    //return @"http://www.fuerteserver.com:8800/";
-    return @"http://fuerteserver.local:8800/";
+    return @"http://www.fuerteserver.com:8800/";
+    //return @"http://fuerteserver.local:8800/";
 }
 
 #pragma mark Initialization
