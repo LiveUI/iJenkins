@@ -47,6 +47,8 @@
 }
 
 - (void)setAccount:(FTAccount *)account {
+    [super setAccount:account];
+    
     NSString *variable = [self.cellData objectForKey:@"variable"];
     if ([variable isEqualToString:@"https"]) {
         [_cellSwitch setOn:account.https];

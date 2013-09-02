@@ -73,6 +73,8 @@
 }
 
 - (void)setAccount:(FTAccount *)account {
+    [super setAccount:account];
+    
     NSString *variable = [self.cellData objectForKey:@"variable"];
     if ([variable isEqualToString:@"name"]) {
         [_textField setText:account.name];

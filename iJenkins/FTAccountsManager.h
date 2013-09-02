@@ -20,6 +20,7 @@
 + (FTAccountsManager *)sharedManager;
 
 - (void)addAccount:(FTAccount *)account;
+- (void)updateAccount:(FTAccount *)account;
 - (void)removeAccount:(FTAccount *)account;
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex;
 - (NSArray *)accounts;

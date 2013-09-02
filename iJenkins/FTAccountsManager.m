@@ -75,6 +75,13 @@ static FTAccountsManager *staticManager = nil;
     [self saveToKeychain];
 }
 
+- (void)updateAccount:(FTAccount *)account {
+    NSInteger index = [accounts indexOfObject:account];
+    NSLog(@"Index: %d for name: %@", index, account.name);
+    [dataAccounts replaceObjectAtIndex:index withObject:account.originalDictionary];
+    [self saveToKeychain];
+}
+
 - (void)removeAccount:(FTAccount *)account {
     [accounts removeObject:account];
     [dataAccounts removeObject:account.originalDictionary];

@@ -138,7 +138,13 @@
     FTBasicCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        
+    }
+    if (indexPath.section == 0) {
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
     [cell.textLabel setText:acc.name];
@@ -183,11 +189,13 @@
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didAddAccount:(FTAccount *)account {
     [self reloadData];
     [self scrollToAccount:account];
+    [kAccountsManager addAccount:account];
 }
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
     [self reloadData];
     [self scrollToAccount:account];
+    [kAccountsManager updateAccount:account];
 }
 
 

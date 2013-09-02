@@ -65,8 +65,6 @@
     [super viewWillAppear:animated];
     
     [_tableView reloadData];
-    
-    [NSTimer scheduledTimerWithTimeInterval:4 target:_tableView selector:@selector(reloadData) userInfo:Nil repeats:YES];
 }
 
 #pragma mark Table view delegate & data source methods
@@ -145,8 +143,9 @@
 }
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
-    NSInteger index = [_data indexOfObject:cell.account];
-    NSLog(@"Index: %d for name: %@", index, cell.account.name);
+    if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
+        [_delegate addAccountViewController:self didModifyAccount:cell.account];
+    }
 }
 
 
