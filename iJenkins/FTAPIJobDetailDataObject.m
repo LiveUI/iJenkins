@@ -62,8 +62,10 @@
     _firstBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
     [_firstBuild processData:[data objectForKey:@"firstBuild"]];
     
-    _healthReport = [[FTAPIJobDetailHealthDataObject alloc] init];
-    [_healthReport processData:[[data objectForKey:@"healthReport"] objectAtIndex:0]];
+    if ([[data objectForKey:@"healthReport"] count] > 0) {
+        _healthReport = [[FTAPIJobDetailHealthDataObject alloc] init];
+        [_healthReport processData:[[data objectForKey:@"healthReport"] objectAtIndex:0]];
+    }
 }
 
 #pragma mark Initialization

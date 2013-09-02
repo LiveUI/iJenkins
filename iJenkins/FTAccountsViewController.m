@@ -7,7 +7,9 @@
 //
 
 #import "FTAccountsViewController.h"
+#import "FTHomeViewController.h"
 #import "FTNoAccountCell.h"
+#import "FTAccountCell.h"
 
 
 @interface FTAccountsViewController ()
@@ -138,9 +140,9 @@
 
 - (UITableViewCell *)accountCellForIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"accountCell";
-    FTBasicCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[FTAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         
     }
     if (indexPath.section == 0) {
@@ -172,9 +174,9 @@
     else {
         FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
         [kAccountsManager setSelectedAccount:acc];
-        if ([_delegate respondsToSelector:@selector(accountsViewController:didSelectAccount:)]) {
-            [_delegate accountsViewController:self didSelectAccount:acc];
-        }
+        
+        FTHomeViewController *c = [[FTHomeViewController alloc] init];
+        [self.navigationController pushViewController:c animated:YES];
     }
 }
 
@@ -184,7 +186,11 @@
     [c setDelegate:self];
     [c setTitle:acc.name];
     [c setAccount:acc];
-    [self.navigationController pushViewController:c animated:YES];
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
+    [self presentViewController:nc animated:YES completion:^{
+        
+    }];
 }
 
 #pragma mark Add account view controller delegate methods

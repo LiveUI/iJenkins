@@ -9,6 +9,13 @@
 #import "FTAccount.h"
 
 
+@interface FTAccount ()
+
+@property (nonatomic) BOOL didCheckOnline;
+
+@end
+
+
 @implementation FTAccount
 
 
@@ -107,6 +114,13 @@
 - (NSString *)baseUrl {
     NSString *url = [NSString stringWithFormat:@"http://%@:%d/", _host, _port];
     return url;
+}
+
+#pragma mark Online checks
+
+- (BOOL)isOnline {
+    
+    return _isOnline;
 }
 
 #pragma mark Initialization

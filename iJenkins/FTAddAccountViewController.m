@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
 
+@property (nonatomic) BOOL keyboardIsOn;
+
 @end
 
 
@@ -35,6 +37,9 @@
 }
 
 - (void)createTopButtons {
+    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Close") style:UIBarButtonItemStyleDone target:self action:@selector(didCLickCloseNow:)];
+    [self.navigationItem setLeftBarButtonItem:close];
+
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(didCLickSaveNow:)];
     [self.navigationItem setRightBarButtonItem:edit];
 }
@@ -43,20 +48,30 @@
     [super createAllElements];
     
     [self createTableView];
-    //[self createTopButtons];
+    [self createTopButtons];
 }
 
 #pragma mark Actions
 
+- (void)didCLickCloseNow:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 - (void)didCLickSaveNow:(UIBarButtonItem *)sender {
-    FTAccount *acc = [kAccountsManager demoAccount];
-    [kAccountsManager addAccount:acc];
-    
-    if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
-        [_delegate addAccountViewController:self didModifyAccount:acc];
+    if (_isNew) {
+        if ([_delegate respondsToSelector:@selector(addAccountViewController:didAddAccount:)]) {
+            _isNew = NO;
+            [_delegate addAccountViewController:self didAddAccount:_account];
+        }
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    else {
+        if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
+            [_delegate addAccountViewController:self didModifyAccount:_account];
+        }
+    }
+    [self didCLickCloseNow:nil];
 }
 
 #pragma mark View lifecycle
@@ -65,6 +80,18 @@
     [super viewWillAppear:animated];
     
     [_tableView reloadData];
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    if (_keyboardIsOn) {
+        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
+            [_tableView setHeight:(self.view.height - 162)];
+        }
+        else {
+            [_tableView setHeight:(self.view.height - 216)];
+        }
+    }
 }
 
 #pragma mark Table view delegate & data source methods
@@ -126,6 +153,7 @@
 #pragma mark Basic account cell delegate methods
 
 - (void)basicAccountCell:(FTBasicAccountCell *)cell didStartEditing:(BOOL)editing {
+    _keyboardIsOn = editing;
     [UIView animateWithDuration:0.3 animations:^{
         if (editing) {
             if (_tableView.height == self.view.height) {
@@ -142,17 +170,7 @@
 }
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
-    if (_isNew) {
-        if ([_delegate respondsToSelector:@selector(addAccountViewController:didAddAccount:)]) {
-            _isNew = NO;
-            [_delegate addAccountViewController:self didAddAccount:cell.account];
-        }
-    }
-    else {
-        if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
-            [_delegate addAccountViewController:self didModifyAccount:cell.account];
-        }
-    }
+    
 }
 
 

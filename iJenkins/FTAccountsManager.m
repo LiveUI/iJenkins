@@ -107,11 +107,11 @@ static FTAccountsManager *staticManager = nil;
 
 - (FTAccount *)demoAccount {
     FTAccount *acc = [[FTAccount alloc] init];
-    [acc setName:FTLangGet(@"Demo account")];
-    [acc setHost:@"fuerteserver.com"];
-    [acc setPort:8800];
-    [acc setUsername:@"rafiki270"];
-    [acc setPasswordOrToken:@"exploited"];
+    [acc setName:FTLangGet(@"Apache builds")];
+    [acc setHost:@"builds.apache.org"];
+    [acc setPort:80];
+    [acc setUsername:nil];
+    [acc setPasswordOrToken:nil];
     return acc;
 }
 

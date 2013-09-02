@@ -71,14 +71,20 @@
     else if ([_job.color isEqualToString:@"blue_anime"]) {
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
     }
+    else if ([_job.color isEqualToString:@"yellow"]) {
+        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FFDC73"]];
+    }
     else if ([_job.color isEqualToString:@"aborted"]) {
         [_statusColorView setBackgroundColor:[UIColor grayColor]];
+    }
+    else if ([_job.color isEqualToString:@"disabled"]) {
+        [_statusColorView setBackgroundColor:[UIColor darkGrayColor]];
     }
     else if ([_job.color isEqualToString:@"notbuilt"]) {
         [_statusColorView setBackgroundColor:[UIColor lightGrayColor]];
     }
     else  {
-        [_statusColorView setBackgroundColor:[UIColor orangeColor]];
+        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF99FF"]];
     }
 }
 

@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSMutableDictionary *originalDictionary;
 
+@property (nonatomic) BOOL isOnline;
+
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *host;
 @property (nonatomic, strong) NSString *pathSuffix;

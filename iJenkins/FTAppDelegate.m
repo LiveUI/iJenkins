@@ -7,7 +7,7 @@
 //
 
 #import "FTAppDelegate.h"
-#import "FTHomeViewController.h"
+#import "FTAccountsViewController.h"
 
 
 @implementation FTAppDelegate
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _viewController = [[FTHomeViewController alloc] init];
+    _viewController = [[FTAccountsViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
     [_window setRootViewController:nc];
     [_window makeKeyAndVisible];

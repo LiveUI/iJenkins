@@ -29,8 +29,6 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    //NSLog(@"Data: %@", data);
-    
     NSArray *arr = [data objectForKey:@"jobs"];
     NSMutableArray *jobs = [NSMutableArray array];
     for (NSDictionary *d in arr) {

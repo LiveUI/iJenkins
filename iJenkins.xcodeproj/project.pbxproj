@@ -45,6 +45,7 @@
 		1510733F17D2111100FD083B /* AccountDetailTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1510733E17D2111100FD083B /* AccountDetailTemplate.plist */; };
 		1510734217D28C4300FD083B /* FTTextAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734117D28C4300FD083B /* FTTextAccountCell.m */; };
 		1510734C17D4FAF000FD083B /* FTLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734B17D4FAF000FD083B /* FTLoadingCell.m */; };
+		1510735117D518E000FD083B /* FTAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735017D518E000FD083B /* FTAccountCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -136,6 +137,8 @@
 		1510734117D28C4300FD083B /* FTTextAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTTextAccountCell.m; sourceTree = "<group>"; };
 		1510734A17D4FAF000FD083B /* FTLoadingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoadingCell.h; sourceTree = "<group>"; };
 		1510734B17D4FAF000FD083B /* FTLoadingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoadingCell.m; sourceTree = "<group>"; };
+		1510734F17D518E000FD083B /* FTAccountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountCell.h; sourceTree = "<group>"; };
+		1510735017D518E000FD083B /* FTAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -329,8 +332,8 @@
 		151072DB17D0E16500FD083B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				151072DC17D0E17C00FD083B /* FTNoAccountCell.h */,
-				151072DD17D0E17C00FD083B /* FTNoAccountCell.m */,
+				1510734E17D518C400FD083B /* Account */,
+				1510734D17D518B800FD083B /* No account */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -438,6 +441,24 @@
 				1510734817D4FAC900FD083B /* Loading */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		1510734D17D518B800FD083B /* No account */ = {
+			isa = PBXGroup;
+			children = (
+				151072DC17D0E17C00FD083B /* FTNoAccountCell.h */,
+				151072DD17D0E17C00FD083B /* FTNoAccountCell.m */,
+			);
+			name = "No account";
+			sourceTree = "<group>";
+		};
+		1510734E17D518C400FD083B /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				1510734F17D518E000FD083B /* FTAccountCell.h */,
+				1510735017D518E000FD083B /* FTAccountCell.m */,
+			);
+			name = Account;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -820,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1510731417D0F82D00FD083B /* FAImageView.m in Sources */,
+				1510735117D518E000FD083B /* FTAccountCell.m in Sources */,
 				15D245E017CF9C2A00793614 /* main.m in Sources */,
 				1510734C17D4FAF000FD083B /* FTLoadingCell.m in Sources */,
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
@@ -908,7 +930,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -977,7 +999,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -989,7 +1011,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

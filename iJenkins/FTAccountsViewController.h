@@ -8,19 +8,6 @@
 
 #import "FTAddAccountViewController.h"
 
-
-@class FTAccountsViewController, FTAccount;
-
-@protocol FTAccountsViewControllerDelegate <NSObject>
-
-- (void)accountsViewController:(FTAccountsViewController *)controller didSelectAccount:(FTAccount *)account;
-
-@end
-
-
 @interface FTAccountsViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, FTAddAccountViewControllerDelegate>
-
-@property (nonatomic, weak) id <FTAccountsViewControllerDelegate> delegate;
-
 
 @end

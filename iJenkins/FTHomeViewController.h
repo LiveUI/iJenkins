@@ -8,6 +8,6 @@
 
 #import "FTAccountsViewController.h"
 
-@interface FTHomeViewController : FTViewController <FTAccountsViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface FTHomeViewController : FTViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

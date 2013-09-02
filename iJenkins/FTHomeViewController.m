@@ -47,8 +47,8 @@
 }
 
 - (void)createTopButtons {
-    UIBarButtonItem *accounts = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Accounts") style:UIBarButtonItemStyleBordered target:self action:@selector(showAccountsViewWithSender:)];
-    [self.navigationItem setLeftBarButtonItem:accounts];
+//    UIBarButtonItem *accounts = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Accounts") style:UIBarButtonItemStyleBordered target:self action:@selector(showAccountsViewWithSender:)];
+//    [self.navigationItem setLeftBarButtonItem:accounts];
     
 //    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(didCLickEditItem:)];
 //    [self.navigationItem setRightBarButtonItem:edit];
@@ -65,36 +65,22 @@
 
 #pragma mark View lifecycle
 
-- (void)showAccountsViewWithSender:(id)sender {
-    FTAccountsViewController *c = [[FTAccountsViewController alloc] init];
-    [c setDelegate:self];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
-    [nc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-    [self presentViewController:nc animated:(sender != nil) completion:^{
-        
-    }];
-}
-
-- (void)showAccountsView {
-    [self showAccountsViewWithSender:nil];
-}
-
+//- (void)showAccountsViewWithSender:(id)sender {
+//    FTAccountsViewController *c = [[FTAccountsViewController alloc] init];
+//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
+//    [nc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
+//    [self presentViewController:nc animated:(sender != nil) completion:^{
+//        
+//    }];
+//}
+//
+//- (void)showAccountsView {
+//    [self showAccountsViewWithSender:nil];
+//}
+//
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (!kAccountsManager.selectedAccount) {
-        [self showAccountsView];
-    }
-}
-
-#pragma mark Account selector delegate methods
-
-- (void)accountsViewController:(FTAccountsViewController *)controller didSelectAccount:(FTAccount *)account {
-    _data = nil;
-    [_tableView reloadData];
-    [controller dismissViewControllerAnimated:YES completion:^{
-        
-    }];
     [self loadData];
 }
 
