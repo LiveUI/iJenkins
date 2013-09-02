@@ -22,6 +22,8 @@
 
 @interface FTAddAccountViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, FTBasicAccountCellDelegate>
 
+@property (nonatomic) BOOL isNew;
+
 @property (nonatomic, strong) FTAccount *account;
 @property (nonatomic, weak) id <FTAddAccountViewControllerDelegate> delegate;
 

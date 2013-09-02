@@ -43,7 +43,7 @@
     [super createAllElements];
     
     [self createTableView];
-    [self createTopButtons];
+    //[self createTopButtons];
 }
 
 #pragma mark Actions
@@ -139,12 +139,19 @@
         }
         [_tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }];
-    
 }
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
-    if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
-        [_delegate addAccountViewController:self didModifyAccount:cell.account];
+    if (_isNew) {
+        if ([_delegate respondsToSelector:@selector(addAccountViewController:didAddAccount:)]) {
+            _isNew = NO;
+            [_delegate addAccountViewController:self didAddAccount:cell.account];
+        }
+    }
+    else {
+        if ([_delegate respondsToSelector:@selector(addAccountViewController:didModifyAccount:)]) {
+            [_delegate addAccountViewController:self didModifyAccount:cell.account];
+        }
     }
 }
 

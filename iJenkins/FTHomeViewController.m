@@ -8,6 +8,7 @@
 
 #import "FTHomeViewController.h"
 #import "FTJobDetailViewController.h"
+#import "FTLoadingCell.h"
 #import "FTJobCell.h"
 
 
@@ -89,6 +90,8 @@
 #pragma mark Account selector delegate methods
 
 - (void)accountsViewController:(FTAccountsViewController *)controller didSelectAccount:(FTAccount *)account {
+    _data = nil;
+    [_tableView reloadData];
     [controller dismissViewControllerAnimated:YES completion:^{
         
     }];
@@ -102,7 +105,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? 1 : _data.count;
+    return (section == 0) ? 1 : ((_data.count == 0) ? 1 : _data.count);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -133,6 +136,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!_data || _data.count == 0) {
+        return [FTLoadingCell cellFotTable:tableView];
+    }
     if (indexPath.section == 0) {
         return [self cellForJobAtIndexPath:indexPath];
     }

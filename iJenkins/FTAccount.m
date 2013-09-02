@@ -15,6 +15,8 @@
 #pragma mark Data handling
 
 - (void)setDefaultValues {
+    _name = @"";
+    _host = @"";
     _https = NO;
     _port = 8080;
     _xpath = YES;
@@ -103,8 +105,8 @@
 #pragma mark Getters
 
 - (NSString *)baseUrl {
-    return @"http://www.fuerteserver.com:8800/";
-    //return @"http://fuerteserver.local:8800/";
+    NSString *url = [NSString stringWithFormat:@"http://%@:%d/", _host, _port];
+    return url;
 }
 
 #pragma mark Initialization

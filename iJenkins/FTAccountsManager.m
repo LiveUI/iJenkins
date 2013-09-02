@@ -78,7 +78,12 @@ static FTAccountsManager *staticManager = nil;
 - (void)updateAccount:(FTAccount *)account {
     NSInteger index = [accounts indexOfObject:account];
     NSLog(@"Index: %d for name: %@", index, account.name);
-    [dataAccounts replaceObjectAtIndex:index withObject:account.originalDictionary];
+    if (![dataAccounts containsObject:account.originalDictionary]) {
+        [dataAccounts insertObject:account.originalDictionary atIndex:0];
+    }
+    else {
+        [dataAccounts replaceObjectAtIndex:index withObject:account.originalDictionary];
+    }
     [self saveToKeychain];
 }
 
@@ -103,7 +108,7 @@ static FTAccountsManager *staticManager = nil;
 - (FTAccount *)demoAccount {
     FTAccount *acc = [[FTAccount alloc] init];
     [acc setName:FTLangGet(@"Demo account")];
-    [acc setHost:@"fuerteint.com"];
+    [acc setHost:@"fuerteserver.com"];
     [acc setPort:8800];
     [acc setUsername:@"rafiki270"];
     [acc setPasswordOrToken:@"exploited"];

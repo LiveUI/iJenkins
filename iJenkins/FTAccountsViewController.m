@@ -67,7 +67,10 @@
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
-    [c setAccount:[[FTAccount alloc] init]];
+    [c setIsNew:YES];
+    FTAccount *acc = [[FTAccount alloc] init];
+    //[acc setName:FTLangGet(@"Jenkins instance")];
+    [c setAccount:acc];
     [c setDelegate:self];
     [c setTitle:FTLangGet(@"New Instance")];
     [self.navigationController pushViewController:c animated:YES];
@@ -187,15 +190,15 @@
 #pragma mark Add account view controller delegate methods
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didAddAccount:(FTAccount *)account {
+    [kAccountsManager addAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
-    [kAccountsManager addAccount:account];
 }
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
+    [kAccountsManager updateAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
-    [kAccountsManager updateAccount:account];
 }
 
 

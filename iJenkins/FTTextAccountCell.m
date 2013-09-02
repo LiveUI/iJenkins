@@ -155,7 +155,6 @@
         [self.account setLoadMaxItems:textField.text.integerValue];
     }
     [super cellDidChangeValue];
-    NSLog(@"Name: %@", self.account.name);
     return YES;
 }
 
