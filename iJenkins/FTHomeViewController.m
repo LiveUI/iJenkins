@@ -14,7 +14,9 @@
 
 @interface FTHomeViewController ()
 
+@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
+
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSMutableArray *finalData;
 
@@ -33,7 +35,46 @@
         _data = jobsObject.jobs;
         _finalData = [NSMutableArray arrayWithArray:_data];
         [_tableView reloadData];
+        
+        [self setTitle:kAccountsManager.selectedAccount.name];
     }];
+}
+
+#pragma mark Search bar delegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+    return YES;
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:NO animated:YES];
+    return YES;
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if (searchText.length > 1) {
+        NSMutableArray *arr = [NSMutableArray array];
+        
+        for (FTAPIJobDataObject *job in _data) {
+            NSRange isRange = [job.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            if (isRange.location != NSNotFound) {
+                [arr addObject:job];
+            }
+        }
+        _finalData = arr;
+    }
+    else {
+        _finalData = [NSMutableArray arrayWithArray:_data];
+    }
+    [_tableView reloadData];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    _finalData = [NSMutableArray arrayWithArray:_data];
+    [searchBar setText:@""];
+    [searchBar resignFirstResponder];
+    [_tableView reloadData];
 }
 
 #pragma mark Creating elements
@@ -44,14 +85,17 @@
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [self.view addSubview:_tableView];
+    
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, _tableView.width, 44)];
+    [_searchBar setDelegate:self];
+    [_searchBar setShowsCancelButton:NO];
+    [_searchBar setAutoresizingWidth];
+    [_tableView setTableHeaderView:_searchBar];
 }
 
 - (void)createTopButtons {
-//    UIBarButtonItem *accounts = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Accounts") style:UIBarButtonItemStyleBordered target:self action:@selector(showAccountsViewWithSender:)];
-//    [self.navigationItem setLeftBarButtonItem:accounts];
-    
-//    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(didCLickEditItem:)];
-//    [self.navigationItem setRightBarButtonItem:edit];
+    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Filter") style:UIBarButtonItemStyleBordered target:self action:@selector(showAccountsViewWithSender:)];
+    [self.navigationItem setRightBarButtonItem:filter];
 }
 
 - (void)createAllElements {
@@ -59,29 +103,20 @@
     
     [self createTopButtons];
     [self createTableView];
-    
-    [self setTitle:@"iJenkins"];
 }
 
 #pragma mark View lifecycle
 
-//- (void)showAccountsViewWithSender:(id)sender {
-//    FTAccountsViewController *c = [[FTAccountsViewController alloc] init];
-//    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
-//    [nc setModalTransitionStyle:UIModalTransitionStyleCoverVertical];
-//    [self presentViewController:nc animated:(sender != nil) completion:^{
-//        
-//    }];
-//}
-//
-//- (void)showAccountsView {
-//    [self showAccountsViewWithSender:nil];
-//}
-//
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self loadData];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [_tableView setContentOffset:CGPointMake(0, _searchBar.height)];
 }
 
 #pragma mark Table view delegate and data source methods
@@ -91,7 +126,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? 1 : ((_data.count == 0) ? 1 : _data.count);
+    return (section == 0) ? 1 : ((_finalData.count == 0) ? 1 : _finalData.count);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -113,7 +148,8 @@
         cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setLayoutType:FTBasicCellLayoutTypeDefault];
     }
-    FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
+    [cell reset];
+    FTAPIJobDataObject *job = [_finalData objectAtIndex:indexPath.row];
     [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
@@ -122,7 +158,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!_data || _data.count == 0) {
+    if (!_finalData || _finalData.count == 0) {
         return [FTLoadingCell cellFotTable:tableView];
     }
     if (indexPath.section == 0) {
@@ -140,7 +176,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        FTAPIJobDataObject *job = [_data objectAtIndex:indexPath.row];
+        FTAPIJobDataObject *job = [_finalData objectAtIndex:indexPath.row];
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
         [c setTitle:job.name];
         [c setJob:job];

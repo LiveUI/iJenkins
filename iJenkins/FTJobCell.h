@@ -15,6 +15,7 @@
 @property (nonatomic, strong) FTAPIJobDataObject *job;
 
 - (void)setDescriptionText:(NSString *)text;
+- (void)reset;
 
 
 @end

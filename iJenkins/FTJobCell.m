@@ -61,6 +61,10 @@
 
 #pragma mark Settings
 
+- (void)reset {
+    
+}
+
 - (void)resetStatusColor {
     if ([_job.color isEqualToString:@"red"]) {
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF4000"]];
@@ -95,7 +99,7 @@
 
 - (void)setJob:(FTAPIJobDataObject *)job {
     _job = job;
-    [self resetStatusColor];
+    [self fillData];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -110,7 +114,22 @@
 
 - (void)setDescriptionText:(NSString *)text {
     text = [text stringByReplacingOccurrencesOfString:@"Build stability: " withString:@""];
+    text = [text stringByReplacingOccurrencesOfString:@"Test Result: " withString:@""];
     [self.detailTextLabel setText:text];
+}
+
+- (void)fillData {
+    [self resetStatusColor];
+    if (!_job.jobDetail) {
+        [self setDescriptionText:FTLangGet(@"Loading ...")];
+        [_buildScoreView setAlpha:0];
+        [_buildIdView setText:@"#?"];
+    }
+    else {
+        [self setDescriptionText:_job.jobDetail.healthReport.description];
+        [self resetScoreIcon];
+        [_buildIdView setText:[NSString stringWithFormat:@"#%d", _job.jobDetail.lastBuild.number]];
+    }
 }
 
 #pragma mark Initialization
@@ -124,9 +143,7 @@
 #pragma mark Job data object delegate methods
 
 - (void)jobDataObject:(FTAPIJobDataObject *)object didFinishLoadingJobDetail:(FTAPIJobDetailDataObject *)detail {
-    [self setDescriptionText:detail.healthReport.description];
-    [self resetScoreIcon];
-    [_buildIdView setText:[NSString stringWithFormat:@"#%d", detail.lastBuild.number]];
+    [self fillData];
 }
 
 

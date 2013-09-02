@@ -547,8 +547,8 @@
 		15D245F817CF9C5400793614 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				1510729717D00F4A00FD083B /* Cells */,
 				15D2460417CF9DC300793614 /* Job detail */,
+				1510729717D00F4A00FD083B /* Cells */,
 				15D245FA17CF9D9900793614 /* FTHomeViewController.h */,
 				15D245FB17CF9D9900793614 /* FTHomeViewController.m */,
 			);
