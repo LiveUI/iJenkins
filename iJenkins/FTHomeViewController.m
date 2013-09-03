@@ -9,6 +9,7 @@
 #import "FTHomeViewController.h"
 #import "FTJobDetailViewController.h"
 #import "FTLoadingCell.h"
+#import "FTAccountOverviewCell.h"
 #import "FTJobCell.h"
 
 
@@ -134,7 +135,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 54;
+    if (indexPath.section == 0) return 200;
+    else return 54;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -142,7 +144,7 @@
 }
 
 - (UITableViewCell *)cellForJobAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"cellIdentifier";
+    static NSString *identifier = @"jobCellIdentifier";
     FTJobCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
@@ -157,12 +159,21 @@
     return cell;
 }
 
+- (UITableViewCell *)cellForOverview {
+    static NSString *identifier = @"cellIdentifier";
+    FTAccountOverviewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTAccountOverviewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    return cell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!_finalData || _finalData.count == 0) {
-        return [FTLoadingCell cellFotTable:tableView];
+        return [FTLoadingCell cellForTable:tableView];
     }
     if (indexPath.section == 0) {
-        return [self cellForJobAtIndexPath:indexPath];
+        return [self cellForOverview];
     }
     else if (indexPath.section == 1) {
         return [self cellForJobAtIndexPath:indexPath];

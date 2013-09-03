@@ -11,7 +11,7 @@
 
 @interface FTLoadingCell : FTBasicCell
 
-+ (UITableViewCell *)cellFotTable:(UITableView *)tableView;
++ (UITableViewCell *)cellForTable:(UITableView *)tableView;
 
 
 @end

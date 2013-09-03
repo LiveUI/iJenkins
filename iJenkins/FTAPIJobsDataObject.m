@@ -37,11 +37,15 @@
         [job processData:d];
         [jobs addObject:job];
         
+        
     }
     _jobs = jobs;
 }
 
 
+@end
 
+
+@implementation FTJobStatDataObject
 
 @end

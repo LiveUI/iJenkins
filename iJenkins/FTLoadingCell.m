@@ -14,7 +14,7 @@
 
 #pragma mark Initialization
 
-+ (UITableViewCell *)cellFotTable:(UITableView *)tableView {
++ (UITableViewCell *)cellForTable:(UITableView *)tableView {
     static NSString *identifier = @"loadingCellIdentifier";
     FTLoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {

@@ -12,7 +12,17 @@
 @interface FTAPIJobsDataObject : FTAPIDataObject <FTAPIDataAbstractObject>
 
 @property (nonatomic, strong) NSArray *jobs;
-@property (nonatomic, strong) NSArray *jobsStats;
+@property (nonatomic, strong) NSDictionary *jobsStats;
+
+
+@end
+
+
+@interface FTJobStatDataObject : NSObject
+
+@property (nonatomic) NSInteger count;
+@property (nonatomic) NSString *color;
+@property (nonatomic) NSString *fullColor;
 
 
 @end

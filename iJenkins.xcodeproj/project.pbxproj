@@ -47,6 +47,8 @@
 		1510734C17D4FAF000FD083B /* FTLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734B17D4FAF000FD083B /* FTLoadingCell.m */; };
 		1510735117D518E000FD083B /* FTAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735017D518E000FD083B /* FTAccountCell.m */; };
 		1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
+		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
+		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -142,6 +144,10 @@
 		1510735017D518E000FD083B /* FTAccountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountCell.m; sourceTree = "<group>"; };
 		1510735317D5E8EE00FD083B /* FTKeychainObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTKeychainObject.h; sourceTree = "<group>"; };
 		1510735417D5E8EE00FD083B /* FTKeychainObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTKeychainObject.m; sourceTree = "<group>"; };
+		1510735717D5F3B800FD083B /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		1510735817D5F3B800FD083B /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountOverviewCell.h; sourceTree = "<group>"; };
+		1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountOverviewCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -253,8 +259,8 @@
 		1510729717D00F4A00FD083B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				1510729817D00F6300FD083B /* FTJobCell.h */,
-				1510729917D00F6300FD083B /* FTJobCell.m */,
+				1510735B17D5F42800FD083B /* Overview */,
+				1510735A17D5F41F00FD083B /* Job */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -473,6 +479,33 @@
 			name = Keychain;
 			sourceTree = "<group>";
 		};
+		1510735617D5F3B800FD083B /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				1510735717D5F3B800FD083B /* XYPieChart.h */,
+				1510735817D5F3B800FD083B /* XYPieChart.m */,
+			);
+			path = XYPieChart;
+			sourceTree = "<group>";
+		};
+		1510735A17D5F41F00FD083B /* Job */ = {
+			isa = PBXGroup;
+			children = (
+				1510729817D00F6300FD083B /* FTJobCell.h */,
+				1510729917D00F6300FD083B /* FTJobCell.m */,
+			);
+			name = Job;
+			sourceTree = "<group>";
+		};
+		1510735B17D5F42800FD083B /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */,
+				1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */,
+			);
+			name = Overview;
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -541,7 +574,7 @@
 				15D2463217CFA5ED00793614 /* Users */,
 				15D2460A17CF9F9600793614 /* System */,
 				15D2460017CF9DAA00793614 /* Accounts */,
-				15D245F817CF9C5400793614 /* Home */,
+				15D245F817CF9C5400793614 /* Account home */,
 				15D245F717CF9C4500793614 /* Basic */,
 			);
 			name = Controllers;
@@ -556,7 +589,7 @@
 			name = Basic;
 			sourceTree = "<group>";
 		};
-		15D245F817CF9C5400793614 /* Home */ = {
+		15D245F817CF9C5400793614 /* Account home */ = {
 			isa = PBXGroup;
 			children = (
 				15D2460417CF9DC300793614 /* Job detail */,
@@ -564,7 +597,7 @@
 				15D245FA17CF9D9900793614 /* FTHomeViewController.h */,
 				15D245FB17CF9D9900793614 /* FTHomeViewController.m */,
 			);
-			name = Home;
+			name = "Account home";
 			sourceTree = "<group>";
 		};
 		15D245F917CF9C5B00793614 /* Login */ = {
@@ -719,6 +752,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				1510735617D5F3B800FD083B /* XYPieChart */,
 				151072E617D0F82C00FD083B /* ios-fontawesome */,
 				15D2463C17CFBD8E00793614 /* GCNetworkReachability */,
 				15D2464017CFBD8E00793614 /* Lockbox */,
@@ -861,6 +895,7 @@
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
 				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
+				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
@@ -887,6 +922,7 @@
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
+				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
