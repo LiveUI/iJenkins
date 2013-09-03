@@ -18,11 +18,11 @@
 @end
 
 
-@interface FTJobStatDataObject : NSObject
+@interface FTAPIJobsStatsDataObject : NSObject
 
 @property (nonatomic) NSInteger count;
-@property (nonatomic) NSString *color;
-@property (nonatomic) NSString *fullColor;
+@property (nonatomic, strong) NSString *color;
+@property (nonatomic, strong) NSString *fullColor;
 
 
 @end

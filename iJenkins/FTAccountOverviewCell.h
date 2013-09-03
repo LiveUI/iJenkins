@@ -9,6 +9,21 @@
 #import "FTBasicCell.h"
 #import "XYPieChart.h"
 
+
+@class FTAccountOverviewCell;
+
+@protocol FTAccountOverviewCellDelegate <NSObject>
+
+- (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIJobsStatsDataObject *)stat;
+
+@end
+
+
 @interface FTAccountOverviewCell : FTBasicCell <XYPieChartDataSource, XYPieChartDelegate>
+
+@property (nonatomic, strong) NSDictionary *jobsStats;
+
+@property (nonatomic, weak) id <FTAccountOverviewCellDelegate> delegate;
+
 
 @end

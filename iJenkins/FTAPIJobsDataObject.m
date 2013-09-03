@@ -19,7 +19,7 @@
 }
 
 - (NSString *)methodName {
-    return @"";
+    return @"view/All/";
 }
 
 - (NSDictionary *)payloadData {
@@ -31,13 +31,23 @@
     
     NSArray *arr = [data objectForKey:@"jobs"];
     NSMutableArray *jobs = [NSMutableArray array];
-    _jobsStats = [NSMutableArray array];
+    _jobsStats = [NSMutableDictionary dictionary];
     for (NSDictionary *d in arr) {
         FTAPIJobDataObject *job = [[FTAPIJobDataObject alloc] init];
         [job processData:d];
         [jobs addObject:job];
         
-        
+        if (![_jobsStats objectForKey:job.color]) {
+            FTAPIJobsStatsDataObject *s = [[FTAPIJobsStatsDataObject alloc] init];
+            [s setCount:1];
+            [s setColor:job.color];
+            [s setFullColor:job.fullColor];
+            [_jobsStats setValue:s forKey:job.color];
+        }
+        else {
+            FTAPIJobsStatsDataObject *s = (FTAPIJobsStatsDataObject *)[_jobsStats objectForKey:job.color];
+            s.count++;
+        }
     }
     _jobs = jobs;
 }
@@ -46,6 +56,6 @@
 @end
 
 
-@implementation FTJobStatDataObject
+@implementation FTAPIJobsStatsDataObject
 
 @end

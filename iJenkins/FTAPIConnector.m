@@ -108,9 +108,15 @@
 
 - (NSString *)authString {
     if (kAccountsManager.selectedAccount.username) {
+        
+#if defined __IPHONE_7_0
         NSString *authStr = [NSString stringWithFormat:@"%@:%@", kAccountsManager.selectedAccount.username, kAccountsManager.selectedAccount.passwordOrToken];
         NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
         return [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
+#else      
+#warning Needs to me made compatible with iOS 6
+        return nil;
+#endif
     }
     else return nil;
 }

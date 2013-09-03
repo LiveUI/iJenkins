@@ -9,7 +9,6 @@
 #import "FTHomeViewController.h"
 #import "FTJobDetailViewController.h"
 #import "FTLoadingCell.h"
-#import "FTAccountOverviewCell.h"
 #import "FTJobCell.h"
 
 
@@ -18,7 +17,7 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) FTAPIJobsDataObject *jobsObject;
 @property (nonatomic, strong) NSMutableArray *finalData;
 
 @end
@@ -30,11 +29,9 @@
 #pragma mark Data
 
 - (void)loadData {
-    FTAPIJobsDataObject *jobsObject = [[FTAPIJobsDataObject alloc] init];
-    [FTAPIConnector connectWithObject:jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        NSLog(@"Jobs: %@", jobsObject.jobs);
-        _data = jobsObject.jobs;
-        _finalData = [NSMutableArray arrayWithArray:_data];
+    _jobsObject = [[FTAPIJobsDataObject alloc] init];
+    [FTAPIConnector connectWithObject:_jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
         [_tableView reloadData];
         
         [self setTitle:kAccountsManager.selectedAccount.name];
@@ -57,7 +54,7 @@
     if (searchText.length > 1) {
         NSMutableArray *arr = [NSMutableArray array];
         
-        for (FTAPIJobDataObject *job in _data) {
+        for (FTAPIJobDataObject *job in _jobsObject.jobs) {
             NSRange isRange = [job.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
             if (isRange.location != NSNotFound) {
                 [arr addObject:job];
@@ -66,13 +63,13 @@
         _finalData = arr;
     }
     else {
-        _finalData = [NSMutableArray arrayWithArray:_data];
+        _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
     }
     [_tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    _finalData = [NSMutableArray arrayWithArray:_data];
+    _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
     [searchBar setText:@""];
     [searchBar resignFirstResponder];
     [_tableView reloadData];
@@ -160,11 +157,13 @@
 }
 
 - (UITableViewCell *)cellForOverview {
-    static NSString *identifier = @"cellIdentifier";
+    static NSString *identifier = @"cellForOverviewIdentifier";
     FTAccountOverviewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTAccountOverviewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
+    [cell setDelegate:self];
+    [cell setJobsStats:_jobsObject.jobsStats];
     return cell;
 }
 
@@ -193,6 +192,13 @@
         [c setJob:job];
         [self.navigationController pushViewController:c animated:YES];
     }
+}
+
+#pragma mark Overview cell delegate methods
+
+- (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIJobsStatsDataObject *)stat {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Selected filter" message:stat.color delegate:Nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
 }
 
 

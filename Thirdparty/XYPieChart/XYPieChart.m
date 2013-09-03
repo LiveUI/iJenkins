@@ -439,7 +439,11 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         CGFloat interpolatedEndAngle = [presentationLayerEndAngle doubleValue];
 
         CGPathRef path = CGPathCreateArc(_pieCenter, _pieRadius, interpolatedStartAngle, interpolatedEndAngle);
+#if defined __IPHONE_7_0
         [obj setPath:(__bridge NSString *)(path)];
+#else        
+        [obj setPath:path];
+#endif        
         CFRelease(path);
         
         {
@@ -621,7 +625,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 
 - (void)setSliceSelectedAtIndex:(NSInteger)index
 {
-    if(_selectedSliceOffsetRadius <= 0 || isnan(index) || index >= 7) return;
+    NSUInteger sliceCount = [_dataSource numberOfSlicesInPieChart:self];
+    if(_selectedSliceOffsetRadius <= 0 || isnan(index) || index >= sliceCount) return;
     SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index];
     if (layer && !layer.isSelected) {
         _selectedSliceIndex = index;
@@ -646,7 +651,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
 
 - (void)setSliceDeselectedAtIndex:(NSInteger)index
 {
-    if(_selectedSliceOffsetRadius <= 0 || index >= 7) return;
+    NSUInteger sliceCount = [_dataSource numberOfSlicesInPieChart:self];
+    if(_selectedSliceOffsetRadius <= 0 || index >= sliceCount) return;
     SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index]; 
     if (layer && layer.isSelected) {
         layer.position = CGPointMake(0, 0);

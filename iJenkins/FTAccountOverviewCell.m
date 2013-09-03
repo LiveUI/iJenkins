@@ -31,9 +31,16 @@
     [_chart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
     [_chart setPieCenter:CGPointMake((_chart.width / 2), (_chart.width / 2))];
     [_chart setLabelShadowColor:[UIColor clearColor]];
-    [_chart setSelectedSliceOffsetRadius:10];
+    [_chart setSelectedSliceOffsetRadius:4];
     [_chart setBackgroundColor:[UIColor clearColor]];
+    [_chart setLabelRadius:3];
     [self addSubview:_chart];
+    
+    UIView *center = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [center.layer setCornerRadius:(center.width / 2)];
+    [center setBackgroundColor:[UIColor whiteColor]];
+    [center setCenter:_chart.center];
+    [self addSubview:center];
     
     [NSTimer scheduledTimerWithTimeInterval:0.3 target:_chart selector:@selector(reloadData) userInfo:nil repeats:NO];
     
@@ -50,9 +57,7 @@
 #pragma mark Animation
 
 - (void)startInitialChartSliceAnimation {
-    
     _sliceAnimationCount = 0;
-    
     NSTimer *chartAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.08 target:self selector:@selector(initialChartSliceAnimation:) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:chartAnimationTimer forMode:NSRunLoopCommonModes];
 }
@@ -63,46 +68,74 @@
 
 - (void)initialChartSliceAnimation:(NSTimer *)timer {
     if (_sliceAnimationCount < 7) {
-        
         [self pieChart:_chart didSelectSliceAtIndex:_sliceAnimationCount];
         [_chart setSliceSelectedAtIndex:_sliceAnimationCount];
-        
         NSNumber *sliceNumber = [NSNumber numberWithInteger:_sliceAnimationCount];
         [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(deselectSliceWithTimer:) userInfo:sliceNumber repeats:NO];
-        
         _sliceAnimationCount++;
     }
     else {
-        
         [timer invalidate];
         timer = nil;
-        
         self.userInteractionEnabled = YES;
-        
         [self handleDelayedDeselection];
     }
 }
 
 #pragma mark Pie chart delegate & datasource methods
 
-- (NSString *)colorForItemAtIndex:(NSInteger)index {
-    NSArray *arr = @[@"123963", @"36AEED", @"76CCF8", @"FFE000", @"FFB500", @"AF0056", @"CCDFFB"];
-    return [arr objectAtIndex:index];
+- (UIColor *)colorForItemAtIndex:(NSInteger)index {
+    NSString *key = [_jobsStats.allKeys objectAtIndex:index];
+    FTAPIJobsStatsDataObject *s = [_jobsStats objectForKey:key];
+    
+    UIColor *sliceColor;
+    
+    if ([s.color isEqualToString:@"red"]) {
+        sliceColor = [UIColor colorWithHexString:@"FF4000"];
+    }
+    else if ([s.color isEqualToString:@"blue"]) {
+        sliceColor = [UIColor colorWithHexString:@"0076FF"];
+    }
+    else if ([s.color isEqualToString:@"yellow"]) {
+        sliceColor = [UIColor colorWithHexString:@"FFDC73"];
+    }
+    else if ([s.color isEqualToString:@"aborted"]) {
+        sliceColor = [UIColor grayColor];
+    }
+    else if ([s.color isEqualToString:@"disabled"]) {
+        sliceColor = [UIColor darkGrayColor];
+    }
+    else if ([s.color isEqualToString:@"notbuilt"]) {
+        sliceColor = [UIColor lightGrayColor];
+    }
+    else  {
+        sliceColor = [UIColor colorWithHexString:@"FF99FF"];
+    }
+    return sliceColor;
 }
 
 - (NSUInteger)numberOfSlicesInPieChart:(XYPieChart *)pieChart {
-    return 7;
+    return _jobsStats.allKeys.count;
 }
 
 - (CGFloat)pieChart:(XYPieChart *)pieChart valueForSliceAtIndex:(NSUInteger)index {
-    return 15;
+    NSString *key = [_jobsStats.allKeys objectAtIndex:index];
+    FTAPIJobsStatsDataObject *s = [_jobsStats objectForKey:key];
+    return s.count;
 }
 
 - (UIColor *)pieChart:(XYPieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index {
-    return [UIColor colorWithHexString:[self colorForItemAtIndex:index]];
+    return [self colorForItemAtIndex:index];
 }
 
 - (void)pieChart:(XYPieChart *)pieChart didSelectSlice:(SliceLayer *)sliceLayer withIndex:(NSInteger)index {
+    if ([_delegate respondsToSelector:@selector(accountOverviewCell:requiresFilterForStat:)]) {
+        NSString *key = [_jobsStats.allKeys objectAtIndex:index];
+        FTAPIJobsStatsDataObject *s = [_jobsStats objectForKey:key];
+        [_delegate accountOverviewCell:self requiresFilterForStat:s];
+    }
+    
+    
 //    [_chartOverlay setStartAngle:sliceLayer.startAngle];
 //    [_chartOverlay setEndAngle:sliceLayer.endAngle];
 //    [_chartOverlay setSliceColor:[UIColor colorWithHexString:[self colorForItemAtIndex:index]]];
