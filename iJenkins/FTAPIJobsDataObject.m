@@ -31,10 +31,12 @@
     
     NSArray *arr = [data objectForKey:@"jobs"];
     NSMutableArray *jobs = [NSMutableArray array];
+    _jobsStats = [NSMutableArray array];
     for (NSDictionary *d in arr) {
         FTAPIJobDataObject *job = [[FTAPIJobDataObject alloc] init];
         [job processData:d];
         [jobs addObject:job];
+        
     }
     _jobs = jobs;
 }

@@ -16,6 +16,7 @@
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account;
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didAddAccount:(FTAccount *)account;
+- (void)addAccountViewControllerCloseWithoutSave:(FTAddAccountViewController *)controller;
 
 @end
 

@@ -71,11 +71,13 @@
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setIsNew:YES];
     FTAccount *acc = [[FTAccount alloc] init];
-    //[acc setName:FTLangGet(@"Jenkins instance")];
     [c setAccount:acc];
     [c setDelegate:self];
     [c setTitle:FTLangGet(@"New Instance")];
-    [self.navigationController pushViewController:c animated:YES];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
+    [self presentViewController:nc animated:YES completion:^{
+        
+    }];
 }
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
@@ -199,13 +201,24 @@
     [kAccountsManager addAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
     [kAccountsManager updateAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
+- (void)addAccountViewControllerCloseWithoutSave:(FTAddAccountViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
 
 @end

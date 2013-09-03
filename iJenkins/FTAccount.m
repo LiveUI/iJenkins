@@ -22,8 +22,6 @@
 #pragma mark Data handling
 
 - (void)setDefaultValues {
-    _name = @"";
-    _host = @"";
     _https = NO;
     _port = 8080;
     _xpath = YES;
@@ -31,6 +29,7 @@
     _overrideJenkinsUrl = YES;
     _loadMaxItems = 50;
     _buildLogMaxSize = 102400;
+    [self originalDictionary];
 }
 
 - (NSMutableDictionary *)originalDictionary {
@@ -119,7 +118,7 @@
 #pragma mark Online checks
 
 - (BOOL)isOnline {
-    
+
     return _isOnline;
 }
 

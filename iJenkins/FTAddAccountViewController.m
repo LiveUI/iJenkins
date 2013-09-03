@@ -54,9 +54,9 @@
 #pragma mark Actions
 
 - (void)didCLickCloseNow:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    if ([_delegate respondsToSelector:@selector(addAccountViewControllerCloseWithoutSave:)]) {
+        [_delegate addAccountViewControllerCloseWithoutSave:self];
+    }
 }
 
 - (void)didCLickSaveNow:(UIBarButtonItem *)sender {
@@ -71,7 +71,6 @@
             [_delegate addAccountViewController:self didModifyAccount:_account];
         }
     }
-    [self didCLickCloseNow:nil];
 }
 
 #pragma mark View lifecycle

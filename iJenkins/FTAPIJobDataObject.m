@@ -44,7 +44,10 @@
     
     //NSLog(@"Data: %@", data);
     
-    _color = [data objectForKey:@"color"];
+    _fullColor = [data objectForKey:@"color"];
+    NSArray *colorPieces = [_fullColor componentsSeparatedByString:@"_"];
+    _color = [colorPieces objectAtIndex:0];
+    _animating = (colorPieces.count > 1);
     _name = [data objectForKey:@"name"];
     _urlString = [data objectForKey:@"url"];
 }

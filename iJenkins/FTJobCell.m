@@ -26,6 +26,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    [self.textLabel setBackgroundColor:[UIColor clearColor]];
+    [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
+    
     [self.textLabel setWidth:200];
     [self.textLabel setXOrigin:(self.textLabel.xOrigin + 60)];
     [self.detailTextLabel setWidth:200];
@@ -59,6 +62,25 @@
     [self createBuildIdView];
 }
 
+#pragma mark Animations
+
+- (void)animate {
+    if (_job.animating) {
+        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [_statusColorView setAlpha:0];
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
+                [_statusColorView setAlpha:1];
+            } completion:^(BOOL finished) {
+                [self animate];
+            }];
+        }];
+    }
+    else {
+        [_statusColorView setAlpha:1];
+    }
+}
+
 #pragma mark Settings
 
 - (void)reset {
@@ -70,9 +92,6 @@
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF4000"]];
     }
     else if ([_job.color isEqualToString:@"blue"]) {
-        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
-    }
-    else if ([_job.color isEqualToString:@"blue_anime"]) {
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
     }
     else if ([_job.color isEqualToString:@"yellow"]) {
@@ -90,6 +109,8 @@
     else  {
         [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF99FF"]];
     }
+    
+    [self animate];
 }
 
 - (void)resetScoreIcon {

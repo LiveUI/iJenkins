@@ -21,6 +21,8 @@
 @interface FTAPIJobDataObject : FTAPIDataObject <FTAPIDataAbstractObject>
 
 @property (nonatomic, strong) NSString *color;
+@property (nonatomic, strong) NSString *fullColor;
+@property (nonatomic) BOOL animating;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *urlString;
 

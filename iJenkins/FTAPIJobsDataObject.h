@@ -12,6 +12,7 @@
 @interface FTAPIJobsDataObject : FTAPIDataObject <FTAPIDataAbstractObject>
 
 @property (nonatomic, strong) NSArray *jobs;
+@property (nonatomic, strong) NSArray *jobsStats;
 
 
 @end

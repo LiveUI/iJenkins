@@ -19,10 +19,10 @@
     
     if (_layoutType == FTBasicCellLayoutTypeSmall) {
         [self.textLabel setFont:[UIFont systemFontOfSize:16]];
-        [self.textLabel setYOrigin:(self.textLabel.yOrigin + 2)];
+        [self.textLabel setYOrigin:(self.textLabel.yOrigin + 1)];
         
         [self.detailTextLabel setFont:[UIFont systemFontOfSize:10]];
-        [self.detailTextLabel setYOrigin:(self.detailTextLabel.yOrigin - 2)];
+        [self.detailTextLabel setYOrigin:(self.detailTextLabel.yOrigin - 0)];
     }
     [self.textLabel setTextColor:[UIColor colorWithHexString:@"454545"]];
     [self.detailTextLabel setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
