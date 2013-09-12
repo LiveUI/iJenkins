@@ -44,6 +44,8 @@ typedef enum {
 @property (nonatomic, strong) NSArray *mavenArtifacts;
 @property (nonatomic, strong) NSString *mavenVersionUsed;
 
+@property (nonatomic, strong) UIColor *realColor;
+
 - (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
 
 

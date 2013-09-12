@@ -117,12 +117,15 @@
 }
 
 - (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *))success forJobName:(NSString *)jobName {
+    if (_isLoading) return;
+    _isLoading = YES;
     FTAPIBuildDetailDataObject *buildObject = [[FTAPIBuildDetailDataObject alloc] initWithJobName:jobName andBuildNumber:_number];
     [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _buildDetail = buildObject;
         if (success) {
             success(buildObject);
         }
+        _isLoading = NO;
     }];
 }
 

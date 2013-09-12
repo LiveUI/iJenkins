@@ -38,6 +38,7 @@
 - (void)createIcons {
     _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(14, 14, 26, 26)];
     [_statusColorView.layer setCornerRadius:(_statusColorView.height / 2)];
+    [_statusColorView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.1]];
     [self addSubview:_statusColorView];
 }
 
@@ -49,10 +50,19 @@
 
 #pragma mark Settings
 
+- (void)resetStatusColor {
+    [_statusColorView setBackgroundColor:(_build.buildDetail ? _build.buildDetail.realColor : [UIColor colorWithWhite:0 alpha:0.1])];
+}
+
 - (void)setBuild:(FTAPIJobDetailBuildDataObject *)build {
     _build = build;
     [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%d", FTLangGet(@"Build"), _build.number]];
-    [_statusColorView setBackgroundColor:[UIColor redColor]];
+    [self resetStatusColor];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    [self resetStatusColor];
 }
 
 #pragma mark Initialization

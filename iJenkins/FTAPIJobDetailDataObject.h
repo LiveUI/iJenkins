@@ -43,6 +43,8 @@
 @property (nonatomic, strong) NSString *urlString;
 @property (nonatomic, strong) FTAPIBuildDetailDataObject *buildDetail;
 
+@property (nonatomic, readonly) BOOL isLoading;
+
 - (void)processData:(NSDictionary *)data;
 
 - (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *data))success forJobName:(NSString *)jobName;;

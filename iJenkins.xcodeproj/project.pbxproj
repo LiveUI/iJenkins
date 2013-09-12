@@ -55,6 +55,7 @@
 		153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */; };
 		153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */; };
 		153921E217E22D0600896FC1 /* FTAPIBuildDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */; };
+		153921E617E2700400896FC1 /* FTBuildDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921E517E2700400896FC1 /* FTBuildDetailViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -166,6 +167,8 @@
 		153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLastBuildInfoCell.m; sourceTree = "<group>"; };
 		153921E017E22D0600896FC1 /* FTAPIBuildDetailDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIBuildDetailDataObject.h; sourceTree = "<group>"; };
 		153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIBuildDetailDataObject.m; sourceTree = "<group>"; };
+		153921E417E2700400896FC1 /* FTBuildDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuildDetailViewController.h; sourceTree = "<group>"; };
+		153921E517E2700400896FC1 /* FTBuildDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBuildDetailViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -597,6 +600,15 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
+		153921E317E26FE800896FC1 /* Build detail */ = {
+			isa = PBXGroup;
+			children = (
+				153921E417E2700400896FC1 /* FTBuildDetailViewController.h */,
+				153921E517E2700400896FC1 /* FTBuildDetailViewController.m */,
+			);
+			name = "Build detail";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +726,7 @@
 		15D2460417CF9DC300793614 /* Job detail */ = {
 			isa = PBXGroup;
 			children = (
+				153921E317E26FE800896FC1 /* Build detail */,
 				153921CC17E202ED00896FC1 /* Cells */,
 				15D2460517CF9DD400793614 /* FTJobDetailViewController.h */,
 				15D2460617CF9DD400793614 /* FTJobDetailViewController.m */,
@@ -989,6 +1002,7 @@
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
 				153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */,
+				153921E617E2700400896FC1 /* FTBuildDetailViewController.m in Sources */,
 				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
 				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,

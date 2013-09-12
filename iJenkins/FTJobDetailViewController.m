@@ -7,6 +7,7 @@
 //
 
 #import "FTJobDetailViewController.h"
+#import "FTBuildDetailViewController.h"
 #import "FTJobInfoBuildNumberCell.h"
 #import "FTSmallTextCell.h"
 #import "FTJobHealthInfoCell.h"
@@ -69,6 +70,7 @@
             
         case 1: {
             FTSmallTextCell *cell = (FTSmallTextCell *)[FTSmallTextCell cellForTable:self.tableView];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), @"14 hour and 15 minutes", FTLangGet(@"ago and took"), @"1 minute and 14 seconds", FTLangGet(@"to finish")]];
             return cell;
         }
@@ -85,6 +87,11 @@
 
 - (UITableViewCell *)cellForLastBuildsWithRow:(NSInteger)row {
     FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:row];
+    if (!build.buildDetail) {
+        [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
+            [self.tableView reloadData];
+        } forJobName:_job.name];
+    }
     FTLastBuildInfoCell *cell = (FTLastBuildInfoCell *)[FTLastBuildInfoCell cellForTable:self.tableView];
     [cell setBuild:build];
     return cell;
@@ -145,6 +152,17 @@
         default:
             return [super tableView:tableView cellForRowAtIndexPath:indexPath];
             break;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 1) {
+        FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:indexPath.row];
+        FTBuildDetailViewController *c = [[FTBuildDetailViewController alloc] init];
+        [c setTitle:[NSString stringWithFormat:@"%@ #%d", FTLangGet(@"Build"), build.number]];
+        [c setBuild:build];
+        [self.navigationController pushViewController:c animated:YES];
     }
 }
 
