@@ -23,6 +23,7 @@
 @property (nonatomic) NSInteger count;
 @property (nonatomic, strong) NSString *color;
 @property (nonatomic, strong) NSString *fullColor;
+@property (nonatomic, strong) UIColor *realColor;
 
 
 @end

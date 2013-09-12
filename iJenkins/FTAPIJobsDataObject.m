@@ -42,6 +42,7 @@
             [s setCount:1];
             [s setColor:job.color];
             [s setFullColor:job.fullColor];
+            [s setRealColor:job.realColor];
             [_jobsStats setValue:s forKey:job.color];
         }
         else {

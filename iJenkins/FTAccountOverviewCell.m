@@ -87,30 +87,7 @@
 - (UIColor *)colorForItemAtIndex:(NSInteger)index {
     NSString *key = [_jobsStats.allKeys objectAtIndex:index];
     FTAPIJobsStatsDataObject *s = [_jobsStats objectForKey:key];
-    
-    UIColor *sliceColor;
-    
-    if ([s.color isEqualToString:@"red"]) {
-        sliceColor = [UIColor colorWithHexString:@"FF4000"];
-    }
-    else if ([s.color isEqualToString:@"blue"]) {
-        sliceColor = [UIColor colorWithHexString:@"0076FF"];
-    }
-    else if ([s.color isEqualToString:@"yellow"]) {
-        sliceColor = [UIColor colorWithHexString:@"FFDC73"];
-    }
-    else if ([s.color isEqualToString:@"aborted"]) {
-        sliceColor = [UIColor grayColor];
-    }
-    else if ([s.color isEqualToString:@"disabled"]) {
-        sliceColor = [UIColor darkGrayColor];
-    }
-    else if ([s.color isEqualToString:@"notbuilt"]) {
-        sliceColor = [UIColor lightGrayColor];
-    }
-    else  {
-        sliceColor = [UIColor colorWithHexString:@"FF99FF"];
-    }
+    UIColor *sliceColor = s.realColor;
     return sliceColor;
 }
 
