@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "FTAPIJobsDataObject.h"
+#import "FTAPIBuildDetailDataObject.h"
 
 
 #define kAPIConnector                                       [FTAPIConnector connectorWithDelegate:self]

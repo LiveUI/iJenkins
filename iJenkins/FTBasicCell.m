@@ -29,6 +29,14 @@
     [self.textLabel sizeToFit];
 }
 
+- (CGFloat)cellHeight {
+    return 54;
+}
+
++ (CGFloat)cellHeight {
+    return 54;
+}
+
 #pragma mark Creating elements
 
 - (void)createAllElements {
@@ -36,6 +44,10 @@
 }
 
 #pragma mark Initialization
+
++ (FTBasicCell *)cellForTable:(UITableView *)tableView {
+    return nil;
+}
 
 - (void)setupView {
     

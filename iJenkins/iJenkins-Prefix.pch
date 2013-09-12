@@ -19,6 +19,7 @@
     #import "FTConfig.h"
     #import "FTAccountsManager.h"
     #import "FTAppDelegate.h"
+    #import "FTDownload.h"
     #import "FTLang.h"
     #import "FTAPIConnector.h"
     #import "FAImageView.h"

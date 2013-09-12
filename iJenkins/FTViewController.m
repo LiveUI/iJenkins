@@ -7,6 +7,7 @@
 //
 
 #import "FTViewController.h"
+#import "FTBasicCell.h"
 
 
 @interface FTViewController ()
@@ -69,6 +70,14 @@
 }
 
 #pragma mark Creating elements
+
+- (void)createTableView {
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [_tableView setAutoresizingWidthAndHeight];
+    [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
+    [self.view addSubview:_tableView];
+}
 
 - (void)createAllElements {
     
@@ -133,6 +142,43 @@
 - (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
     [alert show];
+}
+
+#pragma mark Table view delegate & data source methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return (section == 0) ? 44 : 24;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return FTLangGet(@"Remove");
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Header title";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 54;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellId = @"cellId";
+    FTBasicCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
+    }
+    [cell.textLabel setText:@"Title"];
+    [cell.detailTextLabel setText:@"Description"];
+    return cell;
 }
 
 

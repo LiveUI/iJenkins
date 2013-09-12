@@ -22,6 +22,7 @@
 
 @property (nonatomic, strong) NSString *color;
 @property (nonatomic, strong) NSString *fullColor;
+@property (nonatomic, strong, readonly) UIColor *realColor;
 @property (nonatomic) BOOL animating;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *urlString;

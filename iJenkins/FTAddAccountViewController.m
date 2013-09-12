@@ -29,11 +29,11 @@
 - (void)createTableView {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"AccountDetailTemplate" ofType:@"plist"];
     _data = [NSArray arrayWithContentsOfFile:path];
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [_tableView setAutoresizingWidthAndHeight];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [self.view addSubview:_tableView];
+    super.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [super.tableView setAutoresizingWidthAndHeight];
+    [super.tableView setDataSource:self];
+    [super.tableView setDelegate:self];
+    [self.view addSubview:super.tableView];
 }
 
 - (void)createTopButtons {
@@ -78,17 +78,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [_tableView reloadData];
+    [super.tableView reloadData];
 }
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
     if (_keyboardIsOn) {
         if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-            [_tableView setHeight:(self.view.height - 162)];
+            [super.tableView setHeight:(self.view.height - 162)];
         }
         else {
-            [_tableView setHeight:(self.view.height - 216)];
+            [super.tableView setHeight:(self.view.height - 216)];
         }
     }
 }
@@ -113,7 +113,7 @@
 
 - (FTBasicAccountCell *)switchCell {
     static NSString *identifier = @"switchCell";
-    FTSwitchAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTSwitchAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTSwitchAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -124,7 +124,7 @@
 
 - (FTBasicAccountCell *)textCell {
     static NSString *identifier = @"textCell";
-    FTTextAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTTextAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTTextAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -155,16 +155,16 @@
     _keyboardIsOn = editing;
     [UIView animateWithDuration:0.3 animations:^{
         if (editing) {
-            if (_tableView.height == self.view.height) {
-                [_tableView setHeight:(self.view.height - 216)];
+            if (super.tableView.height == self.view.height) {
+                [super.tableView setHeight:(self.view.height - 216)];
             }
         }
         else {
-            if (_tableView.height < self.view.height) {
-                [_tableView setHeight:(self.view.height)];
+            if (super.tableView.height < self.view.height) {
+                [super.tableView setHeight:(self.view.height)];
             }
         }
-        [_tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        [super.tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }];
 }
 

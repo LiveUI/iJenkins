@@ -7,6 +7,10 @@
 //
 
 #import "FTJobDetailViewController.h"
+#import "FTJobInfoBuildNumberCell.h"
+#import "FTSmallTextCell.h"
+#import "FTJobHealthInfoCell.h"
+#import "FTLastBuildInfoCell.h"
 
 
 @interface FTJobDetailViewController ()
@@ -28,6 +32,7 @@
     [super createAllElements];
     
     [self createTopButtons];
+    [self createTableView];
 }
 
 #pragma mark Actions
@@ -50,6 +55,97 @@
             }
         });
     }];
+}
+
+#pragma mark Creating cells
+
+- (UITableViewCell *)cellForJobInfoWithRow:(NSInteger)row {
+    switch (row) {
+        case 0: {
+            FTJobInfoBuildNumberCell *cell = (FTJobInfoBuildNumberCell *)[FTJobInfoBuildNumberCell cellForTable:self.tableView];
+            [cell setJob:_job];
+            return cell;
+        }
+            
+        case 1: {
+            FTSmallTextCell *cell = (FTSmallTextCell *)[FTSmallTextCell cellForTable:self.tableView];
+            [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), @"14 hour and 15 minutes", FTLangGet(@"ago and took"), @"1 minute and 14 seconds", FTLangGet(@"to finish")]];
+            return cell;
+        }
+            
+        default: {
+            row -= 2;
+            FTAPIJobDetailHealthDataObject *health = [_job.jobDetail.healthReports objectAtIndex:row];
+            FTJobHealthInfoCell *cell = (FTJobHealthInfoCell *)[FTJobHealthInfoCell cellForTable:self.tableView];
+            [cell setHealth:health];
+            return cell;
+        }
+    }
+}
+
+- (UITableViewCell *)cellForLastBuildsWithRow:(NSInteger)row {
+    FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:row];
+    FTLastBuildInfoCell *cell = (FTLastBuildInfoCell *)[FTLastBuildInfoCell cellForTable:self.tableView];
+    [cell setBuild:build];
+    return cell;
+}
+
+#pragma mark Table view delegate & data source methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return (2 + _job.jobDetail.healthReports.count);
+            break;
+            
+        case 1:
+            return (_job.jobDetail.builds.count > 5) ? 5 : _job.jobDetail.builds.count;
+            break;
+            
+        default:
+            return 6;
+            break;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return FTLangGet(@"Job info");
+            break;
+            
+        case 1:
+            return FTLangGet(@"Build history");
+            break;
+            
+        case 2:
+            return FTLangGet(@"Build overview");
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            return [self cellForJobInfoWithRow:indexPath.row];
+            break;
+            
+        case 1:
+            return [self cellForLastBuildsWithRow:indexPath.row];
+            break;
+            
+        default:
+            return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            break;
+    }
 }
 
 

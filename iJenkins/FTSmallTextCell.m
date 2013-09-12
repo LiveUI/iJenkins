@@ -1,0 +1,63 @@
+//
+//  FTSmallTextCell.m
+//  iJenkins
+//
+//  Created by Ondrej Rafaj on 12/09/2013.
+//  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
+//
+
+#import "FTSmallTextCell.h"
+
+
+@interface FTSmallTextCell ()
+
+@property (nonatomic) CGFloat celHeight;
+
+@end
+
+
+@implementation FTSmallTextCell
+
+
+#pragma mark Layout
+
+- (CGFloat)cellHeight {
+    return 44;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.detailTextLabel setNumberOfLines:0];
+    [self.detailTextLabel setYOrigin:0];
+    [self.detailTextLabel setHeight:54];
+    [self.detailTextLabel setLineBreakMode:NSLineBreakByWordWrapping];
+}
+
+#pragma mark Settings
+
+- (void)setText:(NSString *)text {
+    _text = text;
+    [self.detailTextLabel setText:_text];
+}
+
+#pragma mark Creating elements
+
+- (void)createAllElements {
+    [super createAllElements];
+}
+
+#pragma mark Initialization
+
++ (FTBasicCell *)cellForTable:(UITableView *)tableView {
+    static NSString *identifier = @"smallTextCell";
+    FTSmallTextCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTSmallTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    return cell;
+}
+
+
+@end

@@ -32,7 +32,7 @@
     _jobsObject = [[FTAPIJobsDataObject alloc] init];
     [FTAPIConnector connectWithObject:_jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
-        [_tableView reloadData];
+        [super.tableView reloadData];
         
         [self setTitle:kAccountsManager.selectedAccount.name];
     }];
@@ -65,30 +65,26 @@
     else {
         _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
     }
-    [_tableView reloadData];
+    [super.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
     [searchBar setText:@""];
     [searchBar resignFirstResponder];
-    [_tableView reloadData];
+    [super.tableView reloadData];
 }
 
 #pragma mark Creating elements
 
 - (void)createTableView {
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [_tableView setAutoresizingWidthAndHeight];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [self.view addSubview:_tableView];
+    [super createTableView];
     
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, _tableView.width, 44)];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
     [_searchBar setDelegate:self];
     [_searchBar setShowsCancelButton:NO];
     [_searchBar setAutoresizingWidth];
-    [_tableView setTableHeaderView:_searchBar];
+    [super.tableView setTableHeaderView:_searchBar];
 }
 
 - (void)createTopButtons {
@@ -114,7 +110,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [_tableView setContentOffset:CGPointMake(0, _searchBar.height)];
+    [super.tableView setContentOffset:CGPointMake(0, _searchBar.height)];
 }
 
 #pragma mark Table view delegate and data source methods
@@ -125,10 +121,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (section == 0) ? 1 : ((_finalData.count == 0) ? 1 : _finalData.count);
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return (section == 0) ? 44 : 24;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,7 +134,7 @@
 
 - (UITableViewCell *)cellForJobAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"jobCellIdentifier";
-    FTJobCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTJobCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setLayoutType:FTBasicCellLayoutTypeDefault];
@@ -158,7 +150,7 @@
 
 - (UITableViewCell *)cellForOverview {
     static NSString *identifier = @"cellForOverviewIdentifier";
-    FTAccountOverviewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTAccountOverviewCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTAccountOverviewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
@@ -185,7 +177,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 1 && _jobsObject.jobs.count > 0) {
         FTAPIJobDataObject *job = [_finalData objectAtIndex:indexPath.row];
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
         [c setTitle:job.name];
@@ -197,8 +189,8 @@
 #pragma mark Overview cell delegate methods
 
 - (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIJobsStatsDataObject *)stat {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Selected filter" message:stat.color delegate:Nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [alert show];
+    //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Selected filter" message:stat.color delegate:Nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    //[alert show];
 }
 
 

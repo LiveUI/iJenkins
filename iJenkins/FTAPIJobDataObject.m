@@ -42,8 +42,6 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    //NSLog(@"Data: %@", data);
-    
     _fullColor = [data objectForKey:@"color"];
     NSArray *colorPieces = [_fullColor componentsSeparatedByString:@"_"];
     _color = [colorPieces objectAtIndex:0];
@@ -67,6 +65,30 @@
         }];
     }
     return _jobDetail;
+}
+
+- (UIColor *)realColor {
+    if ([self.color isEqualToString:@"red"]) {
+        return [UIColor colorWithHexString:@"FF4000"];
+    }
+    else if ([self.color isEqualToString:@"blue"]) {
+        return [UIColor colorWithHexString:@"6DD900"];
+    }
+    else if ([self.color isEqualToString:@"yellow"]) {
+        return [UIColor colorWithHexString:@"FFDC73"];
+    }
+    else if ([self.color isEqualToString:@"aborted"]) {
+        return [UIColor grayColor];
+    }
+    else if ([self.color isEqualToString:@"disabled"]) {
+        return [UIColor darkGrayColor];
+    }
+    else if ([self.color isEqualToString:@"notbuilt"]) {
+        return [UIColor lightGrayColor];
+    }
+    else  {
+        return [UIColor clearColor];
+    }
 }
 
 

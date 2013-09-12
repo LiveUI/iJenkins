@@ -19,8 +19,13 @@ typedef enum {
 
 @property (nonatomic) FTBasicCellLayoutType layoutType;
 
++ (FTBasicCell *)cellForTable:(UITableView *)tableView;
+
 - (void)createAllElements;
 - (void)setupView;
+
+- (CGFloat)cellHeight;
++ (CGFloat)cellHeight;
 
 
 @end

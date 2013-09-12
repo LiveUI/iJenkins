@@ -88,34 +88,14 @@
 }
 
 - (void)resetStatusColor {
-    if ([_job.color isEqualToString:@"red"]) {
-        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF4000"]];
-    }
-    else if ([_job.color isEqualToString:@"blue"]) {
-        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"0076FF"]];
-    }
-    else if ([_job.color isEqualToString:@"yellow"]) {
-        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FFDC73"]];
-    }
-    else if ([_job.color isEqualToString:@"aborted"]) {
-        [_statusColorView setBackgroundColor:[UIColor grayColor]];
-    }
-    else if ([_job.color isEqualToString:@"disabled"]) {
-        [_statusColorView setBackgroundColor:[UIColor darkGrayColor]];
-    }
-    else if ([_job.color isEqualToString:@"notbuilt"]) {
-        [_statusColorView setBackgroundColor:[UIColor lightGrayColor]];
-    }
-    else  {
-        [_statusColorView setBackgroundColor:[UIColor colorWithHexString:@"FF99FF"]];
-    }
-    
+    [_statusColorView setBackgroundColor:[_job realColor]];
     [self animate];
 }
 
 - (void)resetScoreIcon {
     NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
-    [_buildScoreView setImage:[UIImage imageNamed:iconName]];
+    UIImage *img = [UIImage imageNamed:iconName];
+    [_buildScoreView setImage:img];
 }
 
 - (void)setJob:(FTAPIJobDataObject *)job {
@@ -150,6 +130,10 @@
         [self setDescriptionText:_job.jobDetail.healthReport.description];
         [self resetScoreIcon];
         [_buildIdView setText:[NSString stringWithFormat:@"#%d", _job.jobDetail.lastBuild.number]];
+        
+        [UIView animateWithDuration:0.15 animations:^{
+            [_buildScoreView setAlpha:1];
+        }];
     }
 }
 

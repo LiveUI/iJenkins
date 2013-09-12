@@ -33,7 +33,7 @@
 #pragma mark Data
 
 - (void)reloadData {
-    [_tableView reloadData];
+    [super.tableView reloadData];
 }
 
 #pragma mark Creating elements
@@ -41,11 +41,8 @@
 - (void)createTableView {
     _data = [kAccountsManager accounts];
     _demoAccount = [kAccountsManager demoAccount];
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    [_tableView setAutoresizingWidthAndHeight];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [self.view addSubview:_tableView];
+    
+    [super createTableView];
 }
 
 - (void)createTopButtons {
@@ -81,7 +78,7 @@
 }
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
-    [_tableView setEditing:!_tableView.editing animated:YES];
+    [super.tableView setEditing:!super.tableView.editing animated:YES];
 }
 
 #pragma mark Table view delegate and data source methods
@@ -94,10 +91,6 @@
     return (section == 0) ? ((_data.count > 0) ? _data.count : 1) : 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return (section == 0) ? 44 : 24;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && _data.count == 0) {
         return 100;
@@ -106,10 +99,6 @@
         return 54;
     }
 
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return FTLangGet(@"Remove");
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -133,7 +122,7 @@
 
 - (UITableViewCell *)cellForNoAccount {
     static NSString *identifier = @"noAccountCell";
-    FTNoAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTNoAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTNoAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
@@ -142,7 +131,7 @@
 
 - (UITableViewCell *)accountCellForIndexPath:(NSIndexPath *)indexPath {
     static NSString *identifier = @"accountCell";
-    FTAccountCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifier];
+    FTAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         

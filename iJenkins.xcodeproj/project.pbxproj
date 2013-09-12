@@ -49,6 +49,12 @@
 		1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
 		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
+		153921C717E1F12E00896FC1 /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
+		153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */; };
+		153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D417E2099D00896FC1 /* FTSmallTextCell.m */; };
+		153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */; };
+		153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */; };
+		153921E217E22D0600896FC1 /* FTAPIBuildDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -148,6 +154,18 @@
 		1510735817D5F3B800FD083B /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountOverviewCell.h; sourceTree = "<group>"; };
 		1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountOverviewCell.m; sourceTree = "<group>"; };
+		153921C517E1F12E00896FC1 /* FTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDownload.h; sourceTree = "<group>"; };
+		153921C617E1F12E00896FC1 /* FTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDownload.m; sourceTree = "<group>"; };
+		153921CE17E207A100896FC1 /* FTJobInfoBuildNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobInfoBuildNumberCell.h; sourceTree = "<group>"; };
+		153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobInfoBuildNumberCell.m; sourceTree = "<group>"; };
+		153921D317E2099D00896FC1 /* FTSmallTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTSmallTextCell.h; sourceTree = "<group>"; };
+		153921D417E2099D00896FC1 /* FTSmallTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTSmallTextCell.m; sourceTree = "<group>"; };
+		153921D717E2155A00896FC1 /* FTJobHealthInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobHealthInfoCell.h; sourceTree = "<group>"; };
+		153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobHealthInfoCell.m; sourceTree = "<group>"; };
+		153921DB17E21C8D00896FC1 /* FTLastBuildInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLastBuildInfoCell.h; sourceTree = "<group>"; };
+		153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLastBuildInfoCell.m; sourceTree = "<group>"; };
+		153921E017E22D0600896FC1 /* FTAPIBuildDetailDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIBuildDetailDataObject.h; sourceTree = "<group>"; };
+		153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIBuildDetailDataObject.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -447,6 +465,7 @@
 		1510734917D4FAD200FD083B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				153921D217E2098200896FC1 /* Small text */,
 				1510734817D4FAC900FD083B /* Loading */,
 			);
 			name = Cells;
@@ -504,6 +523,78 @@
 				1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */,
 			);
 			name = Overview;
+			sourceTree = "<group>";
+		};
+		153921C417E1F12100896FC1 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+				153921C517E1F12E00896FC1 /* FTDownload.h */,
+				153921C617E1F12E00896FC1 /* FTDownload.m */,
+			);
+			name = Download;
+			sourceTree = "<group>";
+		};
+		153921CC17E202ED00896FC1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				153921CD17E2073000896FC1 /* Job info */,
+				153921D617E2154400896FC1 /* Health info */,
+				153921DA17E21C7000896FC1 /* Last build info */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		153921CD17E2073000896FC1 /* Job info */ = {
+			isa = PBXGroup;
+			children = (
+				153921CE17E207A100896FC1 /* FTJobInfoBuildNumberCell.h */,
+				153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */,
+			);
+			name = "Job info";
+			sourceTree = "<group>";
+		};
+		153921D217E2098200896FC1 /* Small text */ = {
+			isa = PBXGroup;
+			children = (
+				153921D317E2099D00896FC1 /* FTSmallTextCell.h */,
+				153921D417E2099D00896FC1 /* FTSmallTextCell.m */,
+			);
+			name = "Small text";
+			sourceTree = "<group>";
+		};
+		153921D617E2154400896FC1 /* Health info */ = {
+			isa = PBXGroup;
+			children = (
+				153921D717E2155A00896FC1 /* FTJobHealthInfoCell.h */,
+				153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */,
+			);
+			name = "Health info";
+			sourceTree = "<group>";
+		};
+		153921DA17E21C7000896FC1 /* Last build info */ = {
+			isa = PBXGroup;
+			children = (
+				153921DB17E21C8D00896FC1 /* FTLastBuildInfoCell.h */,
+				153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */,
+			);
+			name = "Last build info";
+			sourceTree = "<group>";
+		};
+		153921DE17E22CBF00896FC1 /* Builds */ = {
+			isa = PBXGroup;
+			children = (
+				153921DF17E22CC900896FC1 /* Detail */,
+			);
+			name = Builds;
+			sourceTree = "<group>";
+		};
+		153921DF17E22CC900896FC1 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				153921E017E22D0600896FC1 /* FTAPIBuildDetailDataObject.h */,
+				153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -623,6 +714,7 @@
 		15D2460417CF9DC300793614 /* Job detail */ = {
 			isa = PBXGroup;
 			children = (
+				153921CC17E202ED00896FC1 /* Cells */,
 				15D2460517CF9DD400793614 /* FTJobDetailViewController.h */,
 				15D2460617CF9DD400793614 /* FTJobDetailViewController.m */,
 			);
@@ -641,6 +733,7 @@
 		15D2460917CF9F8C00793614 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				153921C417E1F12100896FC1 /* Download */,
 				1510735217D5E8D500FD083B /* Keychain */,
 				15D2460F17CFA0C400793614 /* Languages */,
 			);
@@ -713,6 +806,7 @@
 		15D2463117CFA26B00793614 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				153921DE17E22CBF00896FC1 /* Builds */,
 				15D2467C17CFE75700793614 /* Jobs */,
 				1510728417CFEAC200FD083B /* Basic */,
 				1510727E17CFEA6300FD083B /* FTAPIConnector.h */,
@@ -894,13 +988,17 @@
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
+				153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */,
 				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
+				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
+				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
 				1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */,
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
+				153921E217E22D0600896FC1 /* FTAPIBuildDetailDataObject.m in Sources */,
 				1510732417D0FEDD00FD083B /* FTAddAccountViewController.m in Sources */,
 				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
 				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,
@@ -909,6 +1007,7 @@
 				151072C217D0A55600FD083B /* NSData+Base64.m in Sources */,
 				1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */,
 				1510731617D0F82D00FD083B /* NSString+FontAwesome.m in Sources */,
+				153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */,
 				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
 				151072DE17D0E17C00FD083B /* FTNoAccountCell.m in Sources */,
 				1510729A17D00F6300FD083B /* FTJobCell.m in Sources */,
@@ -921,6 +1020,7 @@
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
+				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,

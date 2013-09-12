@@ -7,7 +7,6 @@
 //
 
 #import "FTBasicCell.h"
-#import "FTAPIJobDataObject.h"
 
 
 @interface FTJobCell : FTBasicCell <FTAPIJobDataObjectDelegate>

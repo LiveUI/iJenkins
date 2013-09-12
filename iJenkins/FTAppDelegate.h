@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 
 
+#define kAppDelegate                                (FTAppDelegate *)[[UIApplication sharedApplication] delegate]
+#define kAPIDownloadQueue                           [kAppDelegate apiDownloadQueue]
+
+
 @class FTAccountsViewController;
 
 @interface FTAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) FTAccountsViewController *viewController;
+
+@property (nonatomic, strong) NSOperationQueue *apiDownloadQueue;
 
 
 @end

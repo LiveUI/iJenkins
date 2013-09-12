@@ -19,6 +19,7 @@
     FTLoadingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTLoadingCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return cell;
 }

@@ -44,6 +44,19 @@
     _description = [data objectForKey:@"description"];
     _buildable = [[data objectForKey:@"buildable"] boolValue];
     
+    int count = [[data objectForKey:@"builds"] count];
+    if (count > 0) {
+        int x = 0;
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
+        for (NSDictionary *d in [data objectForKey:@"builds"]) {
+            FTAPIJobDetailBuildDataObject *build = [[FTAPIJobDetailBuildDataObject alloc] init];
+            [build processData:d];
+            [arr addObject:build];
+            x++;
+        }
+        _builds = [NSArray arrayWithArray:arr];
+    }
+    
     _lastBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
     [_lastBuild processData:[data objectForKey:@"lastBuild"]];
     
@@ -62,9 +75,20 @@
     _firstBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
     [_firstBuild processData:[data objectForKey:@"firstBuild"]];
     
-    if ([[data objectForKey:@"healthReport"] count] > 0) {
-        _healthReport = [[FTAPIJobDetailHealthDataObject alloc] init];
-        [_healthReport processData:[[data objectForKey:@"healthReport"] objectAtIndex:0]];
+    count = [[data objectForKey:@"healthReport"] count];
+    if (count > 0) {
+        int x = 0;
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
+        for (NSDictionary *d in [data objectForKey:@"healthReport"]) {
+            FTAPIJobDetailHealthDataObject *healthReport = [[FTAPIJobDetailHealthDataObject alloc] init];
+            [healthReport processData:d];
+            if (x == 0) {
+                _healthReport = healthReport;
+            }
+            [arr addObject:healthReport];
+            x++;
+        }
+        _healthReports = [NSArray arrayWithArray:arr];
     }
 }
 
@@ -84,12 +108,22 @@
 
 @implementation FTAPIJobDetailBuildDataObject
 
-#pragma makr Data
+#pragma mark Data
 
 - (void)processData:(NSDictionary *)data {
     if (!data || [data isKindOfClass:[NSNull class]]) return;
     _number = [[data objectForKey:@"number"] integerValue];
     _urlString = [data objectForKey:@"url"];
+}
+
+- (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *))success forJobName:(NSString *)jobName {
+    FTAPIBuildDetailDataObject *buildObject = [[FTAPIBuildDetailDataObject alloc] initWithJobName:jobName andBuildNumber:_number];
+    [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        _buildDetail = buildObject;
+        if (success) {
+            success(buildObject);
+        }
+    }];
 }
 
 

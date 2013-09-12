@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FTViewController : UIViewController
+@interface FTViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UIPopoverController *popover;
 
 @property (nonatomic, readonly) BOOL isLandscape;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 // Positioning
 - (CGFloat)screenHeight;
@@ -25,6 +27,8 @@
 
 // Creating and configuring view
 - (void)setupView;
+
+- (void)createTableView;
 - (void)createAllElements;
 
 // Alerts
