@@ -62,7 +62,6 @@ static FTAccountsManager *staticManager = nil;
     }
     NSString *string = [NSString stringWithCString:jsonData.bytes encoding:NSUTF8StringEncoding];
     [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string];
-//    [[self dataAccounts] writeToFile:[self accountsFilePath] atomically:YES];
 }
 
 - (void)addAccount:(FTAccount *)account {
@@ -101,7 +100,6 @@ static FTAccountsManager *staticManager = nil;
                 NSLog(@"Error reading: %@", err.localizedDescription);
             }
         }
-//        NSArray *dataAccounts = [NSArray arrayWithContentsOfFile:[self accountsFilePath]];
         NSMutableArray *arr = [NSMutableArray array];
         for (NSDictionary *d in dataAccounts) {
             FTAccount *a = [self accountFromDictionary:d];
