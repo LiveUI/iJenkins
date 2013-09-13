@@ -29,13 +29,17 @@
 #pragma mark Data
 
 - (void)loadData {
-    _jobsObject = [[FTAPIJobsDataObject alloc] init];
-    [FTAPIConnector connectWithObject:_jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
-        [super.tableView reloadData];
-        
-        [self setTitle:kAccountsManager.selectedAccount.name];
-    }];
+    if (!_jobsObject) {
+        _jobsObject = [[FTAPIJobsDataObject alloc] init];
+        [FTAPIConnector connectWithObject:_jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+            _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
+            [super.tableView reloadData];
+            [self setTitle:kAccountsManager.selectedAccount.name];
+        }];
+    }
+    else {
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark Search bar delegate
@@ -105,6 +109,10 @@
     [super viewWillAppear:animated];
     
     [self loadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidLoad {
@@ -179,10 +187,12 @@
     
     if (indexPath.section == 1 && _jobsObject.jobs.count > 0) {
         FTAPIJobDataObject *job = [_finalData objectAtIndex:indexPath.row];
-        FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
-        [c setTitle:job.name];
-        [c setJob:job];
-        [self.navigationController pushViewController:c animated:YES];
+        if (job.jobDetail) {
+            FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
+            [c setTitle:job.name];
+            [c setJob:job];
+            [self.navigationController pushViewController:c animated:YES];
+        }
     }
 }
 

@@ -113,6 +113,12 @@
     _realColor = [self colorForString:_resultString];
 }
 
+#pragma mark Connection handling
+
+- (NSOperationQueuePriority)queuePriority {
+    return NSOperationQueuePriorityHigh;
+}
+
 #pragma mark Initialization
 
 - (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber {

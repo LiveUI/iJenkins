@@ -119,7 +119,6 @@
 #pragma mark Online checks
 
 - (BOOL)isOnline {
-
     return _isOnline;
 }
 

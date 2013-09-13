@@ -18,6 +18,9 @@
 - (NSDictionary *)payloadData;
 - (void)processData:(NSDictionary *)data;
 
+- (void)resetLoading;
+- (NSOperationQueuePriority)queuePriority;
+
 @end
 
 
@@ -35,6 +38,10 @@
 
 - (void)processData:(NSDictionary *)data;
 - (void)processHeaders:(NSDictionary *)headers;
+
+- (void)resetLoading;
+
+- (NSOperationQueuePriority)queuePriority;
 
 
 @end

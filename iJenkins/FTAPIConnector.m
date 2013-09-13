@@ -8,6 +8,7 @@
 
 #import "FTAPIConnector.h"
 #import "AFNetworking.h"
+#import "FTJSONRequestOperation.h"
 #import "FTAccount.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
@@ -50,12 +51,16 @@ static FTAccount *_sharedAccount = nil;
     return _sharedClient;
 }
 
-+ (void)resetForAccount:(FTAccount *)account {
-    _sharedAccount = account;
-    _sharedClient = nil;
++ (void)stopLoadingAll {
     if ([[FTAPIConnector sharedConnector] apiOperatioQueue]) {
         [[[FTAPIConnector sharedConnector] apiOperatioQueue] cancelAllOperations];
     }
+}
+
++ (void)resetForAccount:(FTAccount *)account {
+    _sharedAccount = account;
+    _sharedClient = nil;
+    [self stopLoadingAll];
     [self sharedClient];
 }
 
@@ -72,7 +77,7 @@ static FTAccount *_sharedAccount = nil;
 
 + (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
     NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+    FTJSONRequestOperation *operation = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [object processData:JSON];
         [object setResponse:response];
         if (complete) {
@@ -83,6 +88,7 @@ static FTAccount *_sharedAccount = nil;
             complete(object, error);
         }
     }];
+    [operation setDataObject:object];
     if (upload) {
         [operation setUploadProgressBlock:upload];
     }
@@ -96,6 +102,7 @@ static FTAccount *_sharedAccount = nil;
         [[FTAPIConnector sharedClient] clearAuthorizationHeader];
         [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:kAccountsManager.selectedAccount.username password:kAccountsManager.selectedAccount.passwordOrToken];
     }
+    [operation setQueuePriority:[object queuePriority]];
     
     [[[FTAPIConnector sharedConnector] apiOperatioQueue] addOperation:operation];
 }

@@ -28,6 +28,7 @@ typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, lo
 
 + (FTAPIConnector *)sharedConnector;
 + (void)resetForAccount:(FTAccount *)account;
++ (void)stopLoadingAll;
 
 + (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
 

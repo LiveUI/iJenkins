@@ -19,6 +19,16 @@
     return nil;
 }
 
+#pragma mark Handling connections
+
+- (void)resetLoading {
+    NSLog(@"Resetting loading for %@", NSStringFromClass(self.class));
+}
+
+- (NSOperationQueuePriority)queuePriority {
+    return NSOperationQueuePriorityNormal;
+}
+
 #pragma mark Processing data
 
 - (void)processData:(NSDictionary *)data {

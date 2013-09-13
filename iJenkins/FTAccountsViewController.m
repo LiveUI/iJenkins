@@ -62,6 +62,14 @@
     [self setTitle:FTLangGet(@"Servers")];
 }
 
+#pragma mark View lifecycle
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [FTAPIConnector stopLoadingAll];
+}
+
 #pragma mark Actions
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {

@@ -36,8 +36,6 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    //NSLog(@"Data: %@", data);
-    
     _displayName = [data objectForKey:@"displayName"];
     _name = [data objectForKey:@"name"];
     _url = [data objectForKey:@"url"];

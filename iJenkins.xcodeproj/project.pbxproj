@@ -95,6 +95,7 @@
 		15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */; };
 		15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */; };
 		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
+		15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,6 +250,8 @@
 		15E182E117E3325A00CE0DEA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		15E1836E17E3510000CE0DEA /* FTJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJSONRequestOperation.h; sourceTree = "<group>"; };
+		15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJSONRequestOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +278,7 @@
 		1510728417CFEAC200FD083B /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				15E1836D17E350D100CE0DEA /* Operation */,
 				1510728117CFEA6F00FD083B /* FTAPIDataObject.h */,
 				1510728217CFEA6F00FD083B /* FTAPIDataObject.m */,
 			);
@@ -973,6 +977,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		15E1836D17E350D100CE0DEA /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				15E1836E17E3510000CE0DEA /* FTJSONRequestOperation.h */,
+				15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */,
+			);
+			name = Operation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1097,6 +1110,7 @@
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
+				15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
 				15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */,
