@@ -47,6 +47,7 @@ static FTAccount *_sharedAccount = nil;
 + (AFHTTPClient *)sharedClient {
     if (!_sharedClient) {
         _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
+        
     }
     return _sharedClient;
 }
@@ -96,12 +97,6 @@ static FTAccount *_sharedAccount = nil;
         [operation setDownloadProgressBlock:download];
     }
     
-    BOOL authenticate = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 1);
-    if (authenticate) {
-        [[FTAPIConnector sharedClient] registerHTTPOperationClass:operation.class];
-        [[FTAPIConnector sharedClient] clearAuthorizationHeader];
-        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:kAccountsManager.selectedAccount.username password:kAccountsManager.selectedAccount.passwordOrToken];
-    }
     [operation setQueuePriority:[object queuePriority]];
     
     [[[FTAPIConnector sharedConnector] apiOperatioQueue] addOperation:operation];
@@ -159,7 +154,7 @@ static FTAccount *_sharedAccount = nil;
 
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
    NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"%@%@api/json", [kAccountsManager selectedAccount].baseUrl, [data methodName]];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", [kAccountsManager selectedAccount].baseUrl, [data methodName], [data suffix]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
@@ -168,7 +163,20 @@ static FTAccount *_sharedAccount = nil;
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     kFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
+    BOOL authenticate = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 1);
+    if (authenticate) {
+        [[FTAPIConnector sharedClient] clearAuthorizationHeader];
+        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:kAccountsManager.selectedAccount.username password:kAccountsManager.selectedAccount.passwordOrToken];
+    }
+    
+    NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];
+    [request setURL:[NSURL URLWithString:url]];
+    [request setTimeoutInterval:8.0];
+    [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+    
+    //NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
+    
+    NSLog(@"Sending headers: %@", request.allHTTPHeaderFields);
     
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];
     

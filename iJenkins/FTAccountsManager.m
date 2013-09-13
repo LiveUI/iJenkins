@@ -102,19 +102,25 @@ static FTAccountsManager *staticManager = nil;
     }
 }
 
-- (FTAccount *)demoAccount {
-    FTAccount *acc = [[FTAccount alloc] init];
-    [acc setName:FTLangGet(@"Apache builds")];
-    [acc setHost:@"builds.apache.org"];
-    [acc setPort:80];
-    [acc setUsername:nil];
-    [acc setPasswordOrToken:nil];
-    [acc setLoadMaxItems:8];
-    return acc;
-}
-
-- (void)createDemoAccount {
-    [self addAccount:[self demoAccount]];
+- (NSArray *)demoAccounts {
+    FTAccount *jenkins = [[FTAccount alloc] init];
+    [jenkins setName:FTLangGet(@"Jenkins builds")];
+    [jenkins setHost:@"ci.jenkins-ci.org"];
+    [jenkins setPort:443];
+    [jenkins setUsername:nil];
+    [jenkins setPasswordOrToken:nil];
+    [jenkins setLoadMaxItems:8];
+    [jenkins setHttps:YES];
+    
+    FTAccount *apache = [[FTAccount alloc] init];
+    [apache setName:FTLangGet(@"Apache builds")];
+    [apache setHost:@"builds.apache.org"];
+    [apache setPort:80];
+    [apache setUsername:nil];
+    [apache setPasswordOrToken:nil];
+    [apache setLoadMaxItems:8];
+    
+    return @[jenkins, apache];
 }
 
 #pragma mark Initialization

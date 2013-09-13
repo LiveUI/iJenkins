@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) FTAccount *demoAccount;
+@property (nonatomic, strong) NSArray *demoAccounts;
 
 @end
 
@@ -40,7 +40,7 @@
 
 - (void)createTableView {
     _data = [kAccountsManager accounts];
-    _demoAccount = [kAccountsManager demoAccount];
+    _demoAccounts = [kAccountsManager demoAccounts];
     
     [super createTableView];
 }
@@ -96,7 +96,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? ((_data.count > 0) ? _data.count : 1) : 1;
+    return (section == 0) ? ((_data.count > 0) ? _data.count : 1) : _demoAccounts.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -150,7 +150,7 @@
     else {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
+    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
     [cell.textLabel setText:acc.name];
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@:%d", acc.host, acc.port]];
     return cell;
@@ -171,7 +171,7 @@
         [self didCLickAddItem:nil];
     }
     else {
-        FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
+        FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
         [kAccountsManager setSelectedAccount:acc];
         [FTAPIConnector resetForAccount:acc];
         
@@ -181,7 +181,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
+    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setDelegate:self];
     [c setTitle:acc.name];

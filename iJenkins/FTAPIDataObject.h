@@ -20,6 +20,8 @@
 
 - (void)resetLoading;
 - (NSOperationQueuePriority)queuePriority;
+- (NSString *)suffix;
+
 
 @end
 
@@ -42,6 +44,8 @@
 - (void)resetLoading;
 
 - (NSOperationQueuePriority)queuePriority;
+
+- (NSString *)suffix;
 
 
 @end

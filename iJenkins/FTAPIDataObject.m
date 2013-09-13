@@ -39,5 +39,9 @@
     
 }
 
+- (NSString *)suffix {
+    return @"api/json";
+}
+
 
 @end

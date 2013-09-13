@@ -25,7 +25,7 @@
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex;
 - (NSArray *)accounts;
 
-- (FTAccount *)demoAccount;
+- (NSArray *)demoAccounts;
 
 
 @end

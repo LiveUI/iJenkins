@@ -96,6 +96,7 @@
 		15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */; };
 		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
 		15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */; };
+		15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -252,6 +253,8 @@
 		15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		15E1836E17E3510000CE0DEA /* FTJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJSONRequestOperation.h; sourceTree = "<group>"; };
 		15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJSONRequestOperation.m; sourceTree = "<group>"; };
+		15E1838417E3676900CE0DEA /* FTAPIJobBuildDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobBuildDataObject.h; sourceTree = "<group>"; };
+		15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobBuildDataObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -944,6 +947,7 @@
 		15D2467C17CFE75700793614 /* Jobs */ = {
 			isa = PBXGroup;
 			children = (
+				15E1838317E3674E00CE0DEA /* Build */,
 				1510729317D00C0E00FD083B /* Detail */,
 				1510729217D00C0700FD083B /* Job */,
 				1510729117D00C0100FD083B /* List */,
@@ -984,6 +988,15 @@
 				15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */,
 			);
 			name = Operation;
+			sourceTree = "<group>";
+		};
+		15E1838317E3674E00CE0DEA /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				15E1838417E3676900CE0DEA /* FTAPIJobBuildDataObject.h */,
+				15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */,
+			);
+			name = Build;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1122,6 +1135,7 @@
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
+				15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,
 				15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */,
 				151072A817D0851D00FD083B /* FTBasicCell.m in Sources */,
