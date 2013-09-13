@@ -10,6 +10,7 @@
 
 @interface FTKeychainObject : NSObject
 
+@property (nonatomic, strong) NSString *uuid;
 @property (nonatomic, strong) NSString *accountsJsonFile;
 
 + (FTKeychainObject *)sharedKeychainObject;

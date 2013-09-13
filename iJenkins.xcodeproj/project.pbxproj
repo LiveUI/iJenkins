@@ -85,6 +85,16 @@
 		15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2465B17CFBD8E00793614 /* Lockbox.m */; };
 		15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467617CFBE3C00793614 /* FTAccountsManager.m */; };
 		15D2467B17CFBE5200793614 /* FTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467A17CFBE5200793614 /* FTAccount.m */; };
+		15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D117E3325A00CE0DEA /* AFHTTPClient.m */; };
+		15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */; };
+		15E1832E17E3325B00CE0DEA /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */; };
+		15E1832F17E3325B00CE0DEA /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */; };
+		15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */; };
+		15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */; };
+		15E1833217E3325B00CE0DEA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */; };
+		15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */; };
+		15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */; };
+		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -219,6 +229,26 @@
 		15D2467617CFBE3C00793614 /* FTAccountsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountsManager.m; sourceTree = "<group>"; };
 		15D2467917CFBE5200793614 /* FTAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccount.h; sourceTree = "<group>"; };
 		15D2467A17CFBE5200793614 /* FTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccount.m; sourceTree = "<group>"; };
+		15E182D017E3325A00CE0DEA /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
+		15E182D117E3325A00CE0DEA /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
+		15E182D217E3325A00CE0DEA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		15E182D417E3325A00CE0DEA /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
+		15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
+		15E182D617E3325A00CE0DEA /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		15E182D817E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		15E182DA17E3325A00CE0DEA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
+		15E182DB17E3325A00CE0DEA /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		15E182DD17E3325A00CE0DEA /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		15E182DF17E3325A00CE0DEA /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		15E182E117E3325A00CE0DEA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */,
 				15D2461917CFA1B600793614 /* CoreText.framework in Frameworks */,
 				15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */,
 				15D2461B17CFA1B600793614 /* QuartzCore.framework in Frameworks */,
@@ -629,6 +660,7 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */,
 				15D2461317CFA1B600793614 /* CoreText.framework */,
 				15D2461417CFA1B600793614 /* MessageUI.framework */,
 				15D2461517CFA1B600793614 /* QuartzCore.framework */,
@@ -676,8 +708,8 @@
 			children = (
 				15D2463217CFA5ED00793614 /* Users */,
 				15D2460A17CF9F9600793614 /* System */,
-				15D2460017CF9DAA00793614 /* Accounts */,
 				15D245F817CF9C5400793614 /* Account home */,
+				15D2460017CF9DAA00793614 /* Accounts */,
 				15D245F717CF9C4500793614 /* Basic */,
 			);
 			name = Controllers;
@@ -859,6 +891,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				15E182CC17E3325A00CE0DEA /* AFNetworking */,
 				1510735617D5F3B800FD083B /* XYPieChart */,
 				151072E617D0F82C00FD083B /* ios-fontawesome */,
 				15D2463C17CFBD8E00793614 /* GCNetworkReachability */,
@@ -912,6 +945,32 @@
 				1510729117D00C0100FD083B /* List */,
 			);
 			name = Jobs;
+			sourceTree = "<group>";
+		};
+		15E182CC17E3325A00CE0DEA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				15E182D017E3325A00CE0DEA /* AFHTTPClient.h */,
+				15E182D117E3325A00CE0DEA /* AFHTTPClient.m */,
+				15E182D217E3325A00CE0DEA /* AFHTTPRequestOperation.h */,
+				15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */,
+				15E182D417E3325A00CE0DEA /* AFImageRequestOperation.h */,
+				15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */,
+				15E182D617E3325A00CE0DEA /* AFJSONRequestOperation.h */,
+				15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */,
+				15E182D817E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.h */,
+				15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */,
+				15E182DA17E3325A00CE0DEA /* AFNetworking.h */,
+				15E182DB17E3325A00CE0DEA /* AFPropertyListRequestOperation.h */,
+				15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */,
+				15E182DD17E3325A00CE0DEA /* AFURLConnectionOperation.h */,
+				15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */,
+				15E182DF17E3325A00CE0DEA /* AFXMLRequestOperation.h */,
+				15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */,
+				15E182E117E3325A00CE0DEA /* UIImageView+AFNetworking.h */,
+				15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1000,11 +1059,13 @@
 				1510734C17D4FAF000FD083B /* FTLoadingCell.m in Sources */,
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
+				15E1832E17E3325B00CE0DEA /* AFImageRequestOperation.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
 				153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */,
 				153921E617E2700400896FC1 /* FTBuildDetailViewController.m in Sources */,
 				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
+				15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */,
 				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
 				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
@@ -1023,9 +1084,12 @@
 				1510731617D0F82D00FD083B /* NSString+FontAwesome.m in Sources */,
 				153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */,
 				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
+				15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */,
 				151072DE17D0E17C00FD083B /* FTNoAccountCell.m in Sources */,
 				1510729A17D00F6300FD083B /* FTJobCell.m in Sources */,
 				151072A417D084FC00FD083B /* FTLabel.m in Sources */,
+				15E1833217E3325B00CE0DEA /* AFURLConnectionOperation.m in Sources */,
+				15E1832F17E3325B00CE0DEA /* AFJSONRequestOperation.m in Sources */,
 				1510729E17D084D800FD083B /* FTView.m in Sources */,
 				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
 				1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */,
@@ -1035,13 +1099,17 @@
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
+				15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */,
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
+				15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
+				15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,
+				15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */,
 				151072A817D0851D00FD083B /* FTBasicCell.m in Sources */,
 				15D2467B17CFBE5200793614 /* FTAccount.m in Sources */,
 				1510734217D28C4300FD083B /* FTTextAccountCell.m in Sources */,

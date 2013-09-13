@@ -7,6 +7,8 @@
 //
 
 #import "FTAPIConnector.h"
+#import "AFNetworking.h"
+#import "FTAccount.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #import "NSString+URLTools.h"
@@ -17,10 +19,11 @@
 #define kFTAPIConnectorDebugFull                                if (kFTAPIConnectorDebug) 
 
 
-@interface FTAPIConnector ()
+static AFHTTPClient *_sharedClient = nil;
+static FTAccount *_sharedAccount = nil;
 
-@property (nonatomic, strong, readonly) NSMutableData *receivedData;
-@property (nonatomic, strong, readonly) NSString *receivedString;
+
+@interface FTAPIConnector ()
 
 @end
 
@@ -30,40 +33,84 @@
 
 #pragma mark Initialization
 
-+ (id)connectorWithDelegate:(id<FTAPIConnectorDelegate>)delegate {
-    FTAPIConnector *conn = [[FTAPIConnector alloc] init];
-    [conn setDelegate:delegate];
-    return conn;
++ (FTAPIConnector *)sharedConnector {
+    static FTAPIConnector *sharedConnector = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedConnector = [[FTAPIConnector alloc] init];
+    });
+    
+    return sharedConnector;
+}
+
++ (AFHTTPClient *)sharedClient {
+    if (!_sharedClient) {
+        _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
+    }
+    return _sharedClient;
+}
+
++ (void)resetForAccount:(FTAccount *)account {
+    _sharedAccount = account;
+    _sharedClient = nil;
+    if ([[FTAPIConnector sharedConnector] apiOperatioQueue]) {
+        [[[FTAPIConnector sharedConnector] apiOperatioQueue] cancelAllOperations];
+    }
+    [self sharedClient];
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        _apiOperatioQueue = [[NSOperationQueue alloc] init];
+        [_apiOperatioQueue setMaxConcurrentOperationCount:3];
+    }
+    return self;
 }
 
 #pragma mark Connections
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete {
-    __block FTAPIConnector *conn = [[FTAPIConnector alloc] init];
-    NSURLRequest *request = [conn requestForDataObject:object];
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        [conn connection:nil didReceiveResponse:response];
-        [conn connection:nil didReceiveData:data];
-        if (error) {
-            [conn connection:nil didFailWithError:error];
-        }
-        else {
-            [conn connectionDidFinishLoading:nil];
-        }
-        if (!error && [(FTAPIDataObject *)object apiErrors]) {
-            //error = [FTAPIConnector getAPIError];
-        }
++ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+    NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        [object processData:JSON];
+        [object setResponse:response];
         if (complete) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                complete(object, error);
-            });
+            complete(object, nil);
+        }
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        if (complete) {
+            complete(object, error);
         }
     }];
+    if (upload) {
+        [operation setUploadProgressBlock:upload];
+    }
+    if (download) {
+        [operation setDownloadProgressBlock:download];
+    }
+    
+    BOOL authenticate = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 1);
+    if (authenticate) {
+        [[FTAPIConnector sharedClient] registerHTTPOperationClass:operation.class];
+        [[FTAPIConnector sharedClient] clearAuthorizationHeader];
+        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:kAccountsManager.selectedAccount.username password:kAccountsManager.selectedAccount.passwordOrToken];
+    }
+    
+    [[[FTAPIConnector sharedConnector] apiOperatioQueue] addOperation:operation];
+}
+
++ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+    [self connectWithObject:object withOnCompleteBlock:complete withUploadProgressBlock:nil andDownloadProgressBlock:download];
+}
+
++ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete {
+    [self connectWithObject:object withOnCompleteBlock:complete withUploadProgressBlock:nil andDownloadProgressBlock:nil];
 }
 
 - (NSString *)httpMethod:(FTHttpMethod)method {
     NSString *m;
-    switch (method) { 
+    switch (method) {
         case FTHttpMethodGet:
             m = @"GET";
             break;
@@ -100,46 +147,34 @@
     NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     NSError *err;
     NSData *dataPayload = [NSJSONSerialization dataWithJSONObject:d options:NSJSONWritingPrettyPrinted error:&err];
-    if (err) {
-        //WFErrorLogError(err);
-    }
     return dataPayload;
 }
 
-- (NSString *)authString {
-    if (kAccountsManager.selectedAccount.username) {
-        
-#if defined __IPHONE_7_0
-        NSString *authStr = [NSString stringWithFormat:@"%@:%@", kAccountsManager.selectedAccount.username, kAccountsManager.selectedAccount.passwordOrToken];
-        NSData *authData = [authStr dataUsingEncoding:NSASCIIStringEncoding];
-        return [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
-#else      
-#warning Needs to me made compatible with iOS 6
-        return nil;
-#endif
-    }
-    else return nil;
-}
-
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
-    _dataObject = data;
-    NSDictionary *payload = [data payloadData];
+   NSDictionary *payload = [data payloadData];
     NSString *url = [NSString stringWithFormat:@"%@%@api/json", [kAccountsManager selectedAccount].baseUrl, [data methodName]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
         url = [url stringByAppendingString:par];
     }
-    _url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     kFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
     
-    NSString *auth = [self authString];
-    if (auth) {
-        [request setValue:auth forHTTPHeaderField:@"Authorization"];
-    }
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
     
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];
+    
+    [request setValue:[FTConfig getAppUUID] forHTTPHeaderField:@"X-DeviceId"];
+    [request setValue:[UIDevice currentDevice].model forHTTPHeaderField:@"X-DeviceModel"];
+    [request setValue:[UIDevice currentDevice].systemVersion forHTTPHeaderField:@"X-DeviceSystemVersion"];
+    [request setValue:[UIDevice currentDevice].systemName forHTTPHeaderField:@"X-DeviceSystemName"];
+    [request setValue:[UIDevice currentDevice].identifierForVendor.UUIDString forHTTPHeaderField:@"X-DeviceVendorUUID"];
+    [request setValue:[self platform] forHTTPHeaderField:@"X-DevicePlatform"];
+    [request setValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] forHTTPHeaderField:@"X-AppBundleShortVersionString"];
+    [request setValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] forHTTPHeaderField:@"X-AppBundleVersion"];
+    [request setValue:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] forHTTPHeaderField:@"X-AppBundleIdentifier"];
+    
     if ([data httpMethod] == FTHttpMethodPost || [data httpMethod] == FTHttpMethodPut) {
         [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         if (payload) {
@@ -148,63 +183,6 @@
         }
     }
     return request;
-}
-
--  (void)startConnectionWithData:(id <FTAPIDataAbstractObject>)data {
-    NSURLRequest *request = [self requestForDataObject:data];
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    _connection = connection;
-    _repeatedConnectionCounter++;
-}
-
-#pragma mark Connection delgate methods
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    _receivedData = [NSMutableData data];
-    _statusCode = [(NSHTTPURLResponse *)response statusCode];
-    [_dataObject setResponseStatusCode:_statusCode];
-    [_dataObject processHeaders:[(NSHTTPURLResponse *)response allHeaderFields]];
-    kFTAPIConnectorDebugFull NSLog(@"Connection headers: %@", [(NSHTTPURLResponse *)response allHeaderFields]);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [_receivedData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [_dataObject setConnectionError:error];
-    if (_repeatedConnectionCounter <= 1) {
-        [self startConnectionWithData:(id <FTAPIDataAbstractObject>)_dataObject];
-    }
-    else {
-        if ([_delegate respondsToSelector:@selector(apiConnector:didFinishWithError:)]) {
-            [_delegate apiConnector:self didFinishWithError:error];
-        }
-    }
-    kFTAPIConnectorDebugFull NSLog(@"Connection error number %d: %@ in URL: %@", _repeatedConnectionCounter, [error localizedDescription], _url);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSString *dataString = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
-    _receivedString = dataString;
-    NSError *err;
-    _receivedJsonData = [NSJSONSerialization JSONObjectWithData:_receivedData options:NSJSONReadingMutableLeaves error:&err];
-    if (err) {
-        //WFErrorLogError(err);
-    }
-    if (kFTAPIConnectorDebug || _dataObject.printOutputToConsole) NSLog(@"Received JSON data: %@", _receivedJsonData);
-    _receivedMessageOK = _receivedJsonData ? YES : NO;
-    if (_receivedJsonData) [_dataObject processData:_receivedJsonData];
-    if (_dataObject.apiErrors) {
-        if ([_delegate respondsToSelector:@selector(apiConnector:didFinishWithError:)]) {
-            //[_delegate apiConnector:self didFinishWithError:[FTAPIConnector getAPIError]];
-        }
-    }
-    else {
-        if ([_delegate respondsToSelector:@selector(apiConnector:didFinishWithData:)]) {
-            [_delegate apiConnector:self didFinishWithData:_dataObject];
-        }
-    }
 }
 
 

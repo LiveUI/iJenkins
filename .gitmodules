@@ -7,3 +7,6 @@
 [submodule "Thirdparty/ios-fontawesome"]
 	path = Thirdparty/ios-fontawesome
 	url = git@github.com:alexdrone/ios-fontawesome.git
+[submodule "Thirdparty/AFNetworking"]
+	path = Thirdparty/AFNetworking
+	url = git@github.com:AFNetworking/AFNetworking.git

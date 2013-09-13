@@ -111,7 +111,8 @@
 #pragma mark Getters
 
 - (NSString *)baseUrl {
-    NSString *url = [NSString stringWithFormat:@"http://%@:%d/", _host, _port];
+    NSString *https = _https ? @"s" : @"";
+    NSString *url = [NSString stringWithFormat:@"http%@://%@:%d/", https, _host, _port];
     return url;
 }
 

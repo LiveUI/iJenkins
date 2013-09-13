@@ -11,6 +11,8 @@
 
 @protocol FTAPIDataAbstractObject <NSObject>
 
+@property (nonatomic, strong) NSHTTPURLResponse *response;
+
 - (FTHttpMethod)httpMethod;
 - (NSString *)methodName;
 - (NSDictionary *)payloadData;
@@ -20,6 +22,8 @@
 
 
 @interface FTAPIDataObject : NSObject
+
+@property (nonatomic, strong) NSHTTPURLResponse *response;
 
 @property (nonatomic, strong) NSError *connectionError;
 @property (nonatomic, strong, readonly) NSArray *apiErrors;

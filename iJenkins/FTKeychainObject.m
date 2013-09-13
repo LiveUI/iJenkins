@@ -11,6 +11,7 @@
 
 
 #define kFTKeychainObjectAccountsJsonFile                           @"FTKeychainObjectTwitterToken"
+#define kFTKeychainObjectUUID                                       @"FTKeychainObjectUUID"
 
 
 #define kFTKeychainObjectServiceName                            @"com.fuerteint.ijenkins"
@@ -98,6 +99,23 @@ static NSString *serviceName = kFTKeychainObjectServiceName;
         ok = [self createKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
     }
     kFTKeychainObjectDebugFull NSLog(@"Did save accounts to keychain: %@", ok ? @"Yes" : @"No");
+}
+
+- (NSString *)uuid {
+    NSString *uuid = [self searchKeychainCopyMatchingIdentifier:kFTKeychainObjectUUID];
+    kFTKeychainObjectDebugFull NSLog(@"UUID back: %@", uuid);
+    return uuid;
+}
+
+- (void)setUuid:(NSString *)uuid {
+    BOOL ok;
+    if (self.uuid) {
+        ok = [self updateKeychainValue:uuid forIdentifier:kFTKeychainObjectUUID];
+    }
+    else {
+        ok = [self createKeychainValue:uuid forIdentifier:kFTKeychainObjectUUID];
+    }
+    kFTKeychainObjectDebugFull NSLog(@"Did save UUID to keychain: %@", ok ? @"Yes" : @"No");
 }
 
 - (void)logout {

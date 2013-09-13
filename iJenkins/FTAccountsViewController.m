@@ -165,6 +165,7 @@
     else {
         FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : _demoAccount;
         [kAccountsManager setSelectedAccount:acc];
+        [FTAPIConnector resetForAccount:acc];
         
         FTHomeViewController *c = [[FTHomeViewController alloc] init];
         [self.navigationController pushViewController:c animated:YES];

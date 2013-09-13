@@ -21,4 +21,7 @@ typedef enum {
 
 @interface FTConfig : NSObject
 
++ (NSString *)getAppUUID;
+
+
 @end

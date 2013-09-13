@@ -11,40 +11,30 @@
 #import "FTAPIBuildDetailDataObject.h"
 
 
-#define kAPIConnector                                       [FTAPIConnector connectorWithDelegate:self]
-
-
-@class FTAPIConnector;
-
-@protocol FTAPIConnectorDelegate <NSObject>
-
-- (void)apiConnector:(FTAPIConnector *)connector didFinishWithData:(FTAPIDataObject *)data;
-- (void)apiConnector:(FTAPIConnector *)connector didFinishWithError:(NSError *)error;
-
-@end
+#define kAPIConnector                                       [FTAPIConnector sharedConnector]
 
 
 typedef void(^FTAPIConnectorCompletionHandler) (id <FTAPIDataAbstractObject> dataObject, NSError *error);
 
+typedef void (^FTAPIConnectorProgressDownloadHandler) (NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead);
+typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite);
+
+
+@class FTAccount;
 
 @interface FTAPIConnector : NSObject
 
-@property (nonatomic, strong, readonly) FTAPIDataObject *dataObject;
+@property (nonatomic, strong) NSOperationQueue *apiOperatioQueue;
 
-@property (nonatomic, strong, readonly) NSURLConnection *connection;
-@property (nonatomic, strong, readonly) NSString *url;
-@property (nonatomic, readonly) NSInteger statusCode;
-@property (nonatomic, readonly) BOOL receivedMessageOK;
-@property (nonatomic, strong, readonly) NSDictionary *receivedJsonData;
++ (FTAPIConnector *)sharedConnector;
++ (void)resetForAccount:(FTAccount *)account;
 
-@property (nonatomic, readonly) NSInteger repeatedConnectionCounter;
++ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
 
-@property (nonatomic, assign) id <FTAPIConnectorDelegate> delegate;
++ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
 
-+ (id)connectorWithDelegate:(id <FTAPIConnectorDelegate>)delegate;
 + (void)connectWithObject:(id <FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete;
 
-- (void)startConnectionWithData:(id <FTAPIDataAbstractObject>)data;
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data;
 
 

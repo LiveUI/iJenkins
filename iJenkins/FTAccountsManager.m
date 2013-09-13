@@ -17,14 +17,6 @@ static FTAccountsManager *staticManager = nil;
 @implementation FTAccountsManager
 
 
-#pragma mark Paths
-
-- (NSString *)accountsFilePath {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    return [documentsDirectory stringByAppendingPathComponent:@"accounts.plist"];
-}
-
 #pragma mark Object conversions
 
 - (FTAccount *)accountFromDictionary:(NSDictionary *)dic {
