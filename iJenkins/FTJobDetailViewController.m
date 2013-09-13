@@ -46,6 +46,8 @@
     [self.navigationItem setRightBarButtonItem:edit];
     
     NSString *url = [NSString stringWithFormat:@"%@job/%@/build", [kAccountsManager selectedAccount].baseUrl, [_job.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"Url: %@", url);
+    [super showAlertWithTitle:FTLangGet(@"URL") andMessage:url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
     [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

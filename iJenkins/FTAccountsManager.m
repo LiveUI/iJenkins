@@ -109,6 +109,7 @@ static FTAccountsManager *staticManager = nil;
     [acc setPort:80];
     [acc setUsername:nil];
     [acc setPasswordOrToken:nil];
+    [acc setLoadMaxItems:8];
     return acc;
 }
 
