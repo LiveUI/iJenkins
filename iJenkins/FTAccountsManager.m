@@ -55,14 +55,14 @@ static FTAccountsManager *staticManager = nil;
 #pragma mark Data handling
 
 - (void)saveToKeychain {
-//    NSError *err;
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self dataAccounts] options:NSJSONWritingPrettyPrinted error:&err];
-//    if (err) {
-//        NSLog(@"Error writing: %@", err.localizedDescription);
-//    }
-//    NSString *string = [NSString stringWithCString:jsonData.bytes encoding:NSUTF8StringEncoding];
-//    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string];
-    [[self dataAccounts] writeToFile:[self accountsFilePath] atomically:YES];
+    NSError *err;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self dataAccounts] options:NSJSONWritingPrettyPrinted error:&err];
+    if (err) {
+        NSLog(@"Error writing: %@", err.localizedDescription);
+    }
+    NSString *string = [NSString stringWithCString:jsonData.bytes encoding:NSUTF8StringEncoding];
+    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string];
+//    [[self dataAccounts] writeToFile:[self accountsFilePath] atomically:YES];
 }
 
 - (void)addAccount:(FTAccount *)account {
@@ -88,20 +88,20 @@ static FTAccountsManager *staticManager = nil;
 - (NSArray *)accounts {
     if (accounts) return accounts;
     else {
-//        NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFile];
-//        NSLog(@"Json string :%@", jsonString);
-//        
-//        
-//        NSArray *dataAccounts = nil;
-//        if (jsonString) {
-//            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-//            NSError *err;
-//            dataAccounts = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
-//            if (err) {
-//                NSLog(@"Error reading: %@", err.localizedDescription);
-//            }
-//        }
-        NSArray *dataAccounts = [NSArray arrayWithContentsOfFile:[self accountsFilePath]];
+        NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFile];
+        NSLog(@"Json string :%@", jsonString);
+        
+        
+        NSArray *dataAccounts = nil;
+        if (jsonString) {
+            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            NSError *err;
+            dataAccounts = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+            if (err) {
+                NSLog(@"Error reading: %@", err.localizedDescription);
+            }
+        }
+//        NSArray *dataAccounts = [NSArray arrayWithContentsOfFile:[self accountsFilePath]];
         NSMutableArray *arr = [NSMutableArray array];
         for (NSDictionary *d in dataAccounts) {
             FTAccount *a = [self accountFromDictionary:d];
