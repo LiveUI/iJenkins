@@ -715,8 +715,8 @@
 		15D2460017CF9DAA00793614 /* Accounts */ = {
 			isa = PBXGroup;
 			children = (
-				151072DB17D0E16500FD083B /* Cells */,
 				1510732117D0FEC200FD083B /* Add account */,
+				151072DB17D0E16500FD083B /* Cells */,
 				15D2460117CF9DBB00793614 /* FTAccountsViewController.h */,
 				15D2460217CF9DBB00793614 /* FTAccountsViewController.m */,
 			);

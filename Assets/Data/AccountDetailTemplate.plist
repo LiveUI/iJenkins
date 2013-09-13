@@ -121,9 +121,9 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>Load max items</string>
+				<string>Load max builds</string>
 				<key>description</key>
-				<string></string>
+				<string>0 for all items in build history</string>
 				<key>placeholder</key>
 				<string>Max items in the list</string>
 				<key>default</key>

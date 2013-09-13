@@ -51,6 +51,12 @@
     [self createTopButtons];
 }
 
+#pragma mark Settings
+
+- (void)setAccount:(FTAccount *)account {
+    _account = account;
+}
+
 #pragma mark Actions
 
 - (void)didCLickCloseNow:(UIBarButtonItem *)sender {

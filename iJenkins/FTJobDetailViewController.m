@@ -12,6 +12,7 @@
 #import "FTSmallTextCell.h"
 #import "FTJobHealthInfoCell.h"
 #import "FTLastBuildInfoCell.h"
+#import "FTAccountsManager.h"
 
 
 @interface FTJobDetailViewController ()
@@ -109,9 +110,14 @@
             return (2 + _job.jobDetail.healthReports.count);
             break;
             
-        case 1:
-            return (_job.jobDetail.builds.count > 5) ? 5 : _job.jobDetail.builds.count;
+        case 1: {
+            int limit = [[FTAccountsManager sharedManager] selectedAccount].loadMaxItems;
+            if (limit == 0) {
+                limit = INT_MAX;
+            }
+            return (_job.jobDetail.builds.count > limit) ? limit : _job.jobDetail.builds.count;
             break;
+        }
             
         default:
             return 6;

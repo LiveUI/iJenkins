@@ -29,6 +29,7 @@
 
 - (void)createSwitch {
     _cellSwitch = [[UISwitch alloc] init];
+    [_cellSwitch addTarget:self action:@selector(switchDidChangeValue:) forControlEvents:UIControlEventValueChanged];
     [_cellSwitch setOrigin:CGPointMake((self.width - 14 - _cellSwitch.width), 6)];
     [_cellSwitch setAutoresizingCenterRight];
     [self addSubview:_cellSwitch];
