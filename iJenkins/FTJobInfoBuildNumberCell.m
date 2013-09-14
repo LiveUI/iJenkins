@@ -49,10 +49,19 @@
 
 #pragma mark Settings
 
+- (void)resetStatusColor {
+    [_statusColorView setBackgroundColor:[_job realColor]];
+}
+
 - (void)setJob:(FTAPIJobDataObject *)job {
     _job = job;
     [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%d", FTLangGet(@"Latest build"), _job.jobDetail.lastBuild.number]];
-    [_statusColorView setBackgroundColor:[_job realColor]];
+    [self resetStatusColor];
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    [self resetStatusColor];
 }
 
 #pragma mark Initialization
@@ -62,7 +71,7 @@
     FTJobInfoBuildNumberCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTJobInfoBuildNumberCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     return cell;
 }

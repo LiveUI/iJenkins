@@ -128,7 +128,7 @@
             if (limit == 0) {
                 limit = INT_MAX;
             }
-            return (_job.jobDetail.builds.count > limit) ? limit : _job.jobDetail.builds.count;
+            return ((_job.jobDetail.builds.count - 1) > limit) ? limit : (_job.jobDetail.builds.count - 1);
             break;
         }
             
@@ -165,7 +165,7 @@
             break;
             
         case 1:
-            return [self cellForLastBuildsWithRow:indexPath.row];
+            return [self cellForLastBuildsWithRow:(indexPath.row + 1)];
             break;
             
         default:
@@ -176,8 +176,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1) {
-        FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:indexPath.row];
+    if ((indexPath.section == 0 && indexPath.row == 0) || indexPath.section == 1) {
+        FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:(indexPath.row + indexPath.section)];
         FTBuildDetailViewController *c = [[FTBuildDetailViewController alloc] init];
         [c setTitle:[NSString stringWithFormat:@"%@ #%d", FTLangGet(@"Build"), build.number]];
         [c setBuild:build];

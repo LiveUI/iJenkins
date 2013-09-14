@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "FTAPIJobsDataObject.h"
+#import "FTAPIServerDataObject.h"
 #import "FTAPIBuildDetailDataObject.h"
 #import "FTAPIJobBuildDataObject.h"
 

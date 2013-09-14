@@ -7,7 +7,7 @@
 //
 
 #import "FTAccountsViewController.h"
-#import "FTHomeViewController.h"
+#import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
 
@@ -175,7 +175,7 @@
         [kAccountsManager setSelectedAccount:acc];
         [FTAPIConnector resetForAccount:acc];
         
-        FTHomeViewController *c = [[FTHomeViewController alloc] init];
+        FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
         [self.navigationController pushViewController:c animated:YES];
     }
 }

@@ -14,7 +14,7 @@
 
 @protocol FTAccountOverviewCellDelegate <NSObject>
 
-- (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIJobsStatsDataObject *)stat;
+- (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIServerStatsDataObject *)stat;
 
 @end
 

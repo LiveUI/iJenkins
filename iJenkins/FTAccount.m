@@ -27,7 +27,7 @@
     _xpath = YES;
     _timeout = 20;
     _overrideJenkinsUrl = YES;
-    _loadMaxItems = 50;
+    _loadMaxItems = 5;
     _buildLogMaxSize = 102400;
     [self originalDictionary];
 }

@@ -11,7 +11,7 @@
 		1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728217CFEA6F00FD083B /* FTAPIDataObject.m */; };
 		1510728717CFEBB100FD083B /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728617CFEBB100FD083B /* FTConfig.m */; };
 		1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728917CFEBFA00FD083B /* NSString+URLTools.m */; };
-		1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */; };
+		1510728D17CFED4700FD083B /* FTAPIServerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728C17CFED4700FD083B /* FTAPIServerDataObject.m */; };
 		1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728F17D0053200FD083B /* FTAPIJobDataObject.m */; };
 		1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729517D00C2C00FD083B /* FTAPIJobDetailDataObject.m */; };
 		1510729A17D00F6300FD083B /* FTJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729917D00F6300FD083B /* FTJobCell.m */; };
@@ -63,7 +63,7 @@
 		15D245E017CF9C2A00793614 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245DF17CF9C2A00793614 /* main.m */; };
 		15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245E317CF9C2A00793614 /* FTAppDelegate.m */; };
 		15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
-		15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTHomeViewController.m */; };
+		15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */; };
 		15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FE17CF9DA700793614 /* FTLoginViewController.m */; };
 		15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460217CF9DBB00793614 /* FTAccountsViewController.m */; };
 		15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460617CF9DD400793614 /* FTJobDetailViewController.m */; };
@@ -97,6 +97,10 @@
 		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
 		15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */; };
 		15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */; };
+		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
+		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
+		15E1839517E4FFC900CE0DEA /* FTStandaloneChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */; };
+		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,8 +112,8 @@
 		1510728617CFEBB100FD083B /* FTConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTConfig.m; sourceTree = "<group>"; };
 		1510728817CFEBFA00FD083B /* NSString+URLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLTools.h"; sourceTree = "<group>"; };
 		1510728917CFEBFA00FD083B /* NSString+URLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLTools.m"; sourceTree = "<group>"; };
-		1510728B17CFED4700FD083B /* FTAPIJobsDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobsDataObject.h; sourceTree = "<group>"; };
-		1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobsDataObject.m; sourceTree = "<group>"; };
+		1510728B17CFED4700FD083B /* FTAPIServerDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIServerDataObject.h; sourceTree = "<group>"; };
+		1510728C17CFED4700FD083B /* FTAPIServerDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIServerDataObject.m; sourceTree = "<group>"; };
 		1510728E17D0053200FD083B /* FTAPIJobDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobDataObject.h; sourceTree = "<group>"; };
 		1510728F17D0053200FD083B /* FTAPIJobDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobDataObject.m; sourceTree = "<group>"; };
 		1510729417D00C2C00FD083B /* FTAPIJobDetailDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobDetailDataObject.h; sourceTree = "<group>"; };
@@ -193,8 +197,8 @@
 		15D245E317CF9C2A00793614 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
 		15D245EB17CF9C2A00793614 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
 		15D245EC17CF9C2A00793614 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
-		15D245FA17CF9D9900793614 /* FTHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTHomeViewController.h; sourceTree = "<group>"; };
-		15D245FB17CF9D9900793614 /* FTHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTHomeViewController.m; sourceTree = "<group>"; };
+		15D245FA17CF9D9900793614 /* FTServerHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTServerHomeViewController.h; sourceTree = "<group>"; };
+		15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTServerHomeViewController.m; sourceTree = "<group>"; };
 		15D245FD17CF9DA700793614 /* FTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoginViewController.h; sourceTree = "<group>"; };
 		15D245FE17CF9DA700793614 /* FTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoginViewController.m; sourceTree = "<group>"; };
 		15D2460117CF9DBB00793614 /* FTAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountsViewController.h; sourceTree = "<group>"; };
@@ -255,6 +259,14 @@
 		15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJSONRequestOperation.m; sourceTree = "<group>"; };
 		15E1838417E3676900CE0DEA /* FTAPIJobBuildDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIJobBuildDataObject.h; sourceTree = "<group>"; };
 		15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIJobBuildDataObject.m; sourceTree = "<group>"; };
+		15E1838817E4CDAD00CE0DEA /* FTViewSelectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTViewSelectorViewController.h; sourceTree = "<group>"; };
+		15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTViewSelectorViewController.m; sourceTree = "<group>"; };
+		15E1838D17E4EC6C00CE0DEA /* FTNoJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNoJobCell.h; sourceTree = "<group>"; };
+		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
+		15E1839117E4FFC900CE0DEA /* FTStandaloneChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTStandaloneChartView.h; sourceTree = "<group>"; };
+		15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTStandaloneChartView.m; sourceTree = "<group>"; };
+		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
+		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,8 +303,8 @@
 		1510729117D00C0100FD083B /* List */ = {
 			isa = PBXGroup;
 			children = (
-				1510728B17CFED4700FD083B /* FTAPIJobsDataObject.h */,
-				1510728C17CFED4700FD083B /* FTAPIJobsDataObject.m */,
+				1510728B17CFED4700FD083B /* FTAPIServerDataObject.h */,
+				1510728C17CFED4700FD083B /* FTAPIServerDataObject.m */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -578,6 +590,7 @@
 		153921CC17E202ED00896FC1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				15E1838C17E4EC5000CE0DEA /* No data */,
 				153921CD17E2073000896FC1 /* Job info */,
 				153921D617E2154400896FC1 /* Health info */,
 				153921DA17E21C7000896FC1 /* Last build info */,
@@ -715,7 +728,7 @@
 			children = (
 				15D2463217CFA5ED00793614 /* Users */,
 				15D2460A17CF9F9600793614 /* System */,
-				15D245F817CF9C5400793614 /* Account home */,
+				15D245F817CF9C5400793614 /* Server home */,
 				15D2460017CF9DAA00793614 /* Accounts */,
 				15D245F717CF9C4500793614 /* Basic */,
 			);
@@ -731,15 +744,16 @@
 			name = Basic;
 			sourceTree = "<group>";
 		};
-		15D245F817CF9C5400793614 /* Account home */ = {
+		15D245F817CF9C5400793614 /* Server home */ = {
 			isa = PBXGroup;
 			children = (
+				15E1838717E4CA6100CE0DEA /* View selector */,
 				15D2460417CF9DC300793614 /* Job detail */,
 				1510729717D00F4A00FD083B /* Cells */,
-				15D245FA17CF9D9900793614 /* FTHomeViewController.h */,
-				15D245FB17CF9D9900793614 /* FTHomeViewController.m */,
+				15D245FA17CF9D9900793614 /* FTServerHomeViewController.h */,
+				15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */,
 			);
-			name = "Account home";
+			name = "Server home";
 			sourceTree = "<group>";
 		};
 		15D245F917CF9C5B00793614 /* Login */ = {
@@ -821,6 +835,7 @@
 		15D2461F17CFA1C600793614 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				15E1839017E4FFB200CE0DEA /* Chart */,
 				1510734917D4FAD200FD083B /* Cells */,
 				1510729B17D084BE00FD083B /* Basic */,
 			);
@@ -999,6 +1014,35 @@
 			name = Build;
 			sourceTree = "<group>";
 		};
+		15E1838717E4CA6100CE0DEA /* View selector */ = {
+			isa = PBXGroup;
+			children = (
+				15E1838817E4CDAD00CE0DEA /* FTViewSelectorViewController.h */,
+				15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */,
+			);
+			name = "View selector";
+			sourceTree = "<group>";
+		};
+		15E1838C17E4EC5000CE0DEA /* No data */ = {
+			isa = PBXGroup;
+			children = (
+				15E1838D17E4EC6C00CE0DEA /* FTNoJobCell.h */,
+				15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */,
+			);
+			name = "No data";
+			sourceTree = "<group>";
+		};
+		15E1839017E4FFB200CE0DEA /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				15E1839117E4FFC900CE0DEA /* FTStandaloneChartView.h */,
+				15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */,
+				15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */,
+				15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1093,9 +1137,11 @@
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
 				15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */,
 				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
-				15D245FC17CF9D9900793614 /* FTHomeViewController.m in Sources */,
+				15E1839517E4FFC900CE0DEA /* FTStandaloneChartView.m in Sources */,
+				15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */,
 				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
+				15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
 				1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */,
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
@@ -1104,6 +1150,7 @@
 				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
 				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,
 				1510728717CFEBB100FD083B /* FTConfig.m in Sources */,
+				15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */,
 				15D2461217CFA0E900793614 /* FTLang.m in Sources */,
 				151072C217D0A55600FD083B /* NSData+Base64.m in Sources */,
 				1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */,
@@ -1118,6 +1165,7 @@
 				15E1832F17E3325B00CE0DEA /* AFJSONRequestOperation.m in Sources */,
 				1510729E17D084D800FD083B /* FTView.m in Sources */,
 				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
+				15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */,
 				1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */,
 				1510733917D20FA100FD083B /* FTSwitchAccountCell.m in Sources */,
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
@@ -1131,7 +1179,7 @@
 				15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
 				15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */,
-				1510728D17CFED4700FD083B /* FTAPIJobsDataObject.m in Sources */,
+				1510728D17CFED4700FD083B /* FTAPIServerDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
