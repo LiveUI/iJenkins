@@ -152,7 +152,8 @@
     }
     FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
     [cell.textLabel setText:acc.name];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@:%d", acc.host, acc.port]];
+    NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%d", acc.port] : @"";
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@", acc.host, port]];
     return cell;
 }
 

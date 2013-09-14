@@ -95,7 +95,7 @@
 
 - (void)setBuildLogMaxSize:(double)buildLogMaxSize {
     _buildLogMaxSize = buildLogMaxSize;
-    [self.originalDictionary setValue:[NSNumber numberWithDouble:buildLogMaxSize] forKey:@"buildLogMaxSize"];
+    [self.originalDictionary setValue:[NSNumber numberWithInteger:buildLogMaxSize] forKey:@"buildLogMaxSize"];
 }
 
 - (void)setUsername:(NSString *)username {
@@ -112,7 +112,8 @@
 
 - (NSString *)baseUrl {
     NSString *https = _https ? @"s" : @"";
-    NSString *url = [NSString stringWithFormat:@"http%@://%@:%d/", https, _host, _port];
+    NSString *port = (_port != 0) ? [NSString stringWithFormat:@":%d", _port] : @"";
+    NSString *url = [NSString stringWithFormat:@"http%@://%@%@/", https, _host, port];
     return url;
 }
 

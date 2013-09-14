@@ -99,7 +99,6 @@
 		15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */; };
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
-		15E1839517E4FFC900CE0DEA /* FTStandaloneChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
 /* End PBXBuildFile section */
 
@@ -263,8 +262,6 @@
 		15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTViewSelectorViewController.m; sourceTree = "<group>"; };
 		15E1838D17E4EC6C00CE0DEA /* FTNoJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNoJobCell.h; sourceTree = "<group>"; };
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
-		15E1839117E4FFC900CE0DEA /* FTStandaloneChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTStandaloneChartView.h; sourceTree = "<group>"; };
-		15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTStandaloneChartView.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1035,8 +1032,6 @@
 		15E1839017E4FFB200CE0DEA /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				15E1839117E4FFC900CE0DEA /* FTStandaloneChartView.h */,
-				15E1839217E4FFC900CE0DEA /* FTStandaloneChartView.m */,
 				15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */,
 				15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */,
 			);
@@ -1137,7 +1132,6 @@
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
 				15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */,
 				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
-				15E1839517E4FFC900CE0DEA /* FTStandaloneChartView.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */,
 				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
 				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,

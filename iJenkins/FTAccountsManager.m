@@ -30,7 +30,7 @@ static FTAccountsManager *staticManager = nil;
     [acc setTimeout:[[dic valueForKey:@"timeout"] integerValue]];
     [acc setOverrideJenkinsUrl:[[dic valueForKey:@"overrideJenkinsUrl"] boolValue]];
     [acc setLoadMaxItems:[[dic valueForKey:@"loadMaxItems"] integerValue]];
-    [acc setBuildLogMaxSize:[[dic valueForKey:@"buildLogMaxSize"] doubleValue]];
+    [acc setBuildLogMaxSize:[[dic valueForKey:@"buildLogMaxSize"] integerValue]];
     [acc setUsername:[dic valueForKey:@"username"]];
     [acc setPasswordOrToken:[dic valueForKey:@"password"]];
     return acc;
@@ -48,11 +48,12 @@ static FTAccountsManager *staticManager = nil;
 
 - (void)saveToKeychain {
     NSError *err;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self dataAccounts] options:NSJSONWritingPrettyPrinted error:&err];
+    NSArray *ac = [self dataAccounts];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ac options:0 error:&err];
     if (err) {
         NSLog(@"Error writing: %@", err.localizedDescription);
     }
-    NSString *string = [NSString stringWithCString:jsonData.bytes encoding:NSUTF8StringEncoding];
+    NSString *string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];;
     [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string];
 }
 

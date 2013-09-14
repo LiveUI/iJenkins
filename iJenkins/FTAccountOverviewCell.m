@@ -12,6 +12,7 @@
 
 @interface FTAccountOverviewCell ()
 
+@property (nonatomic, strong) UIView *holdingView;
 @property (nonatomic, strong) XYPieChart *chart;
 @property (nonatomic, assign) NSUInteger sliceAnimationCount;
 
@@ -38,12 +39,12 @@
 #pragma mark Creating elements
 
 - (void)createPieChart {
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(65, 14, 190, 190)];
-    [v setBackgroundColor:[UIColor colorWithHexString:@"E7E7E7" andAlpha:1]];
-    [v.layer setCornerRadius:(v.height / 2)];
-    [self addSubview:v];
+    _holdingView = [[UIView alloc] initWithFrame:CGRectMake(65, 14, 190, 190)];
+    [_holdingView setBackgroundColor:[UIColor colorWithHexString:@"E7E7E7" andAlpha:1]];
+    [_holdingView.layer setCornerRadius:(_holdingView.height / 2)];
+    [self addSubview:_holdingView];
     
-    _chart = [[XYPieChart alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    _chart = [[XYPieChart alloc] initWithFrame:CGRectMake(-5, -5, 200, 200)];
     [_chart setUserInteractionEnabled:YES];
     [_chart setDataSource:self];
     [_chart setDelegate:self];
@@ -52,8 +53,7 @@
     [_chart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
     [_chart setLabelShadowColor:[UIColor clearColor]];
     [_chart setSelectedSliceOffsetRadius:5];
-    [_chart setCenter:v.center];
-    [self addSubview:_chart];
+    [_holdingView addSubview:_chart];
     
     CGFloat chartWidth = 24;
     _chartCenter = [[UIView alloc] initWithFrame:CGRectMake(chartWidth, chartWidth, (_chart.width - (2 * chartWidth)), (_chart.width - (2 * chartWidth)))];
@@ -68,7 +68,7 @@
     [_chart addSubview:_chartOverlay];
     
     CGFloat cr = 152;
-    v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cr, cr)];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cr, cr)];
     [v setBackgroundColor:[UIColor colorWithHexString:@"E7E7E7" andAlpha:1]];
     [v.layer setCornerRadius:(v.frame.size.width / 2)];
     [_chart addSubview:v];
@@ -159,6 +159,11 @@
     [_countLabel sizeToFit];
     [_countLabel centerHorizontally];
     [_descriptionLabel setText:FTLangGet(@"Jobs total")];
+}
+
+- (void)setFrame:(CGRect)frame {
+    [super setFrame:frame];
+    [_holdingView centerHorizontally];
 }
 
 #pragma mark Pie chart delegate & datasource methods

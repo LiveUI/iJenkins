@@ -39,7 +39,7 @@
 				<key>name</key>
 				<string>Port</string>
 				<key>description</key>
-				<string>Left blank for default (8080)</string>
+				<string>Default port is (8080)</string>
 				<key>placeholder</key>
 				<string>8080</string>
 				<key>default</key>
@@ -127,7 +127,7 @@
 				<key>placeholder</key>
 				<string>Max items in the list</string>
 				<key>default</key>
-				<string>200</string>
+				<string>5</string>
 				<key>type</key>
 				<string>int</string>
 				<key>variable</key>
