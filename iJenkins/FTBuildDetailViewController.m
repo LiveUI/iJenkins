@@ -8,31 +8,36 @@
 
 #import "FTBuildDetailViewController.h"
 
+
 @interface FTBuildDetailViewController ()
 
 @end
 
+
 @implementation FTBuildDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+
+#pragma mark Creating elements
+
+- (void)createAllElements {
+    [super createAllElements];
+    
+    [self createTableView];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+#pragma mark Table view delegate & data source methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 5;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return FTLangGet(@"Build details");
+}
+
 
 @end

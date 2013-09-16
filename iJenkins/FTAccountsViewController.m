@@ -177,6 +177,7 @@
         [FTAPIConnector resetForAccount:acc];
         
         FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
+        [c setTitle:acc.name];
         [self.navigationController pushViewController:c animated:YES];
     }
 }

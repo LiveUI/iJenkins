@@ -10,6 +10,6 @@
 #import "FTViewSelectorViewController.h"
 #import "FTAccountOverviewCell.h"
 
-@interface FTServerHomeViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
+@interface FTServerHomeViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
 
 @end

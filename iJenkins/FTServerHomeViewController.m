@@ -23,7 +23,7 @@
 
 @property (nonatomic, strong) FTAPIServerViewDataObject *selectedView;
 
-@property (nonatomic, strong) FTAPIServerDataObject *jobsObject;
+@property (nonatomic, strong) FTAPIServerDataObject *serverObject;
 @property (nonatomic, strong) NSMutableArray *finalData;
 
 @property (nonatomic) BOOL isDataAvailable;
@@ -36,33 +36,38 @@
 
 #pragma mark Data
 
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)loadData {
-    if (!_jobsObject) {
-        _jobsObject = [[FTAPIServerDataObject alloc] init];
+    if (!_serverObject) {
+        _serverObject = [[FTAPIServerDataObject alloc] init];
         if (_selectedView) {
-            [_jobsObject setViewToLoad:_selectedView];
+            [_serverObject setViewToLoad:_selectedView];
         }
-        [FTAPIConnector connectWithObject:_jobsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
-                [super showAlertWithTitle:FTLangGet(@"Connection error") andMessage:error.localizedDescription];
-                [self.navigationController popViewControllerAnimated:YES];
+                //[super showAlertWithTitle:FTLangGet(@"Connection error") andMessage:error.localizedDescription];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
+                [alert show];
             }
             else {
-                [_overviewCell setJobsStats:_jobsObject.jobsStats];
-                if (_jobsObject.jobs.count > 0) {
+                [_overviewCell setJobsStats:_serverObject.jobsStats];
+                if (_serverObject.jobs.count > 0) {
                     _isDataAvailable = YES;
                 }
                 else {
                     _isDataAvailable = NO;
                 }
-                if (_jobsObject.views && (_jobsObject.views.count > 0)) {
-                    _views = _jobsObject.views;
+                if (_serverObject.views && (_serverObject.views.count > 0)) {
+                    _views = _serverObject.views;
                 }
-                _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
+                _finalData = [NSMutableArray arrayWithArray:_serverObject.jobs];
                 [super.tableView reloadData];
                 [self setTitle:kAccountsManager.selectedAccount.name];
                 
-                if (_jobsObject.views.count > 1) {
+                if (_serverObject.views.count > 1) {
                     if (!_selectedView) {
                         _selectedView = [_views objectAtIndex:0];
                     }
@@ -94,7 +99,7 @@
     if (searchText.length > 1) {
         NSMutableArray *arr = [NSMutableArray array];
         
-        for (FTAPIJobDataObject *job in _jobsObject.jobs) {
+        for (FTAPIJobDataObject *job in _serverObject.jobs) {
             NSRange isRange = [job.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
             if (isRange.location != NSNotFound) {
                 [arr addObject:job];
@@ -103,13 +108,13 @@
         _finalData = arr;
     }
     else {
-        _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
+        _finalData = [NSMutableArray arrayWithArray:_serverObject.jobs];
     }
     [super.tableView reloadData];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    _finalData = [NSMutableArray arrayWithArray:_jobsObject.jobs];
+    _finalData = [NSMutableArray arrayWithArray:_serverObject.jobs];
     [searchBar setText:@""];
     [searchBar resignFirstResponder];
     [super.tableView reloadData];
@@ -167,7 +172,7 @@
 #pragma mark Actions
 
 - (void)refreshActionCalled:(UIRefreshControl *)sender {
-    _jobsObject = nil;
+    _serverObject = nil;
     [self loadData];
 }
 
@@ -240,7 +245,7 @@
         _overviewCell = [[FTAccountOverviewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     [_overviewCell setDelegate:self];
-    [_overviewCell setJobsStats:_jobsObject.jobsStats];
+    [_overviewCell setJobsStats:_serverObject.jobsStats];
     return _overviewCell;
 }
 
@@ -276,7 +281,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (_isDataAvailable) {
-        if (indexPath.section == 1 && _jobsObject.jobs.count > 0) {
+        if (indexPath.section == 1 && _serverObject.jobs.count > 0) {
             FTAPIJobDataObject *job = [_finalData objectAtIndex:indexPath.row];
             if (job.jobDetail) {
                 FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
@@ -302,7 +307,7 @@
 
 - (void)viewSelectorController:(FTViewSelectorViewController *)controller didSelect:(FTAPIServerViewDataObject *)view {
     _selectedView = view;
-    _jobsObject = nil;
+    _serverObject = nil;
     [self loadData];
     self.navigationItem.rightBarButtonItem = nil;
     [controller dismissViewControllerAnimated:YES completion:^{
