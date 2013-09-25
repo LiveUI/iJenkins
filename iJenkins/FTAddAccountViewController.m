@@ -66,6 +66,7 @@
 }
 
 - (void)didCLickSaveNow:(UIBarButtonItem *)sender {
+    [self.view.window endEditing: YES];
     if (_isNew) {
         if ([_delegate respondsToSelector:@selector(addAccountViewController:didAddAccount:)]) {
             _isNew = NO;
