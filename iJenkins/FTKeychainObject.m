@@ -71,6 +71,15 @@ static NSString *serviceName = kFTKeychainObjectServiceName;
     return NO;
 }
 
+- (BOOL)storeKeychainValue:(NSString *)password forIdentifier:(NSString *)identifier {
+    BOOL ok;
+    ok = [self updateKeychainValue:password forIdentifier:identifier];
+    if ( ! ok ) {
+        ok = [self createKeychainValue:password forIdentifier:identifier];
+    }
+    return ok;
+}
+
 - (void)deleteKeychainValue:(NSString *)identifier {
     NSMutableDictionary *searchDictionary = [self newSearchDictionaryWithIdentifier:identifier];
     SecItemDelete((__bridge CFDictionaryRef)searchDictionary);
@@ -92,12 +101,7 @@ static NSString *serviceName = kFTKeychainObjectServiceName;
 
 - (void)setAccountsJsonFile:(NSString *)accountsJsonFile {
     BOOL ok;
-    if (self.accountsJsonFile) {
-        ok = [self updateKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
-    }
-    else {
-        ok = [self createKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
-    }
+    ok = [self storeKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
     kFTKeychainObjectDebugFull NSLog(@"Did save accounts to keychain: %@", ok ? @"Yes" : @"No");
 }
 
