@@ -29,6 +29,11 @@
     _overrideJenkinsUrl = YES;
     _loadMaxItems = 5;
     _buildLogMaxSize = 102400;
+    _host = @"";
+    _name = @"";
+    _username = @"";
+    _passwordOrToken = @"";
+    _pathSuffix = @"";
     [self originalDictionary];
 }
 
@@ -42,6 +47,13 @@
         [_originalDictionary setValue:[NSNumber numberWithBool:_overrideJenkinsUrl] forKey:@"overrideJenkinsUrl"];
         [_originalDictionary setValue:[NSNumber numberWithInteger:_loadMaxItems] forKey:@"loadMaxItems"];
         [_originalDictionary setValue:[NSNumber numberWithDouble:_buildLogMaxSize] forKey:@"buildLogMaxSize"];
+        
+        // Add blank strings to dictionary to allow revert back
+        [_originalDictionary setValue:_host forKey:@"host"];
+        [_originalDictionary setObject:_name forKey:@"name"];
+        [_originalDictionary setObject:_username forKey:@"username"];
+        [_originalDictionary setObject:_passwordOrToken forKey:@"password"];
+        [_originalDictionary setObject:_pathSuffix forKey:@"pathSuffix"];
     }
     return _originalDictionary;
 }
@@ -106,6 +118,23 @@
 - (void)setPasswordOrToken:(NSString *)passwordOrToken {
     _passwordOrToken = passwordOrToken;
     [self.originalDictionary setValue:passwordOrToken forKey:@"password"];
+}
+
+- (void)setOverridingDictionary:(NSMutableDictionary *)overridingDictionary {
+    // Enumerate each key to reset the Account back to it was before
+    [overridingDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        if ([key isEqual:@"name"])              [self setName:obj];
+        if ([key isEqual:@"host"])              [self setHost:obj];
+        if ([key isEqual:@"pathSuffix"])        [self setPathSuffix:obj];
+        if ([key isEqual:@"https"])             [self setHttps:[obj boolValue]];
+        if ([key isEqual:@"port"])              [self setPort:[obj integerValue]];
+        if ([key isEqual:@"xpath"])             [self setXpath:[obj boolValue]];
+        if ([key isEqual:@"timeout"])           [self setTimeout:[obj doubleValue]];
+        if ([key isEqual:@"overrideJenkinsUrl"])[self setOverrideJenkinsUrl:[obj boolValue]];
+        if ([key isEqual:@"buildLogMaxSize"])   [self setBuildLogMaxSize:[obj doubleValue]];
+        if ([key isEqual:@"username"])          [self setUsername:obj];
+        if ([key isEqual:@"password"])          [self setPasswordOrToken:obj];
+    }];
 }
 
 #pragma mark Getters

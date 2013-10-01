@@ -186,6 +186,7 @@
     FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setDelegate:self];
+    NSLog(@"%@",acc.name);
     [c setTitle:acc.name];
     [c setAccount:acc];
     
@@ -217,7 +218,7 @@
 
 - (void)addAccountViewControllerCloseWithoutSave:(FTAddAccountViewController *)controller {
     [self dismissViewControllerAnimated:YES completion:^{
-        
+        [controller resetAccountToOriginalStateIfNotNew];
     }];
 }
 

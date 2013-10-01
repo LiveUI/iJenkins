@@ -28,5 +28,7 @@
 @property (nonatomic, strong) FTAccount *account;
 @property (nonatomic, weak) id <FTAddAccountViewControllerDelegate> delegate;
 
+- (void)resetAccountToOriginalStateIfNotNew;
+
 
 @end

@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSMutableDictionary *originalDictionary;
 
 @property (nonatomic) BOOL keyboardIsOn;
 
@@ -51,10 +52,18 @@
     [self createTopButtons];
 }
 
+#pragma mark Resetting Method
+
+- (void)resetAccountToOriginalStateIfNotNew {
+    if (!_isNew)[_account setOverridingDictionary:self.originalDictionary];
+}
+
 #pragma mark Settings
 
 - (void)setAccount:(FTAccount *)account {
     _account = account;
+    // Retain dictionary in FTAccount to allow revert
+    self.originalDictionary = [account.originalDictionary copy];
 }
 
 #pragma mark Actions
@@ -66,6 +75,7 @@
 }
 
 - (void)didCLickSaveNow:(UIBarButtonItem *)sender {
+    [self.view.window endEditing:YES];
     if (_isNew) {
         if ([_delegate respondsToSelector:@selector(addAccountViewController:didAddAccount:)]) {
             _isNew = NO;

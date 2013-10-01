@@ -29,6 +29,8 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *passwordOrToken;
 
+@property (nonatomic, copy) NSMutableDictionary *overridingDictionary;
+
 - (NSString *)baseUrl;
 
 

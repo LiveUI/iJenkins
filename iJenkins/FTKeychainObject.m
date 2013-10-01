@@ -50,10 +50,16 @@ static NSString *serviceName = kFTKeychainObjectServiceName;
     NSMutableDictionary *dictionary = [self newSearchDictionaryWithIdentifier:identifier];
     NSData *passwordData = [password dataUsingEncoding:NSUTF8StringEncoding];
     [dictionary setObject:passwordData forKey:(__bridge id)kSecValueData];
-    
+    [dictionary setObject:(__bridge id)kSecAttrAccessibleWhenUnlocked forKey:(__bridge id)kSecAttrAccessible];
     OSStatus status = SecItemAdd((__bridge CFDictionaryRef)dictionary, NULL);
     if (status == errSecSuccess) {
         return YES;
+    }
+    if (status == errSecDuplicateItem){
+        //If a duplicate found on a create, it should remove the previous one.
+        [self deleteKeychainValue:identifier];
+        //Recursive call ensures the keychain is definitely NOT a DUPLICATE on CREATE. (because it should be new)
+        [self createKeychainValue:password forIdentifier:identifier];
     }
     return NO;
 }
