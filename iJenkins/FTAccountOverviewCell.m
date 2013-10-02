@@ -118,23 +118,28 @@
 
 - (void)startInitialChartSliceAnimation {
     _sliceAnimationCount = 0;
-    NSTimer *chartAnimationTimer = [NSTimer scheduledTimerWithTimeInterval:0.08 target:self selector:@selector(initialChartSliceAnimation:) userInfo:nil repeats:YES];
-    [[NSRunLoop mainRunLoop] addTimer:chartAnimationTimer forMode:NSRunLoopCommonModes];
-}
-
-- (void)deselectSliceWithTimer:(NSTimer *)timer {
-    [_chart setSliceDeselectedAtIndex:[[timer userInfo] integerValue]];
+    
+    self.userInteractionEnabled = NO;
+    
+    //  When the chart animation is finished
+    double delayInSeconds = _chart.animationSpeed;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
+    {
+        //  Start timer for automatic "slideshow" of jobs stats
+        NSTimer *chartAnimationTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(initialChartSliceAnimation:) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:chartAnimationTimer forMode:NSRunLoopCommonModes];
+    });
 }
 
 - (void)initialChartSliceAnimation:(NSTimer *)timer {
-    if (_sliceAnimationCount <= _jobsStats.allKeys.count) {
+    if (_sliceAnimationCount < _jobsStats.allKeys.count) {
         [self pieChart:_chart didSelectSliceAtIndex:_sliceAnimationCount];
-        [_chart setSliceSelectedAtIndex:_sliceAnimationCount];
-        NSNumber *sliceNumber = [NSNumber numberWithInteger:_sliceAnimationCount];
-        [NSTimer scheduledTimerWithTimeInterval:0.15 target:self selector:@selector(deselectSliceWithTimer:) userInfo:sliceNumber repeats:NO];
+        [_chart setSliceSelectedAtIndex:_sliceAnimationCount animated:YES];
         _sliceAnimationCount++;
     }
     else {
+        [_chart deselectCurrenSlice];
         [timer invalidate];
         timer = nil;
         self.userInteractionEnabled = YES;
@@ -145,6 +150,7 @@
 
 - (void)setJobsStats:(NSDictionary *)jobsStats {
     _jobsStats = jobsStats;
+    [self showTotalJobs];
     [_chart reloadData];
     [self startInitialChartSliceAnimation];
 }
