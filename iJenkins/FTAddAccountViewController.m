@@ -158,6 +158,10 @@
     else {
         cell = [self textCell];
     }
+    if ([[d objectForKey:@"type"] isEqualToString:@"url"] || [[d objectForKey:@"type"] isEqualToString:@"username"]) {
+        [[(FTTextAccountCell *)cell textField] setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [[(FTTextAccountCell *)cell textField] setAutocorrectionType:UITextAutocorrectionTypeNo];
+    }
     [cell setDelegate:self];
     [cell setIndexPath:indexPath];
     [cell setCellData:d];

@@ -11,8 +11,6 @@
 
 @interface FTTextAccountCell ()
 
-@property (nonatomic, strong) UITextField *textField;
-
 @end
 
 

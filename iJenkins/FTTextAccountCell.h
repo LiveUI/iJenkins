@@ -8,6 +8,10 @@
 
 #import "FTBasicAccountCell.h"
 
+
 @interface FTTextAccountCell : FTBasicAccountCell <UITextFieldDelegate>
+
+@property (nonatomic, strong) UITextField *textField;
+
 
 @end

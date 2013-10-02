@@ -80,7 +80,7 @@
 				<key>default</key>
 				<string></string>
 				<key>type</key>
-				<string>text</string>
+				<string>username</string>
 				<key>variable</key>
 				<string>username</string>
 			</dict>
@@ -115,7 +115,7 @@
 				<key>default</key>
 				<string></string>
 				<key>type</key>
-				<string>text</string>
+				<string>url</string>
 				<key>variable</key>
 				<string>pathSuffix</string>
 			</dict>
