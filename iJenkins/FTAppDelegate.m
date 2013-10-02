@@ -7,6 +7,7 @@
 //
 
 #import "FTAppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 #import "FTAccountsViewController.h"
 
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [Crashlytics startWithAPIKey:@"645cad88976887e985fc9e2d08345ca9cc583918"];
+    
     _viewController = [[FTAccountsViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
     [_window setRootViewController:nc];
