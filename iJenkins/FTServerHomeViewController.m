@@ -127,12 +127,15 @@
     
     [super createTableView];
     
+    // TODO: Implement search bar
+    /*
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
     [_searchBar setDelegate:self];
     [_searchBar setShowsCancelButton:NO];
     [_searchBar setAutoresizingWidth];
     [super.tableView setTableHeaderView:_searchBar];
-    
+    */
+     
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:_refreshControl];
