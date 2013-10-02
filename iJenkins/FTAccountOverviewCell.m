@@ -121,13 +121,17 @@
     
     self.userInteractionEnabled = NO;
     
+    //  Labels hidden during intro animation
+    _descriptionLabel.alpha = 0;
+    _countLabel.alpha = 0;
+    
     //  When the chart animation is finished
     double delayInSeconds = _chart.animationSpeed;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void)
     {
         //  Start timer for automatic "slideshow" of jobs stats
-        NSTimer *chartAnimationTimer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(initialChartSliceAnimation:) userInfo:nil repeats:YES];
+        NSTimer *chartAnimationTimer = [NSTimer timerWithTimeInterval:0.2 target:self selector:@selector(initialChartSliceAnimation:) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:chartAnimationTimer forMode:NSRunLoopCommonModes];
     });
 }
@@ -143,6 +147,15 @@
         [timer invalidate];
         timer = nil;
         self.userInteractionEnabled = YES;
+        
+        //  Fade in labels
+        [UIView animateWithDuration:0.3
+                              delay:0.3
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             _descriptionLabel.alpha = 1.0f;
+                             _countLabel.alpha = 1.0f;
+                         } completion:NULL];
     }
 }
 
