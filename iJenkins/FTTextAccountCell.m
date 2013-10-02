@@ -81,7 +81,7 @@
         [_textField setText:account.host];
     }
     else if ([variable isEqualToString:@"port"]) {
-        [_textField setText:[NSString stringWithFormat:@"%d", account.port]];
+        [_textField setText:(account.port ? [NSString stringWithFormat:@"%d", account.port] : @"")];
     }
     else if ([variable isEqualToString:@"username"]) {
         [_textField setText:account.username];

@@ -49,7 +49,8 @@
         return [UIColor colorWithWhite:0 alpha:0.1];
     }
     if ([resultString isEqualToString:@"SUCCESS"]) {
-        return [UIColor colorWithHexString:@"6DD900"];
+        //return [UIColor colorWithHexString:@"6DD900"]; // Green
+        return [UIColor colorWithHexString:@"007EF3"];
     }
     else if ([resultString isEqualToString:@"UNSTABLE"]) {
         return [UIColor colorWithHexString:@"FFDC73"];

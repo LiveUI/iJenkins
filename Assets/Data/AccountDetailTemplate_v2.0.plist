@@ -107,6 +107,20 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>Path suffix</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>Optional url suffix</string>
+				<key>default</key>
+				<string></string>
+				<key>type</key>
+				<string>url</string>
+				<key>variable</key>
+				<string>pathSuffix</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>Load max builds</string>
 				<key>description</key>
 				<string>0 for all items in build history</string>
@@ -118,6 +132,20 @@
 				<string>int</string>
 				<key>variable</key>
 				<string>loadMaxItems</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Override Jenkins URL</string>
+				<key>description</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>default</key>
+				<string>1</string>
+				<key>type</key>
+				<string>switch</string>
+				<key>variable</key>
+				<string>overrideJenkinsUrl</string>
 			</dict>
 		</array>
 	</dict>

@@ -72,7 +72,8 @@
         return [UIColor colorWithHexString:@"FF4000"];
     }
     else if ([self.color isEqualToString:@"blue"]) {
-        return [UIColor colorWithHexString:@"6DD900"];
+        //return [UIColor colorWithHexString:@"6DD900"]; // Green
+        return [UIColor colorWithHexString:@"007EF3"];
     }
     else if ([self.color isEqualToString:@"yellow"]) {
         return [UIColor colorWithHexString:@"FFDC73"];
