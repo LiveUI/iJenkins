@@ -174,7 +174,7 @@
     else {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
+    __block FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
     [cell.textLabel setText:acc.name];
     NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%d", acc.port] : @"";
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@", acc.host, port]];
@@ -192,9 +192,31 @@
             }
             _reachabilityCache[acc.host] = r;
             [r startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
-                FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
-                _reachabilityStatusCache[key] = @(s);
-                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                __block FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
+                if (status == GCNetworkReachabilityStatusNotReachable) {
+                    _reachabilityStatusCache[key] = @(s);
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                }
+                else {
+                    _reachabilityStatusCache[key] = @(s);
+                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    
+                    // TODO: Finish the API request to check server API, not just reachability
+                    /*
+                    [kAccountsManager setSelectedAccount:acc];
+                    FTAPIOverallLoadDataObject *loadObject = [[FTAPIOverallLoadDataObject alloc] init];
+                    [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+                        if (error) {
+                            s = FTAccountCellReachabilityStatusUnreachable;
+                        }
+                        else {
+                            s = FTAccountCellReachabilityStatusReachable;
+                        }
+                        _reachabilityStatusCache[key] = @(s);
+                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    }];
+                     */
+                }
             }];
         }
     }

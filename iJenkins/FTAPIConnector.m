@@ -35,19 +35,17 @@ static FTAccount *_sharedAccount = nil;
 #pragma mark Initialization
 
 + (FTAPIConnector *)sharedConnector {
-    static FTAPIConnector *sharedConnector = nil;
+    static FTAPIConnector *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedConnector = [[FTAPIConnector alloc] init];
+        shared = [[FTAPIConnector alloc] init];
     });
-    
-    return sharedConnector;
+    return shared;
 }
 
 + (AFHTTPClient *)sharedClient {
     if (!_sharedClient) {
         _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
-        
     }
     return _sharedClient;
 }

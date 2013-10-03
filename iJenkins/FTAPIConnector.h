@@ -10,6 +10,9 @@
 #import "FTAPIServerDataObject.h"
 #import "FTAPIBuildDetailDataObject.h"
 #import "FTAPIJobBuildDataObject.h"
+#import "FTAPIBuildQueueDataObject.h"
+#import "FTAPIOverallLoadDataObject.h"
+#import "FTAPIRestartDataObject.h"
 
 
 #define kAPIConnector                                       [FTAPIConnector sharedConnector]
@@ -25,7 +28,7 @@ typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, lo
 
 @interface FTAPIConnector : NSObject
 
-@property (nonatomic, strong) NSOperationQueue *apiOperatioQueue;
+@property (nonatomic, strong, readonly) NSOperationQueue *apiOperatioQueue;
 
 + (FTAPIConnector *)sharedConnector;
 + (void)resetForAccount:(FTAccount *)account;
