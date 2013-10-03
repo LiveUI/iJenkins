@@ -183,18 +183,20 @@
     NSNumber *key = @([acc hash]);
     NSNumber *statusNumber = _reachabilityStatusCache[key];
     
-    GCNetworkReachability *r = _reachabilityCache[acc.name];
-    if (!r) {
-        r = [GCNetworkReachability reachabilityWithHostName:acc.host];
-        if (!_reachabilityCache) {
-            _reachabilityCache = [NSMutableDictionary dictionary];
+    if (acc.host.length > 0) {
+        GCNetworkReachability *r = _reachabilityCache[acc.host];
+        if (!r) {
+            r = [GCNetworkReachability reachabilityWithHostName:acc.host];
+            if (!_reachabilityCache) {
+                _reachabilityCache = [NSMutableDictionary dictionary];
+            }
+            _reachabilityCache[acc.host] = r;
+            [r startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
+                FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
+                _reachabilityStatusCache[key] = @(s);
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }];
         }
-        _reachabilityCache[acc.name] = r;
-        [r startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
-            FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
-            _reachabilityStatusCache[key] = @(s);
-            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-        }];
     }
     
     if (statusNumber) {
