@@ -87,6 +87,16 @@
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
     [super.tableView setEditing:!super.tableView.editing animated:YES];
+    
+    UIBarButtonSystemItem item;
+    if (self.tableView.editing) {
+        item = UIBarButtonSystemItemDone;
+    }
+    else {
+        item = UIBarButtonSystemItemEdit;
+    }
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:self action:@selector(didCLickEditItem:)];
+    [self.navigationItem setRightBarButtonItem:edit animated:YES];
 }
 
 #pragma mark Table view delegate and data source methods
