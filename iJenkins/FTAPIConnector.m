@@ -75,14 +75,18 @@ static FTAccount *_sharedAccount = nil;
 #pragma mark Connections
 
 + (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
     FTJSONRequestOperation *operation = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [object processData:JSON];
         [object setResponse:response];
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         if (complete) {
             complete(object, nil);
         }
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         if (complete) {
             complete(object, error);
         }
