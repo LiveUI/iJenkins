@@ -139,10 +139,15 @@
 
 #pragma mark Getters
 
+- (NSString *)hostUrl {
+    NSString *port = (_port != 0) ? [NSString stringWithFormat:@":%d", _port] : @"";
+    NSString *url = [NSString stringWithFormat:@"%@%@", _host, port];
+    return url;
+}
+
 - (NSString *)baseUrl {
     NSString *https = _https ? @"s" : @"";
-    NSString *port = (_port != 0) ? [NSString stringWithFormat:@":%d", _port] : @"";
-    NSString *url = [NSString stringWithFormat:@"http%@://%@%@/", https, _host, port];
+    NSString *url = [NSString stringWithFormat:@"http%@://%@/", https, self.hostUrl];
     return url;
 }
 

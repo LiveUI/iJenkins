@@ -31,6 +31,7 @@
 
 @property (nonatomic, copy) NSMutableDictionary *overridingDictionary;
 
+- (NSString *)hostUrl;
 - (NSString *)baseUrl;
 
 
