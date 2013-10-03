@@ -21,6 +21,7 @@
 @interface FTViewSelectorViewController : FTViewController
 
 @property (nonatomic, strong) NSArray *views;
+@property (nonatomic, strong) FTAPIServerViewDataObject *selectedView;
 
 @property (nonatomic, weak) id <FTViewSelectorViewControllerDelegate> delegate;
 

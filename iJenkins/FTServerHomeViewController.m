@@ -181,6 +181,7 @@
 
 - (void)showViewSelector:(UIBarButtonItem *)sender {
     FTViewSelectorViewController *c = [[FTViewSelectorViewController alloc] init];
+    [c setSelectedView:_selectedView];
     [c setViews:_views];
     [c setDelegate:self];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];

@@ -71,6 +71,12 @@
     FTAPIServerViewDataObject *v = [_views objectAtIndex:indexPath.row];
     [cell.textLabel setText:v.name];
     [cell.detailTextLabel setText:nil];
+    if ([_selectedView.name isEqualToString:v.name]) {
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
     return cell;
 }
 
