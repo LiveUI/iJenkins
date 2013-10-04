@@ -11,6 +11,7 @@
 #import "FTBuildDetailChangesViewController.h"
 #import "FTLogViewController.h"
 #import "FTBuildInfoCell.h"
+#import "NSDate+Formatting.h"
 
 /**
  *  This enum defines concrete rows of the build detail controller. To reorder informations (cells), just change the order in this enum, change number of rows in const values and corresponding mapping methods -indexForIndexIndexPath and -indexPathForIndex
@@ -82,14 +83,27 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     cell.detailTextLabel.text = [self detailForIndex:index];
     
     BOOL canOpenCell = (indexPath.section == 1);
+    if (canOpenCell) {
+        if (indexPath.row == 1) {
+            canOpenCell = (_build.buildDetail.changeSet.items.count > 0);
+        }
+        if (!canOpenCell) {
+            [cell.textLabel setAlpha:0.3];
+            [cell.detailTextLabel setAlpha:0.3];
+            [cell.accessoryView setAlpha:0.3];
+        }
+        else {
+            [cell.textLabel setAlpha:1];
+            [cell.detailTextLabel setAlpha:1];
+            [cell.accessoryView setAlpha:1];
+        }
+    }
     cell.accessoryType = (canOpenCell  ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone);
-    cell.selectionStyle = (canOpenCell ? UITableViewCellSelectionStyleDefault : UITableViewCellEditingStyleNone);
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     FTBuildDetailControllerIndex index = [self indexForIndexPath:indexPath];
     
@@ -102,9 +116,11 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexChanges: {
-            FTBuildDetailChangesViewController *c = [[FTBuildDetailChangesViewController alloc] init];
-            [c setChangeSet:_build.buildDetail.changeSet];
-            openedController = c;
+            if (_build.buildDetail.changeSet.items.count > 0) {
+                FTBuildDetailChangesViewController *c = [[FTBuildDetailChangesViewController alloc] init];
+                [c setChangeSet:_build.buildDetail.changeSet];
+                openedController = c;
+            }
         }
             
         default:
@@ -171,7 +187,8 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexDateExecuted:
-            title = [self.build.buildDetail.dateExecuted description];
+            NSLog(@"Date: %@", self.build.buildDetail.dateExecuted.description);
+            title = [_build.buildDetail.dateExecuted relativeDate];
             break;
             
         case FTBuildDetailControllerIndexCause:
@@ -187,7 +204,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexResult:
-            title = FTLangGet(self.build.buildDetail.resultString); // Done
+            title = FTLangGet(_build.buildDetail.resultString.uppercaseString); // Done
             break;
         
         case FTBuildDetailControllerIndexBuiltOn:
@@ -196,6 +213,11 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             
         case FTBuildDetailControllerIndexExecutor:
             title = @"Executor TODO";
+            break;
+            
+        case FTBuildDetailControllerIndexChanges:
+            NSLog(@"Changes: %@", _build.buildDetail.changeSet.items);
+            title = [NSString stringWithFormat:@"(%d)", _build.buildDetail.changeSet.items.count];
             break;
             
         default:
@@ -211,9 +233,11 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
 {
     if (indexPath.section == 0) {
         return indexPath.row;
-    } else if(indexPath.section == 1) {
+    }
+    else if(indexPath.section == 1) {
         return indexPath.row + [self tableView:self.tableView numberOfRowsInSection:0];
-    } else {
+    }
+    else {
         return 0;
     }
 }
@@ -224,9 +248,11 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     
     if (index < numberOfItemsInFirstSection) {
         return [NSIndexPath indexPathForRow:index inSection:0];
-    } else if (index < numberOfItemsInFirstSection+[self tableView:self.tableView numberOfRowsInSection:1]) {
+    }
+    else if (index < numberOfItemsInFirstSection+[self tableView:self.tableView numberOfRowsInSection:1]) {
         return [NSIndexPath indexPathForRow:(index-numberOfItemsInFirstSection) inSection:1];
-    } else {
+    }
+    else {
         return nil;
     }
 }

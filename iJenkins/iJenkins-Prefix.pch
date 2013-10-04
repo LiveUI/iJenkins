@@ -27,4 +27,5 @@
     #import "FAImageView.h"
     #import "UIView+Layout.h"
     #import "UIColor+Tools.h"
+    #import "UIColor+Jenkins.h"
 #endif

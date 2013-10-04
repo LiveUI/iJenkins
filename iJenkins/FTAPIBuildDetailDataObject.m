@@ -44,28 +44,6 @@
     }
 }
 
-- (UIColor *)colorForString:(NSString *)resultString {
-    if (!resultString || [resultString isKindOfClass:[NSNull class]]) {
-        return [UIColor colorWithWhite:0 alpha:0.1];
-    }
-    if ([resultString isEqualToString:@"SUCCESS"]) {
-        //return [UIColor colorWithHexString:@"6DD900"]; // Green
-        return [UIColor colorWithHexString:@"007EF3"];
-    }
-    else if ([resultString isEqualToString:@"UNSTABLE"]) {
-        return [UIColor colorWithHexString:@"FFDC73"];
-    }
-    else if ([resultString isEqualToString:@"FAILURE"]) {
-        return [UIColor colorWithHexString:@"FF4000"];
-    }
-    else if ([resultString isEqualToString:@"ABORTED"]) {
-        return [UIColor grayColor];
-    }
-    else {
-        return [UIColor colorWithWhite:0 alpha:0.1];
-    }
-}
-
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
@@ -109,7 +87,7 @@
     _estimatedDuration = [[data objectForKey:@"estimatedDuration"] integerValue];
     _keepLog = [[data objectForKey:@"keepLog"] boolValue];
     
-    _realColor = [self colorForString:_resultString];
+    _realColor = [UIColor colorForJenkinsBuildStatus:_resultString];
 }
 
 #pragma mark Connection handling
