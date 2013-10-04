@@ -63,6 +63,8 @@
 		154465DF17FE137400025022 /* FTAPIOverallLoadDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465DE17FE137400025022 /* FTAPIOverallLoadDataObject.m */; };
 		154465E217FE161700025022 /* FTAPIBuildQueueDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465E117FE161700025022 /* FTAPIBuildQueueDataObject.m */; };
 		154465EB17FE17FD00025022 /* FTAPIRestartDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465EA17FE17FD00025022 /* FTAPIRestartDataObject.m */; };
+		154465F017FE33EA00025022 /* FTLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465EF17FE33EA00025022 /* FTLogViewController.m */; };
+		154465F317FE340A00025022 /* FTBuildDetailChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F217FE340A00025022 /* FTBuildDetailChangesViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -201,6 +203,10 @@
 		154465E117FE161700025022 /* FTAPIBuildQueueDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIBuildQueueDataObject.m; sourceTree = "<group>"; };
 		154465E917FE17FD00025022 /* FTAPIRestartDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIRestartDataObject.h; sourceTree = "<group>"; };
 		154465EA17FE17FD00025022 /* FTAPIRestartDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIRestartDataObject.m; sourceTree = "<group>"; };
+		154465EE17FE33EA00025022 /* FTLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLogViewController.h; sourceTree = "<group>"; };
+		154465EF17FE33EA00025022 /* FTLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLogViewController.m; sourceTree = "<group>"; };
+		154465F117FE340A00025022 /* FTBuildDetailChangesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuildDetailChangesViewController.h; sourceTree = "<group>"; };
+		154465F217FE340A00025022 /* FTBuildDetailChangesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBuildDetailChangesViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -672,6 +678,8 @@
 		153921E317E26FE800896FC1 /* Build detail */ = {
 			isa = PBXGroup;
 			children = (
+				154465ED17FE33A900025022 /* Log */,
+				154465EC17FE33A100025022 /* Changes */,
 				153921E417E2700400896FC1 /* FTBuildDetailViewController.h */,
 				153921E517E2700400896FC1 /* FTBuildDetailViewController.m */,
 			);
@@ -712,6 +720,24 @@
 				154465EA17FE17FD00025022 /* FTAPIRestartDataObject.m */,
 			);
 			name = Restarts;
+			sourceTree = "<group>";
+		};
+		154465EC17FE33A100025022 /* Changes */ = {
+			isa = PBXGroup;
+			children = (
+				154465F117FE340A00025022 /* FTBuildDetailChangesViewController.h */,
+				154465F217FE340A00025022 /* FTBuildDetailChangesViewController.m */,
+			);
+			name = Changes;
+			sourceTree = "<group>";
+		};
+		154465ED17FE33A900025022 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				154465EE17FE33EA00025022 /* FTLogViewController.h */,
+				154465EF17FE33EA00025022 /* FTLogViewController.m */,
+			);
+			name = Log;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1255,6 +1281,7 @@
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
 				15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
+				154465F017FE33EA00025022 /* FTLogViewController.m in Sources */,
 				15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIServerDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
@@ -1265,6 +1292,7 @@
 				15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */,
 				151072A817D0851D00FD083B /* FTBasicCell.m in Sources */,
 				15D2467B17CFBE5200793614 /* FTAccount.m in Sources */,
+				154465F317FE340A00025022 /* FTBuildDetailChangesViewController.m in Sources */,
 				1510734217D28C4300FD083B /* FTTextAccountCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

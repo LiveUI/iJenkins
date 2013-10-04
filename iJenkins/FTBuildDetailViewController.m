@@ -7,6 +7,8 @@
 //
 
 #import "FTBuildDetailViewController.h"
+#import "FTLogViewController.h"
+#import "FTBuildDetailChangesViewController.h"
 
 
 @interface FTBuildDetailViewController ()
@@ -39,5 +41,11 @@
     return FTLangGet(@"Build details");
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    FTLogViewController *c = [[FTLogViewController alloc] initWithJobName:_build.buildDetail.jobName andJobNumber:_build.buildDetail.buildNumber];
+    [self.navigationController pushViewController:c animated:YES];
+}
 
 @end
