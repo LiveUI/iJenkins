@@ -45,7 +45,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
-        FTLogViewController *c = [[FTLogViewController alloc] initWithJobName:_build.buildDetail.jobName andJobNumber:_build.buildDetail.buildNumber];
+        FTLogViewController *c = [[FTLogViewController alloc] initWithJobName:@"Vi test" andJobNumber:1];
         [self.navigationController pushViewController:c animated:YES];
     }
     else {
