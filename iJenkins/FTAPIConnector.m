@@ -9,6 +9,7 @@
 #import "FTAPIConnector.h"
 #import "AFNetworking.h"
 #import "FTJSONRequestOperation.h"
+#import "FTHTTPRequestOperation.h"
 #import "FTAccount.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
@@ -16,7 +17,7 @@
 #import "NSData+Base64.h"
 
 
-#define kFTAPIConnectorDebug                                    YES
+#define kFTAPIConnectorDebug                                    NO
 #define kFTAPIConnectorDebugFull                                if (kFTAPIConnectorDebug) 
 
 
@@ -78,19 +79,41 @@ static FTAccount *_sharedAccount = nil;
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
-    FTJSONRequestOperation *operation = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        [object processData:JSON];
-        [object setResponse:response];
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        if (complete) {
-            complete(object, nil);
-        }
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-        if (complete) {
-            complete(object, error);
-        }
-    }];
+    id operation = nil;
+    if ([object outputType] == FTAPIDataObjectOutputTypeJSON) {
+        FTJSONRequestOperation *o = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            [object processData:JSON];
+            [object setResponse:response];
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            if (complete) {
+                complete(object, nil);
+            }
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            if (complete) {
+                complete(object, error);
+            }
+        }];
+        operation = o;
+    }
+    else {
+        AFHTTPRequestOperation *o = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+        [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            [object processText:text];
+            [object setResponse:operation.response];
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            if (complete) {
+                complete(object, nil);
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            if (complete) {
+                complete(object, error);
+            }
+        }];
+        operation = o;
+    }
     [operation setDataObject:object];
     if (upload) {
         [operation setUploadProgressBlock:upload];
@@ -102,6 +125,7 @@ static FTAccount *_sharedAccount = nil;
     [operation setQueuePriority:[object queuePriority]];
     
     [[[FTAPIConnector sharedConnector] apiOperatioQueue] addOperation:operation];
+    
 }
 
 + (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
@@ -177,10 +201,6 @@ static FTAccount *_sharedAccount = nil;
     [request setURL:[NSURL URLWithString:url]];
     [request setTimeoutInterval:8.0];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
-    
-    //NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
-    
-    NSLog(@"Sending headers: %@", request.allHTTPHeaderFields);
     
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];
     

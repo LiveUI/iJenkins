@@ -32,8 +32,6 @@
 
 - (void)processHeaders:(NSDictionary *)headers {
     [super processHeaders:headers];
-    
-    NSLog(@"Build headers: %@", headers);
 }
 
 - (NSOperationQueuePriority)queuePriority {

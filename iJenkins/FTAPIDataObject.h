@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 
 
+typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
+    FTAPIDataObjectOutputTypeJSON,
+    FTAPIDataObjectOutputTypePlainText
+};
+
+
 @protocol FTAPIDataAbstractObject <NSObject>
 
 @property (nonatomic, strong) NSHTTPURLResponse *response;
@@ -17,11 +23,13 @@
 - (NSString *)methodName;
 - (NSDictionary *)payloadData;
 - (void)processData:(NSDictionary *)data;
+- (void)processText:(NSString *)text;
 
 - (void)resetLoading;
 - (NSOperationQueuePriority)queuePriority;
 - (NSString *)suffix;
 - (NSInteger)depth;
+- (FTAPIDataObjectOutputType)outputType;
 
 
 @end
@@ -40,6 +48,7 @@
 @property (nonatomic) NSInteger responseStatusCode;
 
 - (void)processData:(NSDictionary *)data;
+- (void)processText:(NSString *)text;
 - (void)processHeaders:(NSDictionary *)headers;
 
 - (void)resetLoading;
@@ -48,6 +57,7 @@
 
 - (NSString *)suffix;
 - (NSInteger)depth;
+- (FTAPIDataObjectOutputType)outputType;
 
 
 @end

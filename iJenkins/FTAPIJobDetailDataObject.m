@@ -136,7 +136,6 @@
 #pragma makr Data
 
 - (void)processData:(NSDictionary *)data {
-    NSLog(@"Health data: %@", data);
     _score = [[data objectForKey:@"score"] integerValue];
     _iconUrl = [data objectForKey:@"iconUrl"];
     _description = [data objectForKey:@"description"];

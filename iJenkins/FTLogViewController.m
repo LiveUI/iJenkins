@@ -15,7 +15,7 @@
 @property (nonatomic, strong) UITextView *textView;
 
 @property (nonatomic, strong) NSString *jobName;
-@property (nonatomic) NSInteger jobNumber;
+@property (nonatomic) NSInteger buildNumber;
 
 @property (nonatomic, strong) AFHTTPRequestOperation *download;
 @property (nonatomic, strong) NSMutableData *data;
@@ -25,6 +25,15 @@
 
 @implementation FTLogViewController
 
+
+#pragma mark Data
+
+- (void)loadData {
+    FTAPIBuildConsoleOutputDataObject *loadObject = [[FTAPIBuildConsoleOutputDataObject alloc] initWithJobName:_jobName andBuildNumber:_buildNumber];
+    [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        
+    }];
+}
 
 #pragma mark Creating elements
 
@@ -42,15 +51,15 @@
 
 #pragma mark Initialization
 
-- (id)initWithJobName:(NSString *)jobName andJobNumber:(NSInteger)jobNumber {
+- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber {
     self = [super init];
     if (self) {
         [self setTitle:FTLangGet(@"Build log")];
         
         _jobName = jobName;
-        _jobNumber = jobNumber;
+        _buildNumber = buildNumber;
         
-        
+        [self loadData];
     }
     return self;
 }

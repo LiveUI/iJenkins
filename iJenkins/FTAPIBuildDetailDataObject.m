@@ -69,8 +69,6 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    NSLog(@"Data: %@", data);
-    
     _timestamp = [[data objectForKey:@"timestamp"] integerValue];
     
     _fullDisplayName = [data objectForKey:@"fullDisplayName"];

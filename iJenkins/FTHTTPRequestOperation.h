@@ -1,15 +1,15 @@
 //
-//  FTJSONRequestOperation.h
+//  FTHTTPRequestOperation.h
 //  iJenkins
 //
-//  Created by Ondrej Rafaj on 13/09/2013.
+//  Created by Ondrej Rafaj on 04/10/2013.
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "AFJSONRequestOperation.h"
+#import "AFHTTPRequestOperation.h"
 
 
-@interface FTJSONRequestOperation : AFJSONRequestOperation
+@interface FTHTTPRequestOperation : AFHTTPRequestOperation
 
 @property (nonatomic, strong) id <FTAPIDataAbstractObject> dataObject;
 

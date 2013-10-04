@@ -11,7 +11,7 @@
 
 @interface FTLogViewController : FTViewController <NSStreamDelegate>
 
-- (id)initWithJobName:(NSString *)jobName andJobNumber:(NSInteger)jobNumber;
+- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
 
 
 @end

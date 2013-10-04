@@ -13,6 +13,7 @@
 #import "FTAPIBuildQueueDataObject.h"
 #import "FTAPIOverallLoadDataObject.h"
 #import "FTAPIRestartDataObject.h"
+#import "FTAPIBuildConsoleOutputDataObject.h"
 
 
 #define kAPIConnector                                       [FTAPIConnector sharedConnector]

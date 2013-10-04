@@ -81,8 +81,6 @@ static FTAccountsManager *staticManager = nil;
     if (accounts) return accounts;
     else {
         NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFile];
-        NSLog(@"Json string :%@", jsonString);
-        
         
         NSArray *dataAccounts = nil;
         if (jsonString) {

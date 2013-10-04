@@ -54,6 +54,15 @@
 }
 
 /**
+ *  Process data coming from the API as a plain text
+ *
+ *  @param text API content in plain text
+ */
+- (void)processText:(NSString *)text {
+    
+}
+
+/**
  *  Process headers coming from the API
  *
  *  @param headers Request headers
@@ -71,8 +80,22 @@
     return @"api/json";
 }
 
+/**
+ *  Depth of load for the API
+ *
+ *  @return Number of levels to load
+ */
 - (NSInteger)depth {
     return 0;
+}
+
+/**
+ *  Defines if the API is for JSON or plain text values
+ *
+ *  @return Type of the API
+ */
+- (FTAPIDataObjectOutputType)outputType {
+    return FTAPIDataObjectOutputTypeJSON;
 }
 
 
