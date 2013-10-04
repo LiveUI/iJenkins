@@ -33,10 +33,10 @@
         
         if (relativeNumber && relativeNumber != INT32_MAX) {
             if (relativeNumber > 1) {
-                return [NSString stringWithFormat:@"%d %@s ago", relativeNumber, FTLangGet(selectorName)];
+                return [NSString stringWithFormat:@"%d %@s %@", relativeNumber, FTLangGet(selectorName), FTLangGet(@"ago")];
             }
             else {
-                return [NSString stringWithFormat:@"%d %@ ago", relativeNumber, FTLangGet(selectorName)];
+                return [NSString stringWithFormat:@"%d %@ %@", relativeNumber, FTLangGet(selectorName), FTLangGet(@"ago")];
             }
         }
     }

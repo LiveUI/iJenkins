@@ -198,7 +198,6 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexDateExecuted:
-            NSLog(@"Date: %@", self.build.buildDetail.dateExecuted.description);
             title = [_build.buildDetail.dateExecuted relativeDate];
             break;
             

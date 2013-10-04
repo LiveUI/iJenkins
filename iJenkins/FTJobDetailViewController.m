@@ -13,6 +13,7 @@
 #import "FTJobHealthInfoCell.h"
 #import "FTLastBuildInfoCell.h"
 #import "FTAccountsManager.h"
+#import "NSDate+Formatting.h"
 
 
 @interface FTJobDetailViewController ()
@@ -77,16 +78,34 @@
 - (UITableViewCell *)cellForJobInfoWithRow:(NSInteger)row {
     switch (row) {
         case 0: {
-//            FTJobInfoBuildNumberCell *cell = (FTJobInfoBuildNumberCell *)[FTJobInfoBuildNumberCell cellForTable:self.tableView];
-//            [cell setJob:_job];
-//            return cell;
             return [self cellForLastBuildsWithRow:[NSIndexPath indexPathForItem:0 inSection:0]];
         }
             
         case 1: {
             FTSmallTextCell *cell = (FTSmallTextCell *)[FTSmallTextCell cellForTable:self.tableView];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), @"14 hour and 15 minutes", FTLangGet(@"ago and took"), @"1 minute and 14 seconds", FTLangGet(@"to finish")]];
+            
+            if (_job.jobDetail.builds.count > 0) {
+                FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:0];
+                if (!_job.jobDetail.lastBuild.buildDetail) {
+                    [cell setText:FTLangGet(@"Loading ...")];
+                    [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
+                        [_job.jobDetail.lastBuild loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
+                            [self.tableView reloadData];
+                        } forJobName:_job.name];
+                    } forJobName:_job.name];
+                }
+                else {
+                    NSLog(@"Last build: %f", _job.jobDetail.lastBuild.buildDetail.timestamp);
+                    NSDate *lastBuild = [NSDate dateWithTimeIntervalSince1970:(_job.jobDetail.lastBuild.buildDetail.timestamp / 1)];
+                    NSTimeInterval seconds = (_job.jobDetail.lastBuild.buildDetail.duration / 1000);
+                    NSTimeInterval minutes = floor(seconds / 60);
+                    seconds = round(seconds - (minutes * 60));
+                    [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), [lastBuild relativeDate], FTLangGet(@"and took"), [NSString stringWithFormat:@"%.0f %@, %.0f %@", minutes, FTLangGet(@"min"), seconds, FTLangGet(@"sec")], FTLangGet(@"to finish")]];
+                }
+            }
+            else {
+                [cell setText:FTLangGet(@"This job has never been built")];
+            }
             return cell;
         }
             
