@@ -67,6 +67,7 @@
 		154465F317FE340A00025022 /* FTBuildDetailChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F217FE340A00025022 /* FTBuildDetailChangesViewController.m */; };
 		154465F717FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F617FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m */; };
 		154465FA17FF11E600025022 /* FTHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F917FF11E600025022 /* FTHTTPRequestOperation.m */; };
+		154465FE17FF228300025022 /* FTBuildInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465FD17FF228300025022 /* FTBuildInfoCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -213,6 +214,8 @@
 		154465F617FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIBuildConsoleOutputDataObject.m; sourceTree = "<group>"; };
 		154465F817FF11E600025022 /* FTHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTHTTPRequestOperation.h; sourceTree = "<group>"; };
 		154465F917FF11E600025022 /* FTHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTHTTPRequestOperation.m; sourceTree = "<group>"; };
+		154465FC17FF228300025022 /* FTBuildInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTBuildInfoCell.h; sourceTree = "<group>"; };
+		154465FD17FF228300025022 /* FTBuildInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBuildInfoCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -687,6 +690,7 @@
 			children = (
 				154465ED17FE33A900025022 /* Log */,
 				154465EC17FE33A100025022 /* Changes */,
+				154465FB17FF226500025022 /* Cells */,
 				153921E417E2700400896FC1 /* FTBuildDetailViewController.h */,
 				153921E517E2700400896FC1 /* FTBuildDetailViewController.m */,
 			);
@@ -754,6 +758,15 @@
 				154465F617FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m */,
 			);
 			name = Console;
+			sourceTree = "<group>";
+		};
+		154465FB17FF226500025022 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				154465FC17FF228300025022 /* FTBuildInfoCell.h */,
+				154465FD17FF228300025022 /* FTBuildInfoCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1298,6 +1311,7 @@
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
 				15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */,
+				154465FE17FF228300025022 /* FTBuildInfoCell.m in Sources */,
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
 				15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,

@@ -10,7 +10,7 @@
 #import "FTLogViewController.h"
 #import "FTBuildDetailChangesViewController.h"
 #import "FTLogViewController.h"
-#import "FTBasicCell.h"
+#import "FTBuildInfoCell.h"
 
 /**
  *  This enum defines concrete rows of the build detail controller. To reorder informations (cells), just change the order in this enum, change number of rows in const values and corresponding mapping methods -indexForIndexIndexPath and -indexPathForIndex
@@ -51,6 +51,13 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     return 2;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) return 44;
+    else {
+        return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (section == 0) ? 8 : 2;
 }
@@ -63,9 +70,9 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
 {
     static NSString *CellIdentifier = @"BuildInfoCell";
     
-    FTBasicCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FTBuildInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        cell = [[FTBuildInfoCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
         cell.layoutType = FTBasicCellLayoutTypeDefault;
     }
     
@@ -160,7 +167,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     switch (index)
     {
         case FTBuildDetailControllerIndexBuildNumber:
-            title = [NSString stringWithFormat:@"%d", self.build.number];
+            title = [NSString stringWithFormat:@"#%d", self.build.number]; // Done
             break;
             
         case FTBuildDetailControllerIndexDateExecuted:
@@ -168,7 +175,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexCause:
-            title = @"Cause TODO";
+            title = (_build.buildDetail.causes.count > 0) ? [(FTAPIBuildDetailCauseDataObject *)_build.buildDetail.causes.lastObject shortDescription] : FTLangGet(@"n/a"); // Done
             break;
             
         case FTBuildDetailControllerIndexDuration:
@@ -180,7 +187,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexResult:
-            title = self.build.buildDetail.resultString;
+            title = FTLangGet(self.build.buildDetail.resultString); // Done
             break;
         
         case FTBuildDetailControllerIndexBuiltOn:
