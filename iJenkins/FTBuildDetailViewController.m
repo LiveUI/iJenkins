@@ -92,7 +92,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     switch (index)
     {
         case FTBuildDetailControllerIndexBuildLog:
-            openedController = [[FTLogViewController alloc] initWithJobName:_build.buildDetail.jobName andJobNumber:_build.buildDetail.buildNumber];
+            openedController = [[FTLogViewController alloc] initWithJobName:_build.buildDetail.jobName andBuildNumber:_build.buildDetail.buildNumber];
             break;
             
         case FTBuildDetailControllerIndexChanges: {
