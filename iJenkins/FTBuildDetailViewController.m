@@ -10,7 +10,6 @@
 #import "FTLogViewController.h"
 #import "FTBuildDetailChangesViewController.h"
 #import "FTLogViewController.h"
-
 #import "FTBasicCell.h"
 
 /**
@@ -165,7 +164,6 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexDateExecuted:
-            
             title = [self.build.buildDetail.dateExecuted description];
             break;
             
@@ -225,5 +223,6 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
         return nil;
     }
 }
+
 
 @end

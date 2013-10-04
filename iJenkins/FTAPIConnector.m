@@ -17,7 +17,7 @@
 #import "NSData+Base64.h"
 
 
-#define kFTAPIConnectorDebug                                    NO
+#define kFTAPIConnectorDebug                                    YES
 #define kFTAPIConnectorDebugFull                                if (kFTAPIConnectorDebug) 
 
 
@@ -82,6 +82,7 @@ static FTAccount *_sharedAccount = nil;
     id operation = nil;
     if ([object outputType] == FTAPIDataObjectOutputTypeJSON) {
         FTJSONRequestOperation *o = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            [object processHeaders:response.allHeaderFields];
             [object processData:JSON];
             [object setResponse:response];
             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
@@ -97,8 +98,9 @@ static FTAccount *_sharedAccount = nil;
         operation = o;
     }
     else {
-        AFHTTPRequestOperation *o = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-        [operation  setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        FTHTTPRequestOperation *o = [[FTHTTPRequestOperation alloc] initWithRequest:request];
+        [o setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [object processHeaders:operation.response.allHeaderFields];
             NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             [object processText:text];
             [object setResponse:operation.response];

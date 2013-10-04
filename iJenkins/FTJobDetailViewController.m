@@ -77,9 +77,10 @@
 - (UITableViewCell *)cellForJobInfoWithRow:(NSInteger)row {
     switch (row) {
         case 0: {
-            FTJobInfoBuildNumberCell *cell = (FTJobInfoBuildNumberCell *)[FTJobInfoBuildNumberCell cellForTable:self.tableView];
-            [cell setJob:_job];
-            return cell;
+//            FTJobInfoBuildNumberCell *cell = (FTJobInfoBuildNumberCell *)[FTJobInfoBuildNumberCell cellForTable:self.tableView];
+//            [cell setJob:_job];
+//            return cell;
+            return [self cellForLastBuildsWithRow:[NSIndexPath indexPathForItem:0 inSection:0]];
         }
             
         case 1: {
@@ -99,14 +100,18 @@
     }
 }
 
-- (UITableViewCell *)cellForLastBuildsWithRow:(NSInteger)row {
-    FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:row];
+- (UITableViewCell *)cellForLastBuildsWithRow:(NSIndexPath *)indexPath {
+    FTLastBuildInfoCell *cell = (FTLastBuildInfoCell *)[FTLastBuildInfoCell cellForTable:self.tableView];
+    FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:indexPath.row];
     if (!build.buildDetail) {
         [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
             [self.tableView reloadData];
         } forJobName:_job.name];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
-    FTLastBuildInfoCell *cell = (FTLastBuildInfoCell *)[FTLastBuildInfoCell cellForTable:self.tableView];
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
     [cell setBuild:build];
     return cell;
 }
@@ -164,9 +169,11 @@
             return [self cellForJobInfoWithRow:indexPath.row];
             break;
             
-        case 1:
-            return [self cellForLastBuildsWithRow:(indexPath.row + 1)];
+        case 1: {
+            NSIndexPath *ip = [NSIndexPath indexPathForItem:(indexPath.row + 1) inSection:indexPath.section];
+            return [self cellForLastBuildsWithRow:ip];
             break;
+        }
             
         default:
             return [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -178,10 +185,12 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ((indexPath.section == 0 && indexPath.row == 0) || indexPath.section == 1) {
         FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:(indexPath.row + indexPath.section)];
-        FTBuildDetailViewController *c = [[FTBuildDetailViewController alloc] init];
-        [c setTitle:[NSString stringWithFormat:@"%@ #%d", FTLangGet(@"Build"), build.number]];
-        [c setBuild:build];
-        [self.navigationController pushViewController:c animated:YES];
+        if (build.buildDetail) {
+            FTBuildDetailViewController *c = [[FTBuildDetailViewController alloc] init];
+            [c setTitle:[NSString stringWithFormat:@"%@ #%d", FTLangGet(@"Build"), build.number]];
+            [c setBuild:build];
+            [self.navigationController pushViewController:c animated:YES];
+        }
     }
 }
 

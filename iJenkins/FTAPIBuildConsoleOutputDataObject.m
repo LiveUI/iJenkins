@@ -28,7 +28,7 @@
 
 - (void)processText:(NSString *)text {
     [super processText:text];
-    NSLog(@"Text: %@", text);
+    _outputText = text;
 }
 
 - (void)processHeaders:(NSDictionary *)headers {

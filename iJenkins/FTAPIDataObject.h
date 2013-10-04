@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 - (NSDictionary *)payloadData;
 - (void)processData:(NSDictionary *)data;
 - (void)processText:(NSString *)text;
+- (void)processHeaders:(NSDictionary *)headers;
 
 - (void)resetLoading;
 - (NSOperationQueuePriority)queuePriority;

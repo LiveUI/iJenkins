@@ -20,6 +20,8 @@
 @property (nonatomic, strong) AFHTTPRequestOperation *download;
 @property (nonatomic, strong) NSMutableData *data;
 
+@property (nonatomic) NSInteger errorCount;
+
 @end
 
 
@@ -31,7 +33,24 @@
 - (void)loadData {
     FTAPIBuildConsoleOutputDataObject *loadObject = [[FTAPIBuildConsoleOutputDataObject alloc] initWithJobName:_jobName andBuildNumber:_buildNumber];
     [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        
+        if (error) {
+            if (_errorCount <= 3) {
+                _errorCount++;
+                [self loadData];
+            }
+            else {
+                
+            }
+        }
+        else {
+            [_textView setText:loadObject.outputText];
+            if ([loadObject.response.allHeaderFields objectForKey:@"X-More-Data"]) {
+                [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(loadData) userInfo:nil repeats:NO];
+            }
+            else {
+                
+            }
+        }
     }];
 }
 
@@ -58,6 +77,7 @@
         
         _jobName = jobName;
         _buildNumber = buildNumber;
+        _errorCount = 0;
         
         [self loadData];
     }
