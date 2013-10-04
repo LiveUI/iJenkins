@@ -141,7 +141,9 @@
 #pragma mark Data
 
 - (void)processData:(NSDictionary *)data {
-    _shortDescription = [data objectForKey:@"shortDescription"];
+    _kind = data[@"kind"];
+    _items = data[@"items"];
+    _revisions = data[@"revisions"];
 }
 
 
@@ -154,9 +156,7 @@
 #pragma mark Data
 
 - (void)processData:(NSDictionary *)data {
-    _items = [data objectForKey:@"items"];
-    _kind = [data objectForKey:@"kind"];
-    _revisions = [data objectForKey:@"revisions"];
+    _shortDescription = data[@"shortDescription"];
 }
 
 

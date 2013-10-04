@@ -162,6 +162,8 @@ static FTAccount *_sharedAccount = nil;
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
         url = [url stringByAppendingString:par];
     }
+    BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
+    url = [NSString stringWithFormat:@"%@%@depth=%d", url, (isQM ? @"&" : @"?"), data.depth];
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     kFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     

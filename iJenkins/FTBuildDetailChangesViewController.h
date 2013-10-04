@@ -8,6 +8,10 @@
 
 #import "FTViewController.h"
 
+
 @interface FTBuildDetailChangesViewController : FTViewController
+
+@property (nonatomic, strong) FTAPIBuildDetailChangeSetDataObject *changeSet;
+
 
 @end

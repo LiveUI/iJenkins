@@ -44,6 +44,10 @@
     return @"";
 }
 
+- (NSInteger)depth {
+    return 1;
+}
+
 #pragma mark Initialization
 
 - (id)initWithJobName:(NSString *)jobName {

@@ -71,5 +71,9 @@
     return @"api/json";
 }
 
+- (NSInteger)depth {
+    return 0;
+}
+
 
 @end

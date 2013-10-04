@@ -38,7 +38,7 @@ typedef enum {
 @property (nonatomic, strong) NSString *resultString;
 @property (nonatomic, strong) NSString *builtOn;
 @property (nonatomic, strong) NSDictionary *executor;
-@property (nonatomic, strong) NSArray *causes;
+@property (nonatomic, strong) NSArray *causes; // Array of FTAPIBuildDetailCauseDataObject objects
 @property (nonatomic, strong) NSDate *dateExecuted;
 @property (nonatomic, strong) FTAPIBuildDetailChangeSetDataObject *changeSet;
 @property (nonatomic, strong) NSArray *mavenArtifacts;
@@ -54,7 +54,9 @@ typedef enum {
 
 @interface FTAPIBuildDetailChangeSetDataObject : NSObject
 
-@property (nonatomic, strong) NSString *shortDescription;
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSString *kind;
+@property (nonatomic, strong) NSArray *revisions;
 
 - (void)processData:(NSDictionary *)data;
 
@@ -64,9 +66,7 @@ typedef enum {
 
 @interface FTAPIBuildDetailCauseDataObject : NSObject
 
-@property (nonatomic, strong) NSArray *items;
-@property (nonatomic, strong) NSString *kind;
-@property (nonatomic, strong) NSArray *revisions;
+@property (nonatomic, strong) NSString *shortDescription;
 
 - (void)processData:(NSDictionary *)data;
 
