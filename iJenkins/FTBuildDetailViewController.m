@@ -234,7 +234,6 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexChanges:
-            NSLog(@"Changes: %@", _build.buildDetail.changeSet.items);
             title = [NSString stringWithFormat:@"(%d)", _build.buildDetail.changeSet.items.count];
             break;
             

@@ -95,7 +95,6 @@
                     } forJobName:_job.name];
                 }
                 else {
-                    NSLog(@"Last build: %f", _job.jobDetail.lastBuild.buildDetail.timestamp);
                     NSDate *lastBuild = [NSDate dateWithTimeIntervalSince1970:(_job.jobDetail.lastBuild.buildDetail.timestamp / 1)];
                     NSTimeInterval seconds = (_job.jobDetail.lastBuild.buildDetail.duration / 1000);
                     NSTimeInterval minutes = floor(seconds / 60);

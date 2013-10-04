@@ -17,7 +17,7 @@
 #import "NSData+Base64.h"
 
 
-#define kFTAPIConnectorDebug                                    YES
+#define kFTAPIConnectorDebug                                    NO
 #define kFTAPIConnectorDebugFull                                if (kFTAPIConnectorDebug) 
 
 
