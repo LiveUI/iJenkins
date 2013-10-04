@@ -47,8 +47,7 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _timestamp = [[data objectForKey:@"timestamp"] integerValue];
-    
+    _timestamp = (int)([[data objectForKey:@"timestamp"] doubleValue] / 1000);
     _fullDisplayName = [data objectForKey:@"fullDisplayName"];
     _urlString = [data objectForKey:@"url"];
     _resultString = [data objectForKey:@"result"];

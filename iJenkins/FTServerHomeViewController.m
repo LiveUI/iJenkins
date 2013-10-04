@@ -48,9 +48,10 @@
         }
         [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
-                //[super showAlertWithTitle:FTLangGet(@"Connection error") andMessage:error.localizedDescription];
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
-                [alert show];
+                if (error.code != -999) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
+                    [alert show];
+                }
             }
             else {
                 [_overviewCell setJobsStats:_serverObject.jobsStats];

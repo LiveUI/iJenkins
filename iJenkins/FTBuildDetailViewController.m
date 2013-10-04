@@ -23,10 +23,10 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     FTBuildDetailControllerIndexDuration,
     FTBuildDetailControllerIndexExpectedDuration,
     FTBuildDetailControllerIndexResult,
+    FTBuildDetailControllerIndexBuildLog,
+    FTBuildDetailControllerIndexChanges,
     FTBuildDetailControllerIndexBuiltOn,
     FTBuildDetailControllerIndexExecutor,
-    FTBuildDetailControllerIndexBuildLog,
-    FTBuildDetailControllerIndexChanges
 };
 
 
@@ -60,7 +60,19 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? 8 : 2;
+    switch (section) {
+        case 0:
+            return 6;
+            break;
+            
+        case 1:
+            return 2;
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -177,7 +189,6 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
 
 - (NSString *)detailForIndex:(FTBuildDetailControllerIndex)index
 {
-#warning TODO data not complete
     NSString *title = nil;
 
     switch (index)
@@ -195,13 +206,21 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             title = (_build.buildDetail.causes.count > 0) ? [(FTAPIBuildDetailCauseDataObject *)_build.buildDetail.causes.lastObject shortDescription] : FTLangGet(@"n/a"); // Done
             break;
             
-        case FTBuildDetailControllerIndexDuration:
-            title = [NSString stringWithFormat:@"%.1fs", self.build.buildDetail.duration];
+        case FTBuildDetailControllerIndexDuration: {
+            NSTimeInterval seconds = (self.build.buildDetail.duration / 1000);
+            NSTimeInterval minutes = floor(seconds / 60);
+            seconds = round(seconds - (minutes * 60));
+            title = [NSString stringWithFormat:@"%.0f %@, %.0f %@", minutes, FTLangGet(@"min"), seconds, FTLangGet(@"sec")];
             break;
+        }
         
-        case FTBuildDetailControllerIndexExpectedDuration:
-            title = [NSString stringWithFormat:@"%.1fs", self.build.buildDetail.estimatedDuration];
+        case FTBuildDetailControllerIndexExpectedDuration: {
+            NSTimeInterval seconds = (self.build.buildDetail.estimatedDuration / 1000);
+            NSTimeInterval minutes = floor(seconds / 60);
+            seconds = round(seconds - (minutes * 60));
+            title = [NSString stringWithFormat:@"%.0f %@, %.0f %@", minutes, FTLangGet(@"min"), seconds, FTLangGet(@"sec")];
             break;
+        }
             
         case FTBuildDetailControllerIndexResult:
             title = FTLangGet(_build.buildDetail.resultString.uppercaseString); // Done
