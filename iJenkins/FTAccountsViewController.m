@@ -10,7 +10,7 @@
 #import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
-
+#import "FTImageCell.h"
 #import "GCNetworkReachability.h"
 
 
@@ -117,11 +117,27 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return (section == 0) ? ((_data.count > 0) ? _data.count : 1) : _demoAccounts.count;
+    switch (section) {
+        case 0:
+            return ((_data.count > 0) ? _data.count : 1);
+            break;
+            
+        case 1:
+            return _demoAccounts.count;
+            break;
+            
+        case 2:
+            return 1;
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -134,7 +150,23 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return FTLangGet((section == 0) ? @"Your accounts" : @"Demo account");
+    switch (section) {
+        case 0:
+            return FTLangGet(@"Your accounts");
+            break;
+            
+        case 1:
+            return FTLangGet(@"Demo account");
+            break;
+            
+        case 2:
+            return FTLangGet(@"About");
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -232,12 +264,30 @@
     return cell;
 }
 
+- (FTBasicCell *)cellForAboutSection:(NSIndexPath *)indexPAth {
+    static NSString *identifier = @"aboutSectionCell";
+    FTImageCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTImageCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    [cell.iconView setDefaultIconIdentifier:@"icon-github"];
+    [cell.textLabel setText:FTLangGet(@"Open source project")];
+    [cell.detailTextLabel setText:FTLangGet(@"All source code available on github.com")];
+    return cell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && _data.count == 0) {
         return [self cellForNoAccount];
     }
     else {
-        return [self accountCellForIndexPath:indexPath];
+        if (indexPath.section != 2) {
+            return [self accountCellForIndexPath:indexPath];
+        }
+        else {
+            return [self cellForAboutSection:indexPath];
+        }
     }
 }
 
@@ -247,13 +297,18 @@
         [self didCLickAddItem:nil];
     }
     else {
-        FTAccount *acc = [self acccountForIndexPath:indexPath];
-        [kAccountsManager setSelectedAccount:acc];
-        [FTAPIConnector resetForAccount:acc];
-        
-        FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
-        [c setTitle:acc.name];
-        [self.navigationController pushViewController:c animated:YES];
+        if (indexPath.section != 2) {
+            FTAccount *acc = [self acccountForIndexPath:indexPath];
+            [kAccountsManager setSelectedAccount:acc];
+            [FTAPIConnector resetForAccount:acc];
+            
+            FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
+            [c setTitle:acc.name];
+            [self.navigationController pushViewController:c animated:YES];
+        }
+        else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/rafiki270/iJenkins"]];
+        }
     }
 }
 

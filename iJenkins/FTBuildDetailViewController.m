@@ -221,9 +221,12 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
         }
             
-        case FTBuildDetailControllerIndexResult:
-            title = FTLangGet(_build.buildDetail.resultString.uppercaseString); // Done
+        case FTBuildDetailControllerIndexResult: {
+            BOOL ok = (_build.buildDetail.resultString && ![_build.buildDetail.resultString isKindOfClass:[NSNull class]]);
+            title = (ok) ? _build.buildDetail.resultString.uppercaseString : @"n/a";
+            title = FTLangGet(title); // Done
             break;
+        }
         
         case FTBuildDetailControllerIndexBuiltOn:
             title = @"Build on TODO";

@@ -119,6 +119,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    if ([self.delegate respondsToSelector:@selector(basicAccountCellTextfieldDidResign:)]) {
+        [self.delegate basicAccountCellTextfieldDidResign:self];
+    }
     return YES;
 }
 

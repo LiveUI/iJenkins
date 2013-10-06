@@ -8,6 +8,7 @@
 
 #import "FTBasicCell.h"
 
+
 typedef NS_ENUM(NSUInteger, FTAccountCellReachabilityStatus) {
     FTAccountCellReachabilityStatusUnknown,
     FTAccountCellReachabilityStatusLoading,
@@ -15,10 +16,10 @@ typedef NS_ENUM(NSUInteger, FTAccountCellReachabilityStatus) {
     FTAccountCellReachabilityStatusUnreachable
 };
 
+
 @interface FTAccountCell : FTBasicCell
 
+@property (nonatomic, assign) FTAccountCellReachabilityStatus reachabilityStatus;
 
-
-@property (nonatomic, assign) FTAccountCellReachabilityStatus    reachabilityStatus;
 
 @end

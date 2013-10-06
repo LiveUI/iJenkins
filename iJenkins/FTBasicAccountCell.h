@@ -15,6 +15,7 @@
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell;
 - (void)basicAccountCell:(FTBasicAccountCell *)cell didStartEditing:(BOOL)editing;
+- (void)basicAccountCellTextfieldDidResign:(FTBasicAccountCell *)cell;
 
 @end
 

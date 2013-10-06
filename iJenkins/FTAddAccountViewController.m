@@ -192,5 +192,9 @@
     
 }
 
+- (void)basicAccountCellTextfieldDidResign:(FTBasicAccountCell *)cell {
+    [self basicAccountCell:cell didStartEditing:NO];
+}
+
 
 @end
