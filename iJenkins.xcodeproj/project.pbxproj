@@ -49,7 +49,6 @@
 		1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
 		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
-		151DA1C117FC32B300B253DE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151DA1C017FC32B300B253DE /* Crashlytics.framework */; };
 		153921C717E1F12E00896FC1 /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
 		153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */; };
 		153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D417E2099D00896FC1 /* FTSmallTextCell.m */; };
@@ -115,6 +114,7 @@
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,7 +185,6 @@
 		1510735817D5F3B800FD083B /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountOverviewCell.h; sourceTree = "<group>"; };
 		1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountOverviewCell.m; sourceTree = "<group>"; };
-		151DA1C017FC32B300B253DE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		153921C517E1F12E00896FC1 /* FTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDownload.h; sourceTree = "<group>"; };
 		153921C617E1F12E00896FC1 /* FTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDownload.m; sourceTree = "<group>"; };
 		153921CE17E207A100896FC1 /* FTJobInfoBuildNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobInfoBuildNumberCell.h; sourceTree = "<group>"; };
@@ -305,6 +304,7 @@
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
+		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,7 +322,7 @@
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
-				151DA1C117FC32B300B253DE /* Crashlytics.framework in Frameworks */,
+				A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,7 +808,7 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				151DA1C017FC32B300B253DE /* Crashlytics.framework */,
+				A0885E3B180293650000EA51 /* Crashlytics.framework */,
 				15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */,
 				15D2461317CFA1B600793614 /* CoreText.framework */,
 				15D2461417CFA1B600793614 /* MessageUI.framework */,
@@ -1269,7 +1269,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run 645cad88976887e985fc9e2d08345ca9cc583918";
+			shellScript = "./Thirdparty/Crashlytics.framework/run 645cad88976887e985fc9e2d08345ca9cc583918";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1402,13 +1402,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Thirdparty\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Crashlytics.framework/**\"",
+					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1479,13 +1479,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Thirdparty\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Crashlytics.framework/**\"",
+					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1500,13 +1500,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Thirdparty\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/Crashlytics.framework/**\"",
+					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
