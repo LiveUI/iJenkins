@@ -47,14 +47,14 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _timestamp = (int)([[data objectForKey:@"timestamp"] doubleValue] / 1000);
-    _fullDisplayName = [data objectForKey:@"fullDisplayName"];
-    _urlString = [data objectForKey:@"url"];
-    _resultString = [data objectForKey:@"result"];
-    _builtOn = [data objectForKey:@"builtOn"];
-    _executor = [data objectForKey:@"executor"];
+    _timestamp = (int)([data[@"timestamp"] doubleValue] / 1000);
+    _fullDisplayName = data[@"fullDisplayName"];
+    _urlString = data[@"url"];
+    _resultString = data[@"result"];
+    _builtOn = data[@"builtOn"];
+    _executor = data[@"executor"];
     
-    _actions = [data objectForKey:@"actions"];
+    _actions = data[@"actions"];
     if (_actions) {
         for (NSDictionary *action in _actions) {
             if ([action objectForKey:@"causes"]) {
@@ -72,19 +72,19 @@
     
     _dateExecuted = [NSDate dateWithTimeIntervalSince1970:_timestamp];
     
-    if ([data objectForKey:@"changeSet"]) {
+    if (data[@"changeSet"]) {
         _changeSet = [[FTAPIBuildDetailChangeSetDataObject alloc] init];
-        [_changeSet processData:[data objectForKey:@"changeSet"]];
+        [_changeSet processData:data[@"changeSet"]];
     }
     
-    _mavenArtifacts = [data objectForKey:@"mavenArtifacts"];
-    _mavenVersionUsed = [data objectForKey:@"mavenVersionUsed"];
+    _mavenArtifacts = data[@"mavenArtifacts"];
+    _mavenVersionUsed = data[@"mavenVersionUsed"];
     
     _result = [self resultForString:_resultString];
-    _building = [[data objectForKey:@"building"] boolValue];
-    _duration = [[data objectForKey:@"duration"] integerValue];
-    _estimatedDuration = [[data objectForKey:@"estimatedDuration"] integerValue];
-    _keepLog = [[data objectForKey:@"keepLog"] boolValue];
+    _building = [data[@"building"] boolValue];
+    _duration = [data[@"duration"] integerValue];
+    _estimatedDuration = [data[@"estimatedDuration"] integerValue];
+    _keepLog = [data[@"keepLog"] boolValue];
     
     _realColor = [UIColor colorForJenkinsBuildStatus:_resultString];
 }

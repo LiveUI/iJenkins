@@ -8,10 +8,13 @@
 
 #import "FTServerHomeViewController.h"
 #import "FTJobDetailViewController.h"
+#import "FTManageViewController.h"
+#import "FTBuildQueueViewController.h"
 #import "FTBasicCell.h"
 #import "FTLoadingCell.h"
 #import "FTJobCell.h"
 #import "FTNoJobCell.h"
+#import "FTIconCell.h"
 
 
 @interface FTServerHomeViewController ()
@@ -115,7 +118,6 @@
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-
     _isSearching = NO;
     self.jobs = [NSMutableArray arrayWithArray:_serverObject.jobs];
     [searchBar setText:@""];
@@ -130,7 +132,6 @@
  *  @param force      If YES, minimum search term length is ignored. If NO, there is some length trashold before the search is performed. Usefull on realtime search
  */
 - (void)performSearchWithSearchText:(NSString *)searchText force:(BOOL)force {
-    
     if ([searchText length] > 1 || force) {
         _isSearching = YES;
         NSMutableArray *arr = [NSMutableArray array];
@@ -153,7 +154,6 @@
 #pragma mark Creating elements
 
 - (void)createTableView {
-    
     [super createTableView];
     
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
@@ -218,27 +218,23 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
     return (_isSearching ? 1 : 2);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     if ([self isJobsSection:section] && [self.jobs count] > 0) {
         return [self.jobs count];
     }
-
-    return 1;
+    else return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (!_isDataAvailable) {
-        return (indexPath.section == 0 ? 218 : 54);
+        return (indexPath.section == 0 ? ((indexPath.row == 0) ? 218 : 54) : 54);
     }
-    
     if ([self isOverviewSection:indexPath.section]) {
-        return 218;
+        if (indexPath.row == 0) return 218;
+        else return 54;
     }
     else if([self isJobsSection:indexPath.section]) {
         return 54;
@@ -249,7 +245,6 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
     if ([self isOverviewSection:section]) {
         return FTLangGet(@"Overview");
     }
@@ -268,7 +263,6 @@
     [cell reset];
 
     FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath];
-    [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
     [cell setDescriptionText:(job.jobDetail.healthReport.description ? job.jobDetail.healthReport.description : FTLangGet(@"Loading ..."))];
@@ -288,12 +282,11 @@
 }
 
 - (UITableViewCell *)cellForNoJob {
-    
     UITableViewCell *cell;
     
     if(_isSearching)
     {
-        static NSString *CellIdentifier = @"NoSearchResultsCell";
+        static NSString *CellIdentifier = @"noSearchResultsCell";
         FTBasicCell *basicCell = (FTBasicCell *)[super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (!basicCell) {
             basicCell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
@@ -316,12 +309,49 @@
     return cell;
 }
 
+- (FTIconCell *)iconCellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"cellForSettingsIdentifier";
+    FTIconCell *cell = [super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    if (indexPath.row == 1) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [cell.iconView setDefaultIconIdentifier:@"icon-road"];
+        [cell.textLabel setText:FTLangGet(@"Build queue")];
+        [cell.detailTextLabel setText:FTLangGet(@"And build executor status")];
+    }
+    else {
+        [cell.iconView setDefaultIconIdentifier:@"icon-cogs"];
+        [cell.textLabel setText:FTLangGet(@"Manage Jenkins")];
+        if (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0) {
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
+            [cell.iconView setAlpha:1];
+            [cell.textLabel setAlpha:1];
+            [cell.detailTextLabel setAlpha:1];
+            [cell.detailTextLabel setText:FTLangGet(@"Basic Jenkins configuration")];
+        }
+        else {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            [cell.iconView setAlpha:0.4];
+            [cell.textLabel setAlpha:0.4];
+            [cell.detailTextLabel setAlpha:0.4];
+            [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
+        }
+    }
+    return cell;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (_isDataAvailable)
     {
         if ([self isOverviewSection:indexPath.section]) {
-            return [self cellForOverview];
+            if (indexPath.row == 0) return [self cellForOverview];
+            else {
+                return [self iconCellForRowAtIndexPath:indexPath];
+            }
         }
         else if ([self.jobs count] == 0) {
             return [self cellForNoJob];
@@ -342,6 +372,17 @@
     
     if ([cell isKindOfClass:[FTNoJobCell class]]) {
         [self showViewSelector:nil];
+        return;
+    }
+    else if ([cell isKindOfClass:[FTIconCell class]]) {
+        if (indexPath.row == 1) {
+            FTBuildQueueViewController *c = [[FTBuildQueueViewController alloc] init];
+            [self.navigationController pushViewController:c animated:YES];
+        }
+        else {
+            FTManageViewController *c = [[FTManageViewController alloc] init];
+            [self.navigationController pushViewController:c animated:YES];
+        }
         return;
     }
     

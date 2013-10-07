@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Build queue &amp; Executor status</string>
+		<key>description</key>
+		<string>Monitor nodes that Jenkins runs jobs on.</string>
+		<key>icon</key>
+		<string>icon-road</string>
+		<key>controller</key>
+		<string>FTManageNodesViewController</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Manage plugins</string>
+		<key>description</key>
+		<string>Add, remove, disable or enable plugins</string>
+		<key>icon</key>
+		<string>icon-briefcase</string>
+		<key>controller</key>
+		<string>FTManagePluginsViewController</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Users</string>
+		<key>description</key>
+		<string>Create / delete / modify users</string>
+		<key>icon</key>
+		<string>icon-groups</string>
+		<key>controller</key>
+		<string>FTManageUsersViewController</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Nodes</string>
+		<key>description</key>
+		<string>Monitor nodes that Jenkins runs jobs on.</string>
+		<key>icon</key>
+		<string>icon-desktop</string>
+		<key>controller</key>
+		<string>FTManageNodesViewController</string>
+	</dict>
+</array>
+</plist>

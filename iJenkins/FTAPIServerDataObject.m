@@ -32,25 +32,25 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _mode = [data objectForKey:@"mode"];
-    _nodeDescription = [data objectForKey:@"nodeDescription"];
-    _nodeName = [data objectForKey:@"nodeName"];
-    _description = [data objectForKey:@"description"];
+    _mode = data[@"mode"];
+    _nodeDescription = data[@"nodeDescription"];
+    _nodeName = data[@"nodeName"];
+    _description = data[@"description"];
     
     _primaryView = [[FTAPIServerViewDataObject alloc] init];
-    [_primaryView setName:[[data objectForKey:@"primaryView"] objectForKey:@"name"]];
-    [_primaryView setUrlString:[[data objectForKey:@"primaryView"] objectForKey:@"url"]];
+    [_primaryView setName:[data[@"primaryView"] objectForKey:@"name"]];
+    [_primaryView setUrlString:[data[@"primaryView"] objectForKey:@"url"]];
     
-    _numExecutors = [[data objectForKey:@"numExecutors"] integerValue];
-    _slaveAgentPort = [[data objectForKey:@"slaveAgentPort"] integerValue];
-    _quietingDown = [[data objectForKey:@"quietingDown"] boolValue];
-    _useCrumbs = [[data objectForKey:@"useCrumbs"] boolValue];
-    _useSecurity = [[data objectForKey:@"useSecurity"] boolValue];
+    _numExecutors = [data[@"numExecutors"] integerValue];
+    _slaveAgentPort = [data[@"slaveAgentPort"] integerValue];
+    _quietingDown = [data[@"quietingDown"] boolValue];
+    _useCrumbs = [data[@"useCrumbs"] boolValue];
+    _useSecurity = [data[@"useSecurity"] boolValue];
     
-    _assignedLabels = [data objectForKey:@"assignedLabels"];
+    _assignedLabels = data[@"assignedLabels"];
     
-    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:[[data objectForKey:@"views"] count]];
-    for (NSDictionary *d in [data objectForKey:@"views"]) {
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:[data[@"views"] count]];
+    for (NSDictionary *d in data[@"views"]) {
         FTAPIServerViewDataObject *view = [[FTAPIServerViewDataObject alloc] init];
         [view setName:[d objectForKey:@"name"]];
         [view setUrlString:[d objectForKey:@"url"]];
@@ -58,7 +58,7 @@
     }
     _views = arr;
     
-    arr = [data objectForKey:@"jobs"];
+    arr = data[@"jobs"];
     NSMutableArray *jobs = [NSMutableArray array];
     _jobsStats = [NSMutableDictionary dictionary];
     for (NSDictionary *d in arr) {
@@ -66,7 +66,7 @@
         [job processData:d];
         [jobs addObject:job];
         
-        if (![_jobsStats objectForKey:job.color]) {
+        if (job.color && ![_jobsStats objectForKey:job.color]) {
             FTAPIServerStatsDataObject *s = [[FTAPIServerStatsDataObject alloc] init];
             [s setCount:1];
             [s setColor:job.color];

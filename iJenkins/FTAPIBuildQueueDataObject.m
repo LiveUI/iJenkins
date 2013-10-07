@@ -19,7 +19,7 @@
 }
 
 - (NSString *)methodName {
-    return @"queue";
+    return @"queue/";
 }
 
 - (NSDictionary *)payloadData {
@@ -30,7 +30,7 @@
     [super processData:data];
     
     NSMutableArray *arr = [NSMutableArray array];
-    for (NSDictionary *item in [data objectForKey:@"items"]) {
+    for (NSDictionary *item in data[@"items"]) {
         FTAPIBuildQueueItemDataObject *i = [[FTAPIBuildQueueItemDataObject alloc] init];
         [i processData:item];
         [arr addObject:i];
@@ -56,18 +56,18 @@
 #pragma mark - Processing data
 
 - (void)processData:(NSDictionary *)data {
-    _actions = [data objectForKey:@"actions"];
-    _blocked = [[data objectForKey:@"blocked"] boolValue];
-    _buildId = [[data objectForKey:@"buildId"] integerValue];
-    _inQueueSince = [[data objectForKey:@"inQueueSince"] doubleValue];
-    _params = [data objectForKey:@"params"];
-    _stuck = [[data objectForKey:@"stuck"] boolValue];
+    _actions = data[@"actions"];
+    _blocked = [data[@"blocked"] boolValue];
+    _buildId = [data[@"buildId"] integerValue];
+    _inQueueSince = [data[@"inQueueSince"] doubleValue];
+    _params = data[@"params"];
+    _stuck = [data[@"stuck"] boolValue];
     _task = [[FTAPIJobDataObject alloc] init];
-    [_task processData:[data objectForKey:@"task"]];
-    _urlString = [data objectForKey:@"url"];
-    _why = [data objectForKey:@"why"];
-    _buildableStartMilliseconds = [[data objectForKey:@"buildableStartMilliseconds"] doubleValue];
-    _pending = [[data objectForKey:@"pending"] boolValue];
+    [_task processData:data[@"task"]];
+    _urlString = data[@"url"];
+    _why = data[@"why"];
+    _buildableStartMilliseconds = [data[@"buildableStartMilliseconds"] doubleValue];
+    _pending = [data[@"pending"] boolValue];
 }
 
 

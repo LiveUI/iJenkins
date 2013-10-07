@@ -102,6 +102,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+    
+    if (_tableView) {
+        [_tableView reloadData];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {

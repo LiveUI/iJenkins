@@ -1,5 +1,5 @@
 //
-//  FTImageCell.h
+//  FTIconCell.h
 //  iJenkins
 //
 //  Created by Ondrej Rafaj on 06/10/2013.
@@ -10,7 +10,7 @@
 #import "FAImageView.h"
 
 
-@interface FTImageCell : FTBasicCell
+@interface FTIconCell : FTBasicCell
 
 @property (nonatomic, strong) FAImageView *iconView;
 

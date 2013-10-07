@@ -32,7 +32,7 @@
         return [UIColor lightGrayColor];
     }
     else  {
-        return [UIColor clearColor];
+        return [UIColor lightGrayColor];
     }
 }
 
@@ -53,7 +53,7 @@
         return [UIColor grayColor];
     }
     else {
-        return [UIColor colorWithWhite:0 alpha:0.1];
+        return [UIColor lightGrayColor];
     }
 }
 

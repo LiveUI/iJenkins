@@ -1,20 +1,20 @@
 //
-//  FTImageCell.m
+//  FTIconCell.m
 //  iJenkins
 //
 //  Created by Ondrej Rafaj on 06/10/2013.
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "FTImageCell.h"
+#import "FTIconCell.h"
 
 
-@interface FTImageCell ()
+@interface FTIconCell ()
 
 @end
 
 
-@implementation FTImageCell
+@implementation FTIconCell
 
 
 #pragma mark Layout
@@ -22,14 +22,14 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.textLabel setXOrigin:66];
-    [self.detailTextLabel setXOrigin:66];
+    [self.textLabel setXOrigin:55];
+    [self.detailTextLabel setXOrigin:55];
 }
 
 #pragma mark Creating elements
 
 - (void)createImageView {
-    _iconView = [[FAImageView alloc] initWithFrame:CGRectMake(10, 5, 44, 44)];
+    _iconView = [[FAImageView alloc] initWithFrame:CGRectMake(12, 15, 24, 24)];
     [_iconView.defaultView setBackgroundColor:[UIColor clearColor]];
     [_iconView.defaultView setTextColor:[UIColor colorWithHexString:@"454545"]];
     [_iconView setImage:nil];

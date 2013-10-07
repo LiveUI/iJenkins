@@ -42,12 +42,12 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _fullColor = [data objectForKey:@"color"];
+    _fullColor = data[@"color"];
     NSArray *colorPieces = [_fullColor componentsSeparatedByString:@"_"];
     _color = [colorPieces objectAtIndex:0];
     _animating = (colorPieces.count > 1);
-    _name = [data objectForKey:@"name"];
-    _urlString = [data objectForKey:@"url"];
+    _name = data[@"name"];
+    _urlString = data[@"url"];
 }
 
 #pragma mark Getters

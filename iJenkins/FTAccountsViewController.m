@@ -10,7 +10,7 @@
 #import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
-#import "FTImageCell.h"
+#import "FTIconCell.h"
 #import "GCNetworkReachability.h"
 
 
@@ -266,9 +266,9 @@
 
 - (FTBasicCell *)cellForAboutSection:(NSIndexPath *)indexPAth {
     static NSString *identifier = @"aboutSectionCell";
-    FTImageCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
+    FTIconCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[FTImageCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     [cell.iconView setDefaultIconIdentifier:@"icon-github"];

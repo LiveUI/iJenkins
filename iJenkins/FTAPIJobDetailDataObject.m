@@ -36,17 +36,17 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _displayName = [data objectForKey:@"displayName"];
-    _name = [data objectForKey:@"name"];
-    _url = [data objectForKey:@"url"];
-    _description = [data objectForKey:@"description"];
-    _buildable = [[data objectForKey:@"buildable"] boolValue];
+    _displayName = data[@"displayName"];
+    _name = data[@"name"];
+    _url = data[@"url"];
+    _description = data[@"description"];
+    _buildable = [data[@"buildable"] boolValue];
     
-    int count = [[data objectForKey:@"builds"] count];
+    int count = [data[@"builds"] count];
     if (count > 0) {
         int x = 0;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
-        for (NSDictionary *d in [data objectForKey:@"builds"]) {
+        for (NSDictionary *d in data[@"builds"]) {
             FTAPIJobDetailBuildDataObject *build = [[FTAPIJobDetailBuildDataObject alloc] init];
             [build processData:d];
             [arr addObject:build];
@@ -56,28 +56,28 @@
     }
     
     _lastBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_lastBuild processData:[data objectForKey:@"lastBuild"]];
+    [_lastBuild processData:data[@"lastBuild"]];
     
     _lastFailedBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_lastFailedBuild processData:[data objectForKey:@"lastFailedBuild"]];
+    [_lastFailedBuild processData:data[@"lastFailedBuild"]];
     
     _lastSuccessfulBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_lastSuccessfulBuild processData:[data objectForKey:@"lastSuccessfulBuild"]];
+    [_lastSuccessfulBuild processData:data[@"lastSuccessfulBuild"]];
     
     _lastUnstableBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_lastUnstableBuild processData:[data objectForKey:@"lastUnstableBuild"]];
+    [_lastUnstableBuild processData:data[@"lastUnstableBuild"]];
     
     _lastUnsuccessfulBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_lastUnsuccessfulBuild processData:[data objectForKey:@"lastUnsuccessfulBuild"]];
+    [_lastUnsuccessfulBuild processData:data[@"lastUnsuccessfulBuild"]];
     
     _firstBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
-    [_firstBuild processData:[data objectForKey:@"firstBuild"]];
+    [_firstBuild processData:data[@"firstBuild"]];
     
-    count = [[data objectForKey:@"healthReport"] count];
+    count = [data[@"healthReport"] count];
     if (count > 0) {
         int x = 0;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
-        for (NSDictionary *d in [data objectForKey:@"healthReport"]) {
+        for (NSDictionary *d in data[@"healthReport"]) {
             FTAPIJobDetailHealthDataObject *healthReport = [[FTAPIJobDetailHealthDataObject alloc] init];
             [healthReport processData:d];
             if (x == 0) {
@@ -110,8 +110,8 @@
 
 - (void)processData:(NSDictionary *)data {
     if (!data || [data isKindOfClass:[NSNull class]]) return;
-    _number = [[data objectForKey:@"number"] integerValue];
-    _urlString = [data objectForKey:@"url"];
+    _number = [data[@"number"] integerValue];
+    _urlString = data[@"url"];
 }
 
 - (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *))success forJobName:(NSString *)jobName {
@@ -136,9 +136,9 @@
 #pragma makr Data
 
 - (void)processData:(NSDictionary *)data {
-    _score = [[data objectForKey:@"score"] integerValue];
-    _iconUrl = [data objectForKey:@"iconUrl"];
-    _description = [data objectForKey:@"description"];
+    _score = [data[@"score"] integerValue];
+    _iconUrl = data[@"iconUrl"];
+    _description = data[@"description"];
 }
 
 

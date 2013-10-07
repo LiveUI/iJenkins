@@ -29,10 +29,10 @@
 - (void)processData:(NSDictionary *)data {
     [super processData:data];
     
-    _busyExecutors = [data objectForKey:@"busyExecutors"];
-    _queueLength = [data objectForKey:@"queueLength"];
-    _totalExecutors = [data objectForKey:@"totalExecutors"];
-    _totalQueueLength = [data objectForKey:@"totalQueueLength"];
+    _busyExecutors = data[@"busyExecutors"];
+    _queueLength = data[@"queueLength"];
+    _totalExecutors = data[@"totalExecutors"];
+    _totalQueueLength = data[@"totalQueueLength"];
 }
 
 - (void)processHeaders:(NSDictionary *)headers {
