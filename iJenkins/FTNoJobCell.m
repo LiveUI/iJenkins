@@ -16,7 +16,7 @@
 #pragma mark Creating elements
 
 - (void)createInfoLabel {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 12, (self.width - 100), 45)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, (self.width - 100), self.height-4)];
     [label setTextColor:[UIColor grayColor]];
     [label setText:FTLangGet(@"There are no jobs available in this view. Please click here to select another view.")];
     [label setTextAlignment:NSTextAlignmentCenter];
@@ -24,7 +24,7 @@
     [label setLineBreakMode:NSLineBreakByWordWrapping];
     [label setFont:[UIFont systemFontOfSize:12]];
     [label setNumberOfLines:3];
-    [label setAutoresizingWidth];
+    [label setAutoresizingWidthAndHeight];
     [self addSubview:label];
 }
 

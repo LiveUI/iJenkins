@@ -24,8 +24,6 @@
         [self.detailTextLabel setFont:[UIFont systemFontOfSize:10]];
         [self.detailTextLabel setYOrigin:(self.detailTextLabel.yOrigin - 0)];
     }
-    [self.textLabel setTextColor:[UIColor colorWithHexString:@"454545"]];
-    [self.detailTextLabel setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
     [self.textLabel sizeToFit];
 }
 
@@ -50,7 +48,8 @@
 }
 
 - (void)setupView {
-    
+    [self.textLabel setTextColor:[UIColor colorWithHexString:@"454545"]];
+    [self.detailTextLabel setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
