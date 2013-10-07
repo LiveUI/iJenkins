@@ -70,6 +70,7 @@
 		1544660117FF47AA00025022 /* UIColor+Jenkins.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544660017FF47AA00025022 /* UIColor+Jenkins.m */; };
 		1544660417FF543000025022 /* NSDate+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544660317FF543000025022 /* NSDate+Formatting.m */; };
 		154466081801FCEF00025022 /* FTImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466071801FCEF00025022 /* FTImageCell.m */; };
+		15446612180300EB00025022 /* FTHTTPCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 15446611180300EB00025022 /* FTHTTPCodes.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -224,6 +225,8 @@
 		1544660317FF543000025022 /* NSDate+Formatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatting.m"; sourceTree = "<group>"; };
 		154466061801FCEF00025022 /* FTImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTImageCell.h; sourceTree = "<group>"; };
 		154466071801FCEF00025022 /* FTImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTImageCell.m; sourceTree = "<group>"; };
+		15446610180300EB00025022 /* FTHTTPCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTHTTPCodes.h; sourceTree = "<group>"; };
+		15446611180300EB00025022 /* FTHTTPCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTHTTPCodes.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -788,6 +791,15 @@
 			name = About;
 			sourceTree = "<group>";
 		};
+		15446609180300C400025022 /* HTTP-Status-Codes-for-Objective-C */ = {
+			isa = PBXGroup;
+			children = (
+				15446610180300EB00025022 /* FTHTTPCodes.h */,
+				15446611180300EB00025022 /* FTHTTPCodes.m */,
+			);
+			path = "HTTP-Status-Codes-for-Objective-C";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -1047,6 +1059,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				15446609180300C400025022 /* HTTP-Status-Codes-for-Objective-C */,
 				15E182CC17E3325A00CE0DEA /* AFNetworking */,
 				1510735617D5F3B800FD083B /* XYPieChart */,
 				151072E617D0F82C00FD083B /* ios-fontawesome */,
@@ -1346,6 +1359,7 @@
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
+				15446612180300EB00025022 /* FTHTTPCodes.m in Sources */,
 				15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */,
 				154466081801FCEF00025022 /* FTImageCell.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,
