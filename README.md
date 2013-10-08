@@ -1,7 +1,7 @@
 iJenkins
 ========
 
-Open iPhone client for Jenkins CI (iOS 7 only)
+Open iPhone client for Jenkins CI (iOS 7 only) ... Don't forget to get the submodules too!!!!! :)
 
 Last commit has been submitted to the AppStore for review, fingers crossed!!!
 
