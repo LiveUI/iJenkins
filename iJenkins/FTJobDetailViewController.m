@@ -26,7 +26,7 @@
 
 #pragma mark Creating elements
 
-- (void)createTopButtons {
+- (void)createBuildNowButton {
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Build Now") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickRunBuildNow:)];
     [self.navigationItem setRightBarButtonItem:edit];
 }
@@ -34,7 +34,9 @@
 - (void)createAllElements {
     [super createAllElements];
     
-    [self createTopButtons];
+    if (kAccountsManager.selectedAccount.username) {
+        [self createBuildNowButton];
+    }
     [self createTableView];
 }
 
@@ -87,7 +89,6 @@
             if (_job.jobDetail.builds.count > 0) {
                 FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:0];
                 if (!_job.jobDetail.lastBuild.buildDetail) {
-                    //[cell setText:FTLangGet(@"Loading ...")];
                     [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                         [_job.jobDetail.lastBuild loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                             [self.tableView reloadData];
