@@ -50,7 +50,7 @@
     
     FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name];
     [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        [self createTopButtons];
+        [self createBuildNowButton];
         if (buildObject.response.statusCode >= 400) {
             NSString *message = [NSString stringWithFormat:@"%@ (%@ %d: %@)", FTLangGet(@"We were unable to reach the server, please try again later."), FTLangGet(@"HTTP Error"), buildObject.response.statusCode, error.localizedDescription];
             [super showAlertWithTitle:FTLangGet(@"Request error") andMessage:message];
