@@ -19,7 +19,6 @@
 
 @interface FTServerHomeViewController ()
 
-@property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) FTAccountOverviewCell *overviewCell;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -28,11 +27,11 @@
 @property (nonatomic, strong) FTAPIServerViewDataObject *selectedView;
 
 @property (nonatomic, strong) FTAPIServerDataObject *serverObject;
-@property (nonatomic, strong) NSMutableArray *jobs;
+
+@property (nonatomic, strong) NSArray *jobs; // All available jobs
+@property (nonatomic, strong) NSArray *searchResults; // Filtered search results
 
 @property (nonatomic) BOOL isDataAvailable;
-
-@property (nonatomic, assign) BOOL isSearching;
 
 @end
 
@@ -49,7 +48,6 @@
 - (void)loadData {
     if (!_serverObject) {
         _isDataAvailable = NO;
-        _isSearching = NO;
         self.searchBar.text = @"";
         
         _serverObject = [[FTAPIServerDataObject alloc] init];
@@ -75,7 +73,7 @@
                     _views = _serverObject.views;
                 }
                 
-                self.jobs = [NSMutableArray arrayWithArray:_serverObject.jobs];
+                self.jobs = [NSArray arrayWithArray:_serverObject.jobs];
                 [super.tableView reloadData];
                 [self setTitle:kAccountsManager.selectedAccount.name];
                 
@@ -98,57 +96,17 @@
 
 #pragma mark Search bar delegate
 
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    [searchBar setShowsCancelButton:YES animated:YES];
-    return YES;
-}
-
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
-    [searchBar setShowsCancelButton:NO animated:YES];
-    return YES;
-}
-
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self performSearchWithSearchText:searchBar.text force:NO];
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self performSearchWithSearchText:searchBar.text force:YES];
-    [searchBar resignFirstResponder];
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    _isSearching = NO;
-    self.jobs = [NSMutableArray arrayWithArray:_serverObject.jobs];
-    [searchBar setText:@""];
-    [searchBar resignFirstResponder];
-    [super.tableView reloadData];
-}
-
-/**
- *  Performs search of given search term in jobs
- *
- *  @param searchText Text from search field
- *  @param force      If YES, minimum search term length is ignored. If NO, there is some length trashold before the search is performed. Usefull on realtime search
- */
-- (void)performSearchWithSearchText:(NSString *)searchText force:(BOOL)force {
-    if ([searchText length] > 1 || force) {
-        _isSearching = YES;
-        NSMutableArray *arr = [NSMutableArray array];
-        
-        for (FTAPIJobDataObject *job in _serverObject.jobs) {
-            NSRange isRange = [job.name rangeOfString:searchText options:NSCaseInsensitiveSearch];
-            if (isRange.location != NSNotFound) {
-                [arr addObject:job];
-            }
+- (void)filterSearchResultsWithSearchString:(NSString *)searchString
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    for (FTAPIJobDataObject *job in _serverObject.jobs) {
+        NSRange isRange = [job.name rangeOfString:searchString options:NSCaseInsensitiveSearch];
+        if (isRange.location != NSNotFound) {
+            [arr addObject:job];
         }
-        self.jobs = arr;
     }
-    else {
-        _isSearching = NO;
-        self.jobs = [NSMutableArray arrayWithArray:_serverObject.jobs];
-    }
-    [self.tableView reloadData];
+    self.searchResults = arr;
 }
 
 #pragma mark Creating elements
@@ -156,12 +114,15 @@
 - (void)createTableView {
     [super createTableView];
     
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
-    [_searchBar setDelegate:self];
-    [_searchBar setShowsCancelButton:NO];
-    [_searchBar setAutoresizingWidth];
-    [super.tableView setTableHeaderView:_searchBar];
-     
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
+
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
+    self.searchController.delegate = self;
+    
+    [self.tableView setTableHeaderView:self.searchBar];
+    
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:_refreshControl];
@@ -188,10 +149,6 @@
     [self loadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -201,7 +158,6 @@
 #pragma mark Actions
 
 - (void)refreshActionCalled:(UIRefreshControl *)sender {
-    _isSearching = NO;
     _serverObject = nil;
     [self loadData];
 }
@@ -218,38 +174,66 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return (_isSearching ? 1 : 2);
+
+    //  When tableView == self.tableView condition is
+    //      - YES: regular content table is asking for its data
+    //      - NO: search display controller is asking for data into its table view
+    return (tableView == self.tableView ? 2 : 1);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([self isJobsSection:section] && [self.jobs count] > 0) {
-        return [self.jobs count];
+    
+    if (tableView == self.tableView) {
+        if ([self isJobsSection:section]) {
+            return [self.jobs count];
+        }
+        else return 3;
     }
-    else return 3;
+    else {
+        return [self.searchResults count];
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (!_isDataAvailable) {
-        return (indexPath.section == 0 ? ((indexPath.row == 0) ? 218 : 54) : 54);
-    }
-    if ([self isOverviewSection:indexPath.section]) {
-        if (indexPath.row == 0) return 218;
-        else return 54;
-    }
-    else if([self isJobsSection:indexPath.section]) {
-        return 54;
+    
+    if (tableView == self.tableView) {
+        if (!_isDataAvailable) {
+            return (indexPath.section == 0 ? ((indexPath.row == 0) ? 218 : 54) : 54);
+        }
+        if ([self isOverviewSection:indexPath.section]) {
+            if (indexPath.row == 0) return 218;
+            else return 54;
+        }
+        else if([self isJobsSection:indexPath.section]) {
+            return 54;
+        }
+        else {
+            return 100;
+        }
     }
     else {
-        return 100;
+        return 54;
     }
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if ([self isOverviewSection:section]) {
-        return FTLangGet(@"Overview");
+    
+    if (tableView == self.tableView) {
+        return ([self isOverviewSection:section] ? FTLangGet(@"Overview") : FTLangGet(@"Jobs"));
     }
     else {
-        return FTLangGet(@"Jobs");
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    //  Show default header height for content table and no header in search results
+    if (tableView == self.tableView) {
+        return UITableViewAutomaticDimension;
+    }
+    else {
+        return 0;
     }
 }
 
@@ -275,6 +259,28 @@
     return cell;
 }
 
+- (UITableViewCell *)cellForJob:(FTAPIJobDataObject *)job
+{
+    static NSString *identifier = @"jobCellIdentifier";
+    FTJobCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        [cell setLayoutType:FTBasicCellLayoutTypeDefault];
+    }
+    [cell reset];
+    
+    if (job.jobDetail.lastBuild.number > 0) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    [job setDelegate:cell];
+    [cell setJob:job];
+    [cell.textLabel setText:job.name];
+    return cell;
+}
+
 - (UITableViewCell *)cellForOverview {
     if (_overviewCell) return _overviewCell;
     static NSString *identifier = @"cellForOverviewIdentifier";
@@ -288,28 +294,10 @@
 }
 
 - (UITableViewCell *)cellForNoJob {
-    UITableViewCell *cell;
-    
-    if(_isSearching)
-    {
-        static NSString *CellIdentifier = @"noSearchResultsCell";
-        FTBasicCell *basicCell = (FTBasicCell *)[super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (!basicCell) {
-            basicCell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier];
-            basicCell.layoutType = FTBasicCellLayoutTypeDefault;
-            basicCell.textLabel.textColor = [UIColor grayColor];
-            basicCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        cell = basicCell;
-        cell.textLabel.text = FTLangGet(@"No search results");
-    }
-    else
-    {
-        static NSString *CellIdentifier = @"cellForNoJobIdentifier";
-        cell = [super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (!cell) {
-            cell = [[FTNoJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        }
+    static NSString *CellIdentifier = @"cellForNoJobIdentifier";
+    UITableViewCell *cell = [super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[FTNoJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     return cell;
@@ -351,48 +339,64 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (_isDataAvailable)
-    {
-        if ([self isOverviewSection:indexPath.section]) {
-            if (indexPath.row == 0) return [self cellForOverview];
+    
+    if (tableView == self.tableView) {
+        if (_isDataAvailable)
+        {
+            if ([self isOverviewSection:indexPath.section]) {
+                if (indexPath.row == 0) return [self cellForOverview];
+                else {
+                    return [self iconCellForRowAtIndexPath:indexPath];
+                }
+            }
+            else if ([self.jobs count] == 0) {
+                return [self cellForNoJob];
+            }
             else {
-                return [self iconCellForRowAtIndexPath:indexPath];
+                return [self cellForJobAtIndexPath:indexPath];
             }
         }
-        else if ([self.jobs count] == 0) {
-            return [self cellForNoJob];
-        }
         else {
-            return [self cellForJobAtIndexPath:indexPath];
+            return [FTLoadingCell cellForTable:tableView];
         }
     }
     else {
-        return [FTLoadingCell cellForTable:tableView];
+        FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath inTableView:tableView];
+        return [self cellForJob:job];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
-    if ([cell isKindOfClass:[FTNoJobCell class]]) {
-        [self showViewSelector:nil];
-        return;
-    }
-    else if ([cell isKindOfClass:[FTIconCell class]]) {
-        if (indexPath.row == 1) {
-            FTBuildQueueViewController *c = [[FTBuildQueueViewController alloc] init];
-            [self.navigationController pushViewController:c animated:YES];
+    if (tableView == self.tableView)
+    {
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        if ([cell isKindOfClass:[FTNoJobCell class]]) {
+            [self showViewSelector:nil];
+            return;
         }
-        else {
-            FTManageViewController *c = [[FTManageViewController alloc] init];
-            [self.navigationController pushViewController:c animated:YES];
+        else if ([cell isKindOfClass:[FTIconCell class]]) {
+            //  Dont open anything if there is not disclosure indicator in the cell
+            //  This disabled opening "Manage Jenkins" section when the securit is not enabled
+            if (cell.accessoryType != UITableViewCellAccessoryDisclosureIndicator) {
+                return;
+            }
+            
+            if (indexPath.row == 1) {
+                FTBuildQueueViewController *c = [[FTBuildQueueViewController alloc] init];
+                [self.navigationController pushViewController:c animated:YES];
+            }
+            else {
+                FTManageViewController *c = [[FTManageViewController alloc] init];
+                [self.navigationController pushViewController:c animated:YES];
+            }
+            return;
         }
-        return;
     }
     
-    FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath];
+    FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath inTableView:tableView];
 
     if (job.jobDetail.lastBuild.number > 0) {
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
@@ -400,6 +404,14 @@
         [c setJob:job];
         [self.navigationController pushViewController:c animated:YES];
     }
+}
+
+#pragma mark Search display controller delegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterSearchResultsWithSearchString:searchString];
+    return YES;
 }
 
 #pragma mark Overview cell delegate methods
@@ -425,36 +437,30 @@
 
 - (BOOL)isOverviewSection:(NSInteger)section
 {
-    if (!_isDataAvailable || _isSearching) {
-        return NO;
-    }
-    
     return (section == 0);
 }
 
 - (BOOL)isJobsSection:(NSInteger)section
 {
-    if (!_isDataAvailable) {
-        return NO;
-    }
-    
-    if (_isSearching) {
-        return YES;
-    }
-    
     return (section == 1);
 }
 
 - (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath
 {
+    return [self jobAtIndexPath:indexPath inTableView:self.tableView];
+}
+
+- (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView
+{
     if (!_isDataAvailable) {
         return nil;
     }
     
-    NSUInteger dataCount = [self.jobs count];
+    NSArray *dataSource = (tableView == self.tableView ? self.jobs : self.searchResults);
+    NSUInteger dataCount = [dataSource count];
     
-    if (dataCount > 0 && indexPath.row < dataCount && [self isJobsSection:indexPath.section]) {
-        return self.jobs[indexPath.row];
+    if (dataCount > 0 && indexPath.row < dataCount) {
+        return dataSource[indexPath.row];
     }
     
     return nil;

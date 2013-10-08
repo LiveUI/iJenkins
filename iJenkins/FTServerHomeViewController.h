@@ -10,6 +10,10 @@
 #import "FTViewSelectorViewController.h"
 #import "FTAccountOverviewCell.h"
 
-@interface FTServerHomeViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UIAlertViewDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
+@interface FTServerHomeViewController : FTViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
+
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
 
 @end
