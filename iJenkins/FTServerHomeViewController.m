@@ -261,11 +261,17 @@
         [cell setLayoutType:FTBasicCellLayoutTypeDefault];
     }
     [cell reset];
-
+    
     FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath];
+    if (job.jobDetail.lastBuild.number > 0) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
-    [cell setDescriptionText:(job.jobDetail.healthReport.description ? job.jobDetail.healthReport.description : FTLangGet(@"Loading ..."))];
     return cell;
 }
 
@@ -388,7 +394,7 @@
     
     FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath];
 
-    if (job.jobDetail) {
+    if (job.jobDetail.lastBuild.number > 0) {
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
         [c setTitle:job.name];
         [c setJob:job];

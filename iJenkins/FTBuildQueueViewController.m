@@ -192,8 +192,6 @@
     [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
-    [cell setDescriptionText:(job.jobDetail.healthReport.description ? job.jobDetail.healthReport.description : FTLangGet(@"Loading ..."))];
-    
     return cell;
 }
 

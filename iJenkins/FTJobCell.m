@@ -66,15 +66,15 @@
 
 - (void)animate {
     if (_job.animating) {
-        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
-            [_statusColorView setAlpha:0];
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
-                [_statusColorView setAlpha:1];
-            } completion:^(BOOL finished) {
-                [self animate];
-            }];
-        }];
+//        [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
+//            [_statusColorView setAlpha:0];
+//        } completion:^(BOOL finished) {
+//            [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationOptionBeginFromCurrentState animations:^{
+//                [_statusColorView setAlpha:1];
+//            } completion:^(BOOL finished) {
+//                [self animate];
+//            }];
+//        }];
     }
     else {
         [_statusColorView setAlpha:1];
@@ -127,7 +127,15 @@
         [_buildIdView setText:@"#?"];
     }
     else {
-        [self setDescriptionText:_job.jobDetail.healthReport.description];
+        if (_job.jobDetail.lastBuild.number == 0) {
+            [self setAccessoryType:UITableViewCellAccessoryNone];
+            [self setDescriptionText:FTLangGet(@"No build has been executed yet")];
+        }
+        else {
+            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            NSString *description = (_job.jobDetail.healthReport.description.length > 0) ? _job.jobDetail.healthReport.description : FTLangGet(@"n/a");
+            [self setDescriptionText:description];
+        }
         [self resetScoreIcon];
         [_buildIdView setText:[NSString stringWithFormat:@"#%d", _job.jobDetail.lastBuild.number]];
         

@@ -87,7 +87,7 @@
             if (_job.jobDetail.builds.count > 0) {
                 FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:0];
                 if (!_job.jobDetail.lastBuild.buildDetail) {
-                    [cell setText:FTLangGet(@"Loading ...")];
+                    //[cell setText:FTLangGet(@"Loading ...")];
                     [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                         [_job.jobDetail.lastBuild loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                             [self.tableView reloadData];
