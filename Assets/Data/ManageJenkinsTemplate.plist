@@ -4,16 +4,6 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>Build queue &amp; Executor status</string>
-		<key>description</key>
-		<string>Monitor nodes that Jenkins runs jobs on.</string>
-		<key>icon</key>
-		<string>icon-road</string>
-		<key>controller</key>
-		<string>FTManageNodesViewController</string>
-	</dict>
-	<dict>
-		<key>name</key>
 		<string>Manage plugins</string>
 		<key>description</key>
 		<string>Add, remove, disable or enable plugins</string>
