@@ -28,7 +28,7 @@
 		<key>description</key>
 		<string>Create / delete / modify users</string>
 		<key>icon</key>
-		<string>icon-groups</string>
+		<string>icon-group</string>
 		<key>controller</key>
 		<string>FTManageUsersViewController</string>
 	</dict>
