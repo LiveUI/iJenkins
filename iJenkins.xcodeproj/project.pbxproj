@@ -78,6 +78,7 @@
 		154466251803386700025022 /* FTManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466241803386700025022 /* FTManageViewController.m */; };
 		1544662B18033D0900025022 /* FTBuildQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662A18033D0900025022 /* FTBuildQueueViewController.m */; };
 		1544662F1803434F00025022 /* FTAPIComputerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662E1803434F00025022 /* FTAPIComputerObject.m */; };
+		154466341804021500025022 /* FTNodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466331804021500025022 /* FTNodeCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -247,6 +248,8 @@
 		1544662A18033D0900025022 /* FTBuildQueueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTBuildQueueViewController.m; sourceTree = "<group>"; };
 		1544662D1803434F00025022 /* FTAPIComputerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIComputerObject.h; sourceTree = "<group>"; };
 		1544662E1803434F00025022 /* FTAPIComputerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIComputerObject.m; sourceTree = "<group>"; };
+		154466321804021500025022 /* FTNodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNodeCell.h; sourceTree = "<group>"; };
+		154466331804021500025022 /* FTNodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNodeCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -828,6 +831,7 @@
 		15446616180337C800025022 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				154466311804020400025022 /* Cells */,
 				154466191803380000025022 /* FTManageNodesViewController.h */,
 				1544661A1803380000025022 /* FTManageNodesViewController.m */,
 			);
@@ -886,6 +890,15 @@
 				1544662E1803434F00025022 /* FTAPIComputerObject.m */,
 			);
 			name = Computer;
+			sourceTree = "<group>";
+		};
+		154466311804020400025022 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				154466321804021500025022 /* FTNodeCell.h */,
+				154466331804021500025022 /* FTNodeCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1440,6 +1453,7 @@
 				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
+				154466341804021500025022 /* FTNodeCell.m in Sources */,
 				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
 				15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */,
 				154465FE17FF228300025022 /* FTBuildInfoCell.m in Sources */,

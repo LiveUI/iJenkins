@@ -70,5 +70,20 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *d = _data[indexPath.row];
+    NSString *controllerString = d[@"controller"];
+    Class class = NSClassFromString(controllerString);
+    if (class) {
+        FTViewController *c = (FTViewController *)[[class alloc] init];
+        [c setTitle:FTLangGet(d[@"name"])];
+        if (c) {
+            [self.navigationController pushViewController:c animated:YES];
+        }
+    }
+}
+
 
 @end

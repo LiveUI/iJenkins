@@ -57,22 +57,6 @@
         }
 
     }];
-    
-//    NSString *url = [NSString stringWithFormat:@"%@job/%@/build", [kAccountsManager selectedAccount].baseUrl, [_job.name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-//    NSLog(@"Url: %@", url);
-//    [super showAlertWithTitle:FTLangGet(@"URL") andMessage:url];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:8.0];
-//    [request setHTTPMethod:@"POST"];
-//    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self createTopButtons];
-//            NSInteger statusCode = [(NSHTTPURLResponse *)response statusCode];
-//            if (statusCode >= 400) {
-//                NSString *message = [NSString stringWithFormat:@"%@ (%@: %d)", FTLangGet(@"We were unable to reach the server, please try again later."), FTLangGet(@"HTTP Error"), statusCode];
-//                [super showAlertWithTitle:FTLangGet(@"Request error") andMessage:message];
-//            }
-//        });
-//    }];
 }
 
 #pragma mark Creating cells
