@@ -61,17 +61,38 @@
     FTIconCell *cell = [super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
+    BOOL ok = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0);
     NSDictionary *d = _data[indexPath.row];
+    if (![d[@"loginRequired"] boolValue]) {
+        ok = YES;
+    }
+    if (ok) {
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [cell.iconView setAlpha:1];
+        [cell.textLabel setAlpha:1];
+        [cell.detailTextLabel setAlpha:1];
+        [cell.detailTextLabel setText:FTLangGet(d[@"description"])];
+    }
+    else {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        [cell.iconView setAlpha:0.4];
+        [cell.textLabel setAlpha:0.4];
+        [cell.detailTextLabel setAlpha:0.4];
+        [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
+    }
     [cell.textLabel setText:FTLangGet(d[@"name"])];
-    [cell.detailTextLabel setText:FTLangGet(d[@"description"])];
     [cell.iconView setDefaultIconIdentifier:d[@"icon"]];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType != UITableViewCellAccessoryDisclosureIndicator) {
+        return;
+    }
     
     NSDictionary *d = _data[indexPath.row];
     NSString *controllerString = d[@"controller"];

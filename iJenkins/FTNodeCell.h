@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "FTIconCell.h"
+#import "FTBasicCell.h"
 
-@interface FTNodeCell : FTIconCell
+@interface FTNodeCell : FTBasicCell
 
 @end

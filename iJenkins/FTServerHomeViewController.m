@@ -174,7 +174,6 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     //  When tableView == self.tableView condition is
     //      - YES: regular content table is asking for its data
     //      - NO: search display controller is asking for data into its table view
@@ -314,7 +313,8 @@
     else {
         [cell.iconView setDefaultIconIdentifier:@"icon-cogs"];
         [cell.textLabel setText:FTLangGet(@"Manage Jenkins")];
-        if (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0) {
+        // TODO: Decide if the manage section is only for logged in users!
+        if ((kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0) || YES) {
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
             [cell.iconView setAlpha:1];
@@ -374,7 +374,7 @@
         }
         else if ([cell isKindOfClass:[FTIconCell class]]) {
             //  Dont open anything if there is not disclosure indicator in the cell
-            //  This disabled opening "Manage Jenkins" section when the securit is not enabled
+            //  This disabled opening "Manage Jenkins" section when the security is not enabled
             if (cell.accessoryType != UITableViewCellAccessoryDisclosureIndicator) {
                 return;
             }

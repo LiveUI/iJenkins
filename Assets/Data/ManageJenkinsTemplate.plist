@@ -11,16 +11,20 @@
 		<string>icon-briefcase</string>
 		<key>controller</key>
 		<string>FTManagePluginsViewController</string>
+		<key>loginRequired</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
 		<string>Users</string>
 		<key>description</key>
-		<string>Create / delete / modify users</string>
+		<string>Create, delete, modify users</string>
 		<key>icon</key>
 		<string>icon-group</string>
 		<key>controller</key>
 		<string>FTManageUsersViewController</string>
+		<key>loginRequired</key>
+		<true/>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -31,6 +35,8 @@
 		<string>icon-desktop</string>
 		<key>controller</key>
 		<string>FTManageNodesViewController</string>
+		<key>loginRequired</key>
+		<false/>
 	</dict>
 </array>
 </plist>

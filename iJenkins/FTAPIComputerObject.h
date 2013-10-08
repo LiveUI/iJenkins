@@ -30,7 +30,7 @@
 @property (nonatomic, readonly) BOOL launchSupported;
 @property (nonatomic, strong, readonly) NSArray *loadStatistics;
 @property (nonatomic, readonly) BOOL manualLaunchAllowed;
-@property (nonatomic, strong, readonly) NSArray *monitorData;
+@property (nonatomic, strong, readonly) NSDictionary *monitorData;
 @property (nonatomic, readonly) NSInteger numExecutors;
 @property (nonatomic, readonly) NSInteger numActiveExecutors;
 @property (nonatomic, readonly) BOOL offline;

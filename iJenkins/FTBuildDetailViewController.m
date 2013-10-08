@@ -81,7 +81,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BuildInfoCell";
+    static NSString *CellIdentifier = @"buildInfoCell";
     
     FTBuildInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
