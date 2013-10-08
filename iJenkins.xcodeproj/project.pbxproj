@@ -80,6 +80,8 @@
 		1544662F1803434F00025022 /* FTAPIComputerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662E1803434F00025022 /* FTAPIComputerObject.m */; };
 		154466341804021500025022 /* FTNodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466331804021500025022 /* FTNodeCell.m */; };
 		1544663918041B9A00025022 /* NSString+Conversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544663818041B9A00025022 /* NSString+Conversions.m */; };
+		1544663D1804259200025022 /* FTAPIUsersDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544663C1804259200025022 /* FTAPIUsersDataObject.m */; };
+		15446642180425B500025022 /* FTAPIUserDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15446641180425B500025022 /* FTAPIUserDetailDataObject.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -253,6 +255,10 @@
 		154466331804021500025022 /* FTNodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNodeCell.m; sourceTree = "<group>"; };
 		1544663718041B9A00025022 /* NSString+Conversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Conversions.h"; sourceTree = "<group>"; };
 		1544663818041B9A00025022 /* NSString+Conversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Conversions.m"; sourceTree = "<group>"; };
+		1544663B1804259200025022 /* FTAPIUsersDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIUsersDataObject.h; sourceTree = "<group>"; };
+		1544663C1804259200025022 /* FTAPIUsersDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIUsersDataObject.m; sourceTree = "<group>"; };
+		15446640180425B500025022 /* FTAPIUserDetailDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIUserDetailDataObject.h; sourceTree = "<group>"; };
+		15446641180425B500025022 /* FTAPIUserDetailDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIUserDetailDataObject.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -750,6 +756,7 @@
 		154465DC17FE133A00025022 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				1544663A1804257000025022 /* Users */,
 				1544662C1803401400025022 /* Computer */,
 				154465E517FE17C500025022 /* Restarts */,
 				154465E417FE17BC00025022 /* Load */,
@@ -902,6 +909,33 @@
 				154466331804021500025022 /* FTNodeCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		1544663A1804257000025022 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				1544663F180425A100025022 /* Detail */,
+				1544663E1804259700025022 /* List */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
+		1544663E1804259700025022 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1544663B1804259200025022 /* FTAPIUsersDataObject.h */,
+				1544663C1804259200025022 /* FTAPIUsersDataObject.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		1544663F180425A100025022 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				15446640180425B500025022 /* FTAPIUserDetailDataObject.h */,
+				15446641180425B500025022 /* FTAPIUserDetailDataObject.m */,
+			);
+			name = Detail;
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1431,6 +1465,7 @@
 				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,
 				1510728717CFEBB100FD083B /* FTConfig.m in Sources */,
 				15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */,
+				1544663D1804259200025022 /* FTAPIUsersDataObject.m in Sources */,
 				154465F717FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m in Sources */,
 				15D2461217CFA0E900793614 /* FTLang.m in Sources */,
 				151072C217D0A55600FD083B /* NSData+Base64.m in Sources */,
@@ -1450,6 +1485,7 @@
 				1544660117FF47AA00025022 /* UIColor+Jenkins.m in Sources */,
 				15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */,
 				1510729617D00C2C00FD083B /* FTAPIJobDetailDataObject.m in Sources */,
+				15446642180425B500025022 /* FTAPIUserDetailDataObject.m in Sources */,
 				1544662F1803434F00025022 /* FTAPIComputerObject.m in Sources */,
 				154465EB17FE17FD00025022 /* FTAPIRestartDataObject.m in Sources */,
 				154465FA17FF11E600025022 /* FTHTTPRequestOperation.m in Sources */,
