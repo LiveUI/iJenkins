@@ -46,7 +46,7 @@
     NSArray *colorPieces = [_fullColor componentsSeparatedByString:@"_"];
     _color = [colorPieces objectAtIndex:0];
     _animating = (colorPieces.count > 1);
-    _name = data[@"name"];
+    _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _urlString = data[@"url"];
 }
 

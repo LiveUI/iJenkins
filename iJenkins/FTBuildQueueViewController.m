@@ -58,8 +58,6 @@
         [self.tableView reloadData];
         [self checkLoading];
     }];
-    
-    [self.tableView reloadData];
 }
 
 #pragma mark Initialization

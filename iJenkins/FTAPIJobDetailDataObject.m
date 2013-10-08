@@ -37,7 +37,7 @@
     [super processData:data];
     
     _displayName = data[@"displayName"];
-    _name = data[@"name"];
+    _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _url = data[@"url"];
     _description = data[@"description"];
     _buildable = [data[@"buildable"] boolValue];
