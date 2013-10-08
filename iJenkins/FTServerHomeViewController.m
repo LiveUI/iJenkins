@@ -182,7 +182,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     if (tableView == self.tableView) {
         if ([self isJobsSection:section]) {
             return [self.jobs count];
@@ -195,7 +194,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (tableView == self.tableView) {
         if (!_isDataAvailable) {
             return (indexPath.section == 0 ? ((indexPath.row == 0) ? 218 : 54) : 54);
@@ -217,7 +215,6 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    
     if (tableView == self.tableView) {
         return ([self isOverviewSection:section] ? FTLangGet(@"Overview") : FTLangGet(@"Jobs"));
     }
@@ -227,7 +224,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
     //  Show default header height for content table and no header in search results
     if (tableView == self.tableView) {
         return UITableViewAutomaticDimension;
@@ -339,7 +335,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (tableView == self.tableView) {
         if (_isDataAvailable)
         {

@@ -49,12 +49,13 @@
 #pragma mark Table view delegate & datasource methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return _data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (_data.count == 0) ? 1 : _data.count;
 }
+
 
 
 @end

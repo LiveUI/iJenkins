@@ -79,6 +79,7 @@
 		1544662B18033D0900025022 /* FTBuildQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662A18033D0900025022 /* FTBuildQueueViewController.m */; };
 		1544662F1803434F00025022 /* FTAPIComputerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662E1803434F00025022 /* FTAPIComputerObject.m */; };
 		154466341804021500025022 /* FTNodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466331804021500025022 /* FTNodeCell.m */; };
+		15446636180408B600025022 /* ManageNodesTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = 15446635180408B600025022 /* ManageNodesTemplate.plist */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -250,6 +251,7 @@
 		1544662E1803434F00025022 /* FTAPIComputerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIComputerObject.m; sourceTree = "<group>"; };
 		154466321804021500025022 /* FTNodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTNodeCell.h; sourceTree = "<group>"; };
 		154466331804021500025022 /* FTNodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNodeCell.m; sourceTree = "<group>"; };
+		15446635180408B600025022 /* ManageNodesTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ManageNodesTemplate.plist; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -571,6 +573,7 @@
 			children = (
 				1510733E17D2111100FD083B /* AccountDetailTemplate.plist */,
 				154466141803330A00025022 /* ManageJenkinsTemplate.plist */,
+				15446635180408B600025022 /* ManageNodesTemplate.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1364,6 +1367,7 @@
 				1510732C17D10EFA00FD083B /* Default.png in Resources */,
 				1510732F17D10EFA00FD083B /* Icon120.png in Resources */,
 				1510732D17D10EFA00FD083B /* Default@2x.png in Resources */,
+				15446636180408B600025022 /* ManageNodesTemplate.plist in Resources */,
 				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
