@@ -61,13 +61,14 @@
 - (void)processData:(NSDictionary *)data {
     _fullName = data[@"user"][@"fullName"];
     
-    NSArray *arr = [_fullName componentsSeparatedByString:@"/"];
-    _nickName = [arr lastObject];
-    
     _absoluteUrl = data[@"user"][@"absoluteUrl"];
     if (data[@"lastChange"] && ![data[@"lastChange"] isKindOfClass:[NSNull class]]) {
         _lastChange = [data[@"lastChange"] doubleValue];
     }
+    
+    NSArray *arr = [_absoluteUrl componentsSeparatedByString:@"/"];
+    _nickName = [arr lastObject];
+    
     if (data[@"project"] && ![data[@"project"] isKindOfClass:[NSNull class]]) {
         _project = [[FTAPIJobDataObject alloc] init];
         [_project processData:data[@"project"]];

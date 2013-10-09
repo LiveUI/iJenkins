@@ -58,7 +58,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _users.count;
+    return (_users.count > 0) ? _users.count : 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -77,7 +77,17 @@
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
     FTAPIUsersInfoDataObject *info = _users[indexPath.row];
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@%@", info.nickName, ((info.fullName.length > 1) ? [NSString stringWithFormat:@" (%@)", info.fullName] : @"")]];
+    NSString *name = nil;
+    if ([info.fullName isEqualToString:info.nickName]) {
+        name = info.fullName;
+    }
+    else if (info.fullName.length < 2) {
+        name = info.nickName;
+    }
+    else {
+        name = [NSString stringWithFormat:@"%@ (%@)", info.fullName, info.nickName];
+    }
+    [cell.textLabel setText:name];
     if (info.project) {
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@: %@", FTLangGet(@"Last project"), info.project.name]];
     }
@@ -94,7 +104,7 @@
         cell = [[FTSmallTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
-    [cell.detailTextLabel setText:FTLangGet(@"No users availabe")];
+    [cell.detailTextLabel setText:FTLangGet(@"No users available")];
     return cell;
 }
 
@@ -104,7 +114,9 @@
     }
     else {
         if (_isLoading) {
-            return [FTLoadingCell cellForTable:tableView];
+            UITableViewCell *cell = [FTLoadingCell cellForTable:tableView];
+            [cell.detailTextLabel setText:FTLangGet(@"This could take a while ... sorry ... :(")];
+            return cell;
         }
         else {
             return [self emptyTableCell];
@@ -119,7 +131,7 @@
         FTAPIUsersInfoDataObject *info = _users[indexPath.row];
         FTUserDetailViewController *c = [[FTUserDetailViewController alloc] init];
         [c setTitle:info.nickName];
-        [self.navigationController pushViewController:c animated:YES];  
+        [self.navigationController pushViewController:c animated:YES];
     }
 }
 

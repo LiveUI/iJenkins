@@ -21,7 +21,11 @@
 
 - (void)createAllElements {
     [super createAllElements];
+    
+    [super createTableView];
 }
+
+
 
 
 @end
