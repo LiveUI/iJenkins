@@ -66,5 +66,28 @@
     [_accessIndicator setBackgroundColor:statusIndicatorColor];
 }
 
+#pragma mark - UIMenuController
+
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    return (action == @selector(copyURL:) || action == @selector(openInBrowser:));
+}
+
+#pragma mark Menu controller actions
+
+- (void)copyURL:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(accountCellMenuCopyURLSelected:)]) {
+        [self.delegate accountCellMenuCopyURLSelected:self];
+    }
+}
+
+- (void)openInBrowser:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(accountCellMenuOpenInBrowserSelected:)]) {
+        [self.delegate accountCellMenuOpenInBrowserSelected:self];
+    }
+}
 
 @end

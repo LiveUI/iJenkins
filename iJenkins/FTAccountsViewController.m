@@ -14,7 +14,7 @@
 #import "GCNetworkReachability.h"
 
 
-@interface FTAccountsViewController ()
+@interface FTAccountsViewController () <FTAccountCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
@@ -83,6 +83,19 @@
     [super viewWillAppear:animated];
     
     [FTAPIConnector stopLoadingAll];
+    
+    //  Custom UIMenuController items for the accounts
+    //  These are added only for this controller and are removed at the -viewWillDisappear
+    UIMenuItem *copyUrlItem = [[UIMenuItem alloc] initWithTitle:FTLangGet(@"Copy URL") action:@selector(copyURL:)];
+    UIMenuItem *openInBrowser = [[UIMenuItem alloc] initWithTitle:FTLangGet(@"Open in browser") action:@selector(openInBrowser:)];
+    [[UIMenuController sharedMenuController] setMenuItems: @[copyUrlItem, openInBrowser]];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    //  Remove custom menu actions
+    [[UIMenuController sharedMenuController] setMenuItems:nil];
 }
 
 #pragma mark Actions
@@ -198,6 +211,7 @@
     FTAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTAccountCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell.delegate = self;
         
     }
     if (indexPath.section == 0) {
@@ -298,7 +312,7 @@
     }
     else {
         if (indexPath.section != 2) {
-            FTAccount *acc = [self acccountForIndexPath:indexPath];
+            FTAccount *acc = [self accountForIndexPath:indexPath];
             [kAccountsManager setSelectedAccount:acc];
             [FTAPIConnector resetForAccount:acc];
             
@@ -313,7 +327,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-    FTAccount *acc = [self acccountForIndexPath:indexPath];
+    FTAccount *acc = [self accountForIndexPath:indexPath];
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setDelegate:self];
     NSLog(@"%@",acc.name);
@@ -324,6 +338,21 @@
     [self presentViewController:nc animated:YES completion:^{
         
     }];
+}
+
+//  Showing menu overlay
+- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    return [cell isKindOfClass:[FTAccountCell class]];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    return [cell canPerformAction:action withSender:sender];
+}
+
+- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
+    //  This method have to be present in order to make the UIMenuController work, however there is no imlementation needed as the functionality is handled using cell delegate
 }
 
 #pragma mark Add account view controller delegate methods
@@ -352,11 +381,29 @@
     }];
 }
 
+#pragma mark Account cell delegate
+
+- (void)accountCellMenuCopyURLSelected:(FTAccountCell *)cell {
+    FTAccount *account = [self accountForCell:cell];
+    NSURL *serverURL = [NSURL URLWithString:[account baseUrl]];
+    [[UIPasteboard generalPasteboard] setURL:serverURL];
+}
+
+- (void)accountCellMenuOpenInBrowserSelected:(FTAccountCell *)cell {
+    FTAccount *account = [self accountForCell:cell];
+    NSURL *serverURL = [NSURL URLWithString:[account baseUrl]];
+    [[UIApplication sharedApplication] openURL:serverURL];
+}
+
 #pragma mark Private methods
 
-- (FTAccount *)acccountForIndexPath:(NSIndexPath *)indexPath {
+- (FTAccount *)accountForIndexPath:(NSIndexPath *)indexPath {
     return (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
 }
 
+- (FTAccount *)accountForCell:(FTAccountCell *)cell {
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    return [self accountForIndexPath:indexPath];
+}
 
 @end
