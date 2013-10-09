@@ -90,7 +90,6 @@
 		15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245E317CF9C2A00793614 /* FTAppDelegate.m */; };
 		15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
 		15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */; };
-		15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FE17CF9DA700793614 /* FTLoginViewController.m */; };
 		15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460217CF9DBB00793614 /* FTAccountsViewController.m */; };
 		15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460617CF9DD400793614 /* FTJobDetailViewController.m */; };
 		15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460D17CF9FB800793614 /* FTNoInternetConnectionViewController.m */; };
@@ -105,7 +104,6 @@
 		15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462517CFA21100793614 /* UIColor+Tools.m */; };
 		15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462917CFA21100793614 /* UIView+Effects.m */; };
 		15D2463017CFA21100793614 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462B17CFA21100793614 /* UIView+Layout.m */; };
-		15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463617CFA61F00793614 /* FTListUsersViewController.m */; };
 		15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463917CFA62900793614 /* FTUserDetailViewController.m */; };
 		15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463E17CFBD8E00793614 /* GCNetworkReachability.m */; };
 		15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2465B17CFBD8E00793614 /* Lockbox.m */; };
@@ -273,8 +271,6 @@
 		15D245EC17CF9C2A00793614 /* FTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTViewController.m; sourceTree = "<group>"; };
 		15D245FA17CF9D9900793614 /* FTServerHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTServerHomeViewController.h; sourceTree = "<group>"; };
 		15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTServerHomeViewController.m; sourceTree = "<group>"; };
-		15D245FD17CF9DA700793614 /* FTLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoginViewController.h; sourceTree = "<group>"; };
-		15D245FE17CF9DA700793614 /* FTLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoginViewController.m; sourceTree = "<group>"; };
 		15D2460117CF9DBB00793614 /* FTAccountsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountsViewController.h; sourceTree = "<group>"; };
 		15D2460217CF9DBB00793614 /* FTAccountsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountsViewController.m; sourceTree = "<group>"; };
 		15D2460517CF9DD400793614 /* FTJobDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobDetailViewController.h; sourceTree = "<group>"; };
@@ -297,8 +293,6 @@
 		15D2462917CFA21100793614 /* UIView+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Effects.m"; sourceTree = "<group>"; };
 		15D2462A17CFA21100793614 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
 		15D2462B17CFA21100793614 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
-		15D2463517CFA61F00793614 /* FTListUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTListUsersViewController.h; sourceTree = "<group>"; };
-		15D2463617CFA61F00793614 /* FTListUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTListUsersViewController.m; sourceTree = "<group>"; };
 		15D2463817CFA62900793614 /* FTUserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTUserDetailViewController.h; sourceTree = "<group>"; };
 		15D2463917CFA62900793614 /* FTUserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTUserDetailViewController.m; sourceTree = "<group>"; };
 		15D2463D17CFBD8E00793614 /* GCNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCNetworkReachability.h; sourceTree = "<group>"; };
@@ -851,6 +845,7 @@
 		15446617180337D000025022 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				1544664318043CCD00025022 /* User detail */,
 				1544661C1803381200025022 /* FTManageUsersViewController.h */,
 				1544661D1803381200025022 /* FTManageUsersViewController.m */,
 			);
@@ -938,6 +933,15 @@
 			name = Detail;
 			sourceTree = "<group>";
 		};
+		1544664318043CCD00025022 /* User detail */ = {
+			isa = PBXGroup;
+			children = (
+				15D2463817CFA62900793614 /* FTUserDetailViewController.h */,
+				15D2463917CFA62900793614 /* FTUserDetailViewController.m */,
+			);
+			name = "User detail";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -1007,7 +1011,6 @@
 			children = (
 				1544662818033CF400025022 /* Build queue */,
 				15446613180332E100025022 /* Management */,
-				15D2463217CFA5ED00793614 /* Users */,
 				15D2460A17CF9F9600793614 /* System */,
 				15D245F817CF9C5400793614 /* Server home */,
 				15D2460017CF9DAA00793614 /* Accounts */,
@@ -1035,15 +1038,6 @@
 				15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */,
 			);
 			name = "Server home";
-			sourceTree = "<group>";
-		};
-		15D245F917CF9C5B00793614 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				15D245FD17CF9DA700793614 /* FTLoginViewController.h */,
-				15D245FE17CF9DA700793614 /* FTLoginViewController.m */,
-			);
-			name = Login;
 			sourceTree = "<group>";
 		};
 		15D2460017CF9DAA00793614 /* Accounts */ = {
@@ -1168,34 +1162,6 @@
 				1510727F17CFEA6300FD083B /* FTAPIConnector.m */,
 			);
 			name = API;
-			sourceTree = "<group>";
-		};
-		15D2463217CFA5ED00793614 /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				15D2463417CFA5FE00793614 /* User detail */,
-				15D2463317CFA5F700793614 /* List */,
-				15D245F917CF9C5B00793614 /* Login */,
-			);
-			name = Users;
-			sourceTree = "<group>";
-		};
-		15D2463317CFA5F700793614 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				15D2463517CFA61F00793614 /* FTListUsersViewController.h */,
-				15D2463617CFA61F00793614 /* FTListUsersViewController.m */,
-			);
-			name = List;
-			sourceTree = "<group>";
-		};
-		15D2463417CFA5FE00793614 /* User detail */ = {
-			isa = PBXGroup;
-			children = (
-				15D2463817CFA62900793614 /* FTUserDetailViewController.h */,
-				15D2463917CFA62900793614 /* FTUserDetailViewController.m */,
-			);
-			name = "User detail";
 			sourceTree = "<group>";
 		};
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
@@ -1451,7 +1417,6 @@
 				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */,
 				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
-				15D245FF17CF9DA700793614 /* FTLoginViewController.m in Sources */,
 				154466251803386700025022 /* FTManageViewController.m in Sources */,
 				15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */,
 				154465E217FE161700025022 /* FTAPIBuildQueueDataObject.m in Sources */,
@@ -1492,7 +1457,6 @@
 				1510733917D20FA100FD083B /* FTSwitchAccountCell.m in Sources */,
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,
 				15D2463017CFA21100793614 /* UIView+Layout.m in Sources */,
-				15D2463717CFA61F00793614 /* FTListUsersViewController.m in Sources */,
 				15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */,
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				154466341804021500025022 /* FTNodeCell.m in Sources */,

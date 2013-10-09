@@ -7,12 +7,15 @@
 //
 
 #import "FTManageUsersViewController.h"
-#import "FTBasicCell.h"
+#import "FTUserDetailViewController.h"
+#import "FTSmallTextCell.h"
+#import "FTLoadingCell.h"
 
 
 @interface FTManageUsersViewController ()
 
 @property (nonatomic, strong) NSArray *users;
+@property (nonatomic) BOOL isLoading;
 
 @end
 
@@ -23,9 +26,11 @@
 #pragma mark Data
 
 - (void)loadData {
+    _isLoading = YES;
     FTAPIUsersDataObject *usersObject = [[FTAPIUsersDataObject alloc] init];
     [FTAPIConnector connectWithObject:usersObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _users = usersObject.users;
+        _isLoading = NO;
         [self.tableView reloadData];
     }];
 }
@@ -43,6 +48,7 @@
     [super createTableView];
     
     [self loadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark Table view delegate & datasource methods
@@ -63,9 +69,9 @@
     return nil;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (FTBasicCell *)userCellForIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"userCellIdentifier";
-    FTBasicCell *cell = [super.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FTBasicCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
         cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -79,6 +85,42 @@
         [cell.detailTextLabel setText:FTLangGet(@"There is no last project for this user")];
     }
     return cell;
+}
+
+- (FTBasicCell *)emptyTableCell {
+    static NSString *CellIdentifier = @"emptyTableIdentifier";
+    FTSmallTextCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell = [[FTSmallTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    }
+    [cell.detailTextLabel setText:FTLangGet(@"No users availabe")];
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (_users.count > 0) {
+        return [self userCellForIndexPath:indexPath];
+    }
+    else {
+        if (_isLoading) {
+            return [FTLoadingCell cellForTable:tableView];
+        }
+        else {
+            return [self emptyTableCell];
+        }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (_users.count > 0) {
+        FTAPIUsersInfoDataObject *info = _users[indexPath.row];
+        FTUserDetailViewController *c = [[FTUserDetailViewController alloc] init];
+        [c setTitle:info.nickName];
+        [self.navigationController pushViewController:c animated:YES];  
+    }
 }
 
 
