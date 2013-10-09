@@ -7,7 +7,8 @@
 //
 
 #import "FTViewController.h"
+#import "FTUserDetailViewController.h"
 
-@interface FTManageUsersViewController : FTViewController
+@interface FTManageUsersViewController : FTViewController <FTUserDetailViewControllerDelegate>
 
 @end

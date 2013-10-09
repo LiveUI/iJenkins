@@ -9,7 +9,7 @@
 #endif
 
 
-#define DegreesToRadians(angle) ((angle) / 180.0 * M_PI)
+#define DegreesToRadians(angle)                 ((angle) / 180.0 * M_PI)
 
 
 #ifdef __OBJC__
@@ -29,3 +29,7 @@
     #import "UIColor+Tools.h"
     #import "UIColor+Jenkins.h"
 #endif
+
+
+
+#define FT_NA                                   @"n/a"

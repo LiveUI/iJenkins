@@ -10,7 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface FTLogViewController : FTViewController <NSStreamDelegate, MFMailComposeViewControllerDelegate>
+@interface FTLogViewController : FTViewController <MFMailComposeViewControllerDelegate>
 
 - (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
 

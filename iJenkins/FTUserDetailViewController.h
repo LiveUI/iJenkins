@@ -7,7 +7,23 @@
 //
 
 #import "FTViewController.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface FTUserDetailViewController : FTViewController
+
+@class FTUserDetailViewController;
+
+@protocol FTUserDetailViewControllerDelegate <NSObject>
+
+- (void)userDetailViewController:(FTUserDetailViewController *)controller didDeleteUser:(FTAPIUserDetailDataObject *)user;
+
+@end
+
+
+@interface FTUserDetailViewController : FTViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, strong) NSString *nickName;
+
+@property (nonatomic, weak) id <FTUserDetailViewControllerDelegate> delegate;
+
 
 @end

@@ -202,7 +202,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexCause:
-            title = (_build.buildDetail.causes.count > 0) ? [(FTAPIBuildDetailCauseDataObject *)_build.buildDetail.causes.lastObject shortDescription] : FTLangGet(@"n/a"); // Done
+            title = (_build.buildDetail.causes.count > 0) ? [(FTAPIBuildDetailCauseDataObject *)_build.buildDetail.causes.lastObject shortDescription] : FTLangGet(FT_NA); // Done
             break;
             
         case FTBuildDetailControllerIndexDuration: {
@@ -223,7 +223,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             
         case FTBuildDetailControllerIndexResult: {
             BOOL ok = (_build.buildDetail.resultString && ![_build.buildDetail.resultString isKindOfClass:[NSNull class]]);
-            title = (ok) ? _build.buildDetail.resultString.uppercaseString : @"n/a";
+            title = (ok) ? _build.buildDetail.resultString.uppercaseString : FT_NA;
             title = FTLangGet(title); // Done
             break;
         }

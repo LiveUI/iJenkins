@@ -7,7 +7,6 @@
 //
 
 #import "FTManageUsersViewController.h"
-#import "FTUserDetailViewController.h"
 #import "FTSmallTextCell.h"
 #import "FTLoadingCell.h"
 
@@ -130,9 +129,24 @@
     if (_users.count > 0) {
         FTAPIUsersInfoDataObject *info = _users[indexPath.row];
         FTUserDetailViewController *c = [[FTUserDetailViewController alloc] init];
+        [c setDelegate:self];
         [c setTitle:info.nickName];
+        [c setNickName:info.nickName];
         [self.navigationController pushViewController:c animated:YES];
     }
+}
+
+#pragma mark User detail conroller delegate methods
+
+- (void)userDetailViewController:(FTUserDetailViewController *)controller didDeleteUser:(FTAPIUserDetailDataObject *)user {
+    NSMutableArray *arr = [_users mutableCopy];
+    for (FTAPIUsersInfoDataObject *info in arr) {
+        if ([info.nickName isEqualToString:user.nickName]) {
+            [arr removeObject:info];
+            break;
+        }
+    }
+    _users = [arr copy];
 }
 
 
