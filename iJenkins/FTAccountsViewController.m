@@ -11,7 +11,9 @@
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
 #import "FTIconCell.h"
+#import "FTSmallTextCell.h"
 #import "GCNetworkReachability.h"
+#import "BonjourBuddy.h"
 
 
 @interface FTAccountsViewController () <FTAccountCellDelegate>
@@ -22,6 +24,9 @@
 
 @property (nonatomic, strong) NSMutableDictionary *reachabilityCache;
 @property (nonatomic, strong) NSMutableDictionary *reachabilityStatusCache;
+
+@property (nonatomic, strong) BonjourBuddy *bonjour;
+@property (nonatomic, strong) NSArray *bonjourAccounts;
 
 @end
 
@@ -51,6 +56,30 @@
     [super.tableView reloadData];
 }
 
+- (NSArray *)datasourceForIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.section) {
+        case 0:
+            return _data;
+            break;
+            
+        case 1:
+            return _bonjourAccounts;
+            break;
+            
+        case 2:
+            return _demoAccounts;
+            break;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
+- (FTAccount *)accountForIndexPath:(NSIndexPath *)indexPath {
+    return [[self datasourceForIndexPath:indexPath] objectAtIndex:indexPath.row];
+}
+
 #pragma mark Creating elements
 
 - (void)createTableView {
@@ -75,6 +104,8 @@
     [self createTopButtons];
     
     [self setTitle:FTLangGet(@"Servers")];
+    
+    [self startCheckingForJenkins];
 }
 
 #pragma mark View lifecycle
@@ -127,10 +158,50 @@
     [self.navigationItem setRightBarButtonItem:edit animated:YES];
 }
 
+#pragma mark Bonjour Jenkins discovery
+
+- (void)startCheckingForJenkins {
+    _bonjour = [[BonjourBuddy alloc] initWithServiceId:@"_hudson._tcp."];
+    _bonjour.me = @{@"name": [[UIDevice currentDevice] name]};
+    [_bonjour start];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peersChanged) name:BonjourBuddyPeersChangedNotification object:nil];
+}
+
+#pragma mark Bonjour discovery
+
+- (BOOL)isAccountUrlInBonjour:(NSURL *)url {
+    for (FTAccount *acc in _bonjourAccounts) {
+        if ([acc.host isEqualToString:url.host] && acc.port == url.port.integerValue) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+- (void)peersChanged {
+    if (self == self.navigationController.viewControllers.lastObject) {
+        NSMutableArray *arr = [NSMutableArray array];
+        for (NSDictionary *peer in _bonjour.peers) {
+            NSURL *url = [NSURL URLWithString:peer[@"url"]];
+            if (peer[@"url"]) {
+                NSNetService *service = peer[@"service"];
+                FTAccount *acc = [[FTAccount alloc] init];
+                [acc setName:url.host];
+                [acc setHost:url.host];
+                [acc setPort:service.port];
+                [acc setHttps:[url.scheme isEqualToString:@"https"]];
+                [arr addObject:acc];
+            }
+        }
+        _bonjourAccounts = [arr copy];
+    }
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -140,10 +211,14 @@
             break;
             
         case 1:
-            return _demoAccounts.count;
+            return ((_bonjourAccounts.count > 0) ? _bonjourAccounts.count : 1);
             break;
             
         case 2:
+            return _demoAccounts.count;
+            break;
+            
+        case 3:
             return 1;
             break;
             
@@ -169,10 +244,14 @@
             break;
             
         case 1:
-            return FTLangGet(@"Demo account");
+            return FTLangGet(@"Local network");
             break;
             
         case 2:
+            return FTLangGet(@"Demo account");
+            break;
+            
+        case 3:
             return FTLangGet(@"About");
             break;
             
@@ -220,7 +299,7 @@
     else {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    __block FTAccount *acc = (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
+    __block FTAccount *acc = [self accountForIndexPath:indexPath];
     [cell.textLabel setText:acc.name];
     NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%d", acc.port] : @"";
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@", acc.host, port]];
@@ -229,41 +308,46 @@
     NSNumber *key = @([acc hash]);
     NSNumber *statusNumber = _reachabilityStatusCache[key];
     
-    if (acc.host.length > 0) {
-        GCNetworkReachability *r = _reachabilityCache[acc.host];
-        if (!r) {
-            r = [GCNetworkReachability reachabilityWithHostName:acc.host];
-            if (!_reachabilityCache) {
-                _reachabilityCache = [NSMutableDictionary dictionary];
-            }
-            _reachabilityCache[acc.host] = r;
-            [r startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
-                __block FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
-                if (status == GCNetworkReachabilityStatusNotReachable) {
-                    _reachabilityStatusCache[key] = @(s);
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    if (indexPath.section == 1) {
+        statusNumber = [NSNumber numberWithInt:FTAccountCellReachabilityStatusReachable];
+    }
+    else {
+        if (acc.host.length > 0) {
+            GCNetworkReachability *r = _reachabilityCache[acc.host];
+            if (!r) {
+                r = [GCNetworkReachability reachabilityWithHostName:acc.host];
+                if (!_reachabilityCache) {
+                    _reachabilityCache = [NSMutableDictionary dictionary];
                 }
-                else {
-                    _reachabilityStatusCache[key] = @(s);
-                    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                    
-                    // TODO: Finish the API request to check server API, not just reachability
-                    /*
-                    [kAccountsManager setSelectedAccount:acc];
-                    FTAPIOverallLoadDataObject *loadObject = [[FTAPIOverallLoadDataObject alloc] init];
-                    [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-                        if (error) {
-                            s = FTAccountCellReachabilityStatusUnreachable;
-                        }
-                        else {
-                            s = FTAccountCellReachabilityStatusReachable;
-                        }
+                _reachabilityCache[acc.host] = r;
+                [r startMonitoringNetworkReachabilityWithHandler:^(GCNetworkReachabilityStatus status) {
+                    __block FTAccountCellReachabilityStatus s = (status == GCNetworkReachabilityStatusNotReachable) ? FTAccountCellReachabilityStatusUnreachable : FTAccountCellReachabilityStatusReachable;
+                    if (status == GCNetworkReachabilityStatusNotReachable) {
                         _reachabilityStatusCache[key] = @(s);
                         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-                    }];
-                     */
-                }
-            }];
+                    }
+                    else {
+                        _reachabilityStatusCache[key] = @(s);
+                        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                        
+                        // TODO: Finish the API request to check server API, not just reachability
+                        /*
+                         [kAccountsManager setSelectedAccount:acc];
+                         FTAPIOverallLoadDataObject *loadObject = [[FTAPIOverallLoadDataObject alloc] init];
+                         [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+                         if (error) {
+                         s = FTAccountCellReachabilityStatusUnreachable;
+                         }
+                         else {
+                         s = FTAccountCellReachabilityStatusReachable;
+                         }
+                         _reachabilityStatusCache[key] = @(s);
+                         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                         }];
+                         */
+                    }
+                }];
+            }
         }
     }
     
@@ -295,8 +379,16 @@
     if (indexPath.section == 0 && _data.count == 0) {
         return [self cellForNoAccount];
     }
+    else if (indexPath.section == 1) {
+        if (_bonjourAccounts.count > 0) {
+            return [self accountCellForIndexPath:indexPath];
+        }
+        else {
+            return [FTSmallTextCell smallTextCellForTable:tableView withText:FTLangGet(@"No instances available at the moment")];
+        }
+    }
     else {
-        if (indexPath.section != 2) {
+        if (indexPath.section == 0 || indexPath.section == 2) {
             return [self accountCellForIndexPath:indexPath];
         }
         else {
@@ -311,14 +403,16 @@
         [self didCLickAddItem:nil];
     }
     else {
-        if (indexPath.section != 2) {
-            FTAccount *acc = [self accountForIndexPath:indexPath];
-            [kAccountsManager setSelectedAccount:acc];
-            [FTAPIConnector resetForAccount:acc];
-            
-            FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
-            [c setTitle:acc.name];
-            [self.navigationController pushViewController:c animated:YES];
+        if (indexPath.section != 3) {
+            if ([self datasourceForIndexPath:indexPath].count > 0) {
+                FTAccount *acc = [self accountForIndexPath:indexPath];
+                [kAccountsManager setSelectedAccount:acc];
+                [FTAPIConnector resetForAccount:acc];
+                
+                FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
+                [c setTitle:acc.name];
+                [self.navigationController pushViewController:c animated:YES];
+            }
         }
         else {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/rafiki270/iJenkins"]];
@@ -330,7 +424,6 @@
     FTAccount *acc = [self accountForIndexPath:indexPath];
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setDelegate:self];
-    NSLog(@"%@",acc.name);
     [c setTitle:acc.name];
     [c setAccount:acc];
     
@@ -396,10 +489,6 @@
 }
 
 #pragma mark Private methods
-
-- (FTAccount *)accountForIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.section == 0) ? [_data objectAtIndex:indexPath.row] : [_demoAccounts objectAtIndex:indexPath.row];
-}
 
 - (FTAccount *)accountForCell:(FTAccountCell *)cell {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];

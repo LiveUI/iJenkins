@@ -67,6 +67,9 @@
     if (![d[@"loginRequired"] boolValue]) {
         ok = YES;
     }
+#if (TARGET_IPHONE_SIMULATOR)
+    ok = YES;
+#endif
     if (ok) {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [cell.iconView setAlpha:1];

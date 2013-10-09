@@ -84,6 +84,7 @@
 		15446642180425B500025022 /* FTAPIUserDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15446641180425B500025022 /* FTAPIUserDetailDataObject.m */; };
 		154466471805E61E00025022 /* FTDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466461805E61E00025022 /* FTDeleteCell.m */; };
 		1544664B1805E84300025022 /* FTValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544664A1805E84300025022 /* FTValueCell.m */; };
+		154466A01806092100025022 /* BonjourBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466911806092000025022 /* BonjourBuddy.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -263,6 +264,8 @@
 		154466461805E61E00025022 /* FTDeleteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDeleteCell.m; sourceTree = "<group>"; };
 		154466491805E84300025022 /* FTValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTValueCell.h; sourceTree = "<group>"; };
 		1544664A1805E84300025022 /* FTValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTValueCell.m; sourceTree = "<group>"; };
+		154466901806092000025022 /* BonjourBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BonjourBuddy.h; sourceTree = "<group>"; };
+		154466911806092000025022 /* BonjourBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonjourBuddy.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -758,6 +761,7 @@
 		154465DC17FE133A00025022 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				1544664C1805FE4400025022 /* Plugins */,
 				1544663A1804257000025022 /* Users */,
 				1544662C1803401400025022 /* Computer */,
 				154465E517FE17C500025022 /* Restarts */,
@@ -966,6 +970,22 @@
 				1544664A1805E84300025022 /* FTValueCell.m */,
 			);
 			name = "Value cell";
+			sourceTree = "<group>";
+		};
+		1544664C1805FE4400025022 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Plugins;
+			sourceTree = "<group>";
+		};
+		1544668E1806092000025022 /* BonjourBuddy-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				154466901806092000025022 /* BonjourBuddy.h */,
+				154466911806092000025022 /* BonjourBuddy.m */,
+			);
+			path = "BonjourBuddy-iOS";
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1193,6 +1213,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				1544668E1806092000025022 /* BonjourBuddy-iOS */,
 				15446609180300C400025022 /* HTTP-Status-Codes-for-Objective-C */,
 				15E182CC17E3325A00CE0DEA /* AFNetworking */,
 				1510735617D5F3B800FD083B /* XYPieChart */,
@@ -1452,6 +1473,7 @@
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
 				153921E217E22D0600896FC1 /* FTAPIBuildDetailDataObject.m in Sources */,
 				1510732417D0FEDD00FD083B /* FTAddAccountViewController.m in Sources */,
+				154466A01806092100025022 /* BonjourBuddy.m in Sources */,
 				1544663918041B9A00025022 /* NSString+Conversions.m in Sources */,
 				15D2460E17CF9FB800793614 /* FTNoInternetConnectionViewController.m in Sources */,
 				1510728A17CFEBFA00FD083B /* NSString+URLTools.m in Sources */,

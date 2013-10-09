@@ -6,7 +6,7 @@
 		<key>name</key>
 		<string>Manage plugins</string>
 		<key>description</key>
-		<string>Add, remove, disable or enable plugins</string>
+		<string>Manage plugins</string>
 		<key>icon</key>
 		<string>icon-briefcase</string>
 		<key>controller</key>
@@ -18,7 +18,7 @@
 		<key>name</key>
 		<string>Users</string>
 		<key>description</key>
-		<string>Create, delete, modify users</string>
+		<string>Manage users</string>
 		<key>icon</key>
 		<string>icon-group</string>
 		<key>controller</key>

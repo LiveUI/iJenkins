@@ -92,6 +92,8 @@ static FTAccount *_sharedAccount = nil;
             }
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            [object processHeaders:response.allHeaderFields];
+            [object setResponse:response];
             if (complete) {
                 complete(object, error);
             }
@@ -111,6 +113,8 @@ static FTAccount *_sharedAccount = nil;
             }
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            [object processHeaders:operation.response.allHeaderFields];
+            [object setResponse:operation.response];
             if (complete) {
                 complete(object, error);
             }
@@ -202,7 +206,7 @@ static FTAccount *_sharedAccount = nil;
     
     NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];
     [request setURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:8.0];
+    [request setTimeoutInterval:20.0];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];

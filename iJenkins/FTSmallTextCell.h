@@ -13,5 +13,7 @@
 
 @property (nonatomic, strong) NSString *text;
 
++ (FTSmallTextCell *)smallTextCellForTable:(UITableView *)tableView withText:(NSString *)text;
+
 
 @end

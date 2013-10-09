@@ -15,6 +15,7 @@
 #import "FTJobCell.h"
 #import "FTNoJobCell.h"
 #import "FTIconCell.h"
+#import "FTHTTPCodes.h"
 
 
 @interface FTServerHomeViewController ()
@@ -41,10 +42,6 @@
 
 #pragma mark Data
 
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)loadData {
     if (!_serverObject) {
         _isDataAvailable = NO;
@@ -56,9 +53,18 @@
         }
         [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
-                if (error.code != -999) {
+                NSLog(@"Error code: %d", _serverObject.response.statusCode);
+                if (_serverObject.response.statusCode == FTHTTPCodesNo401Unauthorised || _serverObject.response.statusCode == FTHTTPCodesNo403Forbidden) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
+                    [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+                    [alert show];
+                }
+                else if (_serverObject.response.statusCode == 0) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
                     [alert show];
+                }
+                else {
+                    
                 }
             }
             else {
@@ -428,6 +434,20 @@
     }];
 }
 
+#pragma mark Alert view delegate methods
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
+        [kAccountsManager.selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
+        [kAccountsManager.selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
+        _serverObject = nil;
+        [self loadData];
+    }
+    else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 #pragma mark Private methods
 
 - (BOOL)isOverviewSection:(NSInteger)section
@@ -460,5 +480,6 @@
     
     return nil;
 }
+
 
 @end

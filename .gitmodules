@@ -13,3 +13,6 @@
 [submodule "Thirdparty/HTTP-Status-Codes-for-Objective-C"]
 	path = Thirdparty/HTTP-Status-Codes-for-Objective-C
 	url = git@github.com:rafiki270/HTTP-Status-Codes-for-Objective-C.git
+[submodule "Thirdparty/BonjourBuddy-iOS"]
+	path = Thirdparty/BonjourBuddy-iOS
+	url = git@github.com:rafiki270/BonjourBuddy-iOS.git

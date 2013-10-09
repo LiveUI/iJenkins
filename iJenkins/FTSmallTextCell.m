@@ -50,12 +50,13 @@
 
 #pragma mark Initialization
 
-+ (FTBasicCell *)cellForTable:(UITableView *)tableView {
++ (FTSmallTextCell *)smallTextCellForTable:(UITableView *)tableView withText:(NSString *)text {
     static NSString *identifier = @"smallTextCell";
     FTSmallTextCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTSmallTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
+    [cell setText:text];
     return cell;
 }
 
