@@ -71,7 +71,14 @@
     BOOL noteAvailable = plugin.hasUpdate;
     [self.detailTextLabel setText:[NSString stringWithFormat:@"%@ (%@)%@", plugin.shortName, plugin.version, (noteAvailable ? @" - " : @"")]];
     [_statusLabel setText:(plugin.hasUpdate ? FTLangGet(@"Update available") : @"")];
-    [_enabledIcon setDefaultIconIdentifier:(plugin.enabled ? @"icon-ok-circle" : @"icon-ban-circle")];
+    if (plugin.enabled) {
+        [_enabledIcon setDefaultIconIdentifier:@"icon-ok-circle"];
+        [_enabledIcon.defaultView setTextColor:[UIColor colorWithHexString:@"007EF3"]];
+    }
+    else {
+        [_enabledIcon setDefaultIconIdentifier:@"icon-ban-circle"];
+        [_enabledIcon.defaultView setTextColor:[UIColor colorWithHexString:@"FF4000"]];
+    }
 }
 
 #pragma mark Initialization

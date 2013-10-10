@@ -105,7 +105,7 @@
         case 2: {
             [cell.textLabel setText:FTLangGet(@"Response time")];
             NSString *timeStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.ResponseTimeMonitor"][@"average"], @"0");
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d", [timeStr integerValue]]];
+            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%.2f sec (%d ms)", ([timeStr floatValue] / 1000.0f), [timeStr integerValue]]];
             break;
         }
             
