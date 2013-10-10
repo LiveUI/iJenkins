@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *host;
+@property (nonatomic, strong) NSArray *alternativeAddresses;
 @property (nonatomic, strong) NSString *pathSuffix;
 @property (nonatomic) BOOL https;
 @property (nonatomic) NSInteger port;

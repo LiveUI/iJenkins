@@ -14,6 +14,7 @@
 #import "FTSmallTextCell.h"
 #import "GCNetworkReachability.h"
 #import "BonjourBuddy.h"
+#import "NSData+Networking.h"
 
 
 @interface FTAccountsViewController () <FTAccountCellDelegate>
@@ -184,10 +185,22 @@
         for (NSDictionary *peer in _bonjour.peers) {
             NSURL *url = [NSURL URLWithString:peer[@"url"]];
             if (peer[@"url"]) {
-                NSNetService *service = peer[@"service"];
                 FTAccount *acc = [[FTAccount alloc] init];
+                NSNetService *service = peer[@"service"];
+                if (service.addresses.count > 0) {
+                    NSMutableArray *addr = [NSMutableArray array];
+                    for (NSData *data in service.addresses) {
+                        NSString *host = [data host];
+                        NSLog(@"Addr: %@ (%@)", host, service.hostName);
+                        if (acc.host.length < 2) [acc setHost:[host copy]];
+                        [addr addObject:host];
+                    }
+                    [acc setAlternativeAddresses:[addr copy]];
+                }
+                else {
+                    [acc setHost:url.host];
+                }
                 [acc setName:url.host];
-                [acc setHost:url.host];
                 [acc setPort:service.port];
                 [acc setHttps:[url.scheme isEqualToString:@"https"]];
                 [arr addObject:acc];
