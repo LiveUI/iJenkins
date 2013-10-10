@@ -9,7 +9,7 @@
 #import "FTAPIJobDetailDataObject.h"
 
 
-@class FTAPIJobDataObject;
+@class FTAPIJobDataObject, FTAPIComputerExecutorObject;
 
 @protocol FTAPIJobDataObjectDelegate <NSObject>
 
@@ -26,6 +26,8 @@
 @property (nonatomic) BOOL animating;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *urlString;
+
+@property (nonatomic, weak) FTAPIComputerExecutorObject *executor;
 
 @property (nonatomic, strong) FTAPIJobDetailDataObject *jobDetail;
 

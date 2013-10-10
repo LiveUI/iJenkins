@@ -11,10 +11,6 @@
 
 @interface FTJobCell ()
 
-@property (nonatomic, strong) UIView *statusColorView;
-@property (nonatomic, strong) UIImageView *buildScoreView;
-@property (nonatomic, strong) UILabel *buildIdView;
-
 @end
 
 

@@ -10,7 +10,7 @@
 #import "FTJobDetailViewController.h"
 #import "FTLoadingCell.h"
 #import "FTSmallTextCell.h"
-#import "FTJobCell.h"
+#import "FTQueueJobCell.h"
 
 
 @interface FTBuildQueueViewController ()
@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSArray *computers;
 @property (nonatomic) BOOL isLoadingComputers;
 
+@property (nonatomic, readonly) NSTimer *reloadTimer;
+
 @end
 
 
@@ -34,16 +36,47 @@
 - (void)checkLoading {
     if (!_isLoadingQueue && !_isLoadingComputers) {
         [_refreshControl endRefreshing];
+        
+        if (_reloadTimer) {
+            [_reloadTimer invalidate];
+            _reloadTimer = nil;
+        }
+        _reloadTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(loadData) userInfo:nil repeats:NO];
     }
+}
+
+- (FTAPIBuildQueueItemDataObject *)existingJobFromQueue:(FTAPIBuildQueueItemDataObject *)job {
+    for (FTAPIBuildQueueItemDataObject *j in _queue) {
+        if ([job.task.name isEqualToString:j.task.name]) {
+            return j;
+        }
+    }
+    return nil;
 }
 
 - (void)loadData {
     _isLoadingQueue = YES;
     FTAPIBuildQueueDataObject *queueObject = [[FTAPIBuildQueueDataObject alloc] init];
     [FTAPIConnector connectWithObject:queueObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        _queue = queueObject.items;
+        BOOL reload = (queueObject.items.count != _queue.count);
+        NSMutableArray *arr = [NSMutableArray array];
+        if (queueObject.items.count > 0) {
+            for (FTAPIBuildQueueItemDataObject *job in queueObject.items) {
+                FTAPIBuildQueueItemDataObject *existing = [self existingJobFromQueue:job];
+                if (existing) {
+                    [arr addObject:existing];
+                }
+                else {
+                    [arr addObject:job];
+                    reload = YES;
+                }
+            }
+        }
+        if (reload) {
+            _queue = arr;
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
         _isLoadingQueue = NO;
-        [self.tableView reloadData];
         [self checkLoading];
         if (_queue.count > 10) {
             [self createExecutorLink];
@@ -176,13 +209,14 @@
         }
         else {
             job = executor.currentExecutable;
+            [job setExecutor:executor];
         }
     }
     
     static NSString *identifier = @"jobCellIdentifier";
-    FTJobCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
+    FTQueueJobCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[FTJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell = [[FTQueueJobCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setLayoutType:FTBasicCellLayoutTypeDefault];
     }
     [cell reset];
@@ -195,7 +229,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        if (_isLoadingQueue) {
+        if (_isLoadingQueue && NO) {
             return [FTLoadingCell cellForTable:tableView];
         }
         else {
@@ -208,7 +242,7 @@
         }
     }
     else {
-        if (_isLoadingComputers) {
+        if (_isLoadingComputers && NO) {
             return [FTLoadingCell cellForTable:tableView];
         }
         else {

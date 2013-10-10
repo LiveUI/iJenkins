@@ -87,6 +87,7 @@
 		154466A01806092100025022 /* BonjourBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466911806092000025022 /* BonjourBuddy.m */; };
 		154466AB1806260700025022 /* NSData+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AA1806260700025022 /* NSData+Networking.m */; };
 		154466AF180636B900025022 /* FTLoginAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AE180636B900025022 /* FTLoginAlert.m */; };
+		154466B3180651F200025022 /* FTQueueJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B2180651F200025022 /* FTQueueJobCell.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -272,6 +273,8 @@
 		154466AA1806260700025022 /* NSData+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Networking.m"; sourceTree = "<group>"; };
 		154466AD180636B900025022 /* FTLoginAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoginAlert.h; sourceTree = "<group>"; };
 		154466AE180636B900025022 /* FTLoginAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoginAlert.m; sourceTree = "<group>"; };
+		154466B1180651F200025022 /* FTQueueJobCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTQueueJobCell.h; sourceTree = "<group>"; };
+		154466B2180651F200025022 /* FTQueueJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTQueueJobCell.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -414,7 +417,6 @@
 			isa = PBXGroup;
 			children = (
 				1510735B17D5F42800FD083B /* Overview */,
-				1510735A17D5F41F00FD083B /* Job */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -605,6 +607,7 @@
 		1510734917D4FAD200FD083B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				1510735A17D5F41F00FD083B /* Job */,
 				154466481805E83200025022 /* Value cell */,
 				154466441805E60000025022 /* Delete cell */,
 				15446626180339E700025022 /* Icon */,
@@ -746,6 +749,7 @@
 		153921E317E26FE800896FC1 /* Build detail */ = {
 			isa = PBXGroup;
 			children = (
+				1544662818033CF400025022 /* Build queue */,
 				154465ED17FE33A900025022 /* Log */,
 				154465EC17FE33A100025022 /* Changes */,
 				154465FB17FF226500025022 /* Cells */,
@@ -900,6 +904,7 @@
 		1544662818033CF400025022 /* Build queue */ = {
 			isa = PBXGroup;
 			children = (
+				154466B0180651D500025022 /* Build queue job cell */,
 				1544662918033D0900025022 /* FTBuildQueueViewController.h */,
 				1544662A18033D0900025022 /* FTBuildQueueViewController.m */,
 			);
@@ -1003,6 +1008,15 @@
 			name = "Login alert";
 			sourceTree = "<group>";
 		};
+		154466B0180651D500025022 /* Build queue job cell */ = {
+			isa = PBXGroup;
+			children = (
+				154466B1180651F200025022 /* FTQueueJobCell.h */,
+				154466B2180651F200025022 /* FTQueueJobCell.m */,
+			);
+			name = "Build queue job cell";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -1070,7 +1084,6 @@
 		15D245F617CF9C3C00793614 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				1544662818033CF400025022 /* Build queue */,
 				15446613180332E100025022 /* Management */,
 				15D2460A17CF9F9600793614 /* System */,
 				15D245F817CF9C5400793614 /* Server home */,
@@ -1473,6 +1486,7 @@
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
 				15E1832E17E3325B00CE0DEA /* AFImageRequestOperation.m in Sources */,
+				154466B3180651F200025022 /* FTQueueJobCell.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
 				153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */,
 				153921E617E2700400896FC1 /* FTBuildDetailViewController.m in Sources */,
