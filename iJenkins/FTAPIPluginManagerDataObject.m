@@ -86,6 +86,8 @@
 
 - (void)processData:(NSDictionary *)data {
     _optional = [data[@"optional"] boolValue];
+    _shortName = data[@"shortName"];
+    _version = data[@"version"];
 }
 
 

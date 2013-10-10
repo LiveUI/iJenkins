@@ -90,6 +90,7 @@
 		154466B3180651F200025022 /* FTQueueJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B2180651F200025022 /* FTQueueJobCell.m */; };
 		154466B61806BE8500025022 /* FTAPIPluginManagerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */; };
 		154466BA1806C4C600025022 /* FTPluginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B91806C4C600025022 /* FTPluginCell.m */; };
+		15C519AD180729CF00ADDF15 /* FTPluginDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -281,6 +282,8 @@
 		154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIPluginManagerDataObject.m; sourceTree = "<group>"; };
 		154466B81806C4C600025022 /* FTPluginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginCell.h; sourceTree = "<group>"; };
 		154466B91806C4C600025022 /* FTPluginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginCell.m; sourceTree = "<group>"; };
+		15C519AB180729CF00ADDF15 /* FTPluginDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginDetailViewController.h; sourceTree = "<group>"; };
+		15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginDetailViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -883,6 +886,7 @@
 		15446618180337D700025022 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				15C519AA180729A400ADDF15 /* Plugin detail */,
 				154466B71806C3CD00025022 /* Cells */,
 				1544661F1803382A00025022 /* FTManagePluginsViewController.h */,
 				154466201803382A00025022 /* FTManagePluginsViewController.m */,
@@ -1033,6 +1037,15 @@
 				154466B91806C4C600025022 /* FTPluginCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		15C519AA180729A400ADDF15 /* Plugin detail */ = {
+			isa = PBXGroup;
+			children = (
+				15C519AB180729CF00ADDF15 /* FTPluginDetailViewController.h */,
+				15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */,
+			);
+			name = "Plugin detail";
 			sourceTree = "<group>";
 		};
 		15D245C717CF9C2A00793614 = {
@@ -1555,6 +1568,7 @@
 				1544662F1803434F00025022 /* FTAPIComputerObject.m in Sources */,
 				154465EB17FE17FD00025022 /* FTAPIRestartDataObject.m in Sources */,
 				154466AB1806260700025022 /* NSData+Networking.m in Sources */,
+				15C519AD180729CF00ADDF15 /* FTPluginDetailViewController.m in Sources */,
 				154465FA17FF11E600025022 /* FTHTTPRequestOperation.m in Sources */,
 				1510733917D20FA100FD083B /* FTSwitchAccountCell.m in Sources */,
 				15D2462F17CFA21100793614 /* UIView+Effects.m in Sources */,

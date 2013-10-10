@@ -7,6 +7,7 @@
 //
 
 #import "FTManagePluginsViewController.h"
+#import "FTPluginDetailViewController.h"
 #import "FTPluginCell.h"
 
 
@@ -65,7 +66,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FTAPIPluginManagerPluginDataObject *plugin = _plugins[indexPath.row];
-    return [FTPluginCell pluginCellForTableView:tableView withPlugin:plugin];
+    FTPluginCell *cell = [FTPluginCell pluginCellForTableView:tableView withPlugin:plugin];
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    FTAPIPluginManagerPluginDataObject *plugin = _plugins[indexPath.row];
+    FTPluginDetailViewController *c = [[FTPluginDetailViewController alloc] init];
+    [c setTitle:plugin.longName];
+    [c setPlugin:plugin];
+    [self.navigationController pushViewController:c animated:YES];
 }
 
 

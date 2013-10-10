@@ -6,13 +6,13 @@
 		<key>name</key>
 		<string>Manage plugins</string>
 		<key>description</key>
-		<string>Manage plugins</string>
+		<string>Plugin info</string>
 		<key>icon</key>
 		<string>icon-briefcase</string>
 		<key>controller</key>
 		<string>FTManagePluginsViewController</string>
 		<key>loginRequired</key>
-		<true/>
+		<false/>
 	</dict>
 	<dict>
 		<key>name</key>

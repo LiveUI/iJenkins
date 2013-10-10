@@ -44,7 +44,12 @@
 #pragma mark Initialization
 
 + (FTBasicCell *)cellForTable:(UITableView *)tableView {
-    return nil;
+    static NSString *identifier = @"justBasicCellIdentifier";
+    FTBasicCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+    }
+    return cell;
 }
 
 - (void)setupView {
