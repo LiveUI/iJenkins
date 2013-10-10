@@ -13,6 +13,7 @@
 #import "FTJobHealthInfoCell.h"
 #import "FTLastBuildInfoCell.h"
 #import "FTAccountsManager.h"
+#import "FTHTTPCodes.h"
 #import "NSDate+Formatting.h"
 
 
@@ -34,10 +35,27 @@
 - (void)createAllElements {
     [super createAllElements];
     
-    if (kAccountsManager.selectedAccount.username) {
-        [self createBuildNowButton];
-    }
+    [self createBuildNowButton];
     [self createTableView];
+}
+
+#pragma mark Data
+
+- (void)buildThis {
+    FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name];
+    [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        [self createBuildNowButton];
+        if (error) {
+            if (buildObject.response.statusCode == HTTPCode401Unauthorised || buildObject.response.statusCode == HTTPCode403Forbidden) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
+                [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+                [[alert textFieldAtIndex:0] setText:kAccountsManager.selectedAccount.username];
+                [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
+                [alert show];
+            }
+        }
+        
+    }];
 }
 
 #pragma mark Actions
@@ -48,15 +66,7 @@
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithCustomView:ai];
     [self.navigationItem setRightBarButtonItem:edit];
     
-    FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name];
-    [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-        [self createBuildNowButton];
-        if (buildObject.response.statusCode >= 400) {
-            NSString *message = [NSString stringWithFormat:@"%@ (%@ %d: %@)", FTLangGet(@"We were unable to reach the server, please try again later."), FTLangGet(@"HTTP Error"), buildObject.response.statusCode, error.localizedDescription];
-            [super showAlertWithTitle:FTLangGet(@"Request error") andMessage:message];
-        }
-
-    }];
+    [self buildThis];
 }
 
 #pragma mark Creating cells
@@ -68,7 +78,7 @@
         }
             
         case 1: {
-            FTSmallTextCell *cell = (FTSmallTextCell *)[FTSmallTextCell cellForTable:self.tableView];
+            FTSmallTextCell *cell = (FTSmallTextCell *)[FTSmallTextCell smallTextCellForTable:self.tableView withText:nil];
             
             if (_job.jobDetail.builds.count > 0) {
                 FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:0];
@@ -194,6 +204,16 @@
             [c setBuild:build];
             [self.navigationController pushViewController:c animated:YES];
         }
+    }
+}
+
+#pragma mark Alert view delegate methods
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
+        [kAccountsManager.selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
+        [kAccountsManager.selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
+        [self buildThis];
     }
 }
 

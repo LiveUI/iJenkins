@@ -9,7 +9,7 @@
 #import "FTViewController.h"
 
 
-@interface FTJobDetailViewController : FTViewController <UITableViewDelegate, UITableViewDataSource>
+@interface FTJobDetailViewController : FTViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, strong) FTAPIJobDataObject *job;
 

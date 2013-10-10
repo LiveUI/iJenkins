@@ -53,7 +53,6 @@
         }
         [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
-                NSLog(@"Error code: %d", _serverObject.response.statusCode);
                 if (_serverObject.response.statusCode == HTTPCode401Unauthorised || _serverObject.response.statusCode == HTTPCode403Forbidden) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
                     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
