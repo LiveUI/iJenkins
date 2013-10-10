@@ -414,10 +414,15 @@
 
 #pragma mark Search display controller delegate
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     [self filterSearchResultsWithSearchString:searchString];
     return YES;
+}
+
+#pragma mark Alert view delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark Overview cell delegate methods
@@ -441,23 +446,19 @@
 
 #pragma mark Private methods
 
-- (BOOL)isOverviewSection:(NSInteger)section
-{
+- (BOOL)isOverviewSection:(NSInteger)section {
     return (section == 0);
 }
 
-- (BOOL)isJobsSection:(NSInteger)section
-{
+- (BOOL)isJobsSection:(NSInteger)section {
     return (section == 1);
 }
 
-- (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath
-{
+- (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath {
     return [self jobAtIndexPath:indexPath inTableView:self.tableView];
 }
 
-- (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView
-{
+- (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView {
     if (!_isDataAvailable) {
         return nil;
     }

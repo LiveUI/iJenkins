@@ -19,9 +19,6 @@
 #import "FTAPIPluginManagerDataObject.h"
 
 
-#define kAPIConnector                                       [FTAPIConnector sharedConnector]
-
-
 typedef void(^FTAPIConnectorCompletionHandler) (id <FTAPIDataAbstractObject> dataObject, NSError *error);
 
 typedef void (^FTAPIConnectorProgressDownloadHandler) (NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead);
@@ -32,7 +29,7 @@ typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, lo
 
 @interface FTAPIConnector : NSObject
 
-@property (nonatomic, strong, readonly) NSOperationQueue *apiOperatioQueue;
+@property (nonatomic, readonly) NSOperationQueue *apiOperationQueue;
 
 + (FTAPIConnector *)sharedConnector;
 + (void)resetForAccount:(FTAccount *)account;

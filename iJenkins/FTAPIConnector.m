@@ -52,8 +52,8 @@ static FTAccount *_sharedAccount = nil;
 }
 
 + (void)stopLoadingAll {
-    if ([[FTAPIConnector sharedConnector] apiOperatioQueue]) {
-        [[[FTAPIConnector sharedConnector] apiOperatioQueue] cancelAllOperations];
+    if ([[FTAPIConnector sharedConnector] apiOperationQueue]) {
+        [[[FTAPIConnector sharedConnector] apiOperationQueue] cancelAllOperations];
     }
 }
 
@@ -67,8 +67,8 @@ static FTAccount *_sharedAccount = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        _apiOperatioQueue = [[NSOperationQueue alloc] init];
-        [_apiOperatioQueue setMaxConcurrentOperationCount:3];
+        _apiOperationQueue = [[NSOperationQueue alloc] init];
+        [_apiOperationQueue setMaxConcurrentOperationCount:3];
     }
     return self;
 }
@@ -131,7 +131,7 @@ static FTAccount *_sharedAccount = nil;
     
     [operation setQueuePriority:[object queuePriority]];
     
-    [[[FTAPIConnector sharedConnector] apiOperatioQueue] addOperation:operation];
+    [[[FTAPIConnector sharedConnector] apiOperationQueue] addOperation:operation];
     
 }
 
