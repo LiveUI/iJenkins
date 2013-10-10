@@ -47,16 +47,5 @@
     }
 }
 
-- (void)setJob:(FTAPIJobDataObject *)job {
-    [super setJob:job];
-}
-
-
-#pragma mark Job data object delegate methods
-
-- (void)jobDataObject:(FTAPIJobDataObject *)object didFinishLoadingJobDetail:(FTAPIJobDetailDataObject *)detail {
-    [self fillData];
-}
-
 
 @end
