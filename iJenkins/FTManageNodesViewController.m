@@ -106,18 +106,22 @@
         }
             
         case 3: {
-            NSString *available = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availableSwapSpace"] doubleValue]];
-            NSString *total = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalSwapSpace"] doubleValue]];
             [cell.textLabel setText:FTLangGet(@"Swap memory")];
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ %@ %@", available, FTLangGet(@"of"), total]];
+            
+            float available = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availableSwapSpace"] floatValue];
+            float total = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalSwapSpace"] floatValue];
+            
+            [cell.detailTextLabel setText:[self formatSizeStringAvailable:available ofTotal:total]];
             break;
         }
             
         case 4: {
-            NSString *available = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availablePhysicalMemory"] doubleValue]];
-            NSString *total = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalPhysicalMemory"] doubleValue]];
             [cell.textLabel setText:FTLangGet(@"Physical memory")];
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@ %@ %@", available, FTLangGet(@"of"), total]];
+            
+            float available = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availablePhysicalMemory"] floatValue];
+            float total = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalPhysicalMemory"] floatValue];
+            
+            [cell.detailTextLabel setText:[self formatSizeStringAvailable:available ofTotal:total]];
             break;
         }
             
@@ -151,6 +155,17 @@
     }
 }
 
-
+- (NSString *)formatSizeStringAvailable:(float)available ofTotal:(float)total {
+    if (available < 0 && total < 0) {
+        //  Both values are unknown, show just single "N/A"
+        return @"N/A";
+    }
+    else {
+        NSString *availableString = (available >= 0 ? [NSString formatFilesize:available] : @"N/A");
+        NSString *totalString = (total >= 0 ? [NSString formatFilesize:total] : @"N/A");
+        
+        return [NSString stringWithFormat:@"%@ %@ %@", availableString, FTLangGet(@"of"), totalString];
+    }
+}
 
 @end
