@@ -92,6 +92,9 @@
     else if ([variable isEqualToString:@"pathSuffix"]) {
         [_textField setText:account.pathSuffix];
     }
+    else if ([variable isEqualToString:@"timeout"]) {
+        [_textField setText:[NSString stringWithFormat:@"%.0f", account.timeout]];
+    }
     else if ([variable isEqualToString:@"loadMaxItems"]) {
         [_textField setText:[NSString stringWithFormat:@"%d", account.loadMaxItems]];
     }
@@ -151,6 +154,9 @@
     }
     else if ([variable isEqualToString:@"pathSuffix"]) {
         [self.account setPathSuffix:textField.text];
+    }
+    else if ([variable isEqualToString:@"timeout"]) {
+        [self.account setTimeout:textField.text.integerValue];
     }
     else if ([variable isEqualToString:@"loadMaxItems"]) {
         [self.account setLoadMaxItems:textField.text.integerValue];

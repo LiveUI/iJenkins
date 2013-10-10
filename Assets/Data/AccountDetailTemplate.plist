@@ -119,6 +119,20 @@
 				<key>variable</key>
 				<string>loadMaxItems</string>
 			</dict>
+			<dict>
+				<key>name</key>
+				<string>Server timeout</string>
+				<key>description</key>
+				<string>API request timeout in seconds</string>
+				<key>placeholder</key>
+				<string>Default 8 sec</string>
+				<key>default</key>
+				<string>8</string>
+				<key>type</key>
+				<string>int</string>
+				<key>variable</key>
+				<string>timeout</string>
+			</dict>
 		</array>
 	</dict>
 </array>

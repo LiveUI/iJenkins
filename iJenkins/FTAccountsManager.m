@@ -111,6 +111,7 @@ static FTAccountsManager *staticManager = nil;
     [jenkins setUsername:nil];
     [jenkins setPasswordOrToken:nil];
     [jenkins setLoadMaxItems:8];
+    [jenkins setTimeout:15];
     [jenkins setHttps:YES];
     
     FTAccount *apache = [[FTAccount alloc] init];
@@ -121,6 +122,7 @@ static FTAccountsManager *staticManager = nil;
     [apache setUsername:nil];
     [apache setPasswordOrToken:nil];
     [apache setLoadMaxItems:8];
+    [apache setTimeout:20];
     
     return @[jenkins, apache];
 }

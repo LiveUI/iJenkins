@@ -192,7 +192,6 @@
                     NSMutableArray *addr = [NSMutableArray array];
                     for (NSData *data in service.addresses) {
                         NSString *host = [data host];
-                        NSLog(@"Addr: %@ (%@)", host, service.hostName);
                         if (acc.host.length < 2) [acc setHost:[host copy]];
                         [addr addObject:host];
                     }

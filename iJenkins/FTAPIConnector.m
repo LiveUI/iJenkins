@@ -206,7 +206,9 @@ static FTAccount *_sharedAccount = nil;
     
     NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];
     [request setURL:[NSURL URLWithString:url]];
-    [request setTimeoutInterval:20.0];
+    NSTimeInterval timeout = dAccountsManager.selectedAccount.timeout;
+    if (timeout < 1.5) timeout = 8;
+    [request setTimeoutInterval:timeout];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
     
     [request setHTTPMethod:[self httpMethod:[data httpMethod]]];

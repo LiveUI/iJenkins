@@ -25,7 +25,7 @@
     _https = NO;
     _port = 8080;
     _xpath = YES;
-    _timeout = 20;
+    _timeout = 8;
     _overrideJenkinsUrl = YES;
     _loadMaxItems = 5;
     _buildLogMaxSize = 102400;
