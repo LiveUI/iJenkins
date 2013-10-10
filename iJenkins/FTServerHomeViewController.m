@@ -59,7 +59,7 @@
                     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
                     [alert show];
                 }
-                else if (_serverObject.response.statusCode == 0) {
+                else if (error.code != -999) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
                     [alert show];
                 }
