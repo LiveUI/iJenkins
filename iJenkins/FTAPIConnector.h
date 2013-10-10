@@ -16,6 +16,7 @@
 #import "FTAPIBuildConsoleOutputDataObject.h"
 #import "FTAPIComputerObject.h"
 #import "FTAPIUsersDataObject.h"
+#import "FTAPIPluginManagerDataObject.h"
 
 
 #define kAPIConnector                                       [FTAPIConnector sharedConnector]

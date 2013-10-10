@@ -7,17 +7,28 @@
 //
 
 #import "FTManagePluginsViewController.h"
+#import "FTPluginCell.h"
 
 
 @interface FTManagePluginsViewController ()
 
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, strong) NSArray *plugins;
 
 @end
 
 
 @implementation FTManagePluginsViewController
 
+
+#pragma mark Data
+
+- (void)loadData {
+    FTAPIPluginManagerDataObject *pluginObject = [[FTAPIPluginManagerDataObject alloc] init];
+    [FTAPIConnector connectWithObject:pluginObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        _plugins = pluginObject.plugins;
+        [self.tableView reloadData];
+    }];
+}
 
 #pragma mark Initialization
 
@@ -30,6 +41,31 @@
 - (void)createAllElements {
     [super createAllElements];
     [super createTableView];
+    
+    [self loadData];
+}
+
+#pragma mark Table view delegate & datasource methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _plugins.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return nil;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FTAPIPluginManagerPluginDataObject *plugin = _plugins[indexPath.row];
+    return [FTPluginCell pluginCellForTableView:tableView withPlugin:plugin];
 }
 
 
