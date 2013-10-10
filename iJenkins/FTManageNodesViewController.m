@@ -12,6 +12,9 @@
 #import "NSString+Conversions.h"
 
 
+#define dFTManageNodesViewControllerCheckVar(var, orStr)           ((var && ![var isKindOfClass:[NSNull class]]) ? var : orStr)
+
+
 @interface FTManageNodesViewController ()
 
 @property (nonatomic, strong) NSArray *computers;
@@ -101,15 +104,19 @@
             
         case 2: {
             [cell.textLabel setText:FTLangGet(@"Response time")];
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d", [computer.monitorData[@"hudson.node_monitors.ResponseTimeMonitor"][@"average"] integerValue]]];
+            NSString *timeStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.ResponseTimeMonitor"][@"average"], @"0");
+            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d", [timeStr integerValue]]];
             break;
         }
             
         case 3: {
             [cell.textLabel setText:FTLangGet(@"Swap memory")];
             
-            float available = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availableSwapSpace"] floatValue];
-            float total = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalSwapSpace"] floatValue];
+            NSString *availStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availableSwapSpace"], @"0");
+            float available = [availStr floatValue];
+            
+            NSString *totalStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalSwapSpace"], @"0");
+            float total = [totalStr floatValue];
             
             [cell.detailTextLabel setText:[self formatSizeStringAvailable:available ofTotal:total]];
             break;
@@ -118,22 +125,29 @@
         case 4: {
             [cell.textLabel setText:FTLangGet(@"Physical memory")];
             
-            float available = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availablePhysicalMemory"] floatValue];
-            float total = [computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalPhysicalMemory"] floatValue];
+            NSString *availStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"availablePhysicalMemory"], @"0");
+            float available = [availStr floatValue];
+            
+            NSString *totalStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.SwapSpaceMonitor"][@"totalPhysicalMemory"], @"0");
+            float total = [totalStr floatValue];
             
             [cell.detailTextLabel setText:[self formatSizeStringAvailable:available ofTotal:total]];
             break;
         }
             
         case 5: {
-            NSString *available = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.TemporarySpaceMonitor"][@"size"] doubleValue]];
+            NSDictionary *section = computer.monitorData[@"hudson.node_monitors.TemporarySpaceMonitor"];
+            NSString *str = ([section isKindOfClass:[NSDictionary class]]) ? dFTManageNodesViewControllerCheckVar(section[@"size"], @"0") : @"0";
+            NSString *available = [NSString formatFilesize:[str doubleValue]];
             [cell.textLabel setText:FTLangGet(@"Temporary space")];
             [cell.detailTextLabel setText:available];
             break;
         }
             
         case 6: {
-            NSString *available = [NSString formatFilesize:[computer.monitorData[@"hudson.node_monitors.DiskSpaceMonitor"][@"size"] doubleValue]];
+            NSDictionary *section = computer.monitorData[@"hudson.node_monitors.DiskSpaceMonitor"];
+            NSString *str = ([section isKindOfClass:[NSDictionary class]]) ? dFTManageNodesViewControllerCheckVar(section[@"size"], @"0") : @"0";
+            NSString *available = [NSString formatFilesize:[str doubleValue]];
             [cell.textLabel setText:FTLangGet(@"Total disk space")];
             [cell.detailTextLabel setText:available];
             break;
@@ -157,13 +171,11 @@
 
 - (NSString *)formatSizeStringAvailable:(float)available ofTotal:(float)total {
     if (available < 0 && total < 0) {
-        //  Both values are unknown, show just single "N/A"
-        return @"N/A";
+        return FTLangGet(FT_NA); // Both values are unknown, show just single "N/A"
     }
     else {
-        NSString *availableString = (available >= 0 ? [NSString formatFilesize:available] : @"N/A");
-        NSString *totalString = (total >= 0 ? [NSString formatFilesize:total] : @"N/A");
-        
+        NSString *availableString = (available >= 0 ? [NSString formatFilesize:available] : FTLangGet(FT_NA));
+        NSString *totalString = (total >= 0 ? [NSString formatFilesize:total] : FTLangGet(FT_NA));
         return [NSString stringWithFormat:@"%@ %@ %@", availableString, FTLangGet(@"of"), totalString];
     }
 }
