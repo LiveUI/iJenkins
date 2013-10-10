@@ -9,7 +9,16 @@
 #import <Foundation/Foundation.h>
 
 
+typedef NS_ENUM(NSInteger, FTAccountType) {
+    FTAccountTypeKeychain,
+    FTAccountTypeBonjour,
+    FTAccountTypeDemo
+};
+
+
 @interface FTAccount : NSObject
+
+@property (nonatomic) FTAccountType accountType;
 
 @property (nonatomic, strong) NSMutableDictionary *originalDictionary;
 

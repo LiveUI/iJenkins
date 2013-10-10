@@ -186,6 +186,7 @@
             NSURL *url = [NSURL URLWithString:peer[@"url"]];
             if (peer[@"url"]) {
                 FTAccount *acc = [[FTAccount alloc] init];
+                [acc setAccountType:FTAccountTypeBonjour];
                 NSNetService *service = peer[@"service"];
                 if (service.addresses.count > 0) {
                     NSMutableArray *addr = [NSMutableArray array];

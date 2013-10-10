@@ -57,6 +57,8 @@
                 if (_serverObject.response.statusCode == HTTPCode401Unauthorised || _serverObject.response.statusCode == HTTPCode403Forbidden) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
                     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+                    [[alert textFieldAtIndex:0] setText:kAccountsManager.selectedAccount.username];
+                    [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
                     [alert show];
                 }
                 else if (error.code != -999) {
@@ -68,6 +70,9 @@
                 }
             }
             else {
+                if (kAccountsManager.selectedAccount.accountType == FTAccountTypeKeychain) {
+                    [kAccountsManager updateAccount:kAccountsManager.selectedAccount];
+                }
                 [_overviewCell setJobsStats:_serverObject.jobsStats];
                 if (_serverObject.jobs.count > 0) {
                     _isDataAvailable = YES;

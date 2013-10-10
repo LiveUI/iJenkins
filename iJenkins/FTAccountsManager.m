@@ -94,6 +94,7 @@ static FTAccountsManager *staticManager = nil;
         NSMutableArray *arr = [NSMutableArray array];
         for (NSDictionary *d in dataAccounts) {
             FTAccount *a = [self accountFromDictionary:d];
+            [a setAccountType:FTAccountTypeKeychain];
             [arr addObject:a];
         }
         accounts = arr;
@@ -103,6 +104,7 @@ static FTAccountsManager *staticManager = nil;
 
 - (NSArray *)demoAccounts {
     FTAccount *jenkins = [[FTAccount alloc] init];
+    [jenkins setAccountType:FTAccountTypeDemo];
     [jenkins setName:FTLangGet(@"Jenkins builds")];
     [jenkins setHost:@"ci.jenkins-ci.org"];
     [jenkins setPort:443];
@@ -112,6 +114,7 @@ static FTAccountsManager *staticManager = nil;
     [jenkins setHttps:YES];
     
     FTAccount *apache = [[FTAccount alloc] init];
+    [apache setAccountType:FTAccountTypeDemo];
     [apache setName:FTLangGet(@"Apache builds")];
     [apache setHost:@"builds.apache.org"];
     [apache setPort:80];
