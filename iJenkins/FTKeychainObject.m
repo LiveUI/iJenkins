@@ -10,21 +10,21 @@
 #import <Security/Security.h>
 
 
-#define kFTKeychainObjectAccountsJsonFile                           @"FTKeychainObjectTwitterToken"
-#define kFTKeychainObjectUUID                                       @"FTKeychainObjectUUID"
+#define dFTKeychainObjectAccountsJsonFile                           @"FTKeychainObjectTwitterToken"
+#define dFTKeychainObjectUUID                                       @"FTKeychainObjectUUID"
 
 
-#define kFTKeychainObjectServiceName                            @"com.fuerteint.ijenkins"
+#define dFTKeychainObjectServiceName                            @"com.fuerteint.ijenkins"
 
-#define kFTKeychainObjectDebug                                  NO
-#define kFTKeychainObjectDebugFull                              if (kFTKeychainObjectDebug)
+#define dFTKeychainObjectDebug                                  NO
+#define dFTKeychainObjectDebugFull                              if (dFTKeychainObjectDebug)
 
 @implementation FTKeychainObject
 
 
 #pragma mark Keychain code
 
-static NSString *serviceName = kFTKeychainObjectServiceName;
+static NSString *serviceName = dFTKeychainObjectServiceName;
 
 - (NSMutableDictionary *)newSearchDictionaryWithIdentifier:(NSString *)identifier {
     NSMutableDictionary *searchDictionary = [[NSMutableDictionary alloc] init];
@@ -96,41 +96,41 @@ static NSString *serviceName = kFTKeychainObjectServiceName;
 #pragma mark Settings
 
 - (NSString *)accountsJsonFile {
-    NSString *s = [self searchKeychainCopyMatchingIdentifier:kFTKeychainObjectAccountsJsonFile];
-    kFTKeychainObjectDebugFull NSLog(@"Accounts back: %@", s);
+    NSString *s = [self searchKeychainCopyMatchingIdentifier:dFTKeychainObjectAccountsJsonFile];
+    dFTKeychainObjectDebugFull NSLog(@"Accounts back: %@", s);
     return s;
 }
 
 - (void)setAccountsJsonFile:(NSString *)accountsJsonFile {
     BOOL ok;
     if (self.accountsJsonFile) {
-        ok = [self updateKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
+        ok = [self updateKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectAccountsJsonFile];
     }
     else {
-        ok = [self createKeychainValue:accountsJsonFile forIdentifier:kFTKeychainObjectAccountsJsonFile];
+        ok = [self createKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectAccountsJsonFile];
     }
-    kFTKeychainObjectDebugFull NSLog(@"Did save accounts to keychain: %@", ok ? @"Yes" : @"No");
+    dFTKeychainObjectDebugFull NSLog(@"Did save accounts to keychain: %@", ok ? @"Yes" : @"No");
 }
 
 - (NSString *)uuid {
-    NSString *uuid = [self searchKeychainCopyMatchingIdentifier:kFTKeychainObjectUUID];
-    kFTKeychainObjectDebugFull NSLog(@"UUID back: %@", uuid);
+    NSString *uuid = [self searchKeychainCopyMatchingIdentifier:dFTKeychainObjectUUID];
+    dFTKeychainObjectDebugFull NSLog(@"UUID back: %@", uuid);
     return uuid;
 }
 
 - (void)setUuid:(NSString *)uuid {
     BOOL ok;
     if (self.uuid) {
-        ok = [self updateKeychainValue:uuid forIdentifier:kFTKeychainObjectUUID];
+        ok = [self updateKeychainValue:uuid forIdentifier:dFTKeychainObjectUUID];
     }
     else {
-        ok = [self createKeychainValue:uuid forIdentifier:kFTKeychainObjectUUID];
+        ok = [self createKeychainValue:uuid forIdentifier:dFTKeychainObjectUUID];
     }
-    kFTKeychainObjectDebugFull NSLog(@"Did save UUID to keychain: %@", ok ? @"Yes" : @"No");
+    dFTKeychainObjectDebugFull NSLog(@"Did save UUID to keychain: %@", ok ? @"Yes" : @"No");
 }
 
 - (void)logout {
-    [self deleteKeychainValue:kFTKeychainObjectAccountsJsonFile];
+    [self deleteKeychainValue:dFTKeychainObjectAccountsJsonFile];
 }
 
 

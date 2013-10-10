@@ -9,7 +9,7 @@
 #import "FTAccount.h"
 
 
-#define kAccountsManager                        [FTAccountsManager sharedManager]
+#define dAccountsManager                        [FTAccountsManager sharedManager]
 
 
 @interface FTAccountsManager : NSObject

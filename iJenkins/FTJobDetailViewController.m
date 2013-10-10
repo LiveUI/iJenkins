@@ -13,7 +13,7 @@
 #import "FTJobHealthInfoCell.h"
 #import "FTLastBuildInfoCell.h"
 #import "FTAccountsManager.h"
-#import "FTHTTPCodes.h"
+#import "FTLoginAlert.h"
 #import "NSDate+Formatting.h"
 
 
@@ -46,13 +46,11 @@
     [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         [self createBuildNowButton];
         if (error) {
-            if (buildObject.response.statusCode == HTTPCode401Unauthorised || buildObject.response.statusCode == HTTPCode403Forbidden) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
-                [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-                [[alert textFieldAtIndex:0] setText:kAccountsManager.selectedAccount.username];
-                [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
-                [alert show];
-            }
+            [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
+                [self buildThis];
+            } andCancelBlock:^{
+                
+            } accordingToResponseCode:buildObject.response.statusCode];
         }
         
     }];
@@ -204,16 +202,6 @@
             [c setBuild:build];
             [self.navigationController pushViewController:c animated:YES];
         }
-    }
-}
-
-#pragma mark Alert view delegate methods
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
-        [kAccountsManager.selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
-        [kAccountsManager.selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
-        [self buildThis];
     }
 }
 

@@ -62,7 +62,7 @@
     if (!cell) {
         cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    BOOL ok = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0);
+    BOOL ok = (dAccountsManager.selectedAccount.username && dAccountsManager.selectedAccount.username.length > 0);
     NSDictionary *d = _data[indexPath.row];
     if (![d[@"loginRequired"] boolValue]) {
         ok = YES;

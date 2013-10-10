@@ -17,8 +17,8 @@
 #import "NSData+Base64.h"
 
 
-#define kFTAPIConnectorDebug                                    YES
-#define kFTAPIConnectorDebugFull                                if (kFTAPIConnectorDebug) 
+#define dFTAPIConnectorDebug                                    YES
+#define dFTAPIConnectorDebugFull                                if (dFTAPIConnectorDebug) 
 
 
 static AFHTTPClient *_sharedClient = nil;
@@ -187,7 +187,7 @@ static FTAccount *_sharedAccount = nil;
 
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
    NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"%@%@%@", [kAccountsManager selectedAccount].baseUrl, [data methodName], [data suffix]];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", [dAccountsManager selectedAccount].baseUrl, [data methodName], [data suffix]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
@@ -196,12 +196,12 @@ static FTAccount *_sharedAccount = nil;
     BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
     url = [NSString stringWithFormat:@"%@%@depth=%d", url, (isQM ? @"&" : @"?"), data.depth];
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    kFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
+    dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
-    BOOL authenticate = (kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 1);
+    BOOL authenticate = (dAccountsManager.selectedAccount.username && dAccountsManager.selectedAccount.username.length > 1);
     if (authenticate) {
         [[FTAPIConnector sharedClient] clearAuthorizationHeader];
-        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:kAccountsManager.selectedAccount.username password:kAccountsManager.selectedAccount.passwordOrToken];
+        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:dAccountsManager.selectedAccount.username password:dAccountsManager.selectedAccount.passwordOrToken];
     }
     
     NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];

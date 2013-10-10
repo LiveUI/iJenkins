@@ -112,7 +112,7 @@
 #pragma mark Tableview delegate & datasource methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return (_isLoading || [_nickName isEqualToString:kAccountsManager.selectedAccount.username]) ? 1 : 2;
+    return (_isLoading || [_nickName isEqualToString:dAccountsManager.selectedAccount.username]) ? 1 : 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

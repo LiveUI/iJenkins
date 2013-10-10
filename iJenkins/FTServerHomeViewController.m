@@ -15,7 +15,7 @@
 #import "FTJobCell.h"
 #import "FTNoJobCell.h"
 #import "FTIconCell.h"
-#import "FTHTTPCodes.h"
+#import "FTLoginAlert.h"
 
 
 @interface FTServerHomeViewController ()
@@ -54,11 +54,12 @@
         [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
                 if (_serverObject.response.statusCode == HTTPCode401Unauthorised || _serverObject.response.statusCode == HTTPCode403Forbidden) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
-                    [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-                    [[alert textFieldAtIndex:0] setText:kAccountsManager.selectedAccount.username];
-                    [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
-                    [alert show];
+                    [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
+                        _serverObject = nil;
+                        [self loadData];
+                    } andCancelBlock:^{
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }];
                 }
                 else if (error.code != -999) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
@@ -69,8 +70,8 @@
                 }
             }
             else {
-                if (kAccountsManager.selectedAccount.accountType == FTAccountTypeKeychain) {
-                    [kAccountsManager updateAccount:kAccountsManager.selectedAccount];
+                if (dAccountsManager.selectedAccount.accountType == FTAccountTypeKeychain) {
+                    [dAccountsManager updateAccount:dAccountsManager.selectedAccount];
                 }
                 [_overviewCell setJobsStats:_serverObject.jobsStats];
                 if (_serverObject.jobs.count > 0) {
@@ -85,7 +86,7 @@
                 
                 self.jobs = [NSArray arrayWithArray:_serverObject.jobs];
                 [super.tableView reloadData];
-                [self setTitle:kAccountsManager.selectedAccount.name];
+                [self setTitle:dAccountsManager.selectedAccount.name];
                 
                 if (_serverObject.views.count > 1) {
                     if (!_selectedView) {
@@ -324,7 +325,7 @@
         [cell.iconView setDefaultIconIdentifier:@"icon-cogs"];
         [cell.textLabel setText:FTLangGet(@"Manage Jenkins")];
         // TODO: Decide if the manage section is only for logged in users!
-        if ((kAccountsManager.selectedAccount.username && kAccountsManager.selectedAccount.username.length > 0) || YES) {
+        if ((dAccountsManager.selectedAccount.username && dAccountsManager.selectedAccount.username.length > 0) || YES) {
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
             [cell.iconView setAlpha:1];
@@ -436,20 +437,6 @@
     [controller dismissViewControllerAnimated:YES completion:^{
         
     }];
-}
-
-#pragma mark Alert view delegate methods
-
-- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
-        [kAccountsManager.selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
-        [kAccountsManager.selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
-        _serverObject = nil;
-        [self loadData];
-    }
-    else {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
 }
 
 #pragma mark Private methods

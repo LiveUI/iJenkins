@@ -86,6 +86,7 @@
 		1544664B1805E84300025022 /* FTValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544664A1805E84300025022 /* FTValueCell.m */; };
 		154466A01806092100025022 /* BonjourBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466911806092000025022 /* BonjourBuddy.m */; };
 		154466AB1806260700025022 /* NSData+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AA1806260700025022 /* NSData+Networking.m */; };
+		154466AF180636B900025022 /* FTLoginAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AE180636B900025022 /* FTLoginAlert.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
 		15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D717CF9C2A00793614 /* CoreGraphics.framework */; };
@@ -269,6 +270,8 @@
 		154466911806092000025022 /* BonjourBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BonjourBuddy.m; sourceTree = "<group>"; };
 		154466A91806260700025022 /* NSData+Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Networking.h"; sourceTree = "<group>"; };
 		154466AA1806260700025022 /* NSData+Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Networking.m"; sourceTree = "<group>"; };
+		154466AD180636B900025022 /* FTLoginAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLoginAlert.h; sourceTree = "<group>"; };
+		154466AE180636B900025022 /* FTLoginAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLoginAlert.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -991,6 +994,15 @@
 			path = "BonjourBuddy-iOS";
 			sourceTree = "<group>";
 		};
+		154466AC180636A100025022 /* Login alert */ = {
+			isa = PBXGroup;
+			children = (
+				154466AD180636B900025022 /* FTLoginAlert.h */,
+				154466AE180636B900025022 /* FTLoginAlert.m */,
+			);
+			name = "Login alert";
+			sourceTree = "<group>";
+		};
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
@@ -1123,6 +1135,7 @@
 		15D2460917CF9F8C00793614 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				154466AC180636A100025022 /* Login alert */,
 				153921C417E1F12100896FC1 /* Download */,
 				1510735217D5E8D500FD083B /* Keychain */,
 				15D2460F17CFA0C400793614 /* Languages */,
@@ -1529,6 +1542,7 @@
 				1510728D17CFED4700FD083B /* FTAPIServerDataObject.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
+				154466AF180636B900025022 /* FTLoginAlert.m in Sources */,
 				15D2466B17CFBD8F00793614 /* Lockbox.m in Sources */,
 				15446612180300EB00025022 /* FTHTTPCodes.m in Sources */,
 				1544664B1805E84300025022 /* FTValueCell.m in Sources */,
