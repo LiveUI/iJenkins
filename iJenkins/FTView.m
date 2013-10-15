@@ -26,12 +26,12 @@
 }
 
 - (BOOL)isOS7 {
-#if defined __IPHONE_7_0
-    return YES;
-#else
-    return NO;
-#endif
-    
+    static BOOL shared;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending);
+    });
+    return shared;
 }
 
 #pragma mark Creating elements
