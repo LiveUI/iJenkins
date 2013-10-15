@@ -200,10 +200,22 @@
                 else {
                     [acc setHost:url.host];
                 }
+                [acc setHost:url.host];
                 [acc setName:url.host];
                 [acc setPort:service.port];
                 [acc setHttps:[url.scheme isEqualToString:@"https"]];
                 [arr addObject:acc];
+                
+                if (acc.alternativeAddresses.count > 0) {
+                    FTAccount *acc2 = [[FTAccount alloc] init];
+                    NSString *host = acc.alternativeAddresses.lastObject;
+                    [acc2 setHost:host];
+                    [acc2 setName:[NSString stringWithFormat:@"%@ (%@)", acc.name, FTLangGet(@"Alternative")]];
+                    [acc2 setPort:acc.port];
+                    [acc2 setHttps:acc.https];
+                    [acc2 setAlternativeAddresses:acc.alternativeAddresses];
+                    [arr addObject:acc2];
+                }
             }
         }
         _bonjourAccounts = [arr copy];

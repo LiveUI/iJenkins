@@ -43,6 +43,9 @@
         }
     }
     if (!desc) {
+        [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+        [self resetScoreIcon];
+        [self.buildIdView setText:[NSString stringWithFormat:@"#%d", self.job.jobDetail.lastBuild.number]];
         [self.detailTextLabel setText:[NSString stringWithFormat:@"%@: %d.0%%", FTLangGet(@"Progress"), self.job.executor.progress]];
     }
 }
