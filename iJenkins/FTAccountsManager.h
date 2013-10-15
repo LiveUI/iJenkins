@@ -9,9 +9,6 @@
 #import "FTAccount.h"
 
 
-#define dAccountsManager                        [FTAccountsManager sharedManager]
-
-
 @interface FTAccountsManager : NSObject
 
 @property (nonatomic, strong) FTAccount *selectedAccount;

@@ -40,7 +40,7 @@ static FTLoginAlertCancelBlock currentCancelBlock;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-    [[alert textFieldAtIndex:0] setText:dAccountsManager.selectedAccount.username];
+    [[alert textFieldAtIndex:0] setText:[FTAccountsManager sharedManager].selectedAccount.username];
     [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
     [alert show];
 }
@@ -55,10 +55,10 @@ static FTLoginAlertCancelBlock currentCancelBlock;
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
-        [dAccountsManager.selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
-        [dAccountsManager.selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
+        [[FTAccountsManager sharedManager].selectedAccount setUsername:[alertView textFieldAtIndex:0].text];
+        [[FTAccountsManager sharedManager].selectedAccount setPasswordOrToken:[alertView textFieldAtIndex:1].text];
         if (currentLoginBlock) {
-            currentLoginBlock(dAccountsManager.selectedAccount.username, dAccountsManager.selectedAccount.passwordOrToken);
+            currentLoginBlock([FTAccountsManager sharedManager].selectedAccount.username, [FTAccountsManager sharedManager].selectedAccount.passwordOrToken);
         }
     }
     else {

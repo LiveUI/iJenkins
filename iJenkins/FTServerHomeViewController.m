@@ -45,7 +45,7 @@
 - (void)loadData {
     if (!_serverObject) {
         _isDataAvailable = NO;
-        self.searchBar.text = @"";
+        _searchBar.text = @"";
         
         _serverObject = [[FTAPIServerDataObject alloc] init];
         if (_selectedView) {
@@ -70,8 +70,8 @@
                 }
             }
             else {
-                if (dAccountsManager.selectedAccount.accountType == FTAccountTypeKeychain) {
-                    [dAccountsManager updateAccount:dAccountsManager.selectedAccount];
+                if ([FTAccountsManager sharedManager].selectedAccount.accountType == FTAccountTypeKeychain) {
+                    [[FTAccountsManager sharedManager] updateAccount:[FTAccountsManager sharedManager].selectedAccount];
                 }
                 [_overviewCell setJobsStats:_serverObject.jobsStats];
                 if (_serverObject.jobs.count > 0) {
@@ -84,9 +84,9 @@
                     _views = _serverObject.views;
                 }
                 
-                self.jobs = [NSArray arrayWithArray:_serverObject.jobs];
+                _jobs = [NSArray arrayWithArray:_serverObject.jobs];
                 [super.tableView reloadData];
-                [self setTitle:dAccountsManager.selectedAccount.name];
+                [self setTitle:[FTAccountsManager sharedManager].selectedAccount.name];
                 
                 if (_serverObject.views.count > 1) {
                     if (!_selectedView) {
@@ -105,34 +105,19 @@
     }
 }
 
-#pragma mark Search bar delegate
-
-- (void)filterSearchResultsWithSearchString:(NSString *)searchString
-{
-    NSMutableArray *arr = [NSMutableArray array];
-    
-    for (FTAPIJobDataObject *job in _serverObject.jobs) {
-        NSRange isRange = [job.name rangeOfString:searchString options:NSCaseInsensitiveSearch];
-        if (isRange.location != NSNotFound) {
-            [arr addObject:job];
-        }
-    }
-    self.searchResults = arr;
-}
-
 #pragma mark Creating elements
 
 - (void)createTableView {
     [super createTableView];
     
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, super.tableView.width, 44)];
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44)];
 
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-    self.searchController.searchResultsDataSource = self;
-    self.searchController.searchResultsDelegate = self;
-    self.searchController.delegate = self;
+    _searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
+    [_searchController setSearchResultsDataSource:self];
+    [_searchController setSearchResultsDelegate:self];
+    [_searchController setDelegate:self];
     
-    [self.tableView setTableHeaderView:self.searchBar];
+    [self.tableView setTableHeaderView:_searchBar];
     
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
@@ -182,6 +167,20 @@
     [self presentViewController:nc animated:YES completion:NULL];
 }
 
+#pragma mark Search bar delegate
+
+- (void)filterSearchResultsWithSearchString:(NSString *)searchString {
+    NSMutableArray *arr = [NSMutableArray array];
+    
+    for (FTAPIJobDataObject *job in _serverObject.jobs) {
+        NSRange isRange = [job.name rangeOfString:searchString options:NSCaseInsensitiveSearch];
+        if (isRange.location != NSNotFound) {
+            [arr addObject:job];
+        }
+    }
+    _searchResults = arr;
+}
+
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -194,12 +193,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (tableView == self.tableView) {
         if ([self isJobsSection:section]) {
-            return [self.jobs count];
+            return [_jobs count];
         }
         else return 3;
     }
     else {
-        return [self.searchResults count];
+        return [_searchResults count];
     }
 }
 
@@ -325,7 +324,7 @@
         [cell.iconView setDefaultIconIdentifier:@"icon-cogs"];
         [cell.textLabel setText:FTLangGet(@"Manage Jenkins")];
         // TODO: Decide if the manage section is only for logged in users!
-        if ((dAccountsManager.selectedAccount.username && dAccountsManager.selectedAccount.username.length > 0) || YES) {
+        if (([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 0) || YES) {
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
             [cell.iconView setAlpha:1];
@@ -355,7 +354,7 @@
                     return [self iconCellForRowAtIndexPath:indexPath];
                 }
             }
-            else if ([self.jobs count] == 0) {
+            else if ([_jobs count] == 0) {
                 return [self cellForNoJob];
             }
             else {
@@ -463,7 +462,7 @@
         return nil;
     }
     
-    NSArray *dataSource = (tableView == self.tableView ? self.jobs : self.searchResults);
+    NSArray *dataSource = (tableView == self.tableView ? _jobs : _searchResults);
     NSUInteger dataCount = [dataSource count];
     
     if (dataCount > 0 && indexPath.row < dataCount) {

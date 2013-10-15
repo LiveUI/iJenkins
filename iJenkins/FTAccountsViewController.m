@@ -84,8 +84,8 @@
 #pragma mark Creating elements
 
 - (void)createTableView {
-    _data = [dAccountsManager accounts];
-    _demoAccounts = [dAccountsManager demoAccounts];
+    _data = [[FTAccountsManager sharedManager] accounts];
+    _demoAccounts = [[FTAccountsManager sharedManager] demoAccounts];
     
     [super createTableView];
 }
@@ -296,7 +296,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         FTAccount *acc = [_data objectAtIndex:indexPath.row];
-        [dAccountsManager removeAccount:acc];
+        [[FTAccountsManager sharedManager] removeAccount:acc];
         [tableView reloadData];
     }
 }
@@ -357,7 +357,7 @@
                         
                         // TODO: Finish the API request to check server API, not just reachability
                         /*
-                         [dAccountsManager setSelectedAccount:acc];
+                         [[FTAccountsManager sharedManager] setSelectedAccount:acc];
                          FTAPIOverallLoadDataObject *loadObject = [[FTAPIOverallLoadDataObject alloc] init];
                          [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
                          if (error) {
@@ -431,7 +431,7 @@
         if (indexPath.section != 3) {
             if ([self datasourceForIndexPath:indexPath].count > 0) {
                 FTAccount *acc = [self accountForIndexPath:indexPath];
-                [dAccountsManager setSelectedAccount:acc];
+                [[FTAccountsManager sharedManager] setSelectedAccount:acc];
                 [FTAPIConnector resetForAccount:acc];
                 
                 FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
@@ -476,7 +476,7 @@
 #pragma mark Add account view controller delegate methods
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didAddAccount:(FTAccount *)account {
-    [dAccountsManager addAccount:account];
+    [[FTAccountsManager sharedManager] addAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
     [self dismissViewControllerAnimated:YES completion:^{
@@ -485,7 +485,7 @@
 }
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
-    [dAccountsManager updateAccount:account];
+    [[FTAccountsManager sharedManager] updateAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
     [self dismissViewControllerAnimated:YES completion:^{

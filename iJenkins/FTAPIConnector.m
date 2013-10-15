@@ -187,7 +187,7 @@ static FTAccount *_sharedAccount = nil;
 
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
    NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"%@%@%@", [dAccountsManager selectedAccount].baseUrl, [data methodName], [data suffix]];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", [[FTAccountsManager sharedManager] selectedAccount].baseUrl, [data methodName], [data suffix]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
@@ -198,15 +198,15 @@ static FTAccount *_sharedAccount = nil;
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
-    BOOL authenticate = (dAccountsManager.selectedAccount.username && dAccountsManager.selectedAccount.username.length > 1);
+    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
     if (authenticate) {
         [[FTAPIConnector sharedClient] clearAuthorizationHeader];
-        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:dAccountsManager.selectedAccount.username password:dAccountsManager.selectedAccount.passwordOrToken];
+        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
     }
     
     NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];
     [request setURL:[NSURL URLWithString:url]];
-    NSTimeInterval timeout = dAccountsManager.selectedAccount.timeout;
+    NSTimeInterval timeout = [FTAccountsManager sharedManager].selectedAccount.timeout;
     if (timeout < 1.5) timeout = 8;
     [request setTimeoutInterval:timeout];
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
