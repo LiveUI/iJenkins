@@ -49,7 +49,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return FTLangGet(_changeSet.kind.uppercaseString);
+    return ((NSNull *)_changeSet.kind == [NSNull null] ? nil : FTLangGet([_changeSet.kind uppercaseString]));
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
