@@ -72,7 +72,7 @@ static FTAccountsManager *staticManager = nil;
 }
 
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex {
-    [accounts removeObject:accounts];
+    [accounts removeObject:account];
     [accounts insertObject:account atIndex:newIndex];
     [self saveToKeychain];
 }

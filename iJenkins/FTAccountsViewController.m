@@ -301,6 +301,15 @@
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return (indexPath.section == 0 && [_data count] > 1);
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    FTAccount *movedAccount = [self accountForIndexPath:sourceIndexPath];
+    [[FTAccountsManager sharedManager] moveAccount:movedAccount toIndex:destinationIndexPath.row];
+}
+
 - (UITableViewCell *)cellForNoAccount {
     static NSString *identifier = @"noAccountCell";
     FTNoAccountCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
