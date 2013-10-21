@@ -129,6 +129,8 @@ static FTAccount *_sharedAccount = nil;
         [operation setDownloadProgressBlock:download];
     }
     
+    [operation setAllowsInvalidSSLCertificate:YES];
+    
     [operation setQueuePriority:[object queuePriority]];
     
     [[[FTAPIConnector sharedConnector] apiOperationQueue] addOperation:operation];
