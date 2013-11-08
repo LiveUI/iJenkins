@@ -57,7 +57,7 @@
     _actions = data[@"actions"];
     if (_actions) {
         for (NSDictionary *action in _actions) {
-            if ([action objectForKey:@"causes"]) {
+            if ((NSNull *)action != [NSNull null] && [action objectForKey:@"causes"]) {
                 NSMutableArray *arr = [NSMutableArray arrayWithCapacity:[[action objectForKey:@"causes"] count]];
                 for (NSDictionary *cause in [action objectForKey:@"causes"]) {
                     FTAPIBuildDetailCauseDataObject *c = [[FTAPIBuildDetailCauseDataObject alloc] init];
