@@ -1,6 +1,10 @@
 iJenkins
 ========
 
+On iTunes here:
+https://itunes.apple.com/us/app/ijenkins/id720123810?mt=8
+
+
 Open iPhone client for Jenkins CI (iOS 7 only) ... Don't forget to get the submodules too!!!!! :)
 
 Commit has been submitted to the AppStore for review, fingers crossed!!!
