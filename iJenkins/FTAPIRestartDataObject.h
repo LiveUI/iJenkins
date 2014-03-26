@@ -12,8 +12,8 @@
 typedef NS_ENUM(NSInteger, FTAPIRestartDataObjectType) {
     FTAPIRestartDataObjectTypeSafeRestart,
     FTAPIRestartDataObjectTypeRestart,
-    FTAPIRestartDataObjectTypeQuiteDown,
-    FTAPIRestartDataObjectTypeCancelQuiteDown
+    FTAPIRestartDataObjectTypeQuietDown,
+    FTAPIRestartDataObjectTypeCancelQuietDown
 };
 
 
@@ -23,5 +23,7 @@ typedef NS_ENUM(NSInteger, FTAPIRestartDataObjectType) {
 
 - (id)initWithRestartType:(FTAPIRestartDataObjectType)type;
 
+
++ (FTAPIRestartDataObjectType)typeWithString:(NSString *)string;
 
 @end

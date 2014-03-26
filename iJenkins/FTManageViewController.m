@@ -8,9 +8,11 @@
 
 #import "FTManageViewController.h"
 #import "FTIconCell.h"
+#import "FTAPIRestartDataObject.h"
+#import "FTLoginAlert.h"
 
 
-@interface FTManageViewController ()
+@interface FTManageViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *data;
 
@@ -41,11 +43,11 @@
 #pragma mark Tableview delegate & datasource methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [_data count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _data.count;
+    return [[self itemsAtSection:section] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -53,7 +55,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return nil;
+    return [(NSDictionary *)_data[section] objectForKey:@"title"];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,7 +65,7 @@
         cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     BOOL ok = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 0);
-    NSDictionary *d = _data[indexPath.row];
+    NSDictionary *d = [self itemAtIndexPath:indexPath];
     if (![d[@"loginRequired"] boolValue]) {
         ok = YES;
     }
@@ -97,17 +99,72 @@
         return;
     }
     
-    NSDictionary *d = _data[indexPath.row];
+    NSDictionary *d = [self itemAtIndexPath:indexPath];
     NSString *controllerString = d[@"controller"];
-    Class class = NSClassFromString(controllerString);
-    if (class) {
-        FTViewController *c = (FTViewController *)[[class alloc] init];
-        [c setTitle:FTLangGet(d[@"name"])];
-        if (c) {
-            [self.navigationController pushViewController:c animated:YES];
+    NSString *actionString = d[@"action"];
+    
+    //  If controller value is present, open the controller by name
+    if ([controllerString length] > 0) {
+        Class class = NSClassFromString(controllerString);
+        if (class) {
+            FTViewController *c = (FTViewController *)[[class alloc] init];
+            [c setTitle:FTLangGet(d[@"name"])];
+            if (c) {
+                [self.navigationController pushViewController:c animated:YES];
+            }
         }
+    }
+    //  If action value is provided, this is an action
+    else if([actionString length] > 0) {
+        FTAPIRestartDataObjectType actionType = [FTAPIRestartDataObject typeWithString:actionString];
+        NSString *message = [NSString stringWithFormat:FTLangGet(@"Are you sure you want to %@ Jenkins?"), cell.textLabel.text];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:cell.textLabel.text message:message delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Confirm"), nil];
+        alert.tag = actionType;
+        [alert show];
+    }
+    
+}
+
+#pragma mark UIAlertView delegate
+
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+        [self performManagementAction:alertView.tag];
     }
 }
 
+#pragma mark Helper methods
+
+- (NSDictionary *)itemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *items = [self itemsAtSection:indexPath.section];
+    
+    return (indexPath.row < [items count] ? items[indexPath.row] : nil);
+}
+
+- (NSArray *)itemsAtSection:(NSInteger)section
+{
+    if (section >= [_data count]) {
+        return nil;
+    }
+    
+    return [(NSDictionary *)_data[section] objectForKey:@"items"];
+}
+
+- (void)performManagementAction:(FTAPIRestartDataObjectType)actionType
+{
+    FTAPIRestartDataObject *apiObject = [[FTAPIRestartDataObject alloc] initWithRestartType:actionType];
+    [FTAPIConnector connectWithObject:apiObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        if (error) {
+            [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
+                [self performManagementAction:actionType];
+            } andCancelBlock:^{
+                
+            } accordingToResponseCode:apiObject.response.statusCode];
+        }
+    }];
+}
 
 @end

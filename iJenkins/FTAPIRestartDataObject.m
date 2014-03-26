@@ -20,11 +20,11 @@
 
 - (NSString *)methodName {
     switch (_restartType) {
-        case FTAPIRestartDataObjectTypeCancelQuiteDown:
+        case FTAPIRestartDataObjectTypeCancelQuietDown:
             return @"cancelQuietDown";
             break;
             
-        case FTAPIRestartDataObjectTypeQuiteDown:
+        case FTAPIRestartDataObjectTypeQuietDown:
             return @"quietDown";
             break;
             
@@ -72,5 +72,26 @@
     return self;
 }
 
+
+#pragma mark Class methods
+
++ (FTAPIRestartDataObjectType)typeWithString:(NSString *)string
+{
+    FTAPIRestartDataObjectType type;
+    
+    if ([string isEqualToString:@"safeRestart"]) {
+        type = FTAPIRestartDataObjectTypeSafeRestart;
+    } else if([string isEqualToString:@"restart"]) {
+        type = FTAPIRestartDataObjectTypeRestart;
+    } else if ([string isEqualToString:@"quietDown"]) {
+        type = FTAPIRestartDataObjectTypeQuietDown;
+    } else if ([string isEqualToString:@"cancelQuietDown"]) {
+        type = FTAPIRestartDataObjectTypeCancelQuietDown;
+    } else {
+        type = 0;   //  Unknown value, first item in enum by default
+    }
+    
+    return type;
+}
 
 @end

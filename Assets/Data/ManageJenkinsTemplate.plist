@@ -3,40 +3,98 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>name</key>
-		<string>Manage plugins</string>
-		<key>description</key>
-		<string>Plugin info</string>
-		<key>icon</key>
-		<string>icon-briefcase</string>
-		<key>controller</key>
-		<string>FTManagePluginsViewController</string>
-		<key>loginRequired</key>
-		<false/>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Manage plugins</string>
+				<key>description</key>
+				<string>Plugin info</string>
+				<key>icon</key>
+				<string>icon-briefcase</string>
+				<key>controller</key>
+				<string>FTManagePluginsViewController</string>
+				<key>loginRequired</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Users</string>
+				<key>description</key>
+				<string>Manage users</string>
+				<key>icon</key>
+				<string>icon-group</string>
+				<key>controller</key>
+				<string>FTManageUsersViewController</string>
+				<key>loginRequired</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Nodes</string>
+				<key>description</key>
+				<string>Monitor nodes that Jenkins runs jobs on.</string>
+				<key>icon</key>
+				<string>icon-desktop</string>
+				<key>controller</key>
+				<string>FTManageNodesViewController</string>
+				<key>loginRequired</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<dict>
-		<key>name</key>
-		<string>Users</string>
-		<key>description</key>
-		<string>Manage users</string>
-		<key>icon</key>
-		<string>icon-group</string>
-		<key>controller</key>
-		<string>FTManageUsersViewController</string>
-		<key>loginRequired</key>
-		<true/>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Nodes</string>
-		<key>description</key>
-		<string>Monitor nodes that Jenkins runs jobs on.</string>
-		<key>icon</key>
-		<string>icon-desktop</string>
-		<key>controller</key>
-		<string>FTManageNodesViewController</string>
-		<key>loginRequired</key>
-		<false/>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>Safe restart</string>
+				<key>description</key>
+				<string>Restart Jenkins once no jobs are running</string>
+				<key>icon</key>
+				<string>icon-refresh</string>
+				<key>action</key>
+				<string>safeRestart</string>
+				<key>loginRequired</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Hard restart</string>
+				<key>description</key>
+				<string>Restart Jenkins immediately</string>
+				<key>icon</key>
+				<string>icon-exclamation-sign</string>
+				<key>action</key>
+				<string>restart</string>
+				<key>loginRequired</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Quiet down</string>
+				<key>description</key>
+				<string>Jenkins will enter into the &quot;quiet down&quot; mode</string>
+				<key>icon</key>
+				<string>icon-off</string>
+				<key>action</key>
+				<string>quietDown</string>
+				<key>loginRequired</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>Cancel quiet down</string>
+				<key>description</key>
+				<string>Cancel the &quot;quiet down&quot; mode</string>
+				<key>icon</key>
+				<string>icon-off</string>
+				<key>action</key>
+				<string>cancelQuietDown</string>
+				<key>loginRequired</key>
+				<true/>
+			</dict>
+		</array>
 	</dict>
 </array>
 </plist>
