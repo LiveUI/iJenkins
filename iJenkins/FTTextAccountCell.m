@@ -16,11 +16,11 @@
 
 @implementation FTTextAccountCell
 
+#pragma mark Overrides
 
-#pragma mark Layout
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [self resetTextFieldToDefault];
 }
 
 #pragma mark Create elements
@@ -48,6 +48,8 @@
 - (void)setCellData:(NSDictionary *)cellData {
     [super setCellData:cellData];
     [_textField setPlaceholder:[cellData objectForKey:@"placeholder"]];
+    
+    [self resetTextFieldToDefault];
     
     NSString *type = [cellData objectForKey:@"type"];
     if ([type isEqualToString:@"text"]) {
@@ -165,5 +167,12 @@
     return YES;
 }
 
+#pragma mark Helper methods
+
+- (void)resetTextFieldToDefault {
+    [_textField setKeyboardType:UIKeyboardTypeDefault];
+    [_textField setSecureTextEntry:NO];
+    [_textField setClearButtonMode:UITextFieldViewModeNever];
+}
 
 @end
