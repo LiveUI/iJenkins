@@ -77,6 +77,7 @@
         [cell.iconView setAlpha:1];
         [cell.textLabel setAlpha:1];
         [cell.detailTextLabel setAlpha:1];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleDefault];
         [cell.detailTextLabel setText:FTLangGet(d[@"description"])];
     }
     else {
@@ -84,6 +85,7 @@
         [cell.iconView setAlpha:0.4];
         [cell.textLabel setAlpha:0.4];
         [cell.detailTextLabel setAlpha:0.4];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
     }
     [cell.textLabel setText:FTLangGet(d[@"name"])];

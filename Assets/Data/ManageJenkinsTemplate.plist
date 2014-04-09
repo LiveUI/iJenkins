@@ -74,7 +74,7 @@
 				<key>name</key>
 				<string>Quiet down</string>
 				<key>description</key>
-				<string>Jenkins will enter into the &quot;quiet down&quot; mode</string>
+				<string>Jenkins will enter the &quot;quiet down&quot; mode</string>
 				<key>icon</key>
 				<string>icon-off</string>
 				<key>action</key>

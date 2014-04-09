@@ -24,6 +24,9 @@
     
     [self.textLabel setXOrigin:55];
     [self.detailTextLabel setXOrigin:55];
+    
+    [self.textLabel setWidth:MIN(self.textLabel.width, (self.contentView.width - self.textLabel.xOrigin))];
+    [self.detailTextLabel setWidth:MIN(self.detailTextLabel.width, (self.contentView.width - self.detailTextLabel.xOrigin))];
 }
 
 #pragma mark Creating elements

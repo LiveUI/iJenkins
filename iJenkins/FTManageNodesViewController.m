@@ -76,6 +76,7 @@
     FTSmallTextCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTSmallTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     [cell.detailTextLabel setText:FTLangGet(@"Node is currently offline")];
     return cell;
@@ -86,6 +87,7 @@
     FTNodeCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTNodeCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     FTAPIComputerInfoObject *computer = _computers[indexPath.section];

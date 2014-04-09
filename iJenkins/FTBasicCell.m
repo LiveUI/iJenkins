@@ -25,6 +25,7 @@
         [self.detailTextLabel setYOrigin:(self.detailTextLabel.yOrigin - 0)];
     }
     [self.textLabel sizeToFit];
+    [self.textLabel setWidth:MIN(self.textLabel.width, (self.contentView.width - self.textLabel.xOrigin))];
 }
 
 - (CGFloat)cellHeight {
