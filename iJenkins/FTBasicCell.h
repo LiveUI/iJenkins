@@ -10,8 +10,8 @@
 
 
 typedef enum {
-    FTBasicCellLayoutTypeSmall,
-    FTBasicCellLayoutTypeDefault
+    FTBasicCellLayoutTypeDefault,
+    FTBasicCellLayoutTypeSmall
 } FTBasicCellLayoutType;
 
 
