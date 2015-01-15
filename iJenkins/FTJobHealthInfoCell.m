@@ -50,7 +50,7 @@
 
 - (void)setHealth:(FTAPIJobDetailHealthDataObject *)health {
     _health = health;
-    [self.detailTextLabel setText:_health.description];
+    [self.detailTextLabel setText:_health.description2];
     NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _health.iconUrl];
     UIImage *img = [UIImage imageNamed:iconName];
     [_buildScoreView setImage:img];

@@ -39,10 +39,10 @@
     _displayName = data[@"displayName"];
     _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _url = data[@"url"];
-    _description = data[@"description"];
+    _description2 = data[@"description"];
     _buildable = [data[@"buildable"] boolValue];
     
-    int count = [data[@"builds"] count];
+    int count = (int)[data[@"builds"] count];
     if (count > 0) {
         int x = 0;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
@@ -73,7 +73,7 @@
     _firstBuild = [[FTAPIJobDetailBuildDataObject alloc] init];
     [_firstBuild processData:data[@"firstBuild"]];
     
-    count = [data[@"healthReport"] count];
+    count = (int)[data[@"healthReport"] count];
     if (count > 0) {
         int x = 0;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
@@ -138,7 +138,7 @@
 - (void)processData:(NSDictionary *)data {
     _score = [data[@"score"] integerValue];
     _iconUrl = data[@"iconUrl"];
-    _description = data[@"description"];
+    _description2 = data[@"description"];
 }
 
 

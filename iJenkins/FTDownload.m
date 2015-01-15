@@ -168,8 +168,8 @@
     
     [self willChangeValueForKey:@"isExecuting"];
     [self willChangeValueForKey:@"isFinished"];
-    _executing = NO;
-    _finished = YES;
+    _executing2 = NO;
+    _finished2 = YES;
     [self didChangeValueForKey:@"isFinished"];
     [self didChangeValueForKey:@"isExecuting"];
 }
@@ -186,13 +186,13 @@
         return;
     }
     
-    if(_finished || [self isCancelled]) {
+    if(_finished2 || [self isCancelled]) {
         [self done];
         return;
     }
     
     [self willChangeValueForKey:@"isExecuting"];
-    _executing = YES;
+    _executing2 = YES;
     [self didChangeValueForKey:@"isExecuting"];
     
     [self main];
@@ -222,7 +222,7 @@
                 
                 NSData *requestData = [NSData dataWithBytes:[requestJSON UTF8String] length:[requestJSON length]];
                 [request setHTTPMethod:@"POST"];
-                [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+                [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]] forHTTPHeaderField:@"Content-Length"];
                 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
                 [request setHTTPBody:requestData];
             }
@@ -236,11 +236,11 @@
 }
 
 - (BOOL)isExecuting {
-    return _executing;
+    return _executing2;
 }
 
 - (BOOL)isFinished {
-    return _finished;
+    return _finished2;
 }
 
 #pragma mark Connection delegate methods
