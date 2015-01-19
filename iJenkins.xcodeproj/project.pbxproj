@@ -133,6 +133,7 @@
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		3EBBBA741A6836D100FB8F97 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EBBBA731A6836D100FB8F97 /* Launch Screen.xib */; };
 		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
@@ -360,6 +361,7 @@
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
+		3EBBBA731A6836D100FB8F97 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -546,6 +548,7 @@
 		1510732517D10EFA00FD083B /* System */ = {
 			isa = PBXGroup;
 			children = (
+				3EBBBA731A6836D100FB8F97 /* Launch Screen.xib */,
 				1510732617D10EFA00FD083B /* Default-568h@2x.png */,
 				1510732717D10EFA00FD083B /* Default.png */,
 				1510732817D10EFA00FD083B /* Default@2x.png */,
@@ -1473,6 +1476,7 @@
 				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
 				151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */,
 				151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
+				3EBBBA741A6836D100FB8F97 /* Launch Screen.xib in Resources */,
 				1510732B17D10EFA00FD083B /* Default-568h@2x.png in Resources */,
 				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
 				1510732C17D10EFA00FD083B /* Default.png in Resources */,

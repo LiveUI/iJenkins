@@ -37,8 +37,8 @@ typedef enum {
 @property (nonatomic, strong) NSString *connectionURL;
 @property (nonatomic, strong) NSDictionary *postParameters;
 
-@property (nonatomic) BOOL executing;
-@property (nonatomic) BOOL finished;
+@property (nonatomic) BOOL executing2;
+@property (nonatomic) BOOL finished2;
 
 @property (nonatomic, strong) NSString *specialCacheFolder;
 @property (nonatomic, strong) NSString *specialCacheFile;
