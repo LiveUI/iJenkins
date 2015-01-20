@@ -139,7 +139,7 @@
             break;
             
         case 1: {
-            int limit = [[FTAccountsManager sharedManager] selectedAccount].loadMaxItems;
+            NSInteger limit = [[FTAccountsManager sharedManager] selectedAccount].loadMaxItems;
             if (limit == 0) {
                 limit = INT_MAX;
             }

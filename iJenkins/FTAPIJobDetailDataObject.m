@@ -39,10 +39,10 @@
     _displayName = data[@"displayName"];
     _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _url = data[@"url"];
-    _description = data[@"description"];
+    _desc = data[@"description"];
     _buildable = [data[@"buildable"] boolValue];
     
-    int count = [data[@"builds"] count];
+    NSInteger count = [data[@"builds"] count];
     if (count > 0) {
         int x = 0;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:count];
@@ -138,7 +138,7 @@
 - (void)processData:(NSDictionary *)data {
     _score = [data[@"score"] integerValue];
     _iconUrl = data[@"iconUrl"];
-    _description = data[@"description"];
+    _desc = data[@"description"];
 }
 
 

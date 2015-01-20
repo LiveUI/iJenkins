@@ -94,7 +94,7 @@
     switch (indexPath.row) {
         case 0: {
             [cell.textLabel setText:FTLangGet(@"Executors")];
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%d", computer.executors.count]];
+            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%lu", (unsigned long)computer.executors.count]];
             break;
         }
             
@@ -107,7 +107,7 @@
         case 2: {
             [cell.textLabel setText:FTLangGet(@"Response time")];
             NSString *timeStr = dFTManageNodesViewControllerCheckVar(computer.monitorData[@"hudson.node_monitors.ResponseTimeMonitor"][@"average"], @"0");
-            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%.2f sec (%d ms)", ([timeStr floatValue] / 1000.0f), [timeStr integerValue]]];
+            [cell.detailTextLabel setText:[NSString stringWithFormat:@"%.2f sec (%ld ms)", ([timeStr floatValue] / 1000.0f), (long)[timeStr integerValue]]];
             break;
         }
             

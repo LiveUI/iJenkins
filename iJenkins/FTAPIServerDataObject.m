@@ -35,7 +35,7 @@
     _mode = data[@"mode"];
     _nodeDescription = data[@"nodeDescription"];
     _nodeName = data[@"nodeName"];
-    _description = data[@"description"];
+    _desc = data[@"description"];
     
     _primaryView = [[FTAPIServerViewDataObject alloc] init];
     [_primaryView setName:[data[@"primaryView"] objectForKey:@"name"]];

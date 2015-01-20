@@ -21,7 +21,7 @@ static inline CGFloat degreesToRadians(CGFloat degrees) {
     return M_PI * (degrees / 180.0);
 }
 
-static int temporaryImageAngle;
+static NSInteger temporaryImageAngle;
 static inline CGFloat toRadians (CGFloat degrees) { return degrees * M_PI/180.0f; }
 
 //images on iPhone should be no bigger than 1024, making images bigger than 1024 may cause crashes caused by not enough memory
@@ -446,10 +446,10 @@ static inline CGFloat toRadians (CGFloat degrees) { return degrees * M_PI/180.0f
 	NSInteger stepAngle = [UIImage degrees:degStep inPixelsForImage:image];
 	for(; currentCheckingAngleInPixels < maximumCheckingAngleInPixels && currentCheckingAngleInPixels < image.size.height; currentCheckingAngleInPixels += stepAngle){
 		NSInteger blackPercentageForGivenAngle = [UIImage getBlackPercentageForAngle:currentCheckingAngleInPixels forImageData:image andBlackTreshold:blackTreshold];
-		if(abs(blackPercentageForGivenAngle) > percentOfBlacksForDetectedAngle){
-			percentOfBlacksForDetectedAngle = abs(blackPercentageForGivenAngle);
+		if(abs((int)blackPercentageForGivenAngle) > percentOfBlacksForDetectedAngle){
+			percentOfBlacksForDetectedAngle = abs((int)blackPercentageForGivenAngle);
 			detectedAngleInPixels = currentCheckingAngleInPixels;
-			if(blackPercentageForGivenAngle < 0){
+			if (blackPercentageForGivenAngle < 0){
 				detectedAngleInPixels = -detectedAngleInPixels;
 			}
 		}
@@ -470,7 +470,7 @@ static inline CGFloat toRadians (CGFloat degrees) { return degrees * M_PI/180.0f
 	NSAssert(image, @"can't find average color of nil image");
 	NSInteger bpp = CGImageGetBitsPerPixel(image.CGImage);
 	if(bpp != 8){
-		NSLog(@"WARNING: average color of the image border can't be calculated for images having more than 8bpp(yours is %dbpp). Converting to grayscale first.", bpp);
+		NSLog(@"WARNING: average color of the image border can't be calculated for images having more than 8bpp(yours is %ldbpp). Converting to grayscale first.", (long)bpp);
 		image = [UIImage convertTo8bppGrayscaleFromImage:image];
 	}
 	
@@ -529,7 +529,7 @@ static inline CGFloat toRadians (CGFloat degrees) { return degrees * M_PI/180.0f
 
 
 + (CGPoint) getPointAtIndex:(NSUInteger) index ofRect:(CGRect) rect {
-	NSAssert1(index >= 0 && index < 4, @"Rectangle has 4 corners, index should be between [0,3], u passed %d", index);
+	NSAssert1(index >= 0 && index < 4, @"Rectangle has 4 corners, index should be between [0,3], u passed %ld", (long)index);
 	CGPoint point = rect.origin;
 	if(index == 1){
 		point.x += CGRectGetWidth(rect);

@@ -90,6 +90,9 @@
 		154466B3180651F200025022 /* FTQueueJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B2180651F200025022 /* FTQueueJobCell.m */; };
 		154466B61806BE8500025022 /* FTAPIPluginManagerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */; };
 		154466BA1806C4C600025022 /* FTPluginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B91806C4C600025022 /* FTPluginCell.m */; };
+		156EC66B1A6E6F1F009BB672 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66A1A6E6F1F009BB672 /* Images.xcassets */; };
+		156EC66D1A6E7018009BB672 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66C1A6E7018009BB672 /* Launch Screen.xib */; };
+		156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66E1A6E7112009BB672 /* Assets.xcassets */; };
 		15C519AD180729CF00ADDF15 /* FTPluginDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
@@ -282,6 +285,9 @@
 		154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIPluginManagerDataObject.m; sourceTree = "<group>"; };
 		154466B81806C4C600025022 /* FTPluginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginCell.h; sourceTree = "<group>"; };
 		154466B91806C4C600025022 /* FTPluginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginCell.m; sourceTree = "<group>"; };
+		156EC66A1A6E6F1F009BB672 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../iJenkins/Images.xcassets; sourceTree = "<group>"; };
+		156EC66C1A6E7018009BB672 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15C519AB180729CF00ADDF15 /* FTPluginDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginDetailViewController.h; sourceTree = "<group>"; };
 		15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginDetailViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,10 +484,12 @@
 		151072C517D0BA3400FD083B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				156EC66A1A6E6F1F009BB672 /* Images.xcassets */,
 				1510733D17D210F700FD083B /* Data */,
 				1510732517D10EFA00FD083B /* System */,
 				151072DF17D0EE7100FD083B /* Fonts */,
 				151072C617D0BA3400FD083B /* WeatherIcons */,
+				156EC66E1A6E7112009BB672 /* Assets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = SOURCE_ROOT;
@@ -1108,6 +1116,7 @@
 				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
 				15D245DF17CF9C2A00793614 /* main.m */,
 				15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */,
+				156EC66C1A6E7018009BB672 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1461,9 +1470,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				151072D617D0BA3400FD083B /* IJ_health-40to59@2x.png in Resources */,
+				156EC66B1A6E6F1F009BB672 /* Images.xcassets in Resources */,
 				154465D817FC4BC900025022 /* Icon57.png in Resources */,
 				151072D317D0BA3400FD083B /* IJ_health-20to39.png in Resources */,
 				154465D917FC4BC900025022 /* Icon58.png in Resources */,
+				156EC66D1A6E7018009BB672 /* Launch Screen.xib in Resources */,
 				154466151803330A00025022 /* ManageJenkinsTemplate.plist in Resources */,
 				151072D817D0BA3400FD083B /* IJ_health-60to79@2x.png in Resources */,
 				1510733F17D2111100FD083B /* AccountDetailTemplate.plist in Resources */,
@@ -1482,6 +1493,7 @@
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
 				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
+				156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1647,6 +1659,8 @@
 		1510727D17CFE94E00FD083B /* Enterprise */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1659,7 +1673,7 @@
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1724,6 +1738,8 @@
 		15D245F417CF9C2A00793614 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1736,7 +1752,7 @@
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1745,6 +1761,8 @@
 		15D245F517CF9C2A00793614 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1757,7 +1775,7 @@
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

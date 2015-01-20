@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *desc;
 @property (nonatomic) BOOL buildable;
 
 @property (nonatomic, strong) NSArray *builds;
@@ -56,7 +56,7 @@
 @interface FTAPIJobDetailHealthDataObject : NSObject
 
 @property (nonatomic) NSInteger score;
-@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *desc;
 @property (nonatomic, strong) NSString *iconUrl;
 
 - (void)processData:(NSDictionary *)data;

@@ -23,6 +23,10 @@
 
 @implementation FTDownload
 
+@synthesize executing = _executing;
+@synthesize finished = _finished;
+
+
 #pragma mark Caching
 
 + (NSString *)folderPath:(FTDownloadCacheLifetime)cacheLifetime withSpecialCacheFolder:(NSString *)specialCacheFolder {

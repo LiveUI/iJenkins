@@ -18,7 +18,7 @@
 @property (nonatomic, strong, readonly) NSString *mode;
 @property (nonatomic, strong, readonly) NSString *nodeDescription;
 @property (nonatomic, strong, readonly) NSString *nodeName;
-@property (nonatomic, strong, readonly) NSString *description;
+@property (nonatomic, strong, readonly) NSString *desc;
 @property (nonatomic, strong, readonly) FTAPIServerViewDataObject *primaryView;
 @property (nonatomic, readonly) NSInteger numExecutors;
 @property (nonatomic, readonly) NSInteger slaveAgentPort;

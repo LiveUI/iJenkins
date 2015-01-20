@@ -106,7 +106,7 @@
     _currentExecutable = [[FTAPIJobDataObject alloc] init];
     NSMutableDictionary *d = [NSMutableDictionary dictionaryWithDictionary:data[@"currentExecutable"]];
     NSArray *urlParts = [[d objectForKey:@"url"] componentsSeparatedByString:@"/"];
-    int count = urlParts.count;
+    NSInteger count = urlParts.count;
     count -= 2;
     if ([(NSString *)urlParts.lastObject length] == 0) count--;
     [d setValue:urlParts[count] forKey:@"name"];

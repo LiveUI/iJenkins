@@ -244,7 +244,7 @@
             break;
             
         case 3:
-            return 1;
+            return 2;
             break;
             
         default:
@@ -335,7 +335,7 @@
     }
     __block FTAccount *acc = [self accountForIndexPath:indexPath];
     [cell.textLabel setText:acc.name];
-    NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%d", acc.port] : @"";
+    NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%ld", (long)acc.port] : @"";
     [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@", acc.host, port]];
     
     //  Status of the server
@@ -396,16 +396,23 @@
     return cell;
 }
 
-- (FTBasicCell *)cellForAboutSection:(NSIndexPath *)indexPAth {
+- (FTBasicCell *)cellForAboutSection:(NSIndexPath *)indexPath {
     static NSString *identifier = @"aboutSectionCell";
     FTIconCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     }
-    [cell.iconView setDefaultIconIdentifier:@"icon-github"];
-    [cell.textLabel setText:FTLangGet(@"Open source project")];
-    [cell.detailTextLabel setText:FTLangGet(@"All source code available on github.com")];
+    if (indexPath.row == 0) {
+        [cell.iconView setDefaultIconIdentifier:@"icon-github"];
+        [cell.textLabel setText:FTLangGet(@"Open source project")];
+        [cell.detailTextLabel setText:FTLangGet(@"All source code available on github.com")];
+    }
+    else {
+        [cell.iconView setDefaultIconIdentifier:@"icon-terminal"];
+        [cell.textLabel setText:FTLangGet(@"SSH Automator")];
+        [cell.detailTextLabel setText:FTLangGet(@"Mobilise your SSH tasks and deployments")];
+    }
     return cell;
 }
 
@@ -449,7 +456,12 @@
             }
         }
         else {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/rafiki270/iJenkins"]];
+            if (indexPath.row == 0) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/rafiki270/iJenkins"]];
+            }
+            else {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/Ridiculous-Innovations/SSHAutomator"]];
+            }
         }
     }
 }
