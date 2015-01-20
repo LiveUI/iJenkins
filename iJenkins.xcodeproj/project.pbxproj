@@ -1661,7 +1661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Fuerte Int Ltd";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
@@ -1675,6 +1675,7 @@
 				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9CF19122-163B-4E8A-9D43-39DB2504223B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Enterprise;
