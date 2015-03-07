@@ -31,7 +31,7 @@
             else {
                 [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                 
-                NSString *description = (self.job.jobDetail.healthReport.description.length > 0) ? self.job.jobDetail.healthReport.description : FTLangGet(FT_NA);
+                NSString *description = (self.job.jobDetail.healthReport.desc.length > 0) ? self.job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
                 [self setDescriptionText:description];
             }
             [self resetScoreIcon];
