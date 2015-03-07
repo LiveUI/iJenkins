@@ -37,6 +37,20 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>Path</string>
+				<key>description</key>
+				<string>In case your instance is running on a subdir</string>
+				<key>placeholder</key>
+				<string>/</string>
+				<key>default</key>
+				<string>/</string>
+				<key>type</key>
+				<string>url</string>
+				<key>variable</key>
+				<string>pathSuffix</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>Port</string>
 				<key>description</key>
 				<string>Default port is (8080)</string>

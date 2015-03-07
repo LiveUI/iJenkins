@@ -71,6 +71,8 @@
 }
 
 - (void)setPathSuffix:(NSString *)pathSuffix {
+    pathSuffix = [[pathSuffix stringByAppendingString:@"/"] stringByReplacingOccurrencesOfString:@"//"
+withString:@"/"];
     _pathSuffix = pathSuffix;
     [self.originalDictionary setValue:pathSuffix forKey:@"pathSuffix"];
 }
@@ -140,14 +142,14 @@
 #pragma mark Getters
 
 - (NSString *)hostUrl {
-    NSString *port = (_port != 0) ? [NSString stringWithFormat:@":%d", _port] : @"";
+    NSString *port = (_port != 0) ? [NSString stringWithFormat:@":%ld", (long)_port] : @"";
     NSString *url = [NSString stringWithFormat:@"%@%@", _host, port];
     return url;
 }
 
 - (NSString *)baseUrl {
     NSString *https = _https ? @"s" : @"";
-    NSString *url = [NSString stringWithFormat:@"http%@://%@/", https, self.hostUrl];
+    NSString *url = [NSString stringWithFormat:@"http%@://%@%@", https, self.hostUrl, self.pathSuffix];
     return url;
 }
 
