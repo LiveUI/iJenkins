@@ -189,6 +189,13 @@
 }
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
+    NSDictionary *data = cell.cellData;
+    if ([[data objectForKey:@"type"] isEqualToString:@"switch"] && [[data objectForKey:@"variable"] isEqualToString:@"https"] && self.account.https) {
+        self.account.port = 443;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    }
     
 }
 

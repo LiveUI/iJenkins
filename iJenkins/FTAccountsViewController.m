@@ -336,7 +336,8 @@
     __block FTAccount *acc = [self accountForIndexPath:indexPath];
     [cell.textLabel setText:acc.name];
     NSString *port = (acc.port != 0) ? [NSString stringWithFormat:@":%ld", (long)acc.port] : @"";
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@", acc.host, port]];
+    NSString *path = ([@"/" isEqualToString:acc.pathSuffix]) ? @"" : acc.pathSuffix;
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@%@%@", acc.host, port, path]];
     
     //  Status of the server
     NSNumber *key = @([acc hash]);
