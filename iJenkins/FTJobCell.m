@@ -129,7 +129,7 @@
         }
         else {
             [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-            NSString *description = (_job.jobDetail.healthReport.description.length > 0) ? _job.jobDetail.healthReport.description : FTLangGet(FT_NA);
+            NSString *description = (_job.jobDetail.healthReport.desc.length > 0) ? _job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
             [self setDescriptionText:description];
         }
         [self resetScoreIcon];
