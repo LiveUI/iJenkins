@@ -197,7 +197,7 @@
         FTAPIJobDetailBuildDataObject *build = [_job.jobDetail.builds objectAtIndex:(indexPath.row + indexPath.section)];
         if (build.buildDetail) {
             FTBuildDetailViewController *c = [[FTBuildDetailViewController alloc] init];
-            [c setTitle:[NSString stringWithFormat:@"%@ #%d", FTLangGet(@"Build"), build.number]];
+            [c setTitle:[NSString stringWithFormat:@"%@ #%ld", FTLangGet(@"Build"), (long)build.number]];
             [c setBuild:build];
             [self.navigationController pushViewController:c animated:YES];
         }

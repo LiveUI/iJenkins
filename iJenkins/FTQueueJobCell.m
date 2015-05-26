@@ -35,7 +35,7 @@
                 [self setDescriptionText:description];
             }
             [self resetScoreIcon];
-            [self.buildIdView setText:[NSString stringWithFormat:@"#%d", self.job.jobDetail.lastBuild.number]];
+            [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
             
             [UIView animateWithDuration:0.15 animations:^{
                 [self.buildScoreView setAlpha:1];
@@ -45,8 +45,8 @@
     if (!desc) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         [self resetScoreIcon];
-        [self.buildIdView setText:[NSString stringWithFormat:@"#%d", self.job.jobDetail.lastBuild.number]];
-        [self.detailTextLabel setText:[NSString stringWithFormat:@"%@: %d.0%%", FTLangGet(@"Progress"), self.job.executor.progress]];
+        [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
+        [self.detailTextLabel setText:[NSString stringWithFormat:@"%@: %ld.0%%", FTLangGet(@"Progress"), (long)self.job.executor.progress]];
     }
 }
 

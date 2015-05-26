@@ -212,7 +212,7 @@
     if (index >= _jobsStats.allKeys.count) return;
     NSString *key = [_jobsStats.allKeys objectAtIndex:index];
     FTAPIServerStatsDataObject *s = [_jobsStats objectForKey:key];
-    [_countLabel setText:[NSString stringWithFormat:@"%d", s.count]];
+    [_countLabel setText:[NSString stringWithFormat:@"%ld", (long)s.count]];
     [_descriptionLabel setText:[self titleForCode:[[_jobsStats.allKeys objectAtIndex:index] uppercaseString]]];
     [_countLabel sizeToFit];
     [_countLabel centerHorizontally];

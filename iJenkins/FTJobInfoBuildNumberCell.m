@@ -55,7 +55,7 @@
 
 - (void)setJob:(FTAPIJobDataObject *)job {
     _job = job;
-    [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%d", FTLangGet(@"Latest build"), _job.jobDetail.lastBuild.number]];
+    [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%ld", FTLangGet(@"Latest build"), (long)_job.jobDetail.lastBuild.number]];
     [self resetStatusColor];
 }
 

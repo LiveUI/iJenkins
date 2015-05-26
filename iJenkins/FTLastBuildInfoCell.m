@@ -56,7 +56,7 @@
 
 - (void)setBuild:(FTAPIJobDetailBuildDataObject *)build {
     _build = build;
-    [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%d", FTLangGet(@"Build"), _build.number]];
+    [self.textLabel setText:[NSString stringWithFormat:@"%@ :#%ld", FTLangGet(@"Build"), (long)_build.number]];
     [self resetStatusColor];
 }
 

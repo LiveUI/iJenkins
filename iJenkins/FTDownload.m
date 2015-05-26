@@ -226,7 +226,7 @@
                 
                 NSData *requestData = [NSData dataWithBytes:[requestJSON UTF8String] length:[requestJSON length]];
                 [request setHTTPMethod:@"POST"];
-                [request setValue:[NSString stringWithFormat:@"%d", [requestData length]] forHTTPHeaderField:@"Content-Length"];
+                [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[requestData length]] forHTTPHeaderField:@"Content-Length"];
                 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
                 [request setHTTPBody:requestData];
             }

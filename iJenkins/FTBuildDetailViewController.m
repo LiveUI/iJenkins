@@ -194,7 +194,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
     switch (index)
     {
         case FTBuildDetailControllerIndexBuildNumber:
-            title = [NSString stringWithFormat:@"#%d", self.build.number]; // Done
+            title = [NSString stringWithFormat:@"#%ld", (long)self.build.number]; // Done
             break;
             
         case FTBuildDetailControllerIndexDateExecuted:
@@ -237,7 +237,7 @@ typedef NS_ENUM(NSUInteger, FTBuildDetailControllerIndex) {
             break;
             
         case FTBuildDetailControllerIndexChanges:
-            title = [NSString stringWithFormat:@"(%d)", _build.buildDetail.changeSet.items.count];
+            title = [NSString stringWithFormat:@"(%lu)", (unsigned long)_build.buildDetail.changeSet.items.count];
             break;
             
         default:

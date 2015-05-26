@@ -133,7 +133,7 @@
             [self setDescriptionText:description];
         }
         [self resetScoreIcon];
-        [_buildIdView setText:[NSString stringWithFormat:@"#%d", _job.jobDetail.lastBuild.number]];
+        [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
         
         [UIView animateWithDuration:0.15 animations:^{
             [_buildScoreView setAlpha:1];

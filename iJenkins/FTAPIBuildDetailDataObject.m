@@ -19,7 +19,7 @@
 }
 
 - (NSString *)methodName {
-    return [NSString stringWithFormat:@"job/%@/%d/", _jobName, _buildNumber];
+    return [NSString stringWithFormat:@"job/%@/%ld/", _jobName, (long)_buildNumber];
 }
 
 - (NSDictionary *)payloadData {

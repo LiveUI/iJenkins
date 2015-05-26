@@ -83,7 +83,7 @@
         [_textField setText:account.host];
     }
     else if ([variable isEqualToString:@"port"]) {
-        [_textField setText:(account.port ? [NSString stringWithFormat:@"%d", account.port] : @"")];
+        [_textField setText:(account.port ? [NSString stringWithFormat:@"%ld", (long)account.port] : @"")];
     }
     else if ([variable isEqualToString:@"username"]) {
         [_textField setText:account.username];
@@ -98,7 +98,7 @@
         [_textField setText:[NSString stringWithFormat:@"%.0f", account.timeout]];
     }
     else if ([variable isEqualToString:@"loadMaxItems"]) {
-        [_textField setText:[NSString stringWithFormat:@"%d", account.loadMaxItems]];
+        [_textField setText:[NSString stringWithFormat:@"%ld", (long)account.loadMaxItems]];
     }
 }
 

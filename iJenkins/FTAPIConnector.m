@@ -196,7 +196,7 @@ static FTAccount *_sharedAccount = nil;
         url = [url stringByAppendingString:par];
     }
     BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
-    url = [NSString stringWithFormat:@"%@%@depth=%d", url, (isQM ? @"&" : @"?"), data.depth];
+    url = [NSString stringWithFormat:@"%@%@depth=%ld", url, (isQM ? @"&" : @"?"), (long)data.depth];
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
