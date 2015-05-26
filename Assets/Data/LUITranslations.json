@@ -1,0 +1,26 @@
+{
+    "timestamp": 1432657358,
+    "code": 200,
+    "data": {
+        "en": {
+            "default": true,
+            "translations": {
+                "WBALang_EN": "English",
+                "WBALang_CS": "Czech",
+                "Servers": "Servers"
+            }
+        },
+        "cs": {
+            "default": false,
+            "translations": {
+                "WBALang_EN": "Angli\u010dtina",
+                "WBALang_CS": "\u010ce\u0161tina",
+                "Servers": "Servery"
+            }
+        }
+    },
+    "app": {
+        "name": "iJenkins",
+        "production": false
+    }
+}

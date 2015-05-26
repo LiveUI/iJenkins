@@ -96,6 +96,11 @@
 		15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
 		15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18611B14C92F001B44E6 /* libz.dylib */; };
 		15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18621B14C92F001B44E6 /* Fabric.framework */; };
+		15BF186B1B14CE2C001B44E6 /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */; };
+		15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
+		15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */; };
+		15BF18771B14D178001B44E6 /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18751B14D178001B44E6 /* LUIImages.json */; };
+		15BF18781B14D178001B44E6 /* LUITranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18761B14D178001B44E6 /* LUITranslations.json */; };
 		15C519AD180729CF00ADDF15 /* FTPluginDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */; };
 		15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D317CF9C2A00793614 /* UIKit.framework */; };
 		15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D245D517CF9C2A00793614 /* Foundation.framework */; };
@@ -294,6 +299,11 @@
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
 		15BF18611B14C92F001B44E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
 		15BF18621B14C92F001B44E6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Thirdparty/Fabric.framework; sourceTree = "<group>"; };
+		15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LUIFramework.framework; path = Thirdparty/LUIFramework/iOS/Latest/LUIFramework.framework; sourceTree = "<group>"; };
+		15BF186C1B14CE55001B44E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		15BF18751B14D178001B44E6 /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUIImages.json; path = Assets/Data/LUIImages.json; sourceTree = SOURCE_ROOT; };
+		15BF18761B14D178001B44E6 /* LUITranslations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUITranslations.json; path = Assets/Data/LUITranslations.json; sourceTree = SOURCE_ROOT; };
 		15C519AB180729CF00ADDF15 /* FTPluginDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginDetailViewController.h; sourceTree = "<group>"; };
 		15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginDetailViewController.m; sourceTree = "<group>"; };
 		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,6 +390,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */,
+				15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */,
 				15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */,
 				15D2461917CFA1B600793614 /* CoreText.framework in Frameworks */,
 				15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */,
@@ -390,6 +402,7 @@
 				15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */,
 				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
+				15BF186B1B14CE2C001B44E6 /* LUIFramework.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
@@ -1056,6 +1069,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		15BF18701B14CFA1001B44E6 /* LiveUI */ = {
+			isa = PBXGroup;
+			children = (
+				15BF18751B14D178001B44E6 /* LUIImages.json */,
+				15BF18761B14D178001B44E6 /* LUITranslations.json */,
+			);
+			name = LiveUI;
+			sourceTree = "<group>";
+		};
 		15C519AA180729A400ADDF15 /* Plugin detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -1085,6 +1107,9 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15BF186C1B14CE55001B44E6 /* CoreLocation.framework */,
+				15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */,
+				15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */,
 				15BF18601B14C92F001B44E6 /* libc++.dylib */,
 				15BF18611B14C92F001B44E6 /* libz.dylib */,
 				15BF18621B14C92F001B44E6 /* Fabric.framework */,
@@ -1123,6 +1148,7 @@
 		15D245DA17CF9C2A00793614 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15BF18701B14CFA1001B44E6 /* LiveUI */,
 				151072C517D0BA3400FD083B /* Assets */,
 				15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */,
 				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
@@ -1500,12 +1526,14 @@
 				151072D517D0BA3400FD083B /* IJ_health-40to59.png in Resources */,
 				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
 				151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */,
+				15BF18781B14D178001B44E6 /* LUITranslations.json in Resources */,
 				151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
 				1510732B17D10EFA00FD083B /* Default-568h@2x.png in Resources */,
 				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
 				1510732C17D10EFA00FD083B /* Default.png in Resources */,
 				1510732F17D10EFA00FD083B /* Icon120.png in Resources */,
 				1510732D17D10EFA00FD083B /* Default@2x.png in Resources */,
+				15BF18771B14D178001B44E6 /* LUIImages.json in Resources */,
 				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
@@ -1684,6 +1712,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -1770,6 +1799,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -1800,6 +1830,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";

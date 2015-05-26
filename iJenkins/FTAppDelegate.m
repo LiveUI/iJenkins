@@ -8,6 +8,7 @@
 
 #import "FTAppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
+#import <LUIFramework/LUIFramework.h>
 #import "FTAccountsViewController.h"
 
 
@@ -20,6 +21,9 @@
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [Crashlytics startWithAPIKey:@"645cad88976887e985fc9e2d08345ca9cc583918"];
+    
+    [[LUIMain sharedInstance] setDebugMode:YES];
+    [[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
     
     _viewController = [[FTAccountsViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
