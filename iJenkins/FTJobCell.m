@@ -112,6 +112,9 @@
 - (void)setDescriptionText:(NSString *)text {
     text = [text stringByReplacingOccurrencesOfString:@"Build stability: " withString:@""];
     text = [text stringByReplacingOccurrencesOfString:@"Test Result: " withString:@""];
+    if (NO) { // Rather not translate this message
+        text = FTLangGet(text);
+    }
     [self.detailTextLabel setText:text];
 }
 
@@ -130,7 +133,7 @@
         else {
             [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             NSString *description = (_job.jobDetail.healthReport.desc.length > 0) ? _job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
-            [self setDescriptionText:FTLangGet(description)];
+            [self setDescriptionText:description];
         }
         [self resetScoreIcon];
         [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];

@@ -7,6 +7,7 @@
 //
 
 #import "FTAccountsViewController.h"
+#import <LUIFramework/LUIFramework.h>
 #import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
@@ -87,6 +88,7 @@
     _demoAccounts = [[FTAccountsManager sharedManager] demoAccounts];
     
     [super createTableView];
+    [self.tableView registerForReloadDataOnTranslationChange];
 }
 
 - (void)createTopButtons {
@@ -104,6 +106,7 @@
     [self createTopButtons];
     
     [self setTitle:FTLangGet(@"Servers")];
+    [self registerTitleWithTranslationKey:@"Servers"];
     
     [self startCheckingForJenkins];
 }
