@@ -112,7 +112,7 @@
 }
 
 - (void)scrollDown:(UIBarButtonItem *)sender {
-    CGFloat y = abs(_textView.contentSize.height - 0);
+    CGFloat y = fabs(_textView.contentSize.height - 0);
     [_textView setContentOffset:CGPointMake(0, y) animated:YES];
 }
 

@@ -19,7 +19,6 @@
 
 @interface FTAccountsViewController () <FTAccountCellDelegate>
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSArray *demoAccounts;
 

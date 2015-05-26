@@ -13,7 +13,6 @@
 
 @interface FTAddAccountViewController ()
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSMutableDictionary *originalDictionary;
 
