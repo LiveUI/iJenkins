@@ -130,7 +130,7 @@
         else {
             [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             NSString *description = (_job.jobDetail.healthReport.desc.length > 0) ? _job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
-            [self setDescriptionText:description];
+            [self setDescriptionText:FTLangGet(description)];
         }
         [self resetScoreIcon];
         [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
