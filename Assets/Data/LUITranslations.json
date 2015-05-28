@@ -1,5 +1,5 @@
 {
-    "timestamp": 1432657358,
+    "timestamp": 1432813402,
     "code": 200,
     "data": {
         "en": {
@@ -7,7 +7,21 @@
             "translations": {
                 "WBALang_EN": "English",
                 "WBALang_CS": "Czech",
-                "Servers": "Servers"
+                "Servers": "Servers",
+                "Jenkins builds": "Jenkins builds",
+                "Apache builds": "Apache builds",
+                "Copy URL": "Copy URL",
+                "Open in browser": "Open in browser",
+                "No instances available at the moment": "No instances available at the moment",
+                "Open source project": "iJenkins is open source!",
+                "All source code available on github.com": "All source code available on github.com",
+                "SSH Automator": "SSH Automator",
+                "Mobilise your SSH tasks and deployments": "Mobilise your SSH tasks and deployments",
+                "Your accounts": "Your accounts",
+                "Local network": "Local network",
+                "Demo account": "Demo account",
+                "About": "About",
+                "geeky_boy01": "jenkins_boy01"
             }
         },
         "cs": {
@@ -15,12 +29,124 @@
             "translations": {
                 "WBALang_EN": "Angli\u010dtina",
                 "WBALang_CS": "\u010ce\u0161tina",
-                "Servers": "Servery"
+                "Servers": "Servery",
+                "Jenkins builds": "Jenkins CI server",
+                "Apache builds": "Apache CI server",
+                "Copy URL": "Zkop\u00edruj URL",
+                "Open in browser": "Otev\u0159\u00edt v prohl\u00ed\u017ee\u010di",
+                "No instances available at the moment": "\u017d\u00e1dn\u00e9 instance nejsou dostupn\u00e9",
+                "Open source project": "Open source projekt",
+                "All source code available on github.com": "Zdrojov\u00e9 k\u00f3dy na github.com",
+                "SSH Automator": "SSH Automator",
+                "Mobilise your SSH tasks and deployments": "Automatizujte sv\u00e9 SSH rutinn\u00ed \u016fkony",
+                "Your accounts": "Va\u0161e \u016f\u010dty",
+                "Local network": "M\u00edstn\u00ed s\u00ed\u0165",
+                "Demo account": "Uk\u00e1zkov\u00e9 \u016f\u010dty",
+                "About": "O aplikaci",
+                "geeky_boy01": "jenkins_01"
             }
         }
     },
     "app": {
         "name": "iJenkins",
         "production": false
-    }
+    },
+    "queries": {
+        "log": [
+            {
+                "query": "SELECT `Application`.`id`, `Application`.`name`, `Application`.`description`, `Application`.`identifier`, `Application`.`apikey`, `Application`.`production`, `Application`.`created`, `Application`.`modified` FROM `liveui`.`applications` AS `Application`   WHERE `Application`.`apikey` = '919EA7C3-D530-48F2-B07C-7DC82680874A'    LIMIT 1",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Version`.`id`, `Version`.`application_id`, `Version`.`name`, `Version`.`version`, `Version`.`staging`, `Version`.`live`, `Version`.`created`, `Version`.`modified` FROM `liveui`.`versions` AS `Version`   WHERE `Version`.`application_id` = (54)",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Team`.`id`, `Team`.`name`, `Team`.`identifier`, `Team`.`stripetoken`, `Team`.`created`, `Team`.`modified`, `ApplicationsTeam`.`application_id`, `ApplicationsTeam`.`team_id` FROM `liveui`.`teams` AS `Team` JOIN `liveui`.`applications_teams` AS `ApplicationsTeam` ON (`ApplicationsTeam`.`application_id` = 54 AND `ApplicationsTeam`.`team_id` = `Team`.`id`) ",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Team`.`id`, `Team`.`name`, `Team`.`identifier`, `Team`.`stripetoken`, `Team`.`created`, `Team`.`modified` FROM `liveui`.`teams` AS `Team`   WHERE `Team`.`id` = 1    LIMIT 1",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Billing`.`id`, `Billing`.`type`, `Billing`.`team_id`, `Billing`.`account_id`, `Billing`.`tariff_id`, `Billing`.`value`, `Billing`.`expires`, `Billing`.`created` FROM `liveui`.`billing` AS `Billing`   WHERE `Billing`.`team_id` = (1)   ORDER BY `Billing`.`created` DESC  LIMIT 1",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Tariff`.`id`, `Tariff`.`name`, `Tariff`.`value`, `Tariff`.`enabled`, `Tariff`.`users`, `Tariff`.`versions`, `Tariff`.`apps`, `Tariff`.`requests`, `Tariff`.`display`, `Tariff`.`created`, `Tariff`.`modified`, `TeamsTariff`.`team_id`, `TeamsTariff`.`tariff_id` FROM `liveui`.`tariffs` AS `Tariff` JOIN `liveui`.`teams_tariffs` AS `TeamsTariff` ON (`TeamsTariff`.`team_id` = 1 AND `TeamsTariff`.`tariff_id` = `Tariff`.`id`) ",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "BEGIN",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "INSERT INTO `liveui`.`access` (`application_id`, `team_id`, `platform`, `accesscount`, `headers`, `created`) VALUES (54, 1, 1, 1, '{\\\"Host\\\":\\\"localhost\\\",\\\"Accept\\\":\\\"*\\\\\/*\\\",\\\"X-Platform\\\":\\\"admin.liveui.io\\\",\\\"X-ApiVersion\\\":\\\"1.0\\\",\\\"X-ApiKey\\\":\\\"919EA7C3-D530-48F2-B07C-7DC82680874A\\\",\\\"X_FORWARDED_PROTO\\\":\\\"http\\\",\\\"ip\\\":\\\"::1\\\"}', '2015-05-28 12:43:21')",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 1
+            },
+            {
+                "query": "COMMIT",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 1
+            },
+            {
+                "query": "SELECT COUNT(`Access`.`id`) AS `count` FROM `access` AS `Access` WHERE `Access`.`application_id` = 54 AND `Access`.`created` > '2015-05-26 16:47:40';",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Version`.`id`, `Version`.`application_id`, `Version`.`name`, `Version`.`version`, `Version`.`staging`, `Version`.`live`, `Version`.`created`, `Version`.`modified` FROM `liveui`.`versions` AS `Version`   WHERE `Version`.`application_id` = 54 AND `Version`.`live` = '1'    LIMIT 1",
+                "params": [],
+                "affected": 1,
+                "numRows": 1,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Translation`.`id`, `Translation`.`language_id`, `Translation`.`version_id`, `Translation`.`default`, `Translation`.`translations`, `Translation`.`created`, `Translation`.`modified` FROM `liveui`.`translations` AS `Translation`   WHERE `Translation`.`version_id` = (13)",
+                "params": [],
+                "affected": 2,
+                "numRows": 2,
+                "took": 0
+            },
+            {
+                "query": "SELECT `Language`.`id`, `Language`.`code`, `Language`.`name` FROM `liveui`.`translations` AS `Translation` LEFT JOIN `liveui`.`languages` AS `Language` ON (`Language`.`id` = `Translation`.`language_id`)  WHERE `Translation`.`version_id` = 13   ORDER BY `Language`.`default` DESC, `Language`.`code` ASC",
+                "params": [],
+                "affected": 2,
+                "numRows": 2,
+                "took": 0
+            }
+        ],
+        "count": 13,
+        "time": 2
+    },
+    "key": "919EA7C3-D530-48F2-B07C-7DC82680874A"
 }
