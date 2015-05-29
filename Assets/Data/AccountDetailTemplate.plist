@@ -39,9 +39,9 @@
 				<key>name</key>
 				<string>Path</string>
 				<key>description</key>
-				<string>In case your instance is running on a subdir</string>
+				<string>Jenkins running in a subdirectory?</string>
 				<key>placeholder</key>
-				<string>/</string>
+				<string>/ci/jenkins</string>
 				<key>default</key>
 				<string>/</string>
 				<key>type</key>
