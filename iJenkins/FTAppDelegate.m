@@ -28,9 +28,9 @@
     [Flurry startSession:@"JZK5H9MRXHYP86K7DJX8"];
     
     // Remote localization from http://www.liveui.io
-    [[LUIURLs sharedInstance] setCustomApiUrlString:@"http://localhost/api.liveui.io/"];
-    [[LUIURLs sharedInstance] setCustomImagesUrlString:@"http://localhost/images.liveui.io/"];
-    [[LUIMain sharedInstance] setDebugMode:YES];
+    //[[LUIURLs sharedInstance] setCustomApiUrlString:@"http://localhost/api.liveui.io/"];
+    //[[LUIURLs sharedInstance] setCustomImagesUrlString:@"http://localhost/images.liveui.io/"];
+    //[[LUIMain sharedInstance] setDebugMode:YES];
     [[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
     
     _viewController = [[FTAccountsViewController alloc] init];
