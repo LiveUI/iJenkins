@@ -14,10 +14,10 @@
 #define dFTKeychainObjectUUID                                       @"FTKeychainObjectUUID"
 
 
-#define dFTKeychainObjectServiceName                            @"com.fuerteint.ijenkins"
+#define dFTKeychainObjectServiceName                                @"com.fuerteint.ijenkins"
 
-#define dFTKeychainObjectDebug                                  NO
-#define dFTKeychainObjectDebugFull                              if (dFTKeychainObjectDebug)
+#define dFTKeychainObjectDebug                                      NO
+#define dFTKeychainObjectDebugFull                                  if (dFTKeychainObjectDebug)
 
 @implementation FTKeychainObject
 

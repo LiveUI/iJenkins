@@ -91,7 +91,7 @@
 		154466B61806BE8500025022 /* FTAPIPluginManagerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */; };
 		154466BA1806C4C600025022 /* FTPluginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B91806C4C600025022 /* FTPluginCell.m */; };
 		154C9EB41B1B3FB600807481 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 154C9EB31B1B3FB600807481 /* libFlurry_6.5.0.a */; };
-		156EC66B1A6E6F1F009BB672 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66A1A6E6F1F009BB672 /* Images.xcassets */; };
+		154C9EBC1B1B780C00807481 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 154C9EBB1B1B780C00807481 /* Images.xcassets */; };
 		156EC66D1A6E7018009BB672 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66C1A6E7018009BB672 /* Launch Screen.xib */; };
 		156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66E1A6E7112009BB672 /* Assets.xcassets */; };
 		15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
@@ -297,7 +297,7 @@
 		154C9EB11B1B3FB600807481 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		154C9EB21B1B3FB600807481 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
 		154C9EB31B1B3FB600807481 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
-		156EC66A1A6E6F1F009BB672 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../iJenkins/Images.xcassets; sourceTree = "<group>"; };
+		154C9EBB1B1B780C00807481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../iJenkins/Images.xcassets; sourceTree = "<group>"; };
 		156EC66C1A6E7018009BB672 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 		151072C517D0BA3400FD083B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				156EC66A1A6E6F1F009BB672 /* Images.xcassets */,
+				154C9EBB1B1B780C00807481 /* Images.xcassets */,
 				1510733D17D210F700FD083B /* Data */,
 				1510732517D10EFA00FD083B /* System */,
 				151072DF17D0EE7100FD083B /* Fonts */,
@@ -1106,6 +1106,7 @@
 			isa = PBXGroup;
 			children = (
 				15D245D917CF9C2A00793614 /* iJenkins */,
+				15D245DA17CF9C2A00793614 /* Supporting Files */,
 				15D245D217CF9C2A00793614 /* Frameworks */,
 				15D245D117CF9C2A00793614 /* Products */,
 			);
@@ -1155,7 +1156,6 @@
 				15D245F617CF9C3C00793614 /* Controllers */,
 				15D245E217CF9C2A00793614 /* FTAppDelegate.h */,
 				15D245E317CF9C2A00793614 /* FTAppDelegate.m */,
-				15D245DA17CF9C2A00793614 /* Supporting Files */,
 			);
 			path = iJenkins;
 			sourceTree = "<group>";
@@ -1172,6 +1172,7 @@
 				156EC66C1A6E7018009BB672 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
+			path = iJenkins;
 			sourceTree = "<group>";
 		};
 		15D245F617CF9C3C00793614 /* Controllers */ = {
@@ -1529,7 +1530,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				151072D617D0BA3400FD083B /* IJ_health-40to59@2x.png in Resources */,
-				156EC66B1A6E6F1F009BB672 /* Images.xcassets in Resources */,
 				154465D817FC4BC900025022 /* Icon57.png in Resources */,
 				151072D317D0BA3400FD083B /* IJ_health-20to39.png in Resources */,
 				154465D917FC4BC900025022 /* Icon58.png in Resources */,
@@ -1538,6 +1538,7 @@
 				151072D817D0BA3400FD083B /* IJ_health-60to79@2x.png in Resources */,
 				1510733F17D2111100FD083B /* AccountDetailTemplate.plist in Resources */,
 				1510732017D0FACC00FD083B /* FontAwesome.ttf in Resources */,
+				154C9EBC1B1B780C00807481 /* Images.xcassets in Resources */,
 				151072D717D0BA3400FD083B /* IJ_health-60to79.png in Resources */,
 				151072D517D0BA3400FD083B /* IJ_health-40to59.png in Resources */,
 				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
@@ -1749,6 +1750,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Enterprise;
@@ -1841,6 +1843,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1877,6 +1880,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
