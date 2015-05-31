@@ -95,7 +95,7 @@
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didCLickAddItem:)];
     [self.navigationItem setLeftBarButtonItem:add];
     
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(didCLickEditItem:)];
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
     [self.navigationItem setRightBarButtonItem:edit];
 }
 
@@ -150,14 +150,15 @@
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
     [super.tableView setEditing:!super.tableView.editing animated:YES];
     
-    UIBarButtonSystemItem item;
+    NSString *title;
     if (self.tableView.editing) {
-        item = UIBarButtonSystemItemDone;
+        title = FTLangGet(@"Done");
     }
     else {
-        item = UIBarButtonSystemItemEdit;
+        title = FTLangGet(@"Edit");
     }
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:item target:self action:@selector(didCLickEditItem:)];
+    
+    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
     [self.navigationItem setRightBarButtonItem:edit animated:YES];
 }
 
