@@ -179,7 +179,7 @@
         cell = [[FTBasicCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     [cell.textLabel setText:FTLangGet(@"Idle")];
-    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@: #%ld", FTLangGet(@"Executor id"), (index + 1)]];
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@: #%ld", FTLangGet(@"Executor id"), (long)(index + 1)]];
     return cell;
 }
 
