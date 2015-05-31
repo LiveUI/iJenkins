@@ -10,6 +10,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <LUIFramework/LUIFramework.h>
 #import "FTAccountsViewController.h"
+#import "Flurry.h"
 
 
 @implementation FTAppDelegate
@@ -23,7 +24,12 @@
     // Crash reporting
     [Crashlytics startWithAPIKey:@"645cad88976887e985fc9e2d08345ca9cc583918"];
     
+    // Flurry analytics
+    [Flurry startSession:@"JZK5H9MRXHYP86K7DJX8"];
+    
     // Remote localization from http://www.liveui.io
+    [[LUIURLs sharedInstance] setCustomApiUrlString:@"http://localhost/api.liveui.io/"];
+    [[LUIURLs sharedInstance] setCustomImagesUrlString:@"http://localhost/images.liveui.io/"];
     [[LUIMain sharedInstance] setDebugMode:YES];
     [[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
     

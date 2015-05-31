@@ -90,6 +90,7 @@
 		154466B3180651F200025022 /* FTQueueJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B2180651F200025022 /* FTQueueJobCell.m */; };
 		154466B61806BE8500025022 /* FTAPIPluginManagerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */; };
 		154466BA1806C4C600025022 /* FTPluginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B91806C4C600025022 /* FTPluginCell.m */; };
+		154C9EB41B1B3FB600807481 /* libFlurry_6.5.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 154C9EB31B1B3FB600807481 /* libFlurry_6.5.0.a */; };
 		156EC66B1A6E6F1F009BB672 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66A1A6E6F1F009BB672 /* Images.xcassets */; };
 		156EC66D1A6E7018009BB672 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66C1A6E7018009BB672 /* Launch Screen.xib */; };
 		156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66E1A6E7112009BB672 /* Assets.xcassets */; };
@@ -293,6 +294,9 @@
 		154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIPluginManagerDataObject.m; sourceTree = "<group>"; };
 		154466B81806C4C600025022 /* FTPluginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginCell.h; sourceTree = "<group>"; };
 		154466B91806C4C600025022 /* FTPluginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginCell.m; sourceTree = "<group>"; };
+		154C9EB11B1B3FB600807481 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		154C9EB21B1B3FB600807481 /* FlurryWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlurryWatch.h; sourceTree = "<group>"; };
+		154C9EB31B1B3FB600807481 /* libFlurry_6.5.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.5.0.a; sourceTree = "<group>"; };
 		156EC66A1A6E6F1F009BB672 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../iJenkins/Images.xcassets; sourceTree = "<group>"; };
 		156EC66C1A6E7018009BB672 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 				15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */,
 				15D2461B17CFA1B600793614 /* QuartzCore.framework in Frameworks */,
 				15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */,
+				154C9EB41B1B3FB600807481 /* libFlurry_6.5.0.a in Frameworks */,
 				15D2461C17CFA1B600793614 /* Security.framework in Frameworks */,
 				15D2461D17CFA1B600793614 /* Social.framework in Frameworks */,
 				15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */,
@@ -1069,6 +1074,16 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		154C9EB01B1B3FB600807481 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				154C9EB11B1B3FB600807481 /* Flurry.h */,
+				154C9EB21B1B3FB600807481 /* FlurryWatch.h */,
+				154C9EB31B1B3FB600807481 /* libFlurry_6.5.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		15BF18701B14CFA1001B44E6 /* LiveUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1322,6 +1337,7 @@
 		15D2463B17CFBD8E00793614 /* Thirdparty */ = {
 			isa = PBXGroup;
 			children = (
+				154C9EB01B1B3FB600807481 /* Flurry */,
 				1544668E1806092000025022 /* BonjourBuddy-iOS */,
 				15446609180300C400025022 /* HTTP-Status-Codes-for-Objective-C */,
 				15E182CC17E3325A00CE0DEA /* AFNetworking */,
@@ -1725,6 +1741,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Thirdparty/Flurry",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -1816,6 +1833,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Thirdparty/Flurry",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -1851,6 +1869,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Thirdparty/Flurry",
 				);
 				OTHER_LDFLAGS = (
 					"-all_load",

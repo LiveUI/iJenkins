@@ -29,6 +29,8 @@
 @property (nonatomic, strong) BonjourBuddy *bonjour;
 @property (nonatomic, strong) NSArray *bonjourAccounts;
 
+@property (nonatomic, readonly) UIToolbar *bottomToolbar;
+
 @end
 
 
@@ -96,7 +98,27 @@
     [self.navigationItem setLeftBarButtonItem:add];
     
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
+    [edit registerTitleWithTranslationKey:@"Edit"];
     [self.navigationItem setRightBarButtonItem:edit];
+}
+
+- (void)createBottomToolbar {
+    CGRect r = self.view.frame;
+    r.origin.y = (r.size.height - 44);
+    r.size.height = 44;
+    _bottomToolbar = [[UIToolbar alloc] initWithFrame:r];
+    [_bottomToolbar setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth];
+    
+    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    UIBarButtonItem *langs = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Language") style:UIBarButtonItemStylePlain target:self action:@selector(changeLanguage:)];
+    [langs registerTitleWithTranslationKey:@"Language"];
+    [_bottomToolbar setItems:@[space, langs]];
+    
+    [self.view addSubview:_bottomToolbar];
+    
+    r = self.tableView.frame;
+    r.size.height -= 44;
+    [self.tableView setFrame:r];
 }
 
 - (void)createAllElements {
@@ -104,6 +126,7 @@
     
     [self createTableView];
     [self createTopButtons];
+    [self createBottomToolbar];
     
     [self setTitle:FTLangGet(@"Servers")];
     [self registerTitleWithTranslationKey:@"Servers"];
@@ -134,6 +157,11 @@
 
 #pragma mark Actions
 
+- (void)changeLanguage:(UIBarButtonItem *)sender {
+    LUILanguageSelectorViewController *c = [[LUILanguageSelectorViewController alloc] init];
+    [self presentViewController:c animated:YES completion:nil];
+}
+
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
     [c setIsNew:YES];
@@ -142,9 +170,7 @@
     [c setDelegate:self];
     [c setTitle:FTLangGet(@"New Instance")];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
-    [self presentViewController:nc animated:YES completion:^{
-        
-    }];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
@@ -158,8 +184,8 @@
         title = FTLangGet(@"Edit");
     }
     
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
-    [self.navigationItem setRightBarButtonItem:edit animated:YES];
+    UIBarButtonItem *edit = self.navigationItem.rightBarButtonItem;
+    [edit setTitle:title];
 }
 
 #pragma mark Bonjour Jenkins discovery
