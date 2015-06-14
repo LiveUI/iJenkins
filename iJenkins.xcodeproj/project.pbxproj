@@ -216,6 +216,7 @@
 		1510735817D5F3B800FD083B /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
 		1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountOverviewCell.h; sourceTree = "<group>"; };
 		1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountOverviewCell.m; sourceTree = "<group>"; };
+		1517496E1B28A08E001A930A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		153921C517E1F12E00896FC1 /* FTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDownload.h; sourceTree = "<group>"; };
 		153921C617E1F12E00896FC1 /* FTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDownload.m; sourceTree = "<group>"; };
 		153921CE17E207A100896FC1 /* FTJobInfoBuildNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobInfoBuildNumberCell.h; sourceTree = "<group>"; };
@@ -1513,6 +1514,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				cs,
 			);
 			mainGroup = 15D245C717CF9C2A00793614;
 			productRefGroup = 15D245D117CF9C2A00793614 /* Products */;
@@ -1686,6 +1688,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				15D245DD17CF9C2A00793614 /* en */,
+				1517496E1B28A08E001A930A /* cs */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
