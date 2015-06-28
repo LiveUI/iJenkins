@@ -90,7 +90,21 @@
                 
                 if (_serverObject.views.count > 1) {
                     if (!_selectedView) {
-                        _selectedView = [_views objectAtIndex:0];
+                        // Select the view named 'All'
+                        
+                        // Array with all localizations of 'All' (en, da/de/nl, es, fr, ja, ru, zh_TW, it, pt_BR, tr)
+                        NSArray *allNames = @[@"All", @"Alle", @"Todo", @"Tous", @"\u3059\u3079\u3066", @"\u0412\u0441\u0435", @"\u5168\u90e8", @"Tutto", @"Tudo", @"Hepsi"];
+                        
+                        for (FTAPIServerViewDataObject *v in _views) {
+                            if ([allNames containsObject:v.name]) {
+                                _selectedView=v;
+                                break;
+                            }
+                        }
+                        if (!_selectedView) {
+                            // No view named 'All' found, fall back to first view in the list
+                            _selectedView = [_views objectAtIndex:0];
+                        }
                     }
                 }
                 
