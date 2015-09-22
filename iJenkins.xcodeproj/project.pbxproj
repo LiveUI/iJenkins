@@ -49,6 +49,7 @@
 		1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
 		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
+		151749C11B2D79EE001A930A /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151749C01B2D79EE001A930A /* LUIFramework.framework */; };
 		153921C717E1F12E00896FC1 /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
 		153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */; };
 		153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D417E2099D00896FC1 /* FTSmallTextCell.m */; };
@@ -97,7 +98,6 @@
 		15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
 		15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18611B14C92F001B44E6 /* libz.dylib */; };
 		15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18621B14C92F001B44E6 /* Fabric.framework */; };
-		15BF186B1B14CE2C001B44E6 /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */; };
 		15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
 		15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */; };
 		15BF18771B14D178001B44E6 /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18751B14D178001B44E6 /* LUIImages.json */; };
@@ -217,6 +217,7 @@
 		1510735C17D5F44600FD083B /* FTAccountOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAccountOverviewCell.h; sourceTree = "<group>"; };
 		1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccountOverviewCell.m; sourceTree = "<group>"; };
 		1517496E1B28A08E001A930A /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		151749C01B2D79EE001A930A /* LUIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LUIFramework.framework; path = Thirdparty/LUIFramework/iOS/Latest/LUIFramework.framework; sourceTree = "<group>"; };
 		153921C517E1F12E00896FC1 /* FTDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDownload.h; sourceTree = "<group>"; };
 		153921C617E1F12E00896FC1 /* FTDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDownload.m; sourceTree = "<group>"; };
 		153921CE17E207A100896FC1 /* FTJobInfoBuildNumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobInfoBuildNumberCell.h; sourceTree = "<group>"; };
@@ -304,7 +305,6 @@
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
 		15BF18611B14C92F001B44E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
 		15BF18621B14C92F001B44E6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Thirdparty/Fabric.framework; sourceTree = "<group>"; };
-		15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LUIFramework.framework; path = Thirdparty/LUIFramework/iOS/Latest/LUIFramework.framework; sourceTree = "<group>"; };
 		15BF186C1B14CE55001B44E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		15BF18751B14D178001B44E6 /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUIImages.json; path = Assets/Data/LUIImages.json; sourceTree = SOURCE_ROOT; };
@@ -399,6 +399,7 @@
 				15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */,
 				15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */,
 				15D2461917CFA1B600793614 /* CoreText.framework in Frameworks */,
+				151749C11B2D79EE001A930A /* LUIFramework.framework in Frameworks */,
 				15D2461A17CFA1B600793614 /* MessageUI.framework in Frameworks */,
 				15D2461B17CFA1B600793614 /* QuartzCore.framework in Frameworks */,
 				15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */,
@@ -408,7 +409,6 @@
 				15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */,
 				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
-				15BF186B1B14CE2C001B44E6 /* LUIFramework.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
@@ -1124,9 +1124,9 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				151749C01B2D79EE001A930A /* LUIFramework.framework */,
 				15BF186C1B14CE55001B44E6 /* CoreLocation.framework */,
 				15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */,
-				15BF186A1B14CE2C001B44E6 /* LUIFramework.framework */,
 				15BF18601B14C92F001B44E6 /* libc++.dylib */,
 				15BF18611B14C92F001B44E6 /* libz.dylib */,
 				15BF18621B14C92F001B44E6 /* Fabric.framework */,
