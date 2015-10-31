@@ -1690,7 +1690,7 @@
 			attributes = {
 				CLASSPREFIX = FT;
 				LastUpgradeCheck = 0710;
-				ORGANIZATIONNAME = "Fuerte Innovations";
+				ORGANIZATIONNAME = "Ridiculous Innovations";
 				TargetAttributes = {
 					15D245CF17CF9C2A00793614 = {
 						DevelopmentTeam = 6UPNZ3ACG2;

@@ -3,7 +3,7 @@
 //  iJenkins
 //
 //  Created by Ondrej Rafaj on 21/12/2009.
-//  Copyright 2009 Fuerte Innovations. All rights reserved.
+//  Copyright 2009 Ridiculous Innovations. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
