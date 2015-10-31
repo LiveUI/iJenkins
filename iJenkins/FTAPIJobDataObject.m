@@ -56,7 +56,7 @@
     if (!_isLoadingDetail && !_jobDetail) {
         _isLoadingDetail = YES;
         FTAPIJobDetailDataObject *jobDetailObject = [[FTAPIJobDetailDataObject alloc] initWithJobName:_name];
-        [FTAPIConnector connectWithObject:jobDetailObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        [[FTAPIConnector sharedConnector] connectWithObject:jobDetailObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             _isLoadingDetail = NO;
             _jobDetail = jobDetailObject;
             if ([_delegate respondsToSelector:@selector(jobDataObject:didFinishLoadingJobDetail:)]) {

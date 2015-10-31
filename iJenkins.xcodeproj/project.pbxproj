@@ -50,10 +50,6 @@
 		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
 		151749C11B2D79EE001A930A /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151749C01B2D79EE001A930A /* LUIFramework.framework */; };
-		151D9B501BE42F0F0067EEAA /* FTLoginAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AE180636B900025022 /* FTLoginAlert.m */; };
-		151D9B511BE42F0F0067EEAA /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
-		151D9B521BE42F0F0067EEAA /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
-		151D9B531BE42F0F0067EEAA /* FTLang.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2461117CFA0E900793614 /* FTLang.m */; };
 		151D9B541BE42F220067EEAA /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151749C01B2D79EE001A930A /* LUIFramework.framework */; };
 		151D9B551BE42F220067EEAA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
 		151D9B561BE42F220067EEAA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */; };
@@ -72,19 +68,8 @@
 		151D9B631BE42F3A0067EEAA /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
 		151D9B641BE42F3A0067EEAA /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18611B14C92F001B44E6 /* libz.dylib */; };
 		151D9B671BE4B0DC0067EEAA /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 151D9B661BE4B0DC0067EEAA /* FTAlert.m */; };
-		151D9B681BE4B0DC0067EEAA /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 151D9B661BE4B0DC0067EEAA /* FTAlert.m */; };
 		151D9B6B1BE4B36B0067EEAA /* BonjourBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466911806092000025022 /* BonjourBuddy.m */; };
 		151D9B6C1BE4B36B0067EEAA /* FTHTTPCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 15446611180300EB00025022 /* FTHTTPCodes.m */; };
-		151D9B6D1BE4B3720067EEAA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D117E3325A00CE0DEA /* AFHTTPClient.m */; };
-		151D9B6E1BE4B3720067EEAA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */; };
-		151D9B6F1BE4B3720067EEAA /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */; };
-		151D9B701BE4B3720067EEAA /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */; };
-		151D9B711BE4B3720067EEAA /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */; };
-		151D9B721BE4B3720067EEAA /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */; };
-		151D9B731BE4B3720067EEAA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */; };
-		151D9B741BE4B3720067EEAA /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */; };
-		151D9B751BE4B3720067EEAA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */; };
-		153921C717E1F12E00896FC1 /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
 		153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */; };
 		153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D417E2099D00896FC1 /* FTSmallTextCell.m */; };
 		153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */; };
@@ -169,25 +154,95 @@
 		15D6434A1BE24FA100A19124 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D643491BE24FA100A19124 /* ViewController.m */; };
 		15D6434D1BE24FA100A19124 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D6434B1BE24FA100A19124 /* Main.storyboard */; };
 		15D6434F1BE24FA100A19124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D6434E1BE24FA100A19124 /* Assets.xcassets */; };
-		15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D117E3325A00CE0DEA /* AFHTTPClient.m */; };
-		15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */; };
-		15E1832E17E3325B00CE0DEA /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */; };
-		15E1832F17E3325B00CE0DEA /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */; };
-		15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */; };
-		15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */; };
-		15E1833217E3325B00CE0DEA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */; };
-		15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */; };
-		15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */; };
 		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
 		15E1837017E3510000CE0DEA /* FTJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */; };
 		15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */; };
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		15FBB6C71BE57AF600181C9C /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072FF17D0F82C00FD083B /* FAImageView.m */; };
+		15FBB6C81BE57AF600181C9C /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510730217D0F82D00FD083B /* NSString+FontAwesome.m */; };
+		15FBB6C91BE57AF600181C9C /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510730717D0F82D00FD083B /* UIFont+FontAwesome.m */; };
+		15FBB6CA1BE57AF600181C9C /* GCNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463E17CFBD8E00793614 /* GCNetworkReachability.m */; };
+		15FBB6CB1BE57AF600181C9C /* Lockbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2465B17CFBD8E00793614 /* Lockbox.m */; };
+		15FBB6CC1BE57B1700181C9C /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072C017D0A55600FD083B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		15FBB6CD1BE57B1700181C9C /* UIImage+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462317CFA21100793614 /* UIImage+Tools.m */; };
+		15FBB6CE1BE57B1700181C9C /* UIColor+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462517CFA21100793614 /* UIColor+Tools.m */; };
+		15FBB6CF1BE57B1700181C9C /* UIView+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462917CFA21100793614 /* UIView+Effects.m */; };
+		15FBB6D01BE57B1700181C9C /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2462B17CFA21100793614 /* UIView+Layout.m */; };
+		15FBB6D11BE57B1700181C9C /* NSString+URLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728917CFEBFA00FD083B /* NSString+URLTools.m */; };
+		15FBB6D21BE57B1700181C9C /* UIColor+Jenkins.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544660017FF47AA00025022 /* UIColor+Jenkins.m */; };
+		15FBB6D31BE57B1700181C9C /* NSDate+Formatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544660317FF543000025022 /* NSDate+Formatting.m */; };
+		15FBB6D41BE57B1700181C9C /* NSString+Conversions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544663818041B9A00025022 /* NSString+Conversions.m */; };
+		15FBB6D51BE57B1700181C9C /* NSData+Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AA1806260700025022 /* NSData+Networking.m */; };
+		15FBB6D61BE57B6E00181C9C /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728617CFEBB100FD083B /* FTConfig.m */; };
+		15FBB6D71BE57B7800181C9C /* FTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467A17CFBE5200793614 /* FTAccount.m */; };
+		15FBB6D81BE57B7800181C9C /* FTAccountsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467617CFBE3C00793614 /* FTAccountsManager.m */; };
+		15FBB6E21BE57BA500181C9C /* FTAPIJobBuildDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838517E3676900CE0DEA /* FTAPIJobBuildDataObject.m */; };
+		15FBB6E31BE57BA500181C9C /* FTAPIJobDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729517D00C2C00FD083B /* FTAPIJobDetailDataObject.m */; };
+		15FBB6E41BE57BA500181C9C /* FTAPIJobDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728F17D0053200FD083B /* FTAPIJobDataObject.m */; };
+		15FBB6E51BE57BA500181C9C /* FTAPIServerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728C17CFED4700FD083B /* FTAPIServerDataObject.m */; };
+		15FBB6E61BE57BA500181C9C /* FTJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */; };
+		15FBB6E71BE57BA500181C9C /* FTHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F917FF11E600025022 /* FTHTTPRequestOperation.m */; };
+		15FBB6E81BE57BA500181C9C /* FTAPIDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728217CFEA6F00FD083B /* FTAPIDataObject.m */; };
+		15FBB6E91BE57BA500181C9C /* FTAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510727F17CFEA6300FD083B /* FTAPIConnector.m */; };
+		15FBB6EB1BE57BC200181C9C /* FTLoginAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466AE180636B900025022 /* FTLoginAlert.m */; };
+		15FBB6EC1BE57BC200181C9C /* FTAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 151D9B661BE4B0DC0067EEAA /* FTAlert.m */; };
+		15FBB6ED1BE57BC200181C9C /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
+		15FBB6EE1BE57BC200181C9C /* FTKeychainObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735417D5E8EE00FD083B /* FTKeychainObject.m */; };
+		15FBB6EF1BE57BC200181C9C /* FTLang.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2461117CFA0E900793614 /* FTLang.m */; };
+		15FBB6F01BE57BC300181C9C /* FTDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921C617E1F12E00896FC1 /* FTDownload.m */; };
+		15FBB6F11BE57BE600181C9C /* FTAPIBuildDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921E117E22D0600896FC1 /* FTAPIBuildDetailDataObject.m */; };
+		15FBB6F21BE57C1F00181C9C /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		15FBB6F31BE57C3200181C9C /* FTView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729D17D084D800FD083B /* FTView.m */; };
+		15FBB6F41BE57C5500181C9C /* FTJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510729917D00F6300FD083B /* FTJobCell.m */; };
+		15FBB6F51BE57C5500181C9C /* FTValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544664A1805E84300025022 /* FTValueCell.m */; };
+		15FBB6F61BE57C5500181C9C /* FTDeleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466461805E61E00025022 /* FTDeleteCell.m */; };
+		15FBB6F71BE57C5500181C9C /* FTIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466071801FCEF00025022 /* FTIconCell.m */; };
+		15FBB6F81BE57C5500181C9C /* FTSmallTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D417E2099D00896FC1 /* FTSmallTextCell.m */; };
+		15FBB6F91BE57C5500181C9C /* FTLoadingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734B17D4FAF000FD083B /* FTLoadingCell.m */; };
+		15FBB6FA1BE57C5500181C9C /* FTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072A317D084FC00FD083B /* FTLabel.m */; };
+		15FBB6FB1BE57C5500181C9C /* FTBasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072A717D0851D00FD083B /* FTBasicCell.m */; };
+		15FBB6FC1BE57C7500181C9C /* FTPluginDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */; };
+		15FBB6FD1BE57C7500181C9C /* FTPluginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B91806C4C600025022 /* FTPluginCell.m */; };
+		15FBB6FE1BE57C7500181C9C /* FTManagePluginsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466201803382A00025022 /* FTManagePluginsViewController.m */; };
+		15FBB6FF1BE57C7500181C9C /* FTUserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2463917CFA62900793614 /* FTUserDetailViewController.m */; };
+		15FBB7001BE57C7500181C9C /* FTManageUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544661D1803381200025022 /* FTManageUsersViewController.m */; };
+		15FBB7011BE57C7500181C9C /* FTNodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466331804021500025022 /* FTNodeCell.m */; };
+		15FBB7021BE57C7500181C9C /* FTManageNodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544661A1803380000025022 /* FTManageNodesViewController.m */; };
+		15FBB7031BE57C7500181C9C /* FTManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466241803386700025022 /* FTManageViewController.m */; };
+		15FBB7041BE57C7500181C9C /* FTNoInternetConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460D17CF9FB800793614 /* FTNoInternetConnectionViewController.m */; };
+		15FBB7051BE57C7500181C9C /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
+		15FBB7061BE57C7500181C9C /* FTQueueJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B2180651F200025022 /* FTQueueJobCell.m */; };
+		15FBB7071BE57C7500181C9C /* FTBuildQueueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662A18033D0900025022 /* FTBuildQueueViewController.m */; };
+		15FBB7081BE57C7500181C9C /* FTLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465EF17FE33EA00025022 /* FTLogViewController.m */; };
+		15FBB7091BE57C7500181C9C /* FTBuildDetailChangesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F217FE340A00025022 /* FTBuildDetailChangesViewController.m */; };
+		15FBB70A1BE57C7500181C9C /* FTBuildInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465FD17FF228300025022 /* FTBuildInfoCell.m */; };
+		15FBB70B1BE57C7500181C9C /* FTBuildDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921E517E2700400896FC1 /* FTBuildDetailViewController.m */; };
+		15FBB70C1BE57C7500181C9C /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
+		15FBB70D1BE57C7500181C9C /* FTJobInfoBuildNumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921CF17E207A100896FC1 /* FTJobInfoBuildNumberCell.m */; };
+		15FBB70E1BE57C7500181C9C /* FTJobHealthInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921D817E2155A00896FC1 /* FTJobHealthInfoCell.m */; };
+		15FBB70F1BE57C7500181C9C /* FTLastBuildInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 153921DC17E21C8D00896FC1 /* FTLastBuildInfoCell.m */; };
+		15FBB7101BE57C7500181C9C /* FTJobDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460617CF9DD400793614 /* FTJobDetailViewController.m */; };
+		15FBB7111BE57C8E00181C9C /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
+		15FBB7121BE57C8E00181C9C /* FTServerHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */; };
+		15FBB7131BE57C8E00181C9C /* FTTextAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510734117D28C4300FD083B /* FTTextAccountCell.m */; };
+		15FBB7141BE57C8E00181C9C /* FTSwitchAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510733817D20FA100FD083B /* FTSwitchAccountCell.m */; };
+		15FBB7151BE57C8E00181C9C /* FTBasicAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510733517D20F8500FD083B /* FTBasicAccountCell.m */; };
+		15FBB7161BE57C8E00181C9C /* FTAddAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510732317D0FEDD00FD083B /* FTAddAccountViewController.m */; };
+		15FBB7171BE57C8E00181C9C /* FTAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735017D518E000FD083B /* FTAccountCell.m */; };
+		15FBB7181BE57C8E00181C9C /* FTNoAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072DD17D0E17C00FD083B /* FTNoAccountCell.m */; };
+		15FBB7191BE57C8E00181C9C /* FTAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460217CF9DBB00793614 /* FTAccountsViewController.m */; };
+		15FBB71A1BE57C8E00181C9C /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
+		93DFE7BFBBB72FBDC76CD272 /* libPods-iJenkins.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8464A41DFE8BEB7C33BBCA25 /* libPods-iJenkins.a */; };
 		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
+		EE55F0B53CBCE952DFF08CDA /* libPods-iJenkinsTV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD1BDC2CAA14A4DD05DBBA /* libPods-iJenkinsTV.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01B00EA31E4216E44330DAA7 /* Pods-iJenkins.enterprise.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkins.enterprise.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkins/Pods-iJenkins.enterprise.xcconfig"; sourceTree = "<group>"; };
+		1212257ABFE15000B4ABC82A /* Pods-iJenkinsTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkinsTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkinsTV/Pods-iJenkinsTV.debug.xcconfig"; sourceTree = "<group>"; };
+		1254A591D7CE33AE7D593414 /* Pods-iJenkinsTV.enterprise.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkinsTV.enterprise.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkinsTV/Pods-iJenkinsTV.enterprise.xcconfig"; sourceTree = "<group>"; };
 		1510727E17CFEA6300FD083B /* FTAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTAPIConnector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1510727F17CFEA6300FD083B /* FTAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAPIConnector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1510728117CFEA6F00FD083B /* FTAPIDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIDataObject.h; sourceTree = "<group>"; };
@@ -407,25 +462,6 @@
 		15D6434C1BE24FA100A19124 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15D6434E1BE24FA100A19124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D643501BE24FA100A19124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15E182D017E3325A00CE0DEA /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
-		15E182D117E3325A00CE0DEA /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
-		15E182D217E3325A00CE0DEA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPRequestOperation.m; path = AFNetworking/AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		15E182D417E3325A00CE0DEA /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFImageRequestOperation.h; path = AFNetworking/AFImageRequestOperation.h; sourceTree = "<group>"; };
-		15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFImageRequestOperation.m; path = AFNetworking/AFImageRequestOperation.m; sourceTree = "<group>"; };
-		15E182D617E3325A00CE0DEA /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFJSONRequestOperation.h; path = AFNetworking/AFJSONRequestOperation.h; sourceTree = "<group>"; };
-		15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFJSONRequestOperation.m; path = AFNetworking/AFJSONRequestOperation.m; sourceTree = "<group>"; };
-		15E182D817E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = AFNetworking/AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = AFNetworking/AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		15E182DA17E3325A00CE0DEA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
-		15E182DB17E3325A00CE0DEA /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFPropertyListRequestOperation.h; path = AFNetworking/AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
-		15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFPropertyListRequestOperation.m; path = AFNetworking/AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
-		15E182DD17E3325A00CE0DEA /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFURLConnectionOperation.h; path = AFNetworking/AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLConnectionOperation.m; path = AFNetworking/AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		15E182DF17E3325A00CE0DEA /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFXMLRequestOperation.h; path = AFNetworking/AFXMLRequestOperation.h; sourceTree = "<group>"; };
-		15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFXMLRequestOperation.m; path = AFNetworking/AFXMLRequestOperation.m; sourceTree = "<group>"; };
-		15E182E117E3325A00CE0DEA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
-		15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		15E1836E17E3510000CE0DEA /* FTJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJSONRequestOperation.h; sourceTree = "<group>"; };
 		15E1836F17E3510000CE0DEA /* FTJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJSONRequestOperation.m; sourceTree = "<group>"; };
@@ -437,6 +473,11 @@
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
+		47639B5AE62EBBF7EBC401BA /* Pods-iJenkins.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkins.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkins/Pods-iJenkins.debug.xcconfig"; sourceTree = "<group>"; };
+		8464A41DFE8BEB7C33BBCA25 /* libPods-iJenkins.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iJenkins.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BD1BDC2CAA14A4DD05DBBA /* libPods-iJenkinsTV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iJenkinsTV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		97A50D5A50A6C4957B99F13D /* Pods-iJenkins.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkins.release.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkins/Pods-iJenkins.release.xcconfig"; sourceTree = "<group>"; };
+		A04B0F4897C7986FDBB3F0D4 /* Pods-iJenkinsTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iJenkinsTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-iJenkinsTV/Pods-iJenkinsTV.release.xcconfig"; sourceTree = "<group>"; };
 		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -463,6 +504,7 @@
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
 				A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */,
+				93DFE7BFBBB72FBDC76CD272 /* libPods-iJenkins.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +529,7 @@
 				151D9B5F1BE42F270067EEAA /* SystemConfiguration.framework in Frameworks */,
 				151D9B631BE42F3A0067EEAA /* libc++.dylib in Frameworks */,
 				151D9B5C1BE42F270067EEAA /* QuartzCore.framework in Frameworks */,
+				EE55F0B53CBCE952DFF08CDA /* libPods-iJenkinsTV.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,6 +1257,7 @@
 				15D643411BE24FA100A19124 /* iJenkinsTV */,
 				15D245D217CF9C2A00793614 /* Frameworks */,
 				15D245D117CF9C2A00793614 /* Products */,
+				40C65CC7B7BE26A4996295EE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1247,6 +1291,8 @@
 				15D245D317CF9C2A00793614 /* UIKit.framework */,
 				15D245D517CF9C2A00793614 /* Foundation.framework */,
 				15D245D717CF9C2A00793614 /* CoreGraphics.framework */,
+				8464A41DFE8BEB7C33BBCA25 /* libPods-iJenkins.a */,
+				89BD1BDC2CAA14A4DD05DBBA /* libPods-iJenkinsTV.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1447,7 +1493,6 @@
 				154C9EB01B1B3FB600807481 /* Flurry */,
 				1544668E1806092000025022 /* BonjourBuddy-iOS */,
 				15446609180300C400025022 /* HTTP-Status-Codes-for-Objective-C */,
-				15E182CC17E3325A00CE0DEA /* AFNetworking */,
 				1510735617D5F3B800FD083B /* XYPieChart */,
 				151072E617D0F82C00FD083B /* ios-fontawesome */,
 				15D2463C17CFBD8E00793614 /* GCNetworkReachability */,
@@ -1527,32 +1572,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		15E182CC17E3325A00CE0DEA /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				15E182D017E3325A00CE0DEA /* AFHTTPClient.h */,
-				15E182D117E3325A00CE0DEA /* AFHTTPClient.m */,
-				15E182D217E3325A00CE0DEA /* AFHTTPRequestOperation.h */,
-				15E182D317E3325A00CE0DEA /* AFHTTPRequestOperation.m */,
-				15E182D417E3325A00CE0DEA /* AFImageRequestOperation.h */,
-				15E182D517E3325A00CE0DEA /* AFImageRequestOperation.m */,
-				15E182D617E3325A00CE0DEA /* AFJSONRequestOperation.h */,
-				15E182D717E3325A00CE0DEA /* AFJSONRequestOperation.m */,
-				15E182D817E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.h */,
-				15E182D917E3325A00CE0DEA /* AFNetworkActivityIndicatorManager.m */,
-				15E182DA17E3325A00CE0DEA /* AFNetworking.h */,
-				15E182DB17E3325A00CE0DEA /* AFPropertyListRequestOperation.h */,
-				15E182DC17E3325A00CE0DEA /* AFPropertyListRequestOperation.m */,
-				15E182DD17E3325A00CE0DEA /* AFURLConnectionOperation.h */,
-				15E182DE17E3325A00CE0DEA /* AFURLConnectionOperation.m */,
-				15E182DF17E3325A00CE0DEA /* AFXMLRequestOperation.h */,
-				15E182E017E3325A00CE0DEA /* AFXMLRequestOperation.m */,
-				15E182E117E3325A00CE0DEA /* UIImageView+AFNetworking.h */,
-				15E182E217E3325A00CE0DEA /* UIImageView+AFNetworking.m */,
-			);
-			path = AFNetworking;
-			sourceTree = "<group>";
-		};
 		15E1836D17E350D100CE0DEA /* Operation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1600,6 +1619,19 @@
 			name = Chart;
 			sourceTree = "<group>";
 		};
+		40C65CC7B7BE26A4996295EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				47639B5AE62EBBF7EBC401BA /* Pods-iJenkins.debug.xcconfig */,
+				97A50D5A50A6C4957B99F13D /* Pods-iJenkins.release.xcconfig */,
+				01B00EA31E4216E44330DAA7 /* Pods-iJenkins.enterprise.xcconfig */,
+				1212257ABFE15000B4ABC82A /* Pods-iJenkinsTV.debug.xcconfig */,
+				A04B0F4897C7986FDBB3F0D4 /* Pods-iJenkinsTV.release.xcconfig */,
+				1254A591D7CE33AE7D593414 /* Pods-iJenkinsTV.enterprise.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1607,10 +1639,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "iJenkins" */;
 			buildPhases = (
+				48BE2D35F316D852B7358CFB /* Check Pods Manifest.lock */,
 				15D245CC17CF9C2A00793614 /* Sources */,
 				15D245CD17CF9C2A00793614 /* Frameworks */,
 				15D245CE17CF9C2A00793614 /* Resources */,
 				151DA1BF17FC326800B253DE /* ShellScript */,
+				1419F6EBD0B576FFF977E27C /* Embed Pods Frameworks */,
+				772803F6DC1ADBE5DF80180E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1625,9 +1660,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15D643541BE24FA100A19124 /* Build configuration list for PBXNativeTarget "iJenkinsTV" */;
 			buildPhases = (
+				DB5594D6A726D49C9E300A45 /* Check Pods Manifest.lock */,
 				15D6433C1BE24FA100A19124 /* Sources */,
 				15D6433D1BE24FA100A19124 /* Frameworks */,
 				15D6433E1BE24FA100A19124 /* Resources */,
+				3E627D1C1362FB92A5FB2672 /* Embed Pods Frameworks */,
+				675245BCE55DD8F39F171122 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1645,7 +1683,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FT;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Fuerte Innovations";
 				TargetAttributes = {
 					15D245CF17CF9C2A00793614 = {
@@ -1723,6 +1761,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1419F6EBD0B576FFF977E27C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iJenkins/Pods-iJenkins-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		151DA1BF17FC326800B253DE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1735,6 +1788,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Thirdparty/Crashlytics.framework/run 645cad88976887e985fc9e2d08345ca9cc583918";
+		};
+		3E627D1C1362FB92A5FB2672 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iJenkinsTV/Pods-iJenkinsTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48BE2D35F316D852B7358CFB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		675245BCE55DD8F39F171122 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iJenkinsTV/Pods-iJenkinsTV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		772803F6DC1ADBE5DF80180E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iJenkins/Pods-iJenkins-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB5594D6A726D49C9E300A45 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1751,16 +1879,13 @@
 				1510734C17D4FAF000FD083B /* FTLoadingCell.m in Sources */,
 				1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */,
 				15D245E417CF9C2A00793614 /* FTAppDelegate.m in Sources */,
-				15E1832E17E3325B00CE0DEA /* AFImageRequestOperation.m in Sources */,
 				154466B3180651F200025022 /* FTQueueJobCell.m in Sources */,
 				15D245ED17CF9C2A00793614 /* FTViewController.m in Sources */,
 				153921D917E2155A00896FC1 /* FTJobHealthInfoCell.m in Sources */,
 				153921E617E2700400896FC1 /* FTBuildDetailViewController.m in Sources */,
 				1510729017D0053200FD083B /* FTAPIJobDataObject.m in Sources */,
 				1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */,
-				15E1833017E3325B00CE0DEA /* AFNetworkActivityIndicatorManager.m in Sources */,
 				154465DF17FE137400025022 /* FTAPIOverallLoadDataObject.m in Sources */,
-				153921C717E1F12E00896FC1 /* FTDownload.m in Sources */,
 				15D245FC17CF9D9900793614 /* FTServerHomeViewController.m in Sources */,
 				153921DD17E21C8D00896FC1 /* FTLastBuildInfoCell.m in Sources */,
 				154466251803386700025022 /* FTManageViewController.m in Sources */,
@@ -1787,13 +1912,10 @@
 				1510731617D0F82D00FD083B /* NSString+FontAwesome.m in Sources */,
 				153921D517E2099D00896FC1 /* FTSmallTextCell.m in Sources */,
 				15D2462C17CFA21100793614 /* UIImage+Tools.m in Sources */,
-				15E1833417E3325B00CE0DEA /* UIImageView+AFNetworking.m in Sources */,
 				151072DE17D0E17C00FD083B /* FTNoAccountCell.m in Sources */,
 				1544661E1803381200025022 /* FTManageUsersViewController.m in Sources */,
 				1510729A17D00F6300FD083B /* FTJobCell.m in Sources */,
 				151072A417D084FC00FD083B /* FTLabel.m in Sources */,
-				15E1833217E3325B00CE0DEA /* AFURLConnectionOperation.m in Sources */,
-				15E1832F17E3325B00CE0DEA /* AFJSONRequestOperation.m in Sources */,
 				1510729E17D084D800FD083B /* FTView.m in Sources */,
 				15D2462D17CFA21100793614 /* UIColor+Tools.m in Sources */,
 				1544660117FF47AA00025022 /* UIColor+Jenkins.m in Sources */,
@@ -1812,17 +1934,15 @@
 				15D2463A17CFA62900793614 /* FTUserDetailViewController.m in Sources */,
 				154466341804021500025022 /* FTNodeCell.m in Sources */,
 				153921D017E207A100896FC1 /* FTJobInfoBuildNumberCell.m in Sources */,
-				15E1833117E3325B00CE0DEA /* AFPropertyListRequestOperation.m in Sources */,
 				154465FE17FF228300025022 /* FTBuildInfoCell.m in Sources */,
 				1544662B18033D0900025022 /* FTBuildQueueViewController.m in Sources */,
 				1510731917D0F82D00FD083B /* UIFont+FontAwesome.m in Sources */,
-				15E1832D17E3325B00CE0DEA /* AFHTTPRequestOperation.m in Sources */,
 				154466211803382A00025022 /* FTManagePluginsViewController.m in Sources */,
 				1510735917D5F3B800FD083B /* XYPieChart.m in Sources */,
 				154465F017FE33EA00025022 /* FTLogViewController.m in Sources */,
-				15E1832C17E3325B00CE0DEA /* AFHTTPClient.m in Sources */,
 				1544660417FF543000025022 /* NSDate+Formatting.m in Sources */,
 				1510728D17CFED4700FD083B /* FTAPIServerDataObject.m in Sources */,
+				15FBB6F01BE57BC300181C9C /* FTDownload.m in Sources */,
 				15D2465E17CFBD8F00793614 /* GCNetworkReachability.m in Sources */,
 				1510733617D20F8500FD083B /* FTBasicAccountCell.m in Sources */,
 				154466AF180636B900025022 /* FTLoginAlert.m in Sources */,
@@ -1833,7 +1953,6 @@
 				15E1838617E3676900CE0DEA /* FTAPIJobBuildDataObject.m in Sources */,
 				154466081801FCEF00025022 /* FTIconCell.m in Sources */,
 				15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */,
-				15E1833317E3325B00CE0DEA /* AFXMLRequestOperation.m in Sources */,
 				151072A817D0851D00FD083B /* FTBasicCell.m in Sources */,
 				15D2467B17CFBE5200793614 /* FTAccount.m in Sources */,
 				154465F317FE340A00025022 /* FTBuildDetailChangesViewController.m in Sources */,
@@ -1845,25 +1964,84 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151D9B6E1BE4B3720067EEAA /* AFHTTPRequestOperation.m in Sources */,
+				15FBB7181BE57C8E00181C9C /* FTNoAccountCell.m in Sources */,
 				151D9B6B1BE4B36B0067EEAA /* BonjourBuddy.m in Sources */,
-				151D9B531BE42F0F0067EEAA /* FTLang.m in Sources */,
-				151D9B501BE42F0F0067EEAA /* FTLoginAlert.m in Sources */,
+				15FBB7151BE57C8E00181C9C /* FTBasicAccountCell.m in Sources */,
+				15FBB6E61BE57BA500181C9C /* FTJSONRequestOperation.m in Sources */,
+				15FBB7051BE57C7500181C9C /* FTViewSelectorViewController.m in Sources */,
+				15FBB6F31BE57C3200181C9C /* FTView.m in Sources */,
+				15FBB7071BE57C7500181C9C /* FTBuildQueueViewController.m in Sources */,
+				15FBB7111BE57C8E00181C9C /* FTAccountOverviewCell.m in Sources */,
+				15FBB7031BE57C7500181C9C /* FTManageViewController.m in Sources */,
+				15FBB6F41BE57C5500181C9C /* FTJobCell.m in Sources */,
+				15FBB6FC1BE57C7500181C9C /* FTPluginDetailViewController.m in Sources */,
+				15FBB6D61BE57B6E00181C9C /* FTConfig.m in Sources */,
+				15FBB6F51BE57C5500181C9C /* FTValueCell.m in Sources */,
+				15FBB7061BE57C7500181C9C /* FTQueueJobCell.m in Sources */,
+				15FBB71A1BE57C8E00181C9C /* FTViewController.m in Sources */,
+				15FBB7121BE57C8E00181C9C /* FTServerHomeViewController.m in Sources */,
+				15FBB6CC1BE57B1700181C9C /* NSData+Base64.m in Sources */,
+				15FBB6D81BE57B7800181C9C /* FTAccountsManager.m in Sources */,
+				15FBB6CE1BE57B1700181C9C /* UIColor+Tools.m in Sources */,
+				15FBB6D41BE57B1700181C9C /* NSString+Conversions.m in Sources */,
+				15FBB6FB1BE57C5500181C9C /* FTBasicCell.m in Sources */,
+				15FBB6CB1BE57AF600181C9C /* Lockbox.m in Sources */,
+				15FBB6D11BE57B1700181C9C /* NSString+URLTools.m in Sources */,
+				15FBB6FD1BE57C7500181C9C /* FTPluginCell.m in Sources */,
+				15FBB6ED1BE57BC200181C9C /* FTDownload.m in Sources */,
+				15FBB6C91BE57AF600181C9C /* UIFont+FontAwesome.m in Sources */,
+				15FBB6F21BE57C1F00181C9C /* FTChartOverlay.m in Sources */,
+				15FBB6D21BE57B1700181C9C /* UIColor+Jenkins.m in Sources */,
+				15FBB7091BE57C7500181C9C /* FTBuildDetailChangesViewController.m in Sources */,
+				15FBB6D01BE57B1700181C9C /* UIView+Layout.m in Sources */,
+				15FBB6E21BE57BA500181C9C /* FTAPIJobBuildDataObject.m in Sources */,
+				15FBB70C1BE57C7500181C9C /* FTNoJobCell.m in Sources */,
+				15FBB70B1BE57C7500181C9C /* FTBuildDetailViewController.m in Sources */,
+				15FBB7011BE57C7500181C9C /* FTNodeCell.m in Sources */,
+				15FBB7101BE57C7500181C9C /* FTJobDetailViewController.m in Sources */,
+				15FBB6E91BE57BA500181C9C /* FTAPIConnector.m in Sources */,
+				15FBB7041BE57C7500181C9C /* FTNoInternetConnectionViewController.m in Sources */,
+				15FBB6FE1BE57C7500181C9C /* FTManagePluginsViewController.m in Sources */,
+				15FBB6EE1BE57BC200181C9C /* FTKeychainObject.m in Sources */,
+				15FBB6CA1BE57AF600181C9C /* GCNetworkReachability.m in Sources */,
+				15FBB6CD1BE57B1700181C9C /* UIImage+Tools.m in Sources */,
+				15FBB6FF1BE57C7500181C9C /* FTUserDetailViewController.m in Sources */,
+				15FBB6E31BE57BA500181C9C /* FTAPIJobDetailDataObject.m in Sources */,
 				15D6434A1BE24FA100A19124 /* ViewController.m in Sources */,
+				15FBB6E81BE57BA500181C9C /* FTAPIDataObject.m in Sources */,
+				15FBB7171BE57C8E00181C9C /* FTAccountCell.m in Sources */,
+				15FBB6EC1BE57BC200181C9C /* FTAlert.m in Sources */,
 				151D9B6C1BE4B36B0067EEAA /* FTHTTPCodes.m in Sources */,
-				151D9B511BE42F0F0067EEAA /* FTDownload.m in Sources */,
+				15FBB6EB1BE57BC200181C9C /* FTLoginAlert.m in Sources */,
+				15FBB6F81BE57C5500181C9C /* FTSmallTextCell.m in Sources */,
+				15FBB70E1BE57C7500181C9C /* FTJobHealthInfoCell.m in Sources */,
+				15FBB6F11BE57BE600181C9C /* FTAPIBuildDetailDataObject.m in Sources */,
+				15FBB6FA1BE57C5500181C9C /* FTLabel.m in Sources */,
+				15FBB7141BE57C8E00181C9C /* FTSwitchAccountCell.m in Sources */,
+				15FBB7131BE57C8E00181C9C /* FTTextAccountCell.m in Sources */,
+				15FBB70D1BE57C7500181C9C /* FTJobInfoBuildNumberCell.m in Sources */,
+				15FBB6E41BE57BA500181C9C /* FTAPIJobDataObject.m in Sources */,
+				15FBB70F1BE57C7500181C9C /* FTLastBuildInfoCell.m in Sources */,
+				15FBB70A1BE57C7500181C9C /* FTBuildInfoCell.m in Sources */,
 				15D643471BE24FA100A19124 /* AppDelegate.m in Sources */,
-				151D9B521BE42F0F0067EEAA /* FTKeychainObject.m in Sources */,
-				151D9B751BE4B3720067EEAA /* UIImageView+AFNetworking.m in Sources */,
-				151D9B731BE4B3720067EEAA /* AFURLConnectionOperation.m in Sources */,
-				151D9B741BE4B3720067EEAA /* AFXMLRequestOperation.m in Sources */,
-				151D9B6F1BE4B3720067EEAA /* AFImageRequestOperation.m in Sources */,
-				151D9B721BE4B3720067EEAA /* AFPropertyListRequestOperation.m in Sources */,
-				151D9B701BE4B3720067EEAA /* AFJSONRequestOperation.m in Sources */,
-				151D9B681BE4B0DC0067EEAA /* FTAlert.m in Sources */,
-				151D9B6D1BE4B3720067EEAA /* AFHTTPClient.m in Sources */,
+				15FBB6E51BE57BA500181C9C /* FTAPIServerDataObject.m in Sources */,
+				15FBB6EF1BE57BC200181C9C /* FTLang.m in Sources */,
+				15FBB6C81BE57AF600181C9C /* NSString+FontAwesome.m in Sources */,
+				15FBB7161BE57C8E00181C9C /* FTAddAccountViewController.m in Sources */,
+				15FBB6F61BE57C5500181C9C /* FTDeleteCell.m in Sources */,
 				15D643441BE24FA100A19124 /* main.m in Sources */,
-				151D9B711BE4B3720067EEAA /* AFNetworkActivityIndicatorManager.m in Sources */,
+				15FBB6F91BE57C5500181C9C /* FTLoadingCell.m in Sources */,
+				15FBB7021BE57C7500181C9C /* FTManageNodesViewController.m in Sources */,
+				15FBB7081BE57C7500181C9C /* FTLogViewController.m in Sources */,
+				15FBB7001BE57C7500181C9C /* FTManageUsersViewController.m in Sources */,
+				15FBB7191BE57C8E00181C9C /* FTAccountsViewController.m in Sources */,
+				15FBB6D51BE57B1700181C9C /* NSData+Networking.m in Sources */,
+				15FBB6C71BE57AF600181C9C /* FAImageView.m in Sources */,
+				15FBB6D71BE57B7800181C9C /* FTAccount.m in Sources */,
+				15FBB6CF1BE57B1700181C9C /* UIView+Effects.m in Sources */,
+				15FBB6D31BE57B1700181C9C /* NSDate+Formatting.m in Sources */,
+				15FBB6E71BE57BA500181C9C /* FTHTTPRequestOperation.m in Sources */,
+				15FBB6F71BE57C5500181C9C /* FTIconCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1917,6 +2095,7 @@
 		};
 		1510727D17CFE94E00FD083B /* Enterprise */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01B00EA31E4216E44330DAA7 /* Pods-iJenkins.enterprise.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1944,7 +2123,9 @@
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
+					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuerteint.ijenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1966,6 +2147,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2010,6 +2192,7 @@
 		};
 		15D245F417CF9C2A00793614 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47639B5AE62EBBF7EBC401BA /* Pods-iJenkins.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2037,7 +2220,9 @@
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
+					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuerteint.ijenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2047,6 +2232,7 @@
 		};
 		15D245F517CF9C2A00793614 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97A50D5A50A6C4957B99F13D /* Pods-iJenkins.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2074,7 +2260,9 @@
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
+					"$(inherited)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fuerteint.ijenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2084,6 +2272,7 @@
 		};
 		15D643511BE24FA100A19124 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1212257ABFE15000B4ABC82A /* Pods-iJenkinsTV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2100,6 +2289,7 @@
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -2125,6 +2315,7 @@
 		};
 		15D643521BE24FA100A19124 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A04B0F4897C7986FDBB3F0D4 /* Pods-iJenkinsTV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2142,6 +2333,7 @@
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -2167,6 +2359,7 @@
 		};
 		15D643531BE24FA100A19124 /* Enterprise */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1254A591D7CE33AE7D593414 /* Pods-iJenkinsTV.enterprise.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2184,6 +2377,7 @@
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
 				);
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";

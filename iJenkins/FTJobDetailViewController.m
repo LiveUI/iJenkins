@@ -17,7 +17,7 @@
 #import "NSDate+Formatting.h"
 
 
-@interface FTJobDetailViewController ()
+@interface FTJobDetailViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -28,8 +28,10 @@
 #pragma mark Creating elements
 
 - (void)createBuildNowButton {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Build Now") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickRunBuildNow:)];
     [self.navigationItem setRightBarButtonItem:edit];
+#endif
 }
 
 - (void)createAllElements {
@@ -43,7 +45,7 @@
 
 - (void)buildThis {
     FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name];
-    [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         [self createBuildNowButton];
         if (error) {
             [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
@@ -58,10 +60,15 @@
 #pragma mark Actions
 
 - (void)didCLickRunBuildNow:(UIBarButtonItem *)sender {
-    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+    
+    UIActivityIndicatorView *ai = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:kUIActivityIndicatorViewStyle];
     [ai startAnimating];
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithCustomView:ai];
     [self.navigationItem setRightBarButtonItem:edit];
+    
+#endif
+    
     
     [self buildThis];
 }

@@ -29,7 +29,7 @@
 
 - (void)loadData {
     FTAPIComputerObject *buildsObject = [[FTAPIComputerObject alloc] init];
-    [FTAPIConnector connectWithObject:buildsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:buildsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _computers = buildsObject.computers;
         [self.tableView reloadData];
     }];

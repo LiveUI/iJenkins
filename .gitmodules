@@ -7,9 +7,6 @@
 [submodule "Thirdparty/ios-fontawesome"]
 	path = Thirdparty/ios-fontawesome
 	url = git@github.com:alexdrone/ios-fontawesome.git
-[submodule "Thirdparty/AFNetworking"]
-	path = Thirdparty/AFNetworking
-	url = git@github.com:AFNetworking/AFNetworking.git
 [submodule "Thirdparty/HTTP-Status-Codes-for-Objective-C"]
 	path = Thirdparty/HTTP-Status-Codes-for-Objective-C
 	url = git@github.com:rafiki270/HTTP-Status-Codes-for-Objective-C.git

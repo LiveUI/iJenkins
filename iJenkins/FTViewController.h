@@ -31,8 +31,5 @@
 - (void)createTableView;
 - (void)createAllElements;
 
-// Alerts
-- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message;
-
 
 @end

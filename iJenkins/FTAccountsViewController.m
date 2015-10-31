@@ -29,7 +29,9 @@
 @property (nonatomic, strong) BonjourBuddy *bonjour;
 @property (nonatomic, strong) NSArray *bonjourAccounts;
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 @property (nonatomic, readonly) UIToolbar *bottomToolbar;
+#endif
 
 @end
 
@@ -103,6 +105,7 @@
 }
 
 - (void)createBottomToolbar {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     CGRect r = self.view.frame;
     r.origin.y = (r.size.height - 44);
     r.size.height = 44;
@@ -119,6 +122,7 @@
     r = self.tableView.frame;
     r.size.height -= 44;
     [self.tableView setFrame:r];
+#endif
 }
 
 - (void)createAllElements {
@@ -139,8 +143,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [FTAPIConnector stopLoadingAll];
-    
+    [[FTAPIConnector sharedConnector] stopLoadingAll];
+
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     //  Custom UIMenuController items for the accounts
     //  These are added only for this controller and are removed at the -viewWillDisappear
     UIMenuItem *copyUrlItem = [[UIMenuItem alloc] initWithTitle:FTLangGet(@"Copy URL") action:@selector(copyURL:)];
@@ -153,6 +158,8 @@
     
     //  Remove custom menu actions
     [[UIMenuController sharedMenuController] setMenuItems:nil];
+#endif
+    
 }
 
 #pragma mark Actions
@@ -357,7 +364,11 @@
         
     }
     if (indexPath.section == 0) {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
+#elif TARGET_OS_TV
+        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+#endif
     }
     else {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -398,7 +409,7 @@
                         /*
                          [[FTAccountsManager sharedManager] setSelectedAccount:acc];
                          FTAPIOverallLoadDataObject *loadObject = [[FTAPIOverallLoadDataObject alloc] init];
-                         [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+                         [[FTAPIConnector sharedConnector] connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
                          if (error) {
                          s = FTAccountCellReachabilityStatusUnreachable;
                          }
@@ -478,7 +489,7 @@
             if ([self datasourceForIndexPath:indexPath].count > 0) {
                 FTAccount *acc = [self accountForIndexPath:indexPath];
                 [[FTAccountsManager sharedManager] setSelectedAccount:acc];
-                [FTAPIConnector resetForAccount:acc];
+                [[FTAPIConnector sharedConnector] resetForAccount:acc];
                 
                 FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
                 [c setTitle:acc.name];
@@ -553,9 +564,11 @@
 #pragma mark Account cell delegate
 
 - (void)accountCellMenuCopyURLSelected:(FTAccountCell *)cell {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     FTAccount *account = [self accountForCell:cell];
     NSURL *serverURL = [NSURL URLWithString:[account baseUrl]];
     [[UIPasteboard generalPasteboard] setURL:serverURL];
+#endif
 }
 
 - (void)accountCellMenuOpenInBrowserSelected:(FTAccountCell *)cell {

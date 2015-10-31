@@ -11,7 +11,7 @@
 
 @interface FTSwitchAccountCell ()
 
-@property (nonatomic, strong) UISwitch *cellSwitch;
+@property (nonatomic, strong) id cellSwitch;
 
 @end
 
@@ -28,11 +28,13 @@
 #pragma mark Create elements
 
 - (void)createSwitch {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _cellSwitch = [[UISwitch alloc] init];
     [_cellSwitch addTarget:self action:@selector(switchDidChangeValue:) forControlEvents:UIControlEventValueChanged];
-    [_cellSwitch setOrigin:CGPointMake((self.width - 14 - _cellSwitch.width), 6)];
+    [_cellSwitch setOrigin:CGPointMake((self.width - 14 - [(UISwitch *)_cellSwitch width]), 6)];
     [_cellSwitch setAutoresizingCenterRight];
     [self addSubview:_cellSwitch];
+#endif
 }
 
 - (void)createAllElements {
@@ -68,6 +70,7 @@
 
 #pragma mark Actions
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (void)switchDidChangeValue:(UISwitch *)sender {
     NSString *variable = [self.cellData objectForKey:@"variable"];
     if ([variable isEqualToString:@"https"]) {
@@ -81,6 +84,7 @@
     }
     [super cellDidChangeValue];
 }
+#endif
 
 
 @end

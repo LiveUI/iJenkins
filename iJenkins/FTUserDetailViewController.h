@@ -7,7 +7,6 @@
 //
 
 #import "FTViewController.h"
-#import <MessageUI/MFMailComposeViewController.h>
 
 
 @class FTUserDetailViewController;
@@ -19,7 +18,7 @@
 @end
 
 
-@interface FTUserDetailViewController : FTViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface FTUserDetailViewController : FTViewController
 
 @property (nonatomic, strong) NSString *nickName;
 

@@ -12,7 +12,10 @@
 #import "FTLoginAlert.h"
 
 
-@interface FTManageViewController () <UIAlertViewDelegate>
+@interface FTManageViewController ()
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+<UIAlertViewDelegate>
+#endif
 
 @property (nonatomic, strong) NSArray *data;
 
@@ -119,23 +122,30 @@
     //  If action value is provided, this is an action
     else if([actionString length] > 0) {
         FTAPIRestartDataObjectType actionType = [FTAPIRestartDataObject typeWithString:actionString];
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+        
         NSString *message = [NSString stringWithFormat:FTLangGet(@"Are you sure you want to %@ Jenkins?"), cell.textLabel.text];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:cell.textLabel.text message:message delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Confirm"), nil];
         alert.tag = actionType;
         [alert show];
+#elif TARGET_OS_TV
+        [self performManagementAction:actionType];
+#endif
     }
     
 }
 
 #pragma mark UIAlertView delegate
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex != [alertView cancelButtonIndex]) {
         [self performManagementAction:alertView.tag];
     }
 }
+#endif
 
 #pragma mark Helper methods
 
@@ -158,7 +168,7 @@
 - (void)performManagementAction:(FTAPIRestartDataObjectType)actionType
 {
     FTAPIRestartDataObject *apiObject = [[FTAPIRestartDataObject alloc] initWithRestartType:actionType];
-    [FTAPIConnector connectWithObject:apiObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:apiObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         if (error) {
             [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
                 [self performManagementAction:actionType];

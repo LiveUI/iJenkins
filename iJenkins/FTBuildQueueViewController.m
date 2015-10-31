@@ -15,7 +15,9 @@
 
 @interface FTBuildQueueViewController ()
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+#endif
 
 @property (nonatomic, strong) NSArray *queue;
 @property (nonatomic) BOOL isLoadingQueue;
@@ -35,7 +37,9 @@
 
 - (void)checkLoading {
     if (!_isLoadingQueue && !_isLoadingComputers) {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         [_refreshControl endRefreshing];
+#endif
         
         if (_reloadTimer) {
             [_reloadTimer invalidate];
@@ -57,7 +61,7 @@
 - (void)loadData {
     _isLoadingQueue = YES;
     FTAPIBuildQueueDataObject *queueObject = [[FTAPIBuildQueueDataObject alloc] init];
-    [FTAPIConnector connectWithObject:queueObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:queueObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         BOOL reload = (queueObject.items.count != _queue.count);
         NSMutableArray *arr = [NSMutableArray array];
         if (queueObject.items.count > 0) {
@@ -85,7 +89,7 @@
     
     _isLoadingComputers = YES;
     FTAPIComputerObject *buildsObject = [[FTAPIComputerObject alloc] init];
-    [FTAPIConnector connectWithObject:buildsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:buildsObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _computers = buildsObject.computers;
         _isLoadingComputers = NO;
         [self.tableView reloadData];
@@ -106,15 +110,17 @@
 - (void)createTableView {
     [super createTableView];
     
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _refreshControl = [[UIRefreshControl alloc] init];
     [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:_refreshControl];
     [_refreshControl centerHorizontally];
     [_refreshControl setYOrigin:-60];
+#endif
 }
 
 - (void)createExecutorLink {
-    UIBarButtonItem *ste = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Executors") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollToExecutorSection:)];
+    UIBarButtonItem *ste = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Executors") style:UIBarButtonItemStylePlain target:self action:@selector(scrollToExecutorSection:)];
     [self.navigationItem setRightBarButtonItem:ste animated:YES];
 }
 
@@ -128,9 +134,11 @@
 
 #pragma mark Actions
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (void)refreshActionCalled:(UIRefreshControl *)sender {
     [self loadData];
 }
+#endif
 
 - (void)scrollToExecutorSection:(UIBarButtonItem *)sender {
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];

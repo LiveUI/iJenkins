@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
 
-#import "AFHTTPRequestOperation.h"
+#import <Foundation/Foundation.h>
 
 
-@interface FTHTTPRequestOperation : AFHTTPRequestOperation
+@interface FTHTTPRequestOperation : NSObject
 
 @property (nonatomic, strong) id <FTAPIDataAbstractObject> dataObject;
 

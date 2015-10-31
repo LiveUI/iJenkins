@@ -8,6 +8,7 @@
 
 #import "FTViewController.h"
 #import "FTBasicCell.h"
+#import "FTAlert.h"
 
 
 @interface FTViewController ()
@@ -101,7 +102,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+#endif
     
     if (_tableView) {
         [_tableView reloadData];
@@ -114,11 +118,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+#endif
+    
     [self createAllElements];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ([self isTablet]) {
         return UIInterfaceOrientationMaskAll;
     }
@@ -128,7 +136,10 @@
 }
 
 - (void)viewWillLayoutSubviews {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _isLandscape = UIInterfaceOrientationIsLandscape(self.interfaceOrientation);
+#endif
+    
     [self layoutElements];
 }
 
@@ -139,13 +150,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     _isLandscape = UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
     return YES;
-}
-
-#pragma mark Effects
-
-- (void)showAlertWithTitle:(NSString *)title andMessage:(NSString *)message {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
-    [alert show];
 }
 
 #pragma mark Table view delegate & data source methods

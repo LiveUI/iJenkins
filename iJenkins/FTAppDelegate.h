@@ -10,7 +10,6 @@
 
 
 #define kAppDelegate                                (FTAppDelegate *)[[UIApplication sharedApplication] delegate]
-#define kAPIDownloadQueue                           [kAppDelegate apiDownloadQueue]
 
 
 @class FTAccountsViewController;
@@ -19,8 +18,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) FTAccountsViewController *viewController;
-
-@property (nonatomic, strong) NSOperationQueue *apiDownloadQueue;
 
 
 @end

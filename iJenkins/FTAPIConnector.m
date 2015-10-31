@@ -21,11 +21,13 @@
 #define dFTAPIConnectorDebugFull                                if (dFTAPIConnectorDebug) 
 
 
-static AFHTTPClient *_sharedClient = nil;
+//static AFHTTPClient *_sharedClient = nil;
 static FTAccount *_sharedAccount = nil;
 
 
 @interface FTAPIConnector ()
+
+@property (nonatomic, strong) AFURLSessionManager *manager;
 
 @end
 
@@ -44,38 +46,70 @@ static FTAccount *_sharedAccount = nil;
     return shared;
 }
 
-+ (AFHTTPClient *)sharedClient {
-    if (!_sharedClient) {
-        _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
-    }
-    return _sharedClient;
+//+ (AFHTTPClient *)sharedClient {
+//    if (!_sharedClient) {
+//        _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
+//    }
+//    return _sharedClient;
+//}
+
+- (void)stopLoadingAll {
+    
 }
 
-+ (void)stopLoadingAll {
-    if ([[FTAPIConnector sharedConnector] apiOperationQueue]) {
-        [[[FTAPIConnector sharedConnector] apiOperationQueue] cancelAllOperations];
-    }
-}
-
-+ (void)resetForAccount:(FTAccount *)account {
+- (void)resetForAccount:(FTAccount *)account {
     _sharedAccount = account;
-    _sharedClient = nil;
+//    _sharedClient = nil;
     [self stopLoadingAll];
-    [self sharedClient];
+//    [self sharedClient];
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        _apiOperationQueue = [[NSOperationQueue alloc] init];
-        [_apiOperationQueue setMaxConcurrentOperationCount:3];
+        //_apiOperationQueue = [[NSOperationQueue alloc] init];
+        //[_apiOperationQueue setMaxConcurrentOperationCount:3];
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        self.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        
+        AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        [policy setValidatesDomainName:NO];
+        [policy setAllowInvalidCertificates:YES];
+        [self.manager setSecurityPolicy:policy];
     }
     return self;
 }
 
 #pragma mark Connections
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+- (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+    
+    
+    NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
+    NSURLSessionDataTask *downloadTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+        [object processHeaders:httpResponse.allHeaderFields];
+        [object setResponse:httpResponse];
+        if (!error) {
+            if ([object outputType] == FTAPIDataObjectOutputTypeJSON) {
+                [object processData:responseObject];
+            }
+            else if ([responseObject isKindOfClass:[NSData class]]) {
+                NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                [object processText:text];
+            }
+            else if ([responseObject isKindOfClass:[NSString class]]) {
+                [object processText:responseObject];
+            }
+        }
+        if (complete) {
+            complete(object, error);
+        }
+    }];
+    [downloadTask resume];
+    
+    /*
     [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"application/javascript", nil]];
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
@@ -134,14 +168,16 @@ static FTAccount *_sharedAccount = nil;
     [operation setQueuePriority:[object queuePriority]];
     
     [[[FTAPIConnector sharedConnector] apiOperationQueue] addOperation:operation];
+     
+    //*/
     
 }
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
+- (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
     [self connectWithObject:object withOnCompleteBlock:complete withUploadProgressBlock:nil andDownloadProgressBlock:download];
 }
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete {
+- (void)connectWithObject:(id<FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete {
     [self connectWithObject:object withOnCompleteBlock:complete withUploadProgressBlock:nil andDownloadProgressBlock:nil];
 }
 
@@ -200,14 +236,13 @@ static FTAccount *_sharedAccount = nil;
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
-    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
-    if (authenticate) {
-        [[FTAPIConnector sharedClient] clearAuthorizationHeader];
-        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
-    }
+//    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
+//    if (authenticate) {
+//        [[FTAPIConnector sessionManager] clearAuthorizationHeader];
+//        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
+//    }
     
-    NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"" path:@"" parameters:nil] mutableCopy];
-    [request setURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSTimeInterval timeout = [FTAccountsManager sharedManager].selectedAccount.timeout;
     if (timeout < 1.5) timeout = 8;
     [request setTimeoutInterval:timeout];

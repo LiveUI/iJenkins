@@ -16,7 +16,7 @@
 #pragma mark Operations handling
 
 - (void)cancel {
-    [super cancel];
+    //[super cancel];
     
     [_dataObject resetLoading];
 }

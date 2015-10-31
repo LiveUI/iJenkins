@@ -29,17 +29,17 @@ typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, lo
 
 @interface FTAPIConnector : NSObject
 
-@property (nonatomic, readonly) NSOperationQueue *apiOperationQueue;
+//@property (nonatomic, readonly) NSOperationQueue *apiOperationQueue;
 
 + (FTAPIConnector *)sharedConnector;
-+ (void)resetForAccount:(FTAccount *)account;
-+ (void)stopLoadingAll;
+- (void)resetForAccount:(FTAccount *)account;
+- (void)stopLoadingAll;
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
+- (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
 
-+ (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
+- (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download;
 
-+ (void)connectWithObject:(id <FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete;
+- (void)connectWithObject:(id <FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete;
 
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data;
 

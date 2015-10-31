@@ -18,10 +18,23 @@
 #import "FTLoginAlert.h"
 
 
-@interface FTServerHomeViewController ()
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+
+@interface FTServerHomeViewController () <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
+
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UISearchDisplayController *searchController;
+
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
+#elif TARGET_OS_TV
+
+@interface FTServerHomeViewController () <UITableViewDataSource, UITableViewDelegate, FTAccountOverviewCellDelegate, FTViewSelectorViewControllerDelegate>
+
+#endif
 
 @property (nonatomic, strong) FTAccountOverviewCell *overviewCell;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (nonatomic, strong) NSArray *views;
 
@@ -45,13 +58,16 @@
 - (void)loadData {
     if (!_serverObject) {
         _isDataAvailable = NO;
+        
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         _searchBar.text = @"";
+#endif
         
         _serverObject = [[FTAPIServerDataObject alloc] init];
         if (_selectedView) {
             [_serverObject setViewToLoad:_selectedView];
         }
-        [FTAPIConnector connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        [[FTAPIConnector sharedConnector] connectWithObject:_serverObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             if (error) {
                 if (_serverObject.response.statusCode == HTTPCode401Unauthorised || _serverObject.response.statusCode == HTTPCode403Forbidden) {
                     [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
@@ -62,8 +78,13 @@
                     }];
                 }
                 else if (error.code != -999) {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
                     [alert show];
+#elif TARGET_OS_TV
+                    [self.navigationController popViewControllerAnimated:YES];
+#endif
+                    
                 }
                 else {
                     
@@ -109,7 +130,10 @@
                 }
                 
                 [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(createTopButtons) userInfo:nil repeats:NO];
+                
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
                 [_refreshControl endRefreshing];
+#endif
             }
         }];
     }
@@ -124,6 +148,7 @@
 - (void)createTableView {
     [super createTableView];
     
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.width, 44)];
 
     _searchController = [[UISearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
@@ -138,10 +163,11 @@
     [self.tableView addSubview:_refreshControl];
     [_refreshControl centerHorizontally];
     [_refreshControl setYOrigin:-60];
+#endif
 }
 
 - (void)createTopButtons {
-    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:_selectedView.name style:UIBarButtonItemStyleBordered target:self action:@selector(showViewSelector:)];
+    UIBarButtonItem *filter = [[UIBarButtonItem alloc] initWithTitle:_selectedView.name style:UIBarButtonItemStylePlain target:self action:@selector(showViewSelector:)];
     [self.navigationItem setRightBarButtonItem:filter animated:YES];
 }
 
@@ -162,15 +188,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     [super.tableView setContentOffset:CGPointMake(0, _searchBar.height)];
+#endif
 }
 
 #pragma mark Actions
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (void)refreshActionCalled:(UIRefreshControl *)sender {
     _serverObject = nil;
     [self loadData];
 }
+#endif
 
 - (void)showViewSelector:(UIBarButtonItem *)sender {
     FTViewSelectorViewController *c = [[FTViewSelectorViewController alloc] init];
@@ -427,22 +457,25 @@
 
 #pragma mark Search display controller delegate
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     [self filterSearchResultsWithSearchString:searchString];
     return YES;
 }
+#endif
 
 #pragma mark Alert view delegate
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     [self.navigationController popViewControllerAnimated:YES];
 }
+#endif
 
 #pragma mark Overview cell delegate methods
 
 - (void)accountOverviewCell:(FTAccountOverviewCell *)cell requiresFilterForStat:(FTAPIServerStatsDataObject *)stat {
-    //UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Selected filter" message:stat.color delegate:Nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    //[alert show];
+    
 }
 
 #pragma mark View selector delegate methods

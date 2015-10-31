@@ -5,16 +5,30 @@
 //  Created by Ondrej Rafaj on 29/08/2013.
 //  Copyright (c) 2013 Fuerte Innovations. All rights reserved.
 //
+//  TODO: tvOS - make delete user work again!
+//
 
 #import "FTUserDetailViewController.h"
+
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+#import <MessageUI/MFMailComposeViewController.h>
+#endif
+
 #import "FTDeleteCell.h"
 #import "FTValueCell.h"
 
 
 #define FTUserDetailViewControllerVarCheck(var)                          (_isLoading ? @"Loading ..." : (var && ![var isKindOfClass:[NSNull class]]) ? var : FT_NA)
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+
+@interface FTUserDetailViewController ()  <UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+
+#elif TARGET_OS_TV
 
 @interface FTUserDetailViewController ()
+
+#endif
 
 @property (nonatomic, readonly) FTAPIUserDetailDataObject *userObject;
 @property (nonatomic, readonly) BOOL isLoading;
@@ -30,7 +44,7 @@
 - (void)loadData {
     _isLoading = YES;
     _userObject = [[FTAPIUserDetailDataObject alloc] initWithNickName:_nickName];
-    [FTAPIConnector connectWithObject:_userObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+    [[FTAPIConnector sharedConnector] connectWithObject:_userObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _isLoading = NO;
         [self.tableView reloadData];
         
@@ -65,7 +79,12 @@
 }
 
 - (BOOL)canSendMail {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     return ([MFMailComposeViewController canSendMail] && _userObject.emailAddress && ![_userObject.emailAddress isKindOfClass:[NSNull class]] && (_userObject.emailAddress.length > 3));
+#elif TARGET_OS_TV
+    return NO;
+#endif
+    
 }
 
 #pragma mark Creating elements
@@ -91,13 +110,13 @@
 
 - (void)sendEmail {
     if ([self canSendMail]) {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         MFMailComposeViewController *c = [[MFMailComposeViewController alloc] init];
         [c setToRecipients:@[[NSString stringWithFormat:@"%@ <%@>", _userObject.fullName, _userObject.emailAddress]]];
         [c setMailComposeDelegate:self];
         [c setMessageBody:[NSString stringWithFormat:@"\n\n\n%@", FTLangGet(@"With LOVE from iJenkins for iOS")] isHTML:NO];
-        [self presentViewController:c animated:YES completion:^{
-            
-        }];
+        [self presentViewController:c animated:YES completion:nil];
+#endif
     }
 }
 
@@ -112,7 +131,11 @@
 #pragma mark Tableview delegate & datasource methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     return (_isLoading || [_nickName isEqualToString:[FTAccountsManager sharedManager].selectedAccount.username]) ? 1 : 2;
+#elif TARGET_OS_TV
+    return 1;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -145,17 +168,21 @@
         [self sendEmail];
     }
     else if (indexPath.section == 1) {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Confirmation") message:FTLangGet(@"Are you sure you want to delete this user?") delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Delete"), nil];
         [alert show];
+#endif
     }
 }
+
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 
 #pragma mark Alert view delegate methods
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 1) {
         [_userObject setAction:FTAPIUserDetailDataObjectActionDelete];
-        [FTAPIConnector connectWithObject:_userObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+        [[FTAPIConnector sharedConnector] connectWithObject:_userObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
             // TODO: Improve error handling
 //            if (!error) {
                 if ([_delegate respondsToSelector:@selector(userDetailViewController:didDeleteUser:)]) {
@@ -190,6 +217,8 @@
         }
     }];
 }
+
+#endif
 
 
 @end
