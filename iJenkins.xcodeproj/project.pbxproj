@@ -234,6 +234,15 @@
 		15FBB7181BE57C8E00181C9C /* FTNoAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151072DD17D0E17C00FD083B /* FTNoAccountCell.m */; };
 		15FBB7191BE57C8E00181C9C /* FTAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2460217CF9DBB00793614 /* FTAccountsViewController.m */; };
 		15FBB71A1BE57C8E00181C9C /* FTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D245EC17CF9C2A00793614 /* FTViewController.m */; };
+		15FBB71B1BE586F900181C9C /* FTAPIUsersDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544663C1804259200025022 /* FTAPIUsersDataObject.m */; };
+		15FBB71C1BE5871F00181C9C /* FTAPIBuildQueueDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465E117FE161700025022 /* FTAPIBuildQueueDataObject.m */; };
+		15FBB71D1BE5871F00181C9C /* FTAPIBuildConsoleOutputDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465F617FF053000025022 /* FTAPIBuildConsoleOutputDataObject.m */; };
+		15FBB71E1BE5873E00181C9C /* FTAPIPluginManagerDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */; };
+		15FBB71F1BE5873E00181C9C /* FTAPIUserDetailDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 15446641180425B500025022 /* FTAPIUserDetailDataObject.m */; };
+		15FBB7201BE5873E00181C9C /* FTAPIComputerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1544662E1803434F00025022 /* FTAPIComputerObject.m */; };
+		15FBB7211BE5873E00181C9C /* FTAPIRestartDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465EA17FE17FD00025022 /* FTAPIRestartDataObject.m */; };
+		15FBB7221BE5873E00181C9C /* FTAPIOverallLoadDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465DE17FE137400025022 /* FTAPIOverallLoadDataObject.m */; };
+		15FBB7231BE5875300181C9C /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		93DFE7BFBBB72FBDC76CD272 /* libPods-iJenkins.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8464A41DFE8BEB7C33BBCA25 /* libPods-iJenkins.a */; };
 		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 		EE55F0B53CBCE952DFF08CDA /* libPods-iJenkinsTV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD1BDC2CAA14A4DD05DBBA /* libPods-iJenkinsTV.a */; };
@@ -1975,11 +1984,13 @@
 				15FBB7031BE57C7500181C9C /* FTManageViewController.m in Sources */,
 				15FBB6F41BE57C5500181C9C /* FTJobCell.m in Sources */,
 				15FBB6FC1BE57C7500181C9C /* FTPluginDetailViewController.m in Sources */,
+				15FBB7211BE5873E00181C9C /* FTAPIRestartDataObject.m in Sources */,
 				15FBB6D61BE57B6E00181C9C /* FTConfig.m in Sources */,
 				15FBB6F51BE57C5500181C9C /* FTValueCell.m in Sources */,
 				15FBB7061BE57C7500181C9C /* FTQueueJobCell.m in Sources */,
 				15FBB71A1BE57C8E00181C9C /* FTViewController.m in Sources */,
 				15FBB7121BE57C8E00181C9C /* FTServerHomeViewController.m in Sources */,
+				15FBB71F1BE5873E00181C9C /* FTAPIUserDetailDataObject.m in Sources */,
 				15FBB6CC1BE57B1700181C9C /* NSData+Base64.m in Sources */,
 				15FBB6D81BE57B7800181C9C /* FTAccountsManager.m in Sources */,
 				15FBB6CE1BE57B1700181C9C /* UIColor+Tools.m in Sources */,
@@ -1989,6 +2000,7 @@
 				15FBB6D11BE57B1700181C9C /* NSString+URLTools.m in Sources */,
 				15FBB6FD1BE57C7500181C9C /* FTPluginCell.m in Sources */,
 				15FBB6ED1BE57BC200181C9C /* FTDownload.m in Sources */,
+				15FBB7231BE5875300181C9C /* XYPieChart.m in Sources */,
 				15FBB6C91BE57AF600181C9C /* UIFont+FontAwesome.m in Sources */,
 				15FBB6F21BE57C1F00181C9C /* FTChartOverlay.m in Sources */,
 				15FBB6D21BE57B1700181C9C /* UIColor+Jenkins.m in Sources */,
@@ -1996,10 +2008,12 @@
 				15FBB6D01BE57B1700181C9C /* UIView+Layout.m in Sources */,
 				15FBB6E21BE57BA500181C9C /* FTAPIJobBuildDataObject.m in Sources */,
 				15FBB70C1BE57C7500181C9C /* FTNoJobCell.m in Sources */,
+				15FBB71C1BE5871F00181C9C /* FTAPIBuildQueueDataObject.m in Sources */,
 				15FBB70B1BE57C7500181C9C /* FTBuildDetailViewController.m in Sources */,
 				15FBB7011BE57C7500181C9C /* FTNodeCell.m in Sources */,
 				15FBB7101BE57C7500181C9C /* FTJobDetailViewController.m in Sources */,
 				15FBB6E91BE57BA500181C9C /* FTAPIConnector.m in Sources */,
+				15FBB7221BE5873E00181C9C /* FTAPIOverallLoadDataObject.m in Sources */,
 				15FBB7041BE57C7500181C9C /* FTNoInternetConnectionViewController.m in Sources */,
 				15FBB6FE1BE57C7500181C9C /* FTManagePluginsViewController.m in Sources */,
 				15FBB6EE1BE57BC200181C9C /* FTKeychainObject.m in Sources */,
@@ -2008,6 +2022,7 @@
 				15FBB6FF1BE57C7500181C9C /* FTUserDetailViewController.m in Sources */,
 				15FBB6E31BE57BA500181C9C /* FTAPIJobDetailDataObject.m in Sources */,
 				15D6434A1BE24FA100A19124 /* ViewController.m in Sources */,
+				15FBB7201BE5873E00181C9C /* FTAPIComputerObject.m in Sources */,
 				15FBB6E81BE57BA500181C9C /* FTAPIDataObject.m in Sources */,
 				15FBB7171BE57C8E00181C9C /* FTAccountCell.m in Sources */,
 				15FBB6EC1BE57BC200181C9C /* FTAlert.m in Sources */,
@@ -2018,6 +2033,7 @@
 				15FBB6F11BE57BE600181C9C /* FTAPIBuildDetailDataObject.m in Sources */,
 				15FBB6FA1BE57C5500181C9C /* FTLabel.m in Sources */,
 				15FBB7141BE57C8E00181C9C /* FTSwitchAccountCell.m in Sources */,
+				15FBB71D1BE5871F00181C9C /* FTAPIBuildConsoleOutputDataObject.m in Sources */,
 				15FBB7131BE57C8E00181C9C /* FTTextAccountCell.m in Sources */,
 				15FBB70D1BE57C7500181C9C /* FTJobInfoBuildNumberCell.m in Sources */,
 				15FBB6E41BE57BA500181C9C /* FTAPIJobDataObject.m in Sources */,
@@ -2028,7 +2044,9 @@
 				15FBB6EF1BE57BC200181C9C /* FTLang.m in Sources */,
 				15FBB6C81BE57AF600181C9C /* NSString+FontAwesome.m in Sources */,
 				15FBB7161BE57C8E00181C9C /* FTAddAccountViewController.m in Sources */,
+				15FBB71B1BE586F900181C9C /* FTAPIUsersDataObject.m in Sources */,
 				15FBB6F61BE57C5500181C9C /* FTDeleteCell.m in Sources */,
+				15FBB71E1BE5873E00181C9C /* FTAPIPluginManagerDataObject.m in Sources */,
 				15D643441BE24FA100A19124 /* main.m in Sources */,
 				15FBB6F91BE57C5500181C9C /* FTLoadingCell.m in Sources */,
 				15FBB7021BE57C7500181C9C /* FTManageNodesViewController.m in Sources */,
