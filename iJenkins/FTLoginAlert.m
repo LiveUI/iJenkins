@@ -38,11 +38,21 @@ static FTLoginAlertCancelBlock currentCancelBlock;
     currentLoginBlock = loginBlock;
     currentCancelBlock = cancelBlock;
     
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Please login") message:nil delegate:self cancelButtonTitle:FTLangGet(@"Cancel") otherButtonTitles:FTLangGet(@"Login"), nil];
     [alert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
     [[alert textFieldAtIndex:0] setText:[FTAccountsManager sharedManager].selectedAccount.username];
     [[alert textFieldAtIndex:0] setPlaceholder:FTLangGet(@"Username")];
     [alert show];
+    
+#elif TARGET_OS_TV
+    
+
+    
+#endif
+    
+    
 }
 
 - (void)showLoginDialogWithLoginBlock:(FTLoginAlertLoginBlock)loginBlock andCancelBlock:(FTLoginAlertCancelBlock)cancelBlock accordingToResponseCode:(HTTPCode)responseCode {
@@ -52,6 +62,8 @@ static FTLoginAlertCancelBlock currentCancelBlock;
 }
 
 #pragma mark Alert view delegate methods
+
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 
 - (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (alertView.alertViewStyle == UIAlertViewStyleLoginAndPasswordInput && (buttonIndex == 1)) {
@@ -67,6 +79,12 @@ static FTLoginAlertCancelBlock currentCancelBlock;
         }
     }
 }
+
+#elif TARGET_OS_TV
+
+
+
+#endif
 
 
 @end

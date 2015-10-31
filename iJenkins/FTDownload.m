@@ -7,6 +7,8 @@
 //
 
 #import "FTDownload.h"
+#import <QuartzCore/QuartzCore.h>
+#import "FTAlert.h"
 
 
 @interface FTDownload ()
@@ -61,8 +63,7 @@
         NSError *err;
         [[NSFileManager defaultManager] removeItemAtPath:folderPath error:&err];
         if (err && err.code != NSFileNoSuchFileError) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Error") message:[err localizedDescription] delegate:nil cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
-            [alert show];
+            [FTAlert showAlertWithTitle:FTLangGet(@"Error") withMessage:[err localizedDescription] andCancelButton:FTLangGet(@"Ok")];
         }
     }
 }
@@ -88,8 +89,7 @@
         NSError *err;
         [[NSFileManager defaultManager] createDirectoryAtPath:folderPath withIntermediateDirectories:YES attributes:nil error:&err];
         if (err) {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Error") message:[err localizedDescription] delegate:nil cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
-            [alert show];
+            [FTAlert showAlertWithTitle:FTLangGet(@"Error") withMessage:[err localizedDescription] andCancelButton:FTLangGet(@"Ok")];
             return nil;
         }
     }

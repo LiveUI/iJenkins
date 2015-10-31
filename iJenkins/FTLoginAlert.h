@@ -16,7 +16,16 @@ typedef void (^FTLoginAlertLoginBlock) (NSString *username, NSString *password);
 typedef void (^FTLoginAlertCancelBlock) (void);
 
 
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+
 @interface FTLoginAlert : NSObject <UIAlertViewDelegate>
+
+#elif TARGET_OS_TV
+
+@interface FTLoginAlert : NSObject
+
+#endif
+
 
 + (FTLoginAlert *)sharedInstance;
 
