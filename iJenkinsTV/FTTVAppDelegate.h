@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FTTVAppDelegate.h
 //  iJenkinsTV
 //
 //  Created by Ondrej Rafaj on 29/10/2015.
@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface FTTVAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 
 @end

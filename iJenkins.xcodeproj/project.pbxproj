@@ -150,8 +150,7 @@
 		15D2467717CFBE3C00793614 /* FTAccountsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467617CFBE3C00793614 /* FTAccountsManager.m */; };
 		15D2467B17CFBE5200793614 /* FTAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D2467A17CFBE5200793614 /* FTAccount.m */; };
 		15D643441BE24FA100A19124 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D643431BE24FA100A19124 /* main.m */; };
-		15D643471BE24FA100A19124 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D643461BE24FA100A19124 /* AppDelegate.m */; };
-		15D6434A1BE24FA100A19124 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D643491BE24FA100A19124 /* ViewController.m */; };
+		15D643471BE24FA100A19124 /* FTTVAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D643461BE24FA100A19124 /* FTTVAppDelegate.m */; };
 		15D6434D1BE24FA100A19124 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D6434B1BE24FA100A19124 /* Main.storyboard */; };
 		15D6434F1BE24FA100A19124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15D6434E1BE24FA100A19124 /* Assets.xcassets */; };
 		15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */; };
@@ -243,6 +242,8 @@
 		15FBB7211BE5873E00181C9C /* FTAPIRestartDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465EA17FE17FD00025022 /* FTAPIRestartDataObject.m */; };
 		15FBB7221BE5873E00181C9C /* FTAPIOverallLoadDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 154465DE17FE137400025022 /* FTAPIOverallLoadDataObject.m */; };
 		15FBB7231BE5875300181C9C /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
+		15FBB7241BE58A2C00181C9C /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18751B14D178001B44E6 /* LUIImages.json */; };
+		15FBB7251BE58A2C00181C9C /* LUITranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18761B14D178001B44E6 /* LUITranslations.json */; };
 		93DFE7BFBBB72FBDC76CD272 /* libPods-iJenkins.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8464A41DFE8BEB7C33BBCA25 /* libPods-iJenkins.a */; };
 		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 		EE55F0B53CBCE952DFF08CDA /* libPods-iJenkinsTV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD1BDC2CAA14A4DD05DBBA /* libPods-iJenkinsTV.a */; };
@@ -464,10 +465,8 @@
 		15D2467A17CFBE5200793614 /* FTAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAccount.m; sourceTree = "<group>"; };
 		15D643401BE24FA100A19124 /* iJenkinsTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkinsTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D643431BE24FA100A19124 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		15D643451BE24FA100A19124 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		15D643461BE24FA100A19124 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		15D643481BE24FA100A19124 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		15D643491BE24FA100A19124 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		15D643451BE24FA100A19124 /* FTTVAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTTVAppDelegate.h; sourceTree = "<group>"; };
+		15D643461BE24FA100A19124 /* FTTVAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTTVAppDelegate.m; sourceTree = "<group>"; };
 		15D6434C1BE24FA100A19124 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		15D6434E1BE24FA100A19124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15D643501BE24FA100A19124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1561,10 +1560,8 @@
 		15D643411BE24FA100A19124 /* iJenkinsTV */ = {
 			isa = PBXGroup;
 			children = (
-				15D643451BE24FA100A19124 /* AppDelegate.h */,
-				15D643461BE24FA100A19124 /* AppDelegate.m */,
-				15D643481BE24FA100A19124 /* ViewController.h */,
-				15D643491BE24FA100A19124 /* ViewController.m */,
+				15D643451BE24FA100A19124 /* FTTVAppDelegate.h */,
+				15D643461BE24FA100A19124 /* FTTVAppDelegate.m */,
 				15D6434B1BE24FA100A19124 /* Main.storyboard */,
 				15D6434E1BE24FA100A19124 /* Assets.xcassets */,
 				15D643501BE24FA100A19124 /* Info.plist */,
@@ -1762,8 +1759,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15FBB7251BE58A2C00181C9C /* LUITranslations.json in Resources */,
 				15D6434F1BE24FA100A19124 /* Assets.xcassets in Resources */,
 				15D6434D1BE24FA100A19124 /* Main.storyboard in Resources */,
+				15FBB7241BE58A2C00181C9C /* LUIImages.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2021,7 +2020,6 @@
 				15FBB6CD1BE57B1700181C9C /* UIImage+Tools.m in Sources */,
 				15FBB6FF1BE57C7500181C9C /* FTUserDetailViewController.m in Sources */,
 				15FBB6E31BE57BA500181C9C /* FTAPIJobDetailDataObject.m in Sources */,
-				15D6434A1BE24FA100A19124 /* ViewController.m in Sources */,
 				15FBB7201BE5873E00181C9C /* FTAPIComputerObject.m in Sources */,
 				15FBB6E81BE57BA500181C9C /* FTAPIDataObject.m in Sources */,
 				15FBB7171BE57C8E00181C9C /* FTAccountCell.m in Sources */,
@@ -2039,7 +2037,7 @@
 				15FBB6E41BE57BA500181C9C /* FTAPIJobDataObject.m in Sources */,
 				15FBB70F1BE57C7500181C9C /* FTLastBuildInfoCell.m in Sources */,
 				15FBB70A1BE57C7500181C9C /* FTBuildInfoCell.m in Sources */,
-				15D643471BE24FA100A19124 /* AppDelegate.m in Sources */,
+				15D643471BE24FA100A19124 /* FTTVAppDelegate.m in Sources */,
 				15FBB6E51BE57BA500181C9C /* FTAPIServerDataObject.m in Sources */,
 				15FBB6EF1BE57BC200181C9C /* FTLang.m in Sources */,
 				15FBB6C81BE57AF600181C9C /* NSString+FontAwesome.m in Sources */,
