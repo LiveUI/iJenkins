@@ -24,7 +24,7 @@
 - (void)createTopButtons {
     // TODO: Create option to update the plugin
     if (_plugin.hasUpdate && NO) {
-        UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Update") style:UIBarButtonItemStyleBordered target:self action:@selector(updatePlugin)];
+        UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Update") style:UIBarButtonItemStylePlain target:self action:@selector(updatePlugin)];
         [self.navigationItem setRightBarButtonItem:b];
     }
 }

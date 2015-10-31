@@ -37,7 +37,7 @@
 }
 
 - (void)createTopButtons {
-    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Close") style:UIBarButtonItemStyleBordered target:self action:@selector(didCLickCloseNow:)];
+    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Close") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickCloseNow:)];
     [self.navigationItem setLeftBarButtonItem:close];
 
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(didCLickSaveNow:)];

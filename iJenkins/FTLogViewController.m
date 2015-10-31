@@ -92,8 +92,8 @@
     [_toolbar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
     [self.view addSubview:_toolbar];
     
-    UIBarButtonItem *up = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Up") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollUp:)];
-    UIBarButtonItem *down = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Down") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollDown:)];
+    UIBarButtonItem *up = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Up") style:UIBarButtonItemStylePlain target:self action:@selector(scrollUp:)];
+    UIBarButtonItem *down = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Down") style:UIBarButtonItemStylePlain target:self action:@selector(scrollDown:)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *share = nil;
     if ([MFMailComposeViewController canSendMail]) {

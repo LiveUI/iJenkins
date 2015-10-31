@@ -20,7 +20,7 @@
 #pragma mark Creating elements
 
 - (void)createCloseButton {
-    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Close") style:UIBarButtonItemStyleBordered target:self action:@selector(close:)];
+    UIBarButtonItem *close = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Close") style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
     [self.navigationItem setRightBarButtonItem:close animated:NO];
 }
 
