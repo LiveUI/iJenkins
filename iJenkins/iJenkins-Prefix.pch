@@ -26,6 +26,8 @@
     #import "FTLang.h"
     #import "FTAPIConnector.h"
     #import "FAImageView.h"
+    #import "FTThemeProtocol.h"
+    #import "FTTheme.h"
     #import "UIView+Layout.h"
     #import "UIColor+Tools.h"
     #import "UIColor+Jenkins.h"
@@ -46,3 +48,7 @@
 #define kUIActivityIndicatorViewStyle                       UIActivityIndicatorViewStyleWhite
 
 #endif
+
+
+
+

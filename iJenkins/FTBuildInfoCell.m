@@ -20,7 +20,7 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     
-    [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.detailTextLabel setFont:[UIFont systemFontOfSize:[[FTTheme sharedTheme] smallTextCellTitleSize]]];
 }
 
 

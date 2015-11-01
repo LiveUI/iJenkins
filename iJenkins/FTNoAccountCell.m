@@ -16,26 +16,30 @@
 #pragma mark Creating elements
 
 - (void)createInfoLabel {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 12, (self.width - 100), 45)];
+    CGFloat size = [[FTTheme sharedTheme] accountsNoAccountTextSize];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(50, 12, (self.width - 100), (size * 3))];
     [label setTextColor:[UIColor grayColor]];
     [label setText:FTLangGet(@"You don't have any Jenkins instances in the list as yet. Please click here to add a new Jenkins instance")];
     [label setTextAlignment:NSTextAlignmentCenter];
     [label setBackgroundColor:[UIColor clearColor]];
     [label setLineBreakMode:NSLineBreakByWordWrapping];
-    [label setFont:[UIFont systemFontOfSize:12]];
+    [label setFont:[UIFont systemFontOfSize:size]];
     [label setNumberOfLines:3];
     [label setAutoresizingWidth];
-    [self addSubview:label];
+    [self.contentView addSubview:label];
 }
 
 - (void)createPlusIcon {
-    FAImageView *plus = [[FAImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    CGFloat textSize = [[FTTheme sharedTheme] accountsNoAccountTextSize];
+    CGFloat size = [[FTTheme sharedTheme] accountsNoAccountIconSize];
+    
+    FAImageView *plus = [[FAImageView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
     [plus.defaultView setBackgroundColor:[UIColor clearColor]];
     [plus.defaultView setTextColor:[UIColor colorWithHexString:@"454545"]];
     [plus setImage:nil];
     [plus setDefaultIconIdentifier:@"icon-plus-sign"];
-    [plus setYOrigin:65];
-    [self addSubview:plus];
+    [plus setYOrigin:((textSize * 4) + 10)];
+    [self.contentView addSubview:plus];
     [plus centerHorizontally];
     [plus setAutoresizingTopCenter];
 }

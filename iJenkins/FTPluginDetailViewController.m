@@ -23,10 +23,10 @@
 
 - (void)createTopButtons {
     // TODO: Create option to update the plugin
-    if (_plugin.hasUpdate && NO) {
-        UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Update") style:UIBarButtonItemStylePlain target:self action:@selector(updatePlugin)];
-        [self.navigationItem setRightBarButtonItem:b];
-    }
+//    if (_plugin.hasUpdate && NO) {
+//        UIBarButtonItem *b = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Update") style:UIBarButtonItemStylePlain target:self action:@selector(updatePlugin)];
+//        [self.navigationItem setRightBarButtonItem:b];
+//    }
 }
 
 - (void)createAllElements {

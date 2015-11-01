@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class FTAccountsViewController;
+
 @interface FTTVAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) FTAccountsViewController *viewController;
 
 
 @end

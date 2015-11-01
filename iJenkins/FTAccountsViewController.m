@@ -59,6 +59,15 @@
 
 - (void)reloadData {
     [super.tableView reloadData];
+    
+    if (_data.count > 0) {
+        UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
+        [edit registerTitleWithTranslationKey:@"Edit"];
+        [self.navigationItem setRightBarButtonItem:edit animated:YES];
+    }
+    else {
+        [self.navigationItem setRightBarButtonItem:nil animated:YES];
+    }
 }
 
 - (NSArray *)datasourceForIndexPath:(NSIndexPath *)indexPath {
@@ -98,10 +107,6 @@
 - (void)createTopButtons {
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(didCLickAddItem:)];
     [self.navigationItem setLeftBarButtonItem:add];
-    
-    UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
-    [edit registerTitleWithTranslationKey:@"Edit"];
-    [self.navigationItem setRightBarButtonItem:edit];
 }
 
 - (void)createBottomToolbar {
@@ -144,6 +149,8 @@
     [super viewWillAppear:animated];
     
     [[FTAPIConnector sharedConnector] stopLoadingAll];
+    
+    [self reloadData];
 
 #if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     //  Custom UIMenuController items for the accounts
@@ -262,7 +269,11 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     return 4;
+#elif TARGET_OS_TV
+    return 3;
+#endif
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -291,10 +302,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && _data.count == 0) {
-        return 100;
+        return [[FTTheme sharedTheme] accountsHeaderCellHeight];
     }
     else {
-        return 54;
+        return [[FTTheme sharedTheme] defaultCellHeight];
     }
 }
 
@@ -333,7 +344,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         FTAccount *acc = [_data objectAtIndex:indexPath.row];
         [[FTAccountsManager sharedManager] removeAccount:acc];
-        [tableView reloadData];
+        [self reloadData];
     }
 }
 
@@ -457,6 +468,23 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 && _data.count == 0) {
+        return YES;
+    }
+    else if (indexPath.section == 1) {
+        if (_bonjourAccounts.count > 0) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else {
+        return YES;
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && _data.count == 0) {
         return [self cellForNoAccount];
@@ -515,9 +543,7 @@
     [c setAccount:acc];
     
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:c];
-    [self presentViewController:nc animated:YES completion:^{
-        
-    }];
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 //  Showing menu overlay
@@ -541,18 +567,14 @@
     [[FTAccountsManager sharedManager] addAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)addAccountViewController:(FTAddAccountViewController *)controller didModifyAccount:(FTAccount *)account {
     [[FTAccountsManager sharedManager] updateAccount:account];
     [self reloadData];
     [self scrollToAccount:account];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)addAccountViewControllerCloseWithoutSave:(FTAddAccountViewController *)controller {

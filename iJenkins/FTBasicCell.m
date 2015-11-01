@@ -54,8 +54,10 @@
 }
 
 - (void)setupView {
-    [self.textLabel setTextColor:[UIColor colorWithHexString:@"454545"]];
-    [self.detailTextLabel setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
+    [self.textLabel setTextColor:[[FTTheme sharedTheme] defaultCellTitleColor]];
+    [self.detailTextLabel setTextColor:[[FTTheme sharedTheme] defaultCellDetailColor]];
+    
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -69,9 +71,7 @@
 
 #pragma mark Settings
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
+
 
 
 @end

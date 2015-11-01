@@ -25,7 +25,7 @@
     [label setFont:[UIFont systemFontOfSize:12]];
     [label setNumberOfLines:3];
     [label setAutoresizingWidthAndHeight];
-    [self addSubview:label];
+    [self.contentView addSubview:label];
 }
 
 - (void)createPlusIcon {
@@ -35,7 +35,7 @@
     [plus setImage:nil];
     [plus setDefaultIconIdentifier:@"icon-reorder"];
     [plus setYOrigin:65];
-    [self addSubview:plus];
+    [self.contentView addSubview:plus];
     [plus centerHorizontally];
     [plus setAutoresizingTopCenter];
 }

@@ -249,21 +249,22 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.tableView) {
         if (!_isDataAvailable) {
-            return (indexPath.section == 0 ? ((indexPath.row == 0) ? 218 : 54) : 54);
+            CGFloat h = [[FTTheme sharedTheme] defaultCellHeight];
+            return (indexPath.section == 0 ? ((indexPath.row == 0) ? [[FTTheme sharedTheme] serverCellHeaderHeight] : h) : h);
         }
         if ([self isOverviewSection:indexPath.section]) {
-            if (indexPath.row == 0) return 218;
-            else return 54;
+            if (indexPath.row == 0) return [[FTTheme sharedTheme] serverCellHeaderHeight];
+            else return [[FTTheme sharedTheme] defaultCellHeight];
         }
         else if([self isJobsSection:indexPath.section]) {
-            return 54;
+            return [[FTTheme sharedTheme] defaultCellHeight];
         }
         else {
-            return 100;
+            return [[FTTheme sharedTheme] defaultCellHeight];
         }
     }
     else {
-        return 54;
+        return [[FTTheme sharedTheme] defaultCellHeight];
     }
 }
 
@@ -376,14 +377,14 @@
             [cell.detailTextLabel setAlpha:1];
             [cell.detailTextLabel setText:FTLangGet(@"Basic Jenkins configuration")];
         }
-        else {
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell.iconView setAlpha:0.4];
-            [cell.textLabel setAlpha:0.4];
-            [cell.detailTextLabel setAlpha:0.4];
-            [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
-        }
+//        else {
+//            [cell setAccessoryType:UITableViewCellAccessoryNone];
+//            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//            [cell.iconView setAlpha:0.4];
+//            [cell.textLabel setAlpha:0.4];
+//            [cell.detailTextLabel setAlpha:0.4];
+//            [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
+//        }
     }
     return cell;
 }

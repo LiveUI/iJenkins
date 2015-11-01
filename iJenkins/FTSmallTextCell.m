@@ -28,7 +28,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.detailTextLabel setFont:[UIFont systemFontOfSize:12]];
+    [self.detailTextLabel setFont:[UIFont systemFontOfSize:[[FTTheme sharedTheme] smallTextCellTitleSize]]];
     [self.detailTextLabel setNumberOfLines:0];
     [self.detailTextLabel setYOrigin:0];
     [self.detailTextLabel setHeight:54];

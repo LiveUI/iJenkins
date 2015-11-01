@@ -24,19 +24,21 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.textLabel setXOrigin:36];
-    [self.detailTextLabel setXOrigin:36];
+    CGFloat size = [[FTTheme sharedTheme] jobCellStatusColorDiameter];
+    [self.textLabel setXOrigin:(28 + size)];
+    [self.detailTextLabel setXOrigin:(28 + size)];
 }
 
 #pragma mark Creating elements
 
 - (void)createAccessIndicator {
-    _accessIndicator = [[UIView alloc] initWithFrame:CGRectMake(14, 23, 8, 8)];
+    CGFloat size = [[FTTheme sharedTheme] jobCellStatusColorDiameter];
+    _accessIndicator = [[UIView alloc] initWithFrame:CGRectMake(14, 23, size, size)];
     [_accessIndicator setBackgroundColor:[UIColor lightGrayColor]];
     [_accessIndicator.layer setCornerRadius:(_accessIndicator.width / 2)];
     _accessIndicator.layer.shouldRasterize = YES;
     _accessIndicator.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    [self addSubview:_accessIndicator];
+    [self.contentView addSubview:_accessIndicator];
 }
 
 - (void)createAllElements {

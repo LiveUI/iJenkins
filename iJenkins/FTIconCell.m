@@ -37,7 +37,7 @@
     [_iconView.defaultView setTextColor:[UIColor colorWithHexString:@"454545"]];
     [_iconView setImage:nil];
     [_iconView setDefaultIconIdentifier:@"icon-github"];
-    [self addSubview:_iconView];
+    [self.contentView addSubview:_iconView];
 }
 
 - (void)createAllElements {

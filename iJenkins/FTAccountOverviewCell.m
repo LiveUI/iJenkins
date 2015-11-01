@@ -42,7 +42,7 @@
     _holdingView = [[UIView alloc] initWithFrame:CGRectMake(65, 14, 190, 190)];
     [_holdingView setBackgroundColor:[UIColor colorWithHexString:@"E7E7E7" andAlpha:1]];
     [_holdingView.layer setCornerRadius:(_holdingView.height / 2)];
-    [self addSubview:_holdingView];
+    [self.contentView addSubview:_holdingView];
     
     _chart = [[XYPieChart alloc] initWithFrame:CGRectMake(-5, -5, 200, 200)];
     [_chart setUserInteractionEnabled:YES];

@@ -39,7 +39,7 @@
     _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(14, 14, 26, 26)];
     [_statusColorView.layer setCornerRadius:(_statusColorView.height / 2)];
     [_statusColorView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.1]];
-    [self addSubview:_statusColorView];
+    [self.contentView addSubview:_statusColorView];
 }
 
 - (void)createAllElements {

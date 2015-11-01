@@ -30,12 +30,12 @@
     _textField = [[UITextField alloc] initWithFrame:CGRectMake(130, 6, 176, (self.height - 12))];
     [_textField setDelegate:self];
     [_textField setTextAlignment:NSTextAlignmentRight];
-    [_textField setFont:[UIFont systemFontOfSize:14]];
+    [_textField setFont:[UIFont systemFontOfSize:[[FTTheme sharedTheme] smallTextCellTitleSize]]];
     [_textField setBackgroundColor:[UIColor clearColor]];
     [_textField setOrigin:CGPointMake((self.width - 14 - _textField.width), 6)];
     [_textField setAutoresizingWidthAndHeight];
     [_textField setReturnKeyType:UIReturnKeyDone];
-    [self addSubview:_textField];
+    [self.contentView addSubview:_textField];
 }
 
 - (void)createAllElements {

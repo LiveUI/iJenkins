@@ -33,7 +33,7 @@
     [_cellSwitch addTarget:self action:@selector(switchDidChangeValue:) forControlEvents:UIControlEventValueChanged];
     [_cellSwitch setOrigin:CGPointMake((self.width - 14 - [(UISwitch *)_cellSwitch width]), 6)];
     [_cellSwitch setAutoresizingCenterRight];
-    [self addSubview:_cellSwitch];
+    [self.contentView addSubview:_cellSwitch];
 #endif
 }
 

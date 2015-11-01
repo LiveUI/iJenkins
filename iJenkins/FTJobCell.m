@@ -25,30 +25,42 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     
-    [self.textLabel setWidth:200];
-    [self.textLabel setXOrigin:(self.textLabel.xOrigin + 60)];
-    [self.detailTextLabel setWidth:200];
-    [self.detailTextLabel setXOrigin:(self.detailTextLabel.xOrigin + 60)];
+    CGFloat d = [[FTTheme sharedTheme] jobCellStatusColorDiameter];
+    CGFloat top = [[FTTheme sharedTheme] jobCellStatusColorTopSpace];
+    CGFloat x = [[FTTheme sharedTheme] jobCellXSpace];
+    CGFloat end = [[FTTheme sharedTheme] jobCellEndSpace];
+    CGFloat remove = ((2 * d) + top + x);
+    
+    [self.textLabel setWidth:(self.width - (remove + end))];
+    [self.textLabel setXOrigin:(self.textLabel.xOrigin + remove)];
+    [self.detailTextLabel setWidth:(self.width - (remove + end))];
+    [self.detailTextLabel setXOrigin:(self.detailTextLabel.xOrigin + remove)];
 }
 
 #pragma mark Creating elements
 
 - (void)createIcons {
-    _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 14, 14)];
-    [_statusColorView.layer setCornerRadius:(_statusColorView.height / 2)];
-    [self addSubview:_statusColorView];
+    CGFloat d = [[FTTheme sharedTheme] jobCellStatusColorDiameter];
+    CGFloat top = [[FTTheme sharedTheme] jobCellStatusColorTopSpace];
     
-    _buildScoreView = [[UIImageView alloc] initWithFrame:CGRectMake((_statusColorView.right + 10), 10, 14, 14)];
-    [self addSubview:_buildScoreView];
+    _statusColorView = [[UIView alloc] initWithFrame:CGRectMake(top, top, d, d)];
+    [_statusColorView.layer setCornerRadius:(_statusColorView.height / 2)];
+    [self.contentView addSubview:_statusColorView];
+    
+    _buildScoreView = [[UIImageView alloc] initWithFrame:CGRectMake((_statusColorView.right + top), top, d, d)];
+    [self.contentView addSubview:_buildScoreView];
 }
 
 - (void)createBuildIdView {
-    _buildIdView = [[UILabel alloc] initWithFrame:CGRectMake(10, (54 - 10 - 10), (_buildScoreView.right - 10), 10)];
+    CGFloat d = [[FTTheme sharedTheme] jobCellStatusColorDiameter];
+    CGFloat top = [[FTTheme sharedTheme] jobCellStatusColorTopSpace];
+    
+    _buildIdView = [[UILabel alloc] initWithFrame:CGRectMake(top, (top + d + top), (_buildScoreView.right - top), [[FTTheme sharedTheme] jobCellBuildIdFontSize])];
     [_buildIdView setTextColor:[UIColor grayColor]];
-    [_buildIdView setFont:[UIFont systemFontOfSize:10]];
+    [_buildIdView setFont:[UIFont systemFontOfSize:[[FTTheme sharedTheme] jobCellBuildIdFontSize]]];
     [_buildIdView setTextAlignment:NSTextAlignmentLeft];
     [_buildIdView setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:_buildIdView];
+    [self.contentView addSubview:_buildIdView];
 }
 
 - (void)createAllElements {

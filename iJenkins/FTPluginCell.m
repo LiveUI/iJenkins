@@ -44,7 +44,7 @@
     [_statusLabel setTextColor:[UIColor colorWithHexString:@"007EF3"]];
     [_statusLabel setBackgroundColor:[UIColor clearColor]];
     [_statusLabel setFont:[UIFont systemFontOfSize:12]];
-    [self addSubview:_statusLabel];
+    [self.contentView addSubview:_statusLabel];
 }
 
 - (void)createIcons {
@@ -52,7 +52,7 @@
     [_enabledIcon setImage:nil];
     [_enabledIcon.defaultView setBackgroundColor:[UIColor clearColor]];
     [_enabledIcon.defaultView setTextColor:[UIColor colorWithHexString:@"6C6C6C"]];
-    [self addSubview:_enabledIcon];
+    [self.contentView addSubview:_enabledIcon];
 }
 
 - (void)createAllElements {

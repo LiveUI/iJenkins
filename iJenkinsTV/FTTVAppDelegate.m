@@ -7,7 +7,10 @@
 //
 
 #import "FTTVAppDelegate.h"
+//#import <Crashlytics/Crashlytics.h>
 #import <LUIFramework/LUIFramework.h>
+#import "FTAccountsViewController.h"
+//#import "Flurry.h"
 
 
 @interface FTTVAppDelegate ()
@@ -19,12 +22,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Crash reporting
+    //[Crashlytics startWithAPIKey:@"645cad88976887e985fc9e2d08345ca9cc583918"];
+    
+    // Flurry analytics
+    //[Flurry startSession:@"PDMQN2F8T4DSN92PQMZK"];
+    
     // Remote localization from http://www.liveui.io
     //[[LUIURLs sharedInstance] setCustomApiUrlString:@"http://localhost/api.liveui.io/"];
     //[[LUIURLs sharedInstance] setCustomImagesUrlString:@"http://localhost/images.liveui.io/"];
     //[[LUIMain sharedInstance] setDebugMode:YES];
     [[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
     
+    _viewController = [[FTAccountsViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
+    [_window setRootViewController:nc];
+    [_window makeKeyAndVisible];
     return YES;
 }
 

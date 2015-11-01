@@ -46,30 +46,18 @@ static FTAccount *_sharedAccount = nil;
     return shared;
 }
 
-//+ (AFHTTPClient *)sharedClient {
-//    if (!_sharedClient) {
-//        _sharedClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:_sharedAccount.baseUrl]];
-//    }
-//    return _sharedClient;
-//}
-
 - (void)stopLoadingAll {
     
 }
 
 - (void)resetForAccount:(FTAccount *)account {
     _sharedAccount = account;
-//    _sharedClient = nil;
     [self stopLoadingAll];
-//    [self sharedClient];
 }
 
 - (id)init {
     self = [super init];
     if (self) {
-        //_apiOperationQueue = [[NSOperationQueue alloc] init];
-        //[_apiOperationQueue setMaxConcurrentOperationCount:3];
-        
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
         
@@ -84,8 +72,6 @@ static FTAccount *_sharedAccount = nil;
 #pragma mark Connections
 
 - (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
-    
-    
     NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
     NSURLSessionDataTask *downloadTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
@@ -108,69 +94,6 @@ static FTAccount *_sharedAccount = nil;
         }
     }];
     [downloadTask resume];
-    
-    /*
-    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"application/javascript", nil]];
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
-    id operation = nil;
-    if ([object outputType] == FTAPIDataObjectOutputTypeJSON) {
-        FTJSONRequestOperation *o = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-            [object processHeaders:response.allHeaderFields];
-            [object processData:JSON];
-            [object setResponse:response];
-            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-            if (complete) {
-                complete(object, nil);
-            }
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-            [object processHeaders:response.allHeaderFields];
-            [object setResponse:response];
-            if (complete) {
-                complete(object, error);
-            }
-        }];
-        operation = o;
-    }
-    else {
-        FTHTTPRequestOperation *o = [[FTHTTPRequestOperation alloc] initWithRequest:request];
-        [o setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [object processHeaders:operation.response.allHeaderFields];
-            NSString *text = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-            [object processText:text];
-            [object setResponse:operation.response];
-            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-            if (complete) {
-                complete(object, nil);
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-            [object processHeaders:operation.response.allHeaderFields];
-            [object setResponse:operation.response];
-            if (complete) {
-                complete(object, error);
-            }
-        }];
-        operation = o;
-    }
-    [operation setDataObject:object];
-    if (upload) {
-        [operation setUploadProgressBlock:upload];
-    }
-    if (download) {
-        [operation setDownloadProgressBlock:download];
-    }
-    
-    [operation setAllowsInvalidSSLCertificate:YES];
-    
-    [operation setQueuePriority:[object queuePriority]];
-    
-    [[[FTAPIConnector sharedConnector] apiOperationQueue] addOperation:operation];
-     
-    //*/
-    
 }
 
 - (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
@@ -236,6 +159,7 @@ static FTAccount *_sharedAccount = nil;
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
+#warning Authentication needs to be fixed!!!!
 //    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
 //    if (authenticate) {
 //        [[FTAPIConnector sessionManager] clearAuthorizationHeader];

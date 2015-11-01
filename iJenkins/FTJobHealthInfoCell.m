@@ -28,7 +28,7 @@
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     
     [self.textLabel setHidden:YES];
-    [self.detailTextLabel setWidth:250];
+    [self.detailTextLabel setWidth:(self.width - 80)];
     [self.detailTextLabel setXOrigin:54];
     [self.detailTextLabel setNumberOfLines:0];
 }
@@ -37,7 +37,7 @@
 
 - (void)createIcons {
     _buildScoreView = [[UIImageView alloc] initWithFrame:CGRectMake(14, 14, 26, 26)];
-    [self addSubview:_buildScoreView];
+    [self.contentView addSubview:_buildScoreView];
 }
 
 - (void)createAllElements {
