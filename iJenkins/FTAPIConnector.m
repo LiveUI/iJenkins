@@ -27,7 +27,8 @@ static FTAccount *_sharedAccount = nil;
 
 @interface FTAPIConnector ()
 
-@property (nonatomic, strong) AFURLSessionManager *manager;
+@property (nonatomic, strong) AFHTTPSessionManager *jsonManager;
+@property (nonatomic, strong) AFHTTPSessionManager *textManager;
 
 @end
 
@@ -59,12 +60,16 @@ static FTAccount *_sharedAccount = nil;
     self = [super init];
     if (self) {
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        self.manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        self.jsonManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+        self.textManager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
+        AFHTTPResponseSerializer *serializer = [[AFHTTPResponseSerializer alloc] init];
+        [self.textManager setResponseSerializer:serializer];
         
         AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
         [policy setValidatesDomainName:NO];
         [policy setAllowInvalidCertificates:YES];
-        [self.manager setSecurityPolicy:policy];
+        [self.jsonManager setSecurityPolicy:policy];
+        [self.textManager setSecurityPolicy:policy];
     }
     return self;
 }
@@ -73,7 +78,8 @@ static FTAccount *_sharedAccount = nil;
 
 - (void)connectWithObject:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
     NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
-    NSURLSessionDataTask *downloadTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    AFHTTPSessionManager *manager = (object.outputType == FTAPIDataObjectOutputTypeJSON) ? self.jsonManager : self.textManager;
+    NSURLSessionDataTask *downloadTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
         [object processHeaders:httpResponse.allHeaderFields];
         [object setResponse:httpResponse];
@@ -159,12 +165,13 @@ static FTAccount *_sharedAccount = nil;
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
-#warning Authentication needs to be fixed!!!!
-//    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
-//    if (authenticate) {
-//        [[FTAPIConnector sessionManager] clearAuthorizationHeader];
-//        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
-//    }
+    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
+    if (authenticate) {
+        [self.jsonManager.requestSerializer clearAuthorizationHeader];
+        [self.jsonManager.requestSerializer setAuthorizationHeaderFieldWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
+        [self.textManager.requestSerializer clearAuthorizationHeader];
+        [self.textManager.requestSerializer setAuthorizationHeaderFieldWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
+    }
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     NSTimeInterval timeout = [FTAccountsManager sharedManager].selectedAccount.timeout;

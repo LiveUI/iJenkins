@@ -7,7 +7,6 @@
 //
 
 #import "FTTextAccountCell.h"
-#import <LUIFramework/LUIFramework.h>
 
 
 @interface FTTextAccountCell ()
@@ -16,6 +15,24 @@
 
 
 @implementation FTTextAccountCell
+
+
+#pragma mark Layout
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat longerLabelWidth = (self.textLabel.width > self.detailTextLabel.width) ? self.textLabel.width : self.detailTextLabel.width;
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+    CGFloat x = (longerLabelWidth + 20);
+#elif TARGET_OS_TV
+    CGFloat x = (longerLabelWidth + 80);
+#endif
+    CGRect r = _textField.frame;
+    r.origin.x = x;
+    r.size.width = (self.width - x - 20);
+    [_textField setFrame:r];
+}
 
 #pragma mark Overrides
 
@@ -27,7 +44,7 @@
 #pragma mark Create elements
 
 - (void)createTextField {
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(130, 6, 176, (self.height - 12))];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 6, 176, (self.height - 12))];
     [_textField setDelegate:self];
     [_textField setTextAlignment:NSTextAlignmentRight];
     [_textField setFont:[UIFont systemFontOfSize:[[FTTheme sharedTheme] smallTextCellTitleSize]]];
@@ -48,7 +65,7 @@
 
 - (void)setCellData:(NSDictionary *)cellData {
     [super setCellData:cellData];
-    [_textField setPlaceholder:LUITranslate([cellData objectForKey:@"placeholder"])];
+    [_textField setPlaceholder:FTLangGet([cellData objectForKey:@"placeholder"])];
     
     [self resetTextFieldToDefault];
     

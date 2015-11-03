@@ -29,7 +29,6 @@
 - (CGFloat)accountsNoAccountTextSize;
 - (CGFloat)accountsNoAccountIconSize;
 
-
 // Servers
 - (CGFloat)serverCellHeaderHeight;
 

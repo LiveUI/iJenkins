@@ -1,4 +1,5 @@
-//
+
+    //
 //  FTAccountsViewController.m
 //  iJenkins
 //
@@ -7,7 +8,9 @@
 //
 
 #import "FTAccountsViewController.h"
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 #import <LUIFramework/LUIFramework.h>
+#endif
 #import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
@@ -62,7 +65,9 @@
     
     if (_data.count > 0) {
         UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
         [edit registerTitleWithTranslationKey:@"Edit"];
+#endif
         [self.navigationItem setRightBarButtonItem:edit animated:YES];
     }
     else {
@@ -101,7 +106,10 @@
     _demoAccounts = [[FTAccountsManager sharedManager] demoAccounts];
     
     [super createTableView];
+    
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     [self.tableView registerForReloadDataOnTranslationChange];
+#endif
 }
 
 - (void)createTopButtons {
@@ -138,7 +146,9 @@
     [self createBottomToolbar];
     
     [self setTitle:FTLangGet(@"Servers")];
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     [self registerTitleWithTranslationKey:@"Servers"];
+#endif
     
     [self startCheckingForJenkins];
 }
@@ -172,8 +182,10 @@
 #pragma mark Actions
 
 - (void)changeLanguage:(UIBarButtonItem *)sender {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     LUILanguageSelectorViewController *c = [[LUILanguageSelectorViewController alloc] init];
     [self presentViewController:c animated:YES completion:nil];
+#endif
 }
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {

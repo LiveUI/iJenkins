@@ -7,13 +7,18 @@
 //
 
 #import "FTLang.h"
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
 #import <LUIFramework/LUIFramework.h>
-
+#endif
 
 @implementation FTLang
 
 + (NSString *)get:(NSString *)key {
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
     return LUITranslate(key);
+#else
+    return key;
+#endif
 }
 
 

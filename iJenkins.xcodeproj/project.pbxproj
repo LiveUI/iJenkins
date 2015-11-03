@@ -50,9 +50,7 @@
 		1510735917D5F3B800FD083B /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735817D5F3B800FD083B /* XYPieChart.m */; };
 		1510735E17D5F44600FD083B /* FTAccountOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510735D17D5F44600FD083B /* FTAccountOverviewCell.m */; };
 		151749C11B2D79EE001A930A /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151749C01B2D79EE001A930A /* LUIFramework.framework */; };
-		151D9B541BE42F220067EEAA /* LUIFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151749C01B2D79EE001A930A /* LUIFramework.framework */; };
 		151D9B551BE42F220067EEAA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
-		151D9B571BE42F270067EEAA /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18621B14C92F001B44E6 /* Fabric.framework */; };
 		151D9B5A1BE42F270067EEAA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461317CFA1B600793614 /* CoreText.framework */; };
 		151D9B5C1BE42F270067EEAA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461517CFA1B600793614 /* QuartzCore.framework */; };
 		151D9B5D1BE42F270067EEAA /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15D2461617CFA1B600793614 /* Security.framework */; };
@@ -547,8 +545,6 @@
 				151D9B5A1BE42F270067EEAA /* CoreText.framework in Frameworks */,
 				151D9B5D1BE42F270067EEAA /* Security.framework in Frameworks */,
 				151D9B601BE42F270067EEAA /* UIKit.framework in Frameworks */,
-				151D9B541BE42F220067EEAA /* LUIFramework.framework in Frameworks */,
-				151D9B571BE42F270067EEAA /* Fabric.framework in Frameworks */,
 				151D9B5F1BE42F270067EEAA /* SystemConfiguration.framework in Frameworks */,
 				151D9B631BE42F3A0067EEAA /* libc++.dylib in Frameworks */,
 				151D9B5C1BE42F270067EEAA /* QuartzCore.framework in Frameworks */,
@@ -1893,7 +1889,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run fdad57f5fd93d14410334446675bff03d3a3f996 718bb4804b7397ffca9550527a28d9dd77a37ec037e726d45a8078b310c8e7f4";
+			shellScript = "echo \"$SDK_NAME\"\n\n\n./Fabric.framework/run fdad57f5fd93d14410334446675bff03d3a3f996 718bb4804b7397ffca9550527a28d9dd77a37ec037e726d45a8078b310c8e7f4";
 		};
 		3E627D1C1362FB92A5FB2672 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2409,6 +2405,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2455,6 +2452,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2502,6 +2500,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Thirdparty/LUIFramework/iOS/Latest",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;

@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 @protocol FTAPIDataAbstractObject <NSObject>
 
 @property (nonatomic, strong) NSHTTPURLResponse *response;
+@property (nonatomic) FTAPIDataObjectOutputType outputType;
 
 - (FTHttpMethod)httpMethod;
 - (NSString *)methodName;
@@ -30,7 +31,6 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 - (NSOperationQueuePriority)queuePriority;
 - (NSString *)suffix;
 - (NSInteger)depth;
-- (FTAPIDataObjectOutputType)outputType;
 
 
 @end
@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 @interface FTAPIDataObject : NSObject
 
 @property (nonatomic, strong) NSHTTPURLResponse *response;
+@property (nonatomic) FTAPIDataObjectOutputType outputType;
 
 @property (nonatomic, strong) NSError *connectionError;
 @property (nonatomic, strong, readonly) NSArray *apiErrors;
@@ -58,7 +59,6 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 
 - (NSString *)suffix;
 - (NSInteger)depth;
-- (FTAPIDataObjectOutputType)outputType;
 
 
 @end

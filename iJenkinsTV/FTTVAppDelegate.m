@@ -8,7 +8,7 @@
 
 #import "FTTVAppDelegate.h"
 //#import <Crashlytics/Crashlytics.h>
-#import <LUIFramework/LUIFramework.h>
+//#import <LUIFrameworkTV/LUIFramework.h>
 #import "FTAccountsViewController.h"
 //#import "Flurry.h"
 
@@ -34,7 +34,7 @@
     //[[LUIURLs sharedInstance] setCustomApiUrlString:@"http://localhost/api.liveui.io/"];
     //[[LUIURLs sharedInstance] setCustomImagesUrlString:@"http://localhost/images.liveui.io/"];
     //[[LUIMain sharedInstance] setDebugMode:YES];
-    [[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
+    //[[LUIMain sharedInstance] setApiKey:@"919EA7C3-D530-48F2-B07C-7DC82680874A"];
     
     _viewController = [[FTAccountsViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:_viewController];
