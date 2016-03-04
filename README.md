@@ -13,6 +13,9 @@ At the moment we are using Crashlytics.com to track crashes, if you'd like to ge
 
 Cheers,
 
-Ondrej & the iJenkins team in Ridiculous Innovations!
+Ondrej & the mobile team in manGoweb.cz!
+
+
+Distributed under MIT license attached.
 
 
