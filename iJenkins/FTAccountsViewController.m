@@ -18,6 +18,13 @@
 #import "NSData+Networking.h"
 
 
+typedef enum {
+    FTSectionTypeAccount,
+    FTSectionTypeNetwork,
+    FTSectionTypeDemoAccount,
+    FTSectionTypeAbout
+} FTSectionType;
+
 @interface FTAccountsViewController () <FTAccountCellDelegate>
 
 @property (nonatomic, strong) NSArray *data;
@@ -61,15 +68,15 @@
 
 - (NSArray *)datasourceForIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.section) {
-        case 0:
+        case FTSectionTypeAccount:
             return _data;
             break;
             
-        case 1:
+        case FTSectionTypeNetwork:
             return _bonjourAccounts;
             break;
             
-        case 2:
+        case FTSectionTypeDemoAccount:
             return _demoAccounts;
             break;
             
@@ -260,19 +267,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     switch (section) {
-        case 0:
+        case FTSectionTypeAccount:
             return ((_data.count > 0) ? _data.count : 1);
             break;
             
-        case 1:
+        case FTSectionTypeNetwork:
             return ((_bonjourAccounts.count > 0) ? _bonjourAccounts.count : 1);
             break;
             
-        case 2:
+        case FTSectionTypeDemoAccount:
             return _demoAccounts.count;
             break;
             
-        case 3:
+        case FTSectionTypeAbout:
             return 2;
             break;
             
@@ -283,7 +290,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && _data.count == 0) {
+    if (indexPath.section == FTSectionTypeAccount && _data.count == 0) {
         return 100;
     }
     else {
@@ -293,19 +300,19 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
-        case 0:
+        case FTSectionTypeAccount:
             return FTLangGet(@"Your accounts");
             break;
             
-        case 1:
+        case FTSectionTypeNetwork:
             return FTLangGet(@"Local network");
             break;
             
-        case 2:
+        case FTSectionTypeDemoAccount:
             return FTLangGet(@"Demo account");
             break;
             
-        case 3:
+        case FTSectionTypeAbout:
             return FTLangGet(@"About");
             break;
             
@@ -316,22 +323,29 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ((indexPath.section == 0 && _data.count == 0) || indexPath.section) {
+    
+    if ((indexPath.section == FTSectionTypeAccount && _data.count == 0) || indexPath.section) {
         return NO;
     }
-    else return (indexPath.section == 0);
+    else return (indexPath.section == FTSectionTypeAccount || indexPath.section == FTSectionTypeDemoAccount);
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        FTAccount *acc = [_data objectAtIndex:indexPath.row];
-        [[FTAccountsManager sharedManager] removeAccount:acc];
-        [tableView reloadData];
+        
+        if (indexPath.section == FTSectionTypeAccount) {
+            FTAccount *acc = [_data objectAtIndex:indexPath.row];
+            [[FTAccountsManager sharedManager] removeAccount:acc];
+            [tableView reloadData];
+        }
+        else if (indexPath.section == FTSectionTypeDemoAccount) {
+        }
+        
     }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    return (indexPath.section == 0 && [_data count] > 1);
+    return (indexPath.section == FTSectionTypeAccount && _data.count > 1);
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
@@ -356,7 +370,7 @@
         cell.delegate = self;
         
     }
-    if (indexPath.section == 0) {
+    if (indexPath.section == FTSectionTypeAccount) {
         [cell setAccessoryType:UITableViewCellAccessoryDetailDisclosureButton];
     }
     else {
@@ -372,7 +386,7 @@
     NSNumber *key = @([acc hash]);
     NSNumber *statusNumber = _reachabilityStatusCache[key];
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == FTSectionTypeNetwork) {
         statusNumber = [NSNumber numberWithInt:FTAccountCellReachabilityStatusReachable];
     }
     else {
@@ -470,11 +484,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0 && _data.count == 0) {
+    if (indexPath.section == FTSectionTypeAccount && _data.count == 0) {
         [self didCLickAddItem:nil];
     }
     else {
-        if (indexPath.section != 3) {
+        if (indexPath.section != FTSectionTypeAbout) {
             if ([self datasourceForIndexPath:indexPath].count > 0) {
                 FTAccount *acc = [self accountForIndexPath:indexPath];
                 [[FTAccountsManager sharedManager] setSelectedAccount:acc];
