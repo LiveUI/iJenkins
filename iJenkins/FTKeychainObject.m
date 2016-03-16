@@ -101,10 +101,10 @@ static NSString *serviceName = dFTKeychainObjectServiceName;
 - (NSString *)accountsJsonFileForType:(FTAccountType)accountType {
     switch (accountType) {
         case FTAccountTypeKeychain:
-            [self userAccountsJsonFile];
+            return [self userAccountsJsonFile];
             break;
         case FTAccountTypeDemo:
-            [self demoAccountsJsonFile];
+            return [self demoAccountsJsonFile];
             break;
         default:
             // Do nothing for Bonjour / Network Accounts
@@ -157,10 +157,10 @@ static NSString *serviceName = dFTKeychainObjectServiceName;
 - (void)setDemoAccountsJsonFile:(NSString *)accountsJsonFile {
     BOOL ok;
     if (self.demoAccountsJsonFile) {
-        ok = [self updateKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectAccountsJsonFile];
+        ok = [self updateKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectDemoAccountsJsonFile];
     }
     else {
-        ok = [self createKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectAccountsJsonFile];
+        ok = [self createKeychainValue:accountsJsonFile forIdentifier:dFTKeychainObjectDemoAccountsJsonFile];
     }
     dFTKeychainObjectDebugFull NSLog(@"Did save accounts to keychain: %@", ok ? @"Yes" : @"No");
 }

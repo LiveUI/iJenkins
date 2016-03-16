@@ -11,6 +11,7 @@
 
 
 static NSMutableArray *accounts = nil;
+static NSMutableArray *demoAccounts = nil;
 static FTAccountsManager *staticManager = nil;
 
 
@@ -46,7 +47,7 @@ static FTAccountsManager *staticManager = nil;
 
 #pragma mark Data handling
 
-- (void)saveToKeychain {
+- (void)saveToKeychainForAccountType:(FTAccountType)accountType {
     NSError *err;
     NSArray *ac = [self dataAccounts];
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ac options:0 error:&err];
@@ -54,59 +55,72 @@ static FTAccountsManager *staticManager = nil;
         NSLog(@"Error writing: %@", err.localizedDescription);
     }
     NSString *string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];;
-    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string forType:FTAccountTypeKeychain];
+    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string forType:accountType];
 }
 
-- (void)addAccount:(FTAccount *)account {
+- (void)addAccount:(FTAccount *)account withType:(FTAccountType)accountType {
     [accounts addObject:account];
-    [self saveToKeychain];
+    [self saveToKeychainForAccountType:accountType];
 }
 
 - (void)updateAccount:(FTAccount *)account {
-    [self saveToKeychain];
+    [self saveToKeychainForAccountType:FTAccountTypeKeychain];
 }
 
-- (void)removeAccount:(FTAccount *)account {
+- (void)removeAccount:(FTAccount *)account withType:(FTAccountType)accountType{
     [accounts removeObject:account];
-    [self saveToKeychain];
+    [self saveToKeychainForAccountType:accountType];
 }
 
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex {
     [accounts removeObject:account];
     [accounts insertObject:account atIndex:newIndex];
-    [self saveToKeychain];
+    [self saveToKeychainForAccountType:FTAccountTypeKeychain];
 }
 
 - (NSArray *)accounts {
     if (accounts) return accounts;
     else {
         NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFileForType:FTAccountTypeKeychain];
-        
-        NSArray *dataAccounts = nil;
-        if (jsonString) {
-            NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-            NSError *err;
-            dataAccounts = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
-            if (err) {
-                NSLog(@"Error reading: %@", err.localizedDescription);
-            }
-        }
-        NSMutableArray *arr = [NSMutableArray array];
-        for (NSDictionary *d in dataAccounts) {
-            FTAccount *a = [self accountFromDictionary:d];
-            [a setAccountType:FTAccountTypeKeychain];
-            [arr addObject:a];
-        }
-        accounts = arr;
-        return arr;
+        return [self accountsForJSON:jsonString withAccountType:FTAccountTypeKeychain];
     }
 }
 
 - (NSArray *)demoAccounts {
-    
+    if (demoAccounts) return demoAccounts;
+    else {
+        NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFileForType:FTAccountTypeDemo];
+        
+        if (jsonString == nil) {
+            [self createDemoAccounts];
+            jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFileForType:FTAccountTypeDemo];
+        }
+        
+        return [self accountsForJSON:jsonString withAccountType:FTAccountTypeDemo];
+    }
 }
 
-- (NSArray *)createDemoAccounts {
+- (NSArray *)accountsForJSON:(NSString *)jsonString withAccountType:(FTAccountType)accountType {
+    NSArray *dataAccounts = nil;
+    if (jsonString) {
+        NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        dataAccounts = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"Error reading: %@", err.localizedDescription);
+        }
+    }
+    NSMutableArray *arr = [NSMutableArray array];
+    for (NSDictionary *d in dataAccounts) {
+        FTAccount *a = [self accountFromDictionary:d];
+        [a setAccountType:accountType];
+        [arr addObject:a];
+    }
+    accounts = arr;
+    return arr;
+}
+
+- (void)createDemoAccounts {
     FTAccount *jenkins = [[FTAccount alloc] init];
     [jenkins setAccountType:FTAccountTypeDemo];
     [jenkins setName:FTLangGet(@"Jenkins builds")];
@@ -117,6 +131,8 @@ static FTAccountsManager *staticManager = nil;
     [jenkins setLoadMaxItems:8];
     [jenkins setTimeout:15];
     [jenkins setHttps:YES];
+    [self addAccount:jenkins withType:FTAccountTypeDemo];
+    
     
     FTAccount *apache = [[FTAccount alloc] init];
     [apache setAccountType:FTAccountTypeDemo];
@@ -127,8 +143,7 @@ static FTAccountsManager *staticManager = nil;
     [apache setPasswordOrToken:nil];
     [apache setLoadMaxItems:8];
     [apache setTimeout:20];
-    
-    return @[jenkins, apache];
+    [self addAccount:apache withType:FTAccountTypeDemo];
 }
 
 #pragma mark Initialization
