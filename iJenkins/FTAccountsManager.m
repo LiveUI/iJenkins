@@ -46,8 +46,8 @@ static FTAccountsManager *staticManager = nil;
 }
 
 - (NSArray *)demoDataAccounts {
-    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:accounts.count];
-    for (FTAccount *acc in accounts) {
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:demoAccounts.count];
+    for (FTAccount *acc in demoAccounts) {
         [arr addObject:acc.originalDictionary];
     }
     return arr;

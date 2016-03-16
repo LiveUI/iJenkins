@@ -181,6 +181,10 @@ typedef enum {
 }
 
 - (void)didCLickEditItem:(UIBarButtonItem *)sender {
+    if (_data.count == 0 && _demoAccounts.count == 0) {
+        return;
+    }
+    
     [super.tableView setEditing:!super.tableView.editing animated:YES];
     
     NSString *title;
@@ -298,6 +302,13 @@ typedef enum {
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == FTSectionTypeDemoAccount && _demoAccounts.count == 0) {
+        return 0;
+    }
+    return UITableViewAutomaticDimension;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case FTSectionTypeAccount:
@@ -305,11 +316,11 @@ typedef enum {
             break;
             
         case FTSectionTypeNetwork:
-            return FTLangGet(@"Local network");
+            return FTLangGet(@"Local networks");
             break;
             
         case FTSectionTypeDemoAccount:
-            return FTLangGet(@"Demo account");
+            return _demoAccounts.count > 0 ? FTLangGet(@"Demo accounts") : @"";
             break;
             
         case FTSectionTypeAbout:
@@ -323,8 +334,11 @@ typedef enum {
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == FTSectionTypeAccount && _data.count == 0) {
+        return NO;
+    }
     
-  return (indexPath.section == FTSectionTypeAccount || indexPath.section == FTSectionTypeDemoAccount);
+    return (indexPath.section == FTSectionTypeAccount || indexPath.section == FTSectionTypeDemoAccount);
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
