@@ -324,23 +324,21 @@ typedef enum {
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ((indexPath.section == FTSectionTypeAccount && _data.count == 0) || indexPath.section) {
-        return NO;
-    }
-    else return (indexPath.section == FTSectionTypeAccount || indexPath.section == FTSectionTypeDemoAccount);
+  return (indexPath.section == FTSectionTypeAccount || indexPath.section == FTSectionTypeDemoAccount);
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        if (indexPath.section == FTSectionTypeAccount) {
-            FTAccount *acc = [_data objectAtIndex:indexPath.row];
-            [[FTAccountsManager sharedManager] removeAccount:acc];
-            [tableView reloadData];
+        FTAccount *acc = nil;
+        if (indexPath.section == FTAccountTypeKeychain) {
+            acc = [_data objectAtIndex:indexPath.row];
         }
-        else if (indexPath.section == FTSectionTypeDemoAccount) {
+        else if (indexPath.section == FTAccountTypeDemo) {
+            acc = [_demoAccounts objectAtIndex:indexPath.row];
         }
-        
+        [[FTAccountsManager sharedManager] removeAccount:acc];
+        [tableView reloadData];
     }
 }
 

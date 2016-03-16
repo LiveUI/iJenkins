@@ -58,24 +58,16 @@ static FTAccountsManager *staticManager = nil;
     [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string forType:accountType];
 }
 
-- (void)addAccount:(FTAccount *)account withType:(FTAccountType)accountType {
-    [accounts addObject:account];
-    [self saveToKeychainForAccountType:accountType];
 }
 
 - (void)updateAccount:(FTAccount *)account {
-    [self saveToKeychainForAccountType:FTAccountTypeKeychain];
 }
 
-- (void)removeAccount:(FTAccount *)account withType:(FTAccountType)accountType{
-    [accounts removeObject:account];
-    [self saveToKeychainForAccountType:accountType];
 }
 
 - (void)moveAccount:(FTAccount *)account toIndex:(NSInteger)newIndex {
     [accounts removeObject:account];
     [accounts insertObject:account atIndex:newIndex];
-    [self saveToKeychainForAccountType:FTAccountTypeKeychain];
 }
 
 - (NSArray *)accounts {
@@ -116,7 +108,6 @@ static FTAccountsManager *staticManager = nil;
         [a setAccountType:accountType];
         [arr addObject:a];
     }
-    accounts = arr;
     return arr;
 }
 
@@ -131,7 +122,6 @@ static FTAccountsManager *staticManager = nil;
     [jenkins setLoadMaxItems:8];
     [jenkins setTimeout:15];
     [jenkins setHttps:YES];
-    [self addAccount:jenkins withType:FTAccountTypeDemo];
     
     
     FTAccount *apache = [[FTAccount alloc] init];
@@ -143,7 +133,6 @@ static FTAccountsManager *staticManager = nil;
     [apache setPasswordOrToken:nil];
     [apache setLoadMaxItems:8];
     [apache setTimeout:20];
-    [self addAccount:apache withType:FTAccountTypeDemo];
 }
 
 #pragma mark Initialization
