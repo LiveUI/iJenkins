@@ -57,7 +57,7 @@
     _actions = data[@"actions"];
     if (_actions) {
         for (NSDictionary *action in _actions) {
-            if ((NSNull *)action != [NSNull null] && [action objectForKey:@"causes"]) {
+            if ((NSNull *)action != [NSNull null] && [action isKindOfClass:[NSDictionary class]]) {
                 NSMutableArray *arr = [NSMutableArray arrayWithCapacity:[[action objectForKey:@"causes"] count]];
                 for (NSDictionary *cause in [action objectForKey:@"causes"]) {
                     FTAPIBuildDetailCauseDataObject *c = [[FTAPIBuildDetailCauseDataObject alloc] init];
@@ -72,7 +72,7 @@
     
     _dateExecuted = [NSDate dateWithTimeIntervalSince1970:_timestamp];
     
-    if (data[@"changeSet"]) {
+    if (((NSArray *)data[@"changeSet"]).count > 0) {
         _changeSet = [[FTAPIBuildDetailChangeSetDataObject alloc] init];
         [_changeSet processData:data[@"changeSet"]];
     }
@@ -116,6 +116,10 @@
 #pragma mark Data
 
 - (void)processData:(NSDictionary *)data {
+    if (![data isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+    
     _kind = data[@"kind"];
     _items = data[@"items"];
     _revisions = data[@"revisions"];

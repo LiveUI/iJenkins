@@ -11,9 +11,11 @@
 @interface FTKeychainObject : NSObject
 
 @property (nonatomic, strong) NSString *uuid;
-@property (nonatomic, strong) NSString *accountsJsonFile;
 
 + (FTKeychainObject *)sharedKeychainObject;
+
+- (NSString *)accountsJsonFileForType:(FTAccountType)accountType;
+- (void)setAccountsJsonFile:(NSString *)jsonFile forType:(FTAccountType)accountType;
 
 - (void)logout;
 
