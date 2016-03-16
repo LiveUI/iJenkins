@@ -54,7 +54,7 @@ static FTAccountsManager *staticManager = nil;
         NSLog(@"Error writing: %@", err.localizedDescription);
     }
     NSString *string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];;
-    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string];
+    [[FTKeychainObject sharedKeychainObject] setAccountsJsonFile:string forType:FTAccountTypeKeychain];
 }
 
 - (void)addAccount:(FTAccount *)account {
@@ -80,7 +80,7 @@ static FTAccountsManager *staticManager = nil;
 - (NSArray *)accounts {
     if (accounts) return accounts;
     else {
-        NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFile];
+        NSString *jsonString = [[FTKeychainObject sharedKeychainObject] accountsJsonFileForType:FTAccountTypeKeychain];
         
         NSArray *dataAccounts = nil;
         if (jsonString) {
@@ -103,6 +103,10 @@ static FTAccountsManager *staticManager = nil;
 }
 
 - (NSArray *)demoAccounts {
+    
+}
+
+- (NSArray *)createDemoAccounts {
     FTAccount *jenkins = [[FTAccount alloc] init];
     [jenkins setAccountType:FTAccountTypeDemo];
     [jenkins setName:FTLangGet(@"Jenkins builds")];
