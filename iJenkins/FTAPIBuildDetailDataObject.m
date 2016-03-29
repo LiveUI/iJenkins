@@ -71,8 +71,7 @@
     }
     
     _dateExecuted = [NSDate dateWithTimeIntervalSince1970:_timestamp];
-    
-    if (data[@"changeSet"]) {
+    if (data[@"changeSet"] && [data[@"changeSet"] count] != 0) {
         _changeSet = [[FTAPIBuildDetailChangeSetDataObject alloc] init];
         [_changeSet processData:data[@"changeSet"]];
     }
