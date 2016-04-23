@@ -25,7 +25,6 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSArray *views;
 @property (nonatomic, strong) NSArray *searchResults;
-@property (nonatomic) BOOL isDataAvailable;
 
 @end
 
@@ -216,17 +215,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.tableView) {
-        if (_isDataAvailable)
-        {
-            if ([_job.childJobs count] == 0) {
-                return [self cellForNoJob];
-            }
-            else {
-                return [self cellForJobAtIndexPath:indexPath];
-            }
+        if ([_job.childJobs count] == 0) {
+            return [self cellForNoJob];
         }
         else {
-            return [FTLoadingCell cellForTable:tableView];
+            return [self cellForJobAtIndexPath:indexPath];
         }
     }
     else {
@@ -295,10 +288,6 @@
 }
 
 - (FTAPIJobDataObject *)jobAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView {
-    if (!_isDataAvailable) {
-        return nil;
-    }
-    
     NSArray *dataSource = (tableView == self.tableView ? _job.childJobs : _searchResults);
     NSUInteger dataCount = [dataSource count];
     
