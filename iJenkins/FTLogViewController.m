@@ -78,12 +78,13 @@
     
     UIBarButtonItem *up = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Up") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollUp:)];
     UIBarButtonItem *down = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Down") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollDown:)];
+    UIBarButtonItem *bottom = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Bottom") style:UIBarButtonItemStyleBordered target:self action:@selector(scrollBottom:)];
     UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *share = nil;
     if ([MFMailComposeViewController canSendMail]) {
         share = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share:)];
     }
-    [_toolbar setItems:[NSArray arrayWithObjects:up, down, space, share, nil]];
+    [_toolbar setItems:[NSArray arrayWithObjects:up, down, bottom, space, share, nil]];
 }
 
 - (void)createSpinner {
@@ -114,6 +115,13 @@
 - (void)scrollDown:(UIBarButtonItem *)sender {
     CGFloat y = fabs(_textView.contentSize.height - 0);
     [_textView setContentOffset:CGPointMake(0, y) animated:YES];
+}
+
+- (void)scrollBottom:(UIBarButtonItem *)sender {
+    if(_textView.text.length > 0 ) {
+        NSRange bottom = NSMakeRange(_textView.text.length -1, 1);
+        [_textView scrollRangeToVisible:bottom];
+    }
 }
 
 - (void)share:(UIBarButtonItem *)sender {
