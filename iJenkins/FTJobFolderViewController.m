@@ -335,6 +335,10 @@
     
     FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath inTableView:tableView];
     
+    if (job.childJobs.count > 0) {
+        FTJobFolderViewController *c = [[FTJobFolderViewController alloc] initWithJob:job serverObject:_serverObject];
+        [self.navigationController pushViewController:c animated:YES];
+    }
     if (job.jobDetail.lastBuild.number > 0) {
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
         [c setTitle:job.name];
