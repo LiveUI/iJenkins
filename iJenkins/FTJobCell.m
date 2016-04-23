@@ -25,7 +25,7 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     
-    [self.textLabel setWidth:200];
+//    [self.textLabel setWidth:200];
     [self.textLabel setXOrigin:(self.textLabel.xOrigin + 60)];
     [self.detailTextLabel setWidth:200];
     [self.detailTextLabel setXOrigin:(self.detailTextLabel.xOrigin + 60)];
@@ -128,6 +128,7 @@
     else {
         if (_job.childJobs.count > 0) {
             [self setDescriptionText:[NSString stringWithFormat:@"Folder: %lu Jobs", (unsigned long)_job.childJobs.count]];
+            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
         else if (_job.jobDetail.lastBuild.number == 0) {
             [self setAccessoryType:UITableViewCellAccessoryNone];
