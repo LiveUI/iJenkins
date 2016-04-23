@@ -126,7 +126,10 @@
         [_buildIdView setText:@"#?"];
     }
     else {
-        if (_job.jobDetail.lastBuild.number == 0) {
+        if (_job.childJobs.count > 0) {
+            [self setDescriptionText:[NSString stringWithFormat:@"Folder: %lu Jobs", (unsigned long)_job.childJobs.count]];
+        }
+        else if (_job.jobDetail.lastBuild.number == 0) {
             [self setAccessoryType:UITableViewCellAccessoryNone];
             [self setDescriptionText:FTLangGet(@"No build has been executed yet")];
         }

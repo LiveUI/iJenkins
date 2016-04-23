@@ -26,6 +26,8 @@
 @property (nonatomic) BOOL animating;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *urlString;
+@property (nonatomic, strong) NSArray *childJobs;
+@property (nonatomic, strong) FTAPIJobDataObject *parentJob;
 
 @property (nonatomic, weak) FTAPIComputerExecutorObject *executor;
 

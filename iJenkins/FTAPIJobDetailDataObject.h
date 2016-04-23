@@ -31,7 +31,7 @@
 @property (nonatomic, strong) FTAPIJobDetailHealthDataObject *healthReport;
 @property (nonatomic, strong) NSArray *healthReports;
 
-- (id)initWithJobName:(NSString *)jobName;
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod;
 
 
 @end
@@ -47,7 +47,7 @@
 
 - (void)processData:(NSDictionary *)data;
 
-- (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *data))success forJobName:(NSString *)jobName;;
+- (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *data))success forJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod;
 
 
 @end

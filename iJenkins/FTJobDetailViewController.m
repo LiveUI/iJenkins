@@ -42,7 +42,7 @@
 #pragma mark Data
 
 - (void)buildThis {
-    FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name];
+    FTAPIJobBuildDataObject *buildObject = [[FTAPIJobBuildDataObject alloc] initWithJobName:_job.name jobMethod:_job.methodName];
     [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         [self createBuildNowButton];
         if (error) {
@@ -83,8 +83,8 @@
                     [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                         [_job.jobDetail.lastBuild loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
                             [self.tableView reloadData];
-                        } forJobName:_job.name];
-                    } forJobName:_job.name];
+                        } forJobName:_job.name jobMethod:_job.methodName];
+                    } forJobName:_job.name jobMethod:_job.methodName];
                 }
                 else {
                     NSDate *lastBuild = [NSDate dateWithTimeIntervalSince1970:(_job.jobDetail.lastBuild.buildDetail.timestamp / 1)];
@@ -120,7 +120,7 @@
     if (!build.buildDetail) {
         [build loadBuildDetailWithSuccessBlock:^(FTAPIBuildDetailDataObject *data) {
             [self.tableView reloadData];
-        } forJobName:_job.name];
+        } forJobName:_job.name jobMethod:_job.methodName];
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
     else {

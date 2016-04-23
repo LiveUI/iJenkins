@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIToolbar *toolbar;
 
 @property (nonatomic, strong) NSString *jobName;
+@property (nonatomic, strong) NSString *jobMethod;
 @property (nonatomic) NSInteger buildNumber;
 
 @property (nonatomic, strong) AFHTTPRequestOperation *download;
@@ -33,7 +34,7 @@
 
 - (void)loadData {
     [self createSpinner];
-    FTAPIBuildConsoleOutputDataObject *loadObject = [[FTAPIBuildConsoleOutputDataObject alloc] initWithJobName:_jobName andBuildNumber:_buildNumber];
+    FTAPIBuildConsoleOutputDataObject *loadObject = [[FTAPIBuildConsoleOutputDataObject alloc] initWithJobName:_jobName jobMethod:_jobMethod andBuildNumber:_buildNumber];
     [FTAPIConnector connectWithObject:loadObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         if (error) {
             if (_errorCount <= 3) {
@@ -136,12 +137,13 @@
 
 #pragma mark Initialization
 
-- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber {
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod andBuildNumber:(NSInteger)buildNumber {
     self = [super init];
     if (self) {
         [self setTitle:FTLangGet(@"Build log")];
         
         _jobName = jobName;
+        _jobMethod = jobMethod;
         _buildNumber = buildNumber;
         _errorCount = 0;
         

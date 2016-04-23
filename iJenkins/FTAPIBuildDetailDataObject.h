@@ -23,6 +23,7 @@ typedef enum {
 
 @property (nonatomic, readonly) NSInteger buildNumber;
 @property (nonatomic, strong, readonly) NSString *jobName;
+@property (nonatomic, strong, readonly) NSString *jobMethod;
 
 @property (nonatomic) FTAPIBuildDetailDataObjectResult result;
 @property (nonatomic) BOOL building;
@@ -46,7 +47,7 @@ typedef enum {
 
 @property (nonatomic, strong) UIColor *realColor;
 
-- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod andBuildNumber:(NSInteger)buildNumber;
 
 
 @end

@@ -12,6 +12,7 @@
 @interface FTAPIJobDetailDataObject ()
 
 @property (nonatomic, strong) NSString *jobName;
+@property (nonatomic, strong) NSString *jobMethod;
 
 @end
 
@@ -26,7 +27,7 @@
 }
 
 - (NSString *)methodName {
-    return [NSString stringWithFormat:@"job/%@/", _jobName];
+    return  _jobMethod;
 }
 
 - (NSDictionary *)payloadData {
@@ -92,10 +93,11 @@
 
 #pragma mark Initialization
 
-- (id)initWithJobName:(NSString *)jobName {
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod {
     self = [super init];
     if (self) {
         _jobName = jobName;
+        _jobMethod = jobMethod;
     }
     return self;
 }
@@ -114,10 +116,10 @@
     _urlString = data[@"url"];
 }
 
-- (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *))success forJobName:(NSString *)jobName {
+- (void)loadBuildDetailWithSuccessBlock:(void (^)(FTAPIBuildDetailDataObject *))success forJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod {
     if (_isLoading) return;
     _isLoading = YES;
-    FTAPIBuildDetailDataObject *buildObject = [[FTAPIBuildDetailDataObject alloc] initWithJobName:jobName andBuildNumber:_number];
+    FTAPIBuildDetailDataObject *buildObject = [[FTAPIBuildDetailDataObject alloc] initWithJobName:jobName jobMethod:jobMethod andBuildNumber:_number];
     [FTAPIConnector connectWithObject:buildObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
         _buildDetail = buildObject;
         if (success) {

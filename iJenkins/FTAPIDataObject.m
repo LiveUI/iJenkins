@@ -86,7 +86,7 @@
  *  @return Number of levels to load
  */
 - (NSInteger)depth {
-    return 0;
+    return 1;
 }
 
 /**

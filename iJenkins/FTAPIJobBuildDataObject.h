@@ -18,9 +18,10 @@ typedef enum {
 @interface FTAPIJobBuildDataObject : FTAPIDataObject <FTAPIDataAbstractObject>
 
 @property (nonatomic, strong, readonly) NSString *jobName;
+@property (nonatomic, strong, readonly) NSString *jobMethod;
 @property (nonatomic, readonly) FTAPIJobBuildDataObjectResult result;
 
-- (id)initWithJobName:(NSString *)jobName;
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod;
 
 
 @end

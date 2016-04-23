@@ -19,7 +19,7 @@
 }
 
 - (NSString *)methodName {
-    return [NSString stringWithFormat:@"job/%@/%ld/consoleText", _jobName, (long)_buildNumber];
+    return [NSString stringWithFormat:@"%@%ld/consoleText", _jobMethod, (long)_buildNumber];
 }
 
 - (NSDictionary *)payloadData {
@@ -53,10 +53,11 @@
 
 #pragma mark Initialization
 
-- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber {
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod andBuildNumber:(NSInteger)buildNumber {
     self = [super init];
     if (self) {
         _jobName = jobName;
+        _jobMethod = jobMethod;
         _buildNumber = buildNumber;
     }
     return self;

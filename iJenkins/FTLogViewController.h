@@ -12,7 +12,7 @@
 
 @interface FTLogViewController : FTViewController <MFMailComposeViewControllerDelegate>
 
-- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod andBuildNumber:(NSInteger)buildNumber;
 
 
 @end

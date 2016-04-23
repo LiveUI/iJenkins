@@ -142,6 +142,7 @@
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		55558EFC1CCBED2C00023C30 /* FTJobFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */; };
 		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
@@ -378,6 +379,8 @@
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
+		55558EFA1CCBED2C00023C30 /* FTJobFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobFolderViewController.h; sourceTree = "<group>"; };
+		55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobFolderViewController.m; sourceTree = "<group>"; };
 		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1178,11 +1181,12 @@
 		15D245F817CF9C5400793614 /* Server home */ = {
 			isa = PBXGroup;
 			children = (
+				15D245FA17CF9D9900793614 /* FTServerHomeViewController.h */,
+				15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */,
+				55558EF91CCBED0100023C30 /* Folder view */,
 				15E1838717E4CA6100CE0DEA /* View selector */,
 				15D2460417CF9DC300793614 /* Job detail */,
 				1510729717D00F4A00FD083B /* Cells */,
-				15D245FA17CF9D9900793614 /* FTServerHomeViewController.h */,
-				15D245FB17CF9D9900793614 /* FTServerHomeViewController.m */,
 			);
 			name = "Server home";
 			sourceTree = "<group>";
@@ -1439,6 +1443,15 @@
 			name = Chart;
 			sourceTree = "<group>";
 		};
+		55558EF91CCBED0100023C30 /* Folder view */ = {
+			isa = PBXGroup;
+			children = (
+				55558EFA1CCBED2C00023C30 /* FTJobFolderViewController.h */,
+				55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */,
+			);
+			name = "Folder view";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1575,6 +1588,7 @@
 				15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */,
 				154465E217FE161700025022 /* FTAPIBuildQueueDataObject.m in Sources */,
 				15D2460317CF9DBB00793614 /* FTAccountsViewController.m in Sources */,
+				55558EFC1CCBED2C00023C30 /* FTJobFolderViewController.m in Sources */,
 				1510735517D5E8EE00FD083B /* FTKeychainObject.m in Sources */,
 				15D2460717CF9DD400793614 /* FTJobDetailViewController.m in Sources */,
 				153921E217E22D0600896FC1 /* FTAPIBuildDetailDataObject.m in Sources */,

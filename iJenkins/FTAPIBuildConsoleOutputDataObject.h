@@ -14,9 +14,10 @@
 @property (nonatomic, readonly) BOOL isMoreData;
 
 @property (nonatomic, readonly) NSString *jobName;
+@property (nonatomic, readonly) NSString *jobMethod;
 @property (nonatomic, readonly) NSInteger buildNumber;
 
-- (id)initWithJobName:(NSString *)jobName andBuildNumber:(NSInteger)buildNumber;
+- (id)initWithJobName:(NSString *)jobName jobMethod:(NSString *)jobMethod andBuildNumber:(NSInteger)buildNumber;
 
 
 @end
