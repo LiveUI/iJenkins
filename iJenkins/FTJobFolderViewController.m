@@ -43,53 +43,6 @@
 
 #pragma mark Data
 
-- (void)loadData {
-    if (!_job) {
-        _isDataAvailable = NO;
-        _searchBar.text = @"";
-        
-        [FTAPIConnector connectWithObject:_job andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
-            if (error) {
-                if (_job.response.statusCode == HTTPCode401Unauthorised || _job.response.statusCode == HTTPCode403Forbidden) {
-                    [dFTLoginAlert showLoginDialogWithLoginBlock:^(NSString *username, NSString *password) {
-                        _job = nil;
-                        [self loadData];
-                    } andCancelBlock:^{
-                        [self.navigationController popViewControllerAnimated:YES];
-                    }];
-                }
-                else if (error.code != -999) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:FTLangGet(@"Connection error") message:error.localizedDescription delegate:self cancelButtonTitle:FTLangGet(@"Ok") otherButtonTitles:nil];
-                    [alert show];
-                }
-                else {
-                    
-                }
-            }
-            else {
-                if ([FTAccountsManager sharedManager].selectedAccount.accountType == FTAccountTypeKeychain) {
-                    [[FTAccountsManager sharedManager] updateAccount:[FTAccountsManager sharedManager].selectedAccount];
-                }
-                if (_job.childJobs.count > 0) {
-                    _isDataAvailable = YES;
-                }
-                else {
-                    _isDataAvailable = NO;
-                }
-                
-                [super.tableView reloadData];
-                
-                [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(createTopButtons) userInfo:nil repeats:NO];
-                [_refreshControl endRefreshing];
-            }
-        }];
-    }
-    else {
-        _isDataAvailable = YES;
-        [self.tableView reloadData];
-    }
-}
-
 #pragma mark Creating elements
 
 - (void)createTableView {
@@ -103,12 +56,6 @@
     [_searchController setDelegate:self];
     
     [self.tableView setTableHeaderView:_searchBar];
-    
-    _refreshControl = [[UIRefreshControl alloc] init];
-    [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:_refreshControl];
-    [_refreshControl centerHorizontally];
-    [_refreshControl setYOrigin:-60];
 }
 
 - (void)createAllElements {
@@ -119,23 +66,10 @@
 
 #pragma mark View lifecycle
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self loadData];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [super.tableView setContentOffset:CGPointMake(0, _searchBar.height)];
-}
-
-#pragma mark Actions
-
-- (void)refreshActionCalled:(UIRefreshControl *)sender {
-//    _serverObject = nil;
-    [self loadData];
 }
 
 #pragma mark Search bar delegate
