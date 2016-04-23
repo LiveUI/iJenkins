@@ -66,7 +66,9 @@
         [job processData:d];
         [jobs addObject:job];
         
-        if (job.color && ![_jobsStats objectForKey:job.color]) {
+        if (job.childJobs.count > 0) {
+            [self processChildJobs:job.childJobs withStats:_jobsStats];
+        } else if (job.color && ![_jobsStats objectForKey:job.color]) {
             FTAPIServerStatsDataObject *s = [[FTAPIServerStatsDataObject alloc] init];
             [s setCount:1];
             [s setColor:job.color];
@@ -82,6 +84,24 @@
     _jobs = jobs;
 }
 
+- (void)processChildJobs:(NSArray *)childJobs withStats:(NSMutableDictionary *)jobsStats {
+    for (FTAPIJobDataObject *job in childJobs) {
+        if (job.childJobs.count > 0) {
+            [self processChildJobs:job.childJobs withStats:jobsStats];
+        } else if (job.color && ![jobsStats objectForKey:job.color]) {
+            FTAPIServerStatsDataObject *s = [[FTAPIServerStatsDataObject alloc] init];
+            [s setCount:1];
+            [s setColor:job.color];
+            [s setFullColor:job.fullColor];
+            [s setRealColor:job.realColor];
+            [jobsStats setValue:s forKey:job.color];
+        }
+        else {
+            FTAPIServerStatsDataObject *s = (FTAPIServerStatsDataObject *)[jobsStats objectForKey:job.color];
+            s.count++;
+        }
+    }
+}
 
 @end
 

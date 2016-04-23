@@ -28,7 +28,7 @@
 @property (nonatomic, strong, readonly) NSArray *assignedLabels;
 @property (nonatomic, strong, readonly) NSArray *jobs;
 @property (nonatomic, strong, readonly) NSArray *views;
-@property (nonatomic, strong, readonly) NSDictionary *jobsStats;
+@property (nonatomic, strong, readonly) NSMutableDictionary *jobsStats;
 
 
 @end
