@@ -24,8 +24,9 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    [self.textLabel setXOrigin:36];
-    [self.detailTextLabel setXOrigin:36];
+    UIEdgeInsets edgeInset = self.separatorInset;
+    edgeInset.left = 36;
+    self.separatorInset = edgeInset;
 }
 
 #pragma mark Creating elements

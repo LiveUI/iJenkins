@@ -24,11 +24,9 @@
     
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
-    
-//    [self.textLabel setWidth:200];
-    [self.textLabel setXOrigin:(self.textLabel.xOrigin + 60)];
-    [self.detailTextLabel setWidth:200];
-    [self.detailTextLabel setXOrigin:(self.detailTextLabel.xOrigin + 60)];
+    UIEdgeInsets edgeInset = self.separatorInset;
+    edgeInset.left = 60;
+    self.separatorInset = edgeInset;
 }
 
 #pragma mark Creating elements

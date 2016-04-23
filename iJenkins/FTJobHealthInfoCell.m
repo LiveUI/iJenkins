@@ -27,9 +27,12 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     
+    
+    UIEdgeInsets edgeInset = self.separatorInset;
+    edgeInset.left = 54;
+    self.separatorInset = edgeInset;
+    
     [self.textLabel setHidden:YES];
-    [self.detailTextLabel setWidth:250];
-    [self.detailTextLabel setXOrigin:54];
     [self.detailTextLabel setNumberOfLines:0];
 }
 
