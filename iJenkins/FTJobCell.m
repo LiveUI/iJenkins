@@ -87,9 +87,15 @@
 }
 
 - (void)resetScoreIcon {
-    NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
-    UIImage *img = [UIImage imageNamed:iconName];
-    [_buildScoreView setImage:img];
+    if (_job.childJobs.count > 0) {
+        [_buildScoreView setImage:nil];
+        [_buildIdView setText:nil];
+    } else {
+        NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+        UIImage *img = [UIImage imageNamed:iconName];
+        [_buildScoreView setImage:img];
+        [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
+    }
 }
 
 - (void)setJob:(FTAPIJobDataObject *)job {
@@ -138,7 +144,6 @@
             [self setDescriptionText:description];
         }
         [self resetScoreIcon];
-        [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
         
         [UIView animateWithDuration:0.15 animations:^{
             [_buildScoreView setAlpha:1];
