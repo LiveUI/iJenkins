@@ -16,6 +16,6 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UISearchDisplayController *searchController;
 
-- (id)initWithJob:(FTAPIJobDataObject *)job serverObject:(FTAPIServerDataObject *)serverObject;
+- (id)initWithJob:(FTAPIJobDataObject *)job;
 
 @end
