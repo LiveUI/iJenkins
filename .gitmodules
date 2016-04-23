@@ -16,6 +16,3 @@
 [submodule "Thirdparty/BonjourBuddy-iOS"]
 	path = Thirdparty/BonjourBuddy-iOS
 	url = git@github.com:rafiki270/BonjourBuddy-iOS.git
-[submodule "Thirdparty/LUIFramework"]
-	path = Thirdparty/LUIFramework
-	url = git@github.com:Ridiculous-Innovations/LUI.git

@@ -7,7 +7,6 @@
 //
 
 #import "FTAccountsViewController.h"
-#import <LUIFramework/LUIFramework.h>
 #import "FTServerHomeViewController.h"
 #import "FTNoAccountCell.h"
 #import "FTAccountCell.h"
@@ -84,7 +83,6 @@
     _data = [[FTAccountsManager sharedManager] accounts];
     
     [super createTableView];
-    [self.tableView registerForReloadDataOnTranslationChange];
 }
 
 - (void)createTopButtons {
@@ -92,7 +90,6 @@
     [self.navigationItem setLeftBarButtonItem:add];
     
     UIBarButtonItem *edit = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(didCLickEditItem:)];
-    [edit registerTitleWithTranslationKey:@"Edit"];
     [self.navigationItem setRightBarButtonItem:edit];
 }
 
@@ -103,7 +100,6 @@
     [self createTopButtons];
     
     [self setTitle:FTLangGet(@"Servers")];
-    [self registerTitleWithTranslationKey:@"Servers"];
     
     [self startCheckingForJenkins];
 }
@@ -130,11 +126,6 @@
 }
 
 #pragma mark Actions
-
-- (void)changeLanguage:(UIBarButtonItem *)sender {
-    LUILanguageSelectorViewController *c = [[LUILanguageSelectorViewController alloc] init];
-    [self presentViewController:c animated:YES completion:nil];
-}
 
 - (void)didCLickAddItem:(UIBarButtonItem *)sender {
     FTAddAccountViewController *c = [[FTAddAccountViewController alloc] init];
@@ -399,6 +390,7 @@
     else if (indexPath.section == 0) {
         return [self accountCellForIndexPath:indexPath];
     }
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,6 +10,7 @@
 
 
 #define DegreesToRadians(angle)                 ((angle) / 180.0 * M_PI)
+#define FTLangGet(string) string
 
 
 #ifdef __OBJC__
@@ -22,7 +23,6 @@
     #import "FTAccountsManager.h"
     #import "FTAppDelegate.h"
     #import "FTDownload.h"
-    #import "FTLang.h"
     #import "FTAPIConnector.h"
     #import "FAImageView.h"
     #import "UIView+Layout.h"
