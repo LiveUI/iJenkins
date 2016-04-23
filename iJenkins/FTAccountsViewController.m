@@ -21,7 +21,6 @@
 @interface FTAccountsViewController () <FTAccountCellDelegate>
 
 @property (nonatomic, strong) NSArray *data;
-@property (nonatomic, strong) NSArray *demoAccounts;
 
 @property (nonatomic, strong) NSMutableDictionary *reachabilityCache;
 @property (nonatomic, strong) NSMutableDictionary *reachabilityStatusCache;
@@ -69,10 +68,6 @@
             return _bonjourAccounts;
             break;
             
-        case 2:
-            return _demoAccounts;
-            break;
-            
         default:
             return nil;
             break;
@@ -87,7 +82,6 @@
 
 - (void)createTableView {
     _data = [[FTAccountsManager sharedManager] accounts];
-    _demoAccounts = [[FTAccountsManager sharedManager] demoAccounts];
     
     [super createTableView];
     [self.tableView registerForReloadDataOnTranslationChange];
@@ -102,31 +96,11 @@
     [self.navigationItem setRightBarButtonItem:edit];
 }
 
-- (void)createBottomToolbar {
-    CGRect r = self.view.frame;
-    r.origin.y = (r.size.height - 44);
-    r.size.height = 44;
-    _bottomToolbar = [[UIToolbar alloc] initWithFrame:r];
-    [_bottomToolbar setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth];
-    
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-    UIBarButtonItem *langs = [[UIBarButtonItem alloc] initWithTitle:FTLangGet(@"Language") style:UIBarButtonItemStylePlain target:self action:@selector(changeLanguage:)];
-    [langs registerTitleWithTranslationKey:@"Language"];
-    [_bottomToolbar setItems:@[space, langs]];
-    
-    [self.view addSubview:_bottomToolbar];
-    
-    r = self.tableView.frame;
-    r.size.height -= 44;
-    [self.tableView setFrame:r];
-}
-
 - (void)createAllElements {
     [super createAllElements];
     
     [self createTableView];
     [self createTopButtons];
-    [self createBottomToolbar];
     
     [self setTitle:FTLangGet(@"Servers")];
     [self registerTitleWithTranslationKey:@"Servers"];
@@ -255,7 +229,7 @@
 #pragma mark Table view delegate and data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -266,14 +240,6 @@
             
         case 1:
             return ((_bonjourAccounts.count > 0) ? _bonjourAccounts.count : 1);
-            break;
-            
-        case 2:
-            return _demoAccounts.count;
-            break;
-            
-        case 3:
-            return 2;
             break;
             
         default:
@@ -299,14 +265,6 @@
             
         case 1:
             return FTLangGet(@"Local network");
-            break;
-            
-        case 2:
-            return FTLangGet(@"Demo account");
-            break;
-            
-        case 3:
-            return FTLangGet(@"About");
             break;
             
         default:
@@ -426,26 +384,6 @@
     return cell;
 }
 
-- (FTBasicCell *)cellForAboutSection:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"aboutSectionCell";
-    FTIconCell *cell = [super.tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[FTIconCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    }
-    if (indexPath.row == 0) {
-        [cell.iconView setDefaultIconIdentifier:@"icon-github"];
-        [cell.textLabel setText:FTLangGet(@"Open source project")];
-        [cell.detailTextLabel setText:FTLangGet(@"All source code available on github.com")];
-    }
-    else {
-        [cell.iconView setDefaultIconIdentifier:@"icon-terminal"];
-        [cell.textLabel setText:FTLangGet(@"SSH Automator")];
-        [cell.detailTextLabel setText:FTLangGet(@"Mobilise your SSH tasks and deployments")];
-    }
-    return cell;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 && _data.count == 0) {
         return [self cellForNoAccount];
@@ -458,13 +396,8 @@
             return [FTSmallTextCell smallTextCellForTable:tableView withText:FTLangGet(@"No instances available at the moment")];
         }
     }
-    else {
-        if (indexPath.section == 0 || indexPath.section == 2) {
-            return [self accountCellForIndexPath:indexPath];
-        }
-        else {
-            return [self cellForAboutSection:indexPath];
-        }
+    else if (indexPath.section == 0) {
+        return [self accountCellForIndexPath:indexPath];
     }
 }
 
@@ -473,26 +406,14 @@
     if (indexPath.section == 0 && _data.count == 0) {
         [self didCLickAddItem:nil];
     }
-    else {
-        if (indexPath.section != 3) {
-            if ([self datasourceForIndexPath:indexPath].count > 0) {
-                FTAccount *acc = [self accountForIndexPath:indexPath];
-                [[FTAccountsManager sharedManager] setSelectedAccount:acc];
-                [FTAPIConnector resetForAccount:acc];
-                
-                FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
-                [c setTitle:acc.name];
-                [self.navigationController pushViewController:c animated:YES];
-            }
-        }
-        else {
-            if (indexPath.row == 0) {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/rafiki270/iJenkins"]];
-            }
-            else {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/Ridiculous-Innovations/SSHAutomator"]];
-            }
-        }
+    else if ([self datasourceForIndexPath:indexPath].count > 0) {
+        FTAccount *acc = [self accountForIndexPath:indexPath];
+        [[FTAccountsManager sharedManager] setSelectedAccount:acc];
+        [FTAPIConnector resetForAccount:acc];
+        
+        FTServerHomeViewController *c = [[FTServerHomeViewController alloc] init];
+        [c setTitle:acc.name];
+        [self.navigationController pushViewController:c animated:YES];
     }
 }
 
