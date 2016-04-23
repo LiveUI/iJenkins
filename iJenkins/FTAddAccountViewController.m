@@ -16,8 +16,6 @@
 @property (nonatomic, strong) NSArray *data;
 @property (nonatomic, strong) NSMutableDictionary *originalDictionary;
 
-@property (nonatomic) BOOL keyboardIsOn;
-
 @end
 
 
@@ -96,18 +94,6 @@
     [super.tableView reloadData];
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    if (_keyboardIsOn) {
-        if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation)) {
-            [super.tableView setHeight:(self.view.height - 162)];
-        }
-        else {
-            [super.tableView setHeight:(self.view.height - 216)];
-        }
-    }
-}
-
 #pragma mark Table view delegate & data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -171,20 +157,7 @@
 #pragma mark Basic account cell delegate methods
 
 - (void)basicAccountCell:(FTBasicAccountCell *)cell didStartEditing:(BOOL)editing {
-    _keyboardIsOn = editing;
-    [UIView animateWithDuration:0.3 animations:^{
-        if (editing) {
-            if (super.tableView.height == self.view.height) {
-                [super.tableView setHeight:(self.view.height - 216)];
-            }
-        }
-        else {
-            if (super.tableView.height < self.view.height) {
-                [super.tableView setHeight:(self.view.height)];
-            }
-        }
-        [super.tableView scrollToRowAtIndexPath:cell.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-    }];
+    
 }
 
 - (void)basicAccountCellDidChangeValue:(FTBasicAccountCell *)cell {
