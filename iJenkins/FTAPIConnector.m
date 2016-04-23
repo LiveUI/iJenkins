@@ -189,7 +189,7 @@ static FTAccount *_sharedAccount = nil;
 
 - (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
    NSDictionary *payload = [data payloadData];
-    NSString *url = [NSString stringWithFormat:@"%@/%@%@", [[FTAccountsManager sharedManager] selectedAccount].baseUrl, [data methodName], [data suffix]];
+    NSString *url = [NSString stringWithFormat:@"%@%@%@", [[FTAccountsManager sharedManager] selectedAccount].baseUrl, [data methodName], [data suffix]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
         NSString *par = [NSString stringWithFormat:@"%@%@", (isQM ? @"&" : @"?"), [NSString serializeParams:payload]];
