@@ -91,7 +91,11 @@
                     NSTimeInterval seconds = (_job.jobDetail.lastBuild.buildDetail.duration / 1000);
                     NSTimeInterval minutes = floor(seconds / 60);
                     seconds = round(seconds - (minutes * 60));
-                    [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), [lastBuild relativeDate], FTLangGet(@"and took"), [NSString stringWithFormat:@"%.0f %@, %.0f %@", minutes, FTLangGet(@"min"), seconds, FTLangGet(@"sec")], FTLangGet(@"to finish")]];
+                    if (seconds == 0 && minutes == 0) {
+                        [cell setText:[NSString stringWithFormat:@"%@ %@", FTLangGet(@"Last build was executed"), [lastBuild relativeDate]]];
+                    } else {
+                        [cell setText:[NSString stringWithFormat:@"%@ %@ %@ %@ %@", FTLangGet(@"Last build has been executed"), [lastBuild relativeDate], FTLangGet(@"and took"), [NSString stringWithFormat:@"%.0f %@, %.0f %@", minutes, FTLangGet(@"min"), seconds, FTLangGet(@"sec")], FTLangGet(@"to finish")]];
+                    }
                 }
             }
             else {
