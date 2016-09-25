@@ -72,11 +72,11 @@
     [self.detailTextLabel setText:[NSString stringWithFormat:@"%@ (%@)%@", plugin.shortName, plugin.version, (noteAvailable ? @" - " : @"")]];
     [_statusLabel setText:(plugin.hasUpdate ? FTLangGet(@"Update available") : @"")];
     if (plugin.enabled) {
-        [_enabledIcon setDefaultIconIdentifier:@"icon-ok-circle"];
+        [_enabledIcon setDefaultIcon:FACheckCircleO];
         [_enabledIcon.defaultView setTextColor:[UIColor colorWithHexString:@"007EF3"]];
     }
     else {
-        [_enabledIcon setDefaultIconIdentifier:@"icon-ban-circle"];
+        [_enabledIcon setDefaultIcon:FABan];
         [_enabledIcon.defaultView setTextColor:[UIColor colorWithHexString:@"FF4000"]];
     }
 }

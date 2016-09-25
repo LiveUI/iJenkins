@@ -33,7 +33,7 @@
     [plus.defaultView setBackgroundColor:[UIColor clearColor]];
     [plus.defaultView setTextColor:[UIColor colorWithHexString:@"454545"]];
     [plus setImage:nil];
-    [plus setDefaultIconIdentifier:@"icon-reorder"];
+    [plus setDefaultIcon:FABars];
     [plus setYOrigin:65];
     [self addSubview:plus];
     [plus centerHorizontally];

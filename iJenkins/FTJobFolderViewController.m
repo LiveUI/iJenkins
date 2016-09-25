@@ -185,12 +185,12 @@
     }
     if (indexPath.row == 1) {
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        [cell.iconView setDefaultIconIdentifier:@"icon-road"];
+        [cell.iconView setDefaultIcon:FARoad];
         [cell.textLabel setText:FTLangGet(@"Build queue")];
         [cell.detailTextLabel setText:FTLangGet(@"And build executor status")];
     }
     else {
-        [cell.iconView setDefaultIconIdentifier:@"icon-cogs"];
+        [cell.iconView setDefaultIcon:FACogs];
         [cell.textLabel setText:FTLangGet(@"Manage Jenkins")];
         // TODO: Decide if the manage section is only for logged in users!
         if (([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 0) || YES) {

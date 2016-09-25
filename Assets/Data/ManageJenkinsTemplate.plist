@@ -11,7 +11,7 @@
 				<key>description</key>
 				<string>Plugin info</string>
 				<key>icon</key>
-				<string>icon-briefcase</string>
+				<string>fa-briefcase</string>
 				<key>controller</key>
 				<string>FTManagePluginsViewController</string>
 				<key>loginRequired</key>
@@ -23,7 +23,7 @@
 				<key>description</key>
 				<string>Manage users</string>
 				<key>icon</key>
-				<string>icon-group</string>
+				<string>fa-users</string>
 				<key>controller</key>
 				<string>FTManageUsersViewController</string>
 				<key>loginRequired</key>
@@ -35,7 +35,7 @@
 				<key>description</key>
 				<string>Monitor nodes that Jenkins runs jobs on.</string>
 				<key>icon</key>
-				<string>icon-desktop</string>
+				<string>fa-desktop</string>
 				<key>controller</key>
 				<string>FTManageNodesViewController</string>
 				<key>loginRequired</key>
@@ -52,7 +52,7 @@
 				<key>description</key>
 				<string>Restart Jenkins once no jobs are running</string>
 				<key>icon</key>
-				<string>icon-refresh</string>
+				<string>fa-refresh</string>
 				<key>action</key>
 				<string>safeRestart</string>
 				<key>loginRequired</key>
@@ -64,7 +64,7 @@
 				<key>description</key>
 				<string>Restart Jenkins immediately</string>
 				<key>icon</key>
-				<string>icon-exclamation-sign</string>
+				<string>fa-exclamation-circle</string>
 				<key>action</key>
 				<string>restart</string>
 				<key>loginRequired</key>
@@ -76,7 +76,7 @@
 				<key>description</key>
 				<string>Jenkins will enter the &quot;quiet down&quot; mode</string>
 				<key>icon</key>
-				<string>icon-off</string>
+				<string>fa-power-off</string>
 				<key>action</key>
 				<string>quietDown</string>
 				<key>loginRequired</key>
@@ -88,7 +88,7 @@
 				<key>description</key>
 				<string>Cancel the &quot;quiet down&quot; mode</string>
 				<key>icon</key>
-				<string>icon-off</string>
+				<string>fa-power-off</string>
 				<key>action</key>
 				<string>cancelQuietDown</string>
 				<key>loginRequired</key>
