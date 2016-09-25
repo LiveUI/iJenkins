@@ -128,7 +128,7 @@
                                                object:nil];
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     if ([self isTablet]) {
         return UIInterfaceOrientationMaskAll;
     }

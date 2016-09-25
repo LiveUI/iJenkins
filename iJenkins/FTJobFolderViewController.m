@@ -201,14 +201,14 @@
             [cell.detailTextLabel setAlpha:1];
             [cell.detailTextLabel setText:FTLangGet(@"Basic Jenkins configuration")];
         }
-        else {
-            [cell setAccessoryType:UITableViewCellAccessoryNone];
-            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-            [cell.iconView setAlpha:0.4];
-            [cell.textLabel setAlpha:0.4];
-            [cell.detailTextLabel setAlpha:0.4];
-            [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
-        }
+//        else {
+//            [cell setAccessoryType:UITableViewCellAccessoryNone];
+//            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+//            [cell.iconView setAlpha:0.4];
+//            [cell.textLabel setAlpha:0.4];
+//            [cell.detailTextLabel setAlpha:0.4];
+//            [cell.detailTextLabel setText:FTLangGet(@"Security needs to be enabled to access this section")];
+//        }
     }
     return cell;
 }
