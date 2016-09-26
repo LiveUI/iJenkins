@@ -1,4 +1,4 @@
-iJenkins
+Jenkins2Go
 ========
 
 ###### Fork of [iJenkins](https://github.com/rafiki270/iJenkins) with some changes:
@@ -15,12 +15,12 @@ iJenkins
 -------
 
 On iTunes here:
-https://itunes.apple.com/us/app/ijenkins/id720123810?mt=8
+https://itunes.apple.com/us/app/jenkins2go/id1158754319?mt=8
 
 
 Open iPhone client for Jenkins CI (iOS 9 only) ... Don't forget to get the submodules too!!!!! :)
 
-Any contribution in this project will be very much welcommed through forking and sending pull requests, please get in touch through ijenkins@fuerteint.com if you have any questions and we'll be looking forward seeing some serious downloads ... ehm ... :)
+Any contribution in this project will be very much welcome through forking and sending pull requests, please get in touch through jenkins2go@martinreinhardt-online.de if you have any questions and we'll be looking forward seeing some serious downloads ... ehm ... :)
 
 At the moment we are using Crashlytics.com to track crashes, if you'd like to get access to the system, please get in touch using the email address above and we'll see what we can do!
 

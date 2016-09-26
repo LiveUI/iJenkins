@@ -291,7 +291,7 @@
 		154466B51806BE8500025022 /* FTAPIPluginManagerDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIPluginManagerDataObject.m; sourceTree = "<group>"; };
 		154466B81806C4C600025022 /* FTPluginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginCell.h; sourceTree = "<group>"; };
 		154466B91806C4C600025022 /* FTPluginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginCell.m; sourceTree = "<group>"; };
-		154C9EBB1B1B780C00807481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../iJenkins/Images.xcassets; sourceTree = "<group>"; };
+		154C9EBB1B1B780C00807481 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Jenkins2Go/Images.xcassets; sourceTree = "<group>"; };
 		156EC66C1A6E7018009BB672 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
@@ -303,14 +303,14 @@
 		15BF18761B14D178001B44E6 /* LUITranslations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUITranslations.json; path = Assets/Data/LUITranslations.json; sourceTree = SOURCE_ROOT; };
 		15C519AB180729CF00ADDF15 /* FTPluginDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPluginDetailViewController.h; sourceTree = "<group>"; };
 		15C519AC180729CF00ADDF15 /* FTPluginDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPluginDetailViewController.m; sourceTree = "<group>"; };
-		15D245D017CF9C2A00793614 /* iJenkins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iJenkins.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15D245D017CF9C2A00793614 /* Jenkins2Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jenkins2Go.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15D245D317CF9C2A00793614 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		15D245D517CF9C2A00793614 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		15D245D717CF9C2A00793614 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iJenkins-Info.plist"; sourceTree = "<group>"; };
+		15D245DB17CF9C2A00793614 /* Jenkins2Go-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Jenkins2Go-Info.plist"; sourceTree = "<group>"; };
 		15D245DD17CF9C2A00793614 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		15D245DF17CF9C2A00793614 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iJenkins-Prefix.pch"; sourceTree = "<group>"; };
+		15D245E117CF9C2A00793614 /* Jenkins2Go-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Jenkins2Go-Prefix.pch"; sourceTree = "<group>"; };
 		15D245E217CF9C2A00793614 /* FTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTAppDelegate.h; sourceTree = "<group>"; };
 		15D245E317CF9C2A00793614 /* FTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FTAppDelegate.m; sourceTree = "<group>"; };
 		15D245EB17CF9C2A00793614 /* FTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTViewController.h; sourceTree = "<group>"; };
@@ -1080,7 +1080,7 @@
 		15D245C717CF9C2A00793614 = {
 			isa = PBXGroup;
 			children = (
-				15D245D917CF9C2A00793614 /* iJenkins */,
+				15D245D917CF9C2A00793614 /* Jenkins2Go */,
 				15D245DA17CF9C2A00793614 /* Supporting Files */,
 				15D245D217CF9C2A00793614 /* Frameworks */,
 				15D245D117CF9C2A00793614 /* Products */,
@@ -1090,7 +1090,7 @@
 		15D245D117CF9C2A00793614 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				15D245D017CF9C2A00793614 /* iJenkins.app */,
+				15D245D017CF9C2A00793614 /* Jenkins2Go.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1118,7 +1118,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		15D245D917CF9C2A00793614 /* iJenkins */ = {
+		15D245D917CF9C2A00793614 /* Jenkins2Go */ = {
 			isa = PBXGroup;
 			children = (
 				15D245E217CF9C2A00793614 /* FTAppDelegate.h */,
@@ -1127,7 +1127,7 @@
 				15D2461F17CFA1C600793614 /* Views */,
 				15D2460817CF9F8600793614 /* Data */,
 			);
-			path = iJenkins;
+			path = Jenkins2Go;
 			sourceTree = "<group>";
 		};
 		15D245DA17CF9C2A00793614 /* Supporting Files */ = {
@@ -1139,14 +1139,14 @@
 				15D2463B17CFBD8E00793614 /* Thirdparty */,
 				15BF18701B14CFA1001B44E6 /* LiveUI */,
 				151072C517D0BA3400FD083B /* Assets */,
-				15D245DB17CF9C2A00793614 /* iJenkins-Info.plist */,
+				15D245DB17CF9C2A00793614 /* Jenkins2Go-Info.plist */,
 				15D245DC17CF9C2A00793614 /* InfoPlist.strings */,
 				15D245DF17CF9C2A00793614 /* main.m */,
-				15D245E117CF9C2A00793614 /* iJenkins-Prefix.pch */,
+				15D245E117CF9C2A00793614 /* Jenkins2Go-Prefix.pch */,
 				156EC66C1A6E7018009BB672 /* Launch Screen.xib */,
 			);
 			name = "Supporting Files";
-			path = iJenkins;
+			path = Jenkins2Go;
 			sourceTree = "<group>";
 		};
 		15D245F617CF9C3C00793614 /* Controllers */ = {
@@ -1447,9 +1447,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		15D245CF17CF9C2A00793614 /* iJenkins */ = {
+		15D245CF17CF9C2A00793614 /* Jenkins2Go */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "iJenkins" */;
+			buildConfigurationList = 15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "Jenkins2Go" */;
 			buildPhases = (
 				15D245CC17CF9C2A00793614 /* Sources */,
 				15D245CD17CF9C2A00793614 /* Frameworks */,
@@ -1459,9 +1459,9 @@
 			);
 			dependencies = (
 			);
-			name = iJenkins;
-			productName = iJenkins;
-			productReference = 15D245D017CF9C2A00793614 /* iJenkins.app */;
+			name = Jenkins2Go;
+			productName = Jenkins2Go;
+			productReference = 15D245D017CF9C2A00793614 /* Jenkins2Go.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1480,7 +1480,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "iJenkins" */;
+			buildConfigurationList = 15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "Jenkins2Go" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1493,7 +1493,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				15D245CF17CF9C2A00793614 /* iJenkins */,
+				15D245CF17CF9C2A00793614 /* Jenkins2Go */,
 			);
 		};
 /* End PBXProject section */
@@ -1701,13 +1701,13 @@
 					"$(PROJECT_DIR)/Thirdparty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
+				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
-				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
+				INFOPLIST_FILE = "Jenkins2Go/Jenkins2Go-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1816,13 +1816,13 @@
 					"$(PROJECT_DIR)/Thirdparty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
+				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
-				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
+				INFOPLIST_FILE = "Jenkins2Go/Jenkins2Go-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1855,13 +1855,13 @@
 					"$(PROJECT_DIR)/Thirdparty",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
+				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty/Crashlytics.framework/**\"",
 				);
-				INFOPLIST_FILE = "iJenkins/iJenkins-Info.plist";
+				INFOPLIST_FILE = "Jenkins2Go/Jenkins2Go-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1883,7 +1883,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "iJenkins" */ = {
+		15D245CB17CF9C2A00793614 /* Build configuration list for PBXProject "Jenkins2Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15D245F117CF9C2A00793614 /* Debug */,
@@ -1893,7 +1893,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "iJenkins" */ = {
+		15D245F317CF9C2A00793614 /* Build configuration list for PBXNativeTarget "Jenkins2Go" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				15D245F417CF9C2A00793614 /* Debug */,
