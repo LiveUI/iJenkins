@@ -25,7 +25,11 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     UIEdgeInsets edgeInset = self.separatorInset;
-    edgeInset.left = 60;
+    if (self.hasScore) {
+        edgeInset.left = 60;
+    } else {
+        edgeInset.left = 38;
+    }
     self.separatorInset = edgeInset;
 }
 
@@ -87,13 +91,10 @@
 }
 
 - (void)resetScoreIcon {
-    if (_job.childJobs.count > 0) {
-        [_buildScoreView setImage:nil];
-        [_buildIdView setText:nil];
-    } else {
-        NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
-        UIImage *img = [UIImage imageNamed:iconName];
-        [_buildScoreView setImage:img];
+    NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+    UIImage *img = [UIImage imageNamed:iconName];
+    [_buildScoreView setImage:img];
+    if (_job.childJobs.count == 0) {
         [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
     }
 }
@@ -165,5 +166,8 @@
     [self fillData];
 }
 
+- (BOOL)hasScore {
+    return YES;
+}
 
 @end

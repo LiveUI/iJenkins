@@ -11,8 +11,11 @@
 
 @implementation FTQueueJobCell
 
-
 #pragma mark Data
+
+- (BOOL)hasScore {
+    return NO;
+}
 
 - (void)fillData {
     [self resetStatusColor];
