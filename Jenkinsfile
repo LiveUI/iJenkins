@@ -30,7 +30,7 @@ node('xcode') {
 
     stage('Build') {
       sh "agvtool new-version ${buildNumber}"
-      sh "xcodebuild clean build -sdk ${buildSDK} PROVISIONING_PROFILE=${provisioningProfile}"
+      sh "xcodebuild clean build -sdk ${buildSDK} PROVISIONING_PROFILE=\"${provisioningProfile}\""
     }
 
     stage('Test') {
