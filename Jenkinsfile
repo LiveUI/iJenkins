@@ -38,7 +38,7 @@ node('xcode') {
 
     stage('Package') {
       sh "mkdir -p target"
-      sh "xcodebuild -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath "target/${scheme}.xcarchive" -configuration Release PROVISIONING_PROFILE="${provisioningProfile}" archive "
+      sh "xcodebuild -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath \"target/${scheme}.xcarchive\" -configuration Release PROVISIONING_PROFILE=\"${provisioningProfile}\" archive "
       sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/${scheme}_${buildNumber}.ipa\""
     }
 
