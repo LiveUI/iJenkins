@@ -79,7 +79,18 @@ static FTAccount *_sharedAccount = nil;
     [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"text/html",@"application/javascript", nil]];
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object];
+    if ([object httpMethod] == FTHttpMethodPost) {
+        [FTAPIConnector getCrumbWithOnCompleteBlock:^(NSString *crumbRequestField, NSString *crumb, NSError *error) {
+            NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object crumbRequestField:crumbRequestField crumb:crumb];
+            [FTAPIConnector finishConnectWithRequest:request object:object withOnCompleteBlock:complete withUploadProgressBlock:upload andDownloadProgressBlock:download];
+        }];
+    } else {
+        NSURLRequest *request = [[FTAPIConnector sharedConnector] requestForDataObject:object crumbRequestField:nil crumb:nil];
+        [FTAPIConnector finishConnectWithRequest:request object:object withOnCompleteBlock:complete withUploadProgressBlock:upload andDownloadProgressBlock:download];
+    }
+}
+
++ (void)finishConnectWithRequest:(NSURLRequest *)request object:(id<FTAPIDataAbstractObject>)object withOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete withUploadProgressBlock:(FTAPIConnectorProgressUploadHandler)upload andDownloadProgressBlock:(FTAPIConnectorProgressDownloadHandler)download {
     id operation = nil;
     if ([object outputType] == FTAPIDataObjectOutputTypeJSON) {
         FTJSONRequestOperation *o = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -187,8 +198,23 @@ static FTAccount *_sharedAccount = nil;
     return dataPayload;
 }
 
-- (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data {
-   NSDictionary *payload = [data payloadData];
++ (void)getCrumbWithOnCompleteBlock:(FTAPICrumbCompletionHandler)complete {
+    NSMutableURLRequest *request = [[[FTAPIConnector sharedClient] requestWithMethod:@"GET" path:@"/crumbIssuer/api/json" parameters:nil] mutableCopy];
+    BOOL authenticate = ([FTAccountsManager sharedManager].selectedAccount.username && [FTAccountsManager sharedManager].selectedAccount.username.length > 1);
+    if (authenticate) {
+        [[FTAPIConnector sharedClient] clearAuthorizationHeader];
+        [[FTAPIConnector sharedClient] setAuthorizationHeaderWithUsername:[FTAccountsManager sharedManager].selectedAccount.username password:[FTAccountsManager sharedManager].selectedAccount.passwordOrToken];
+    }
+    FTJSONRequestOperation *operation = [FTJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        complete(JSON[@"crumbRequestField"], JSON[@"crumb"], nil);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        complete(nil, nil, error);
+    }];
+    [[[FTAPIConnector sharedConnector] apiOperationQueue] addOperation:operation];
+}
+
+- (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data crumbRequestField:(NSString *)crumbRequestField crumb:(NSString *)crumb {
+    NSDictionary *payload = [data payloadData];
     NSString *url = [NSString stringWithFormat:@"%@%@%@", [[FTAccountsManager sharedManager] selectedAccount].baseUrl, [data methodName], [data suffix]];
     if (payload && [data httpMethod] == FTHttpMethodGet) {
         BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
@@ -196,7 +222,11 @@ static FTAccount *_sharedAccount = nil;
         url = [url stringByAppendingString:par];
     }
     BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
-    url = [NSString stringWithFormat:@"%@%@depth=%ld", url, (isQM ? @"&" : @"?"), (long)data.depth];
+    if (crumbRequestField && crumb) {
+        url = [NSString stringWithFormat:@"%@%@depth=%ld&%@=%@", url, (isQM ? @"&" : @"?"), (long)data.depth, crumbRequestField, crumb];
+    } else {
+        url = [NSString stringWithFormat:@"%@%@depth=%ld", url, (isQM ? @"&" : @"?"), (long)data.depth];
+    }
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
     
