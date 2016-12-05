@@ -94,7 +94,6 @@
 		156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66E1A6E7112009BB672 /* Assets.xcassets */; };
 		15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
 		15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18611B14C92F001B44E6 /* libz.dylib */; };
-		15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18621B14C92F001B44E6 /* Fabric.framework */; };
 		15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
 		15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */; };
 		15BF18771B14D178001B44E6 /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18751B14D178001B44E6 /* LUIImages.json */; };
@@ -141,9 +140,10 @@
 		15E1838A17E4CDAD00CE0DEA /* FTViewSelectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838917E4CDAD00CE0DEA /* FTViewSelectorViewController.m */; };
 		15E1838F17E4EC6C00CE0DEA /* FTNoJobCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */; };
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
+		555178BA1DE25862004C2B26 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555178B81DE25862004C2B26 /* Fabric.framework */; };
+		555178BB1DE25862004C2B26 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 555178B91DE25862004C2B26 /* Crashlytics.framework */; };
 		55558EFC1CCBED2C00023C30 /* FTJobFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */; };
 		555EDC721D98377B003BD21F /* FTHTTPCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 555EDC711D98377B003BD21F /* FTHTTPCodes.m */; };
-		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -296,7 +296,6 @@
 		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
 		15BF18611B14C92F001B44E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
-		15BF18621B14C92F001B44E6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Thirdparty/Fabric.framework; sourceTree = "<group>"; };
 		15BF186C1B14CE55001B44E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		15BF18751B14D178001B44E6 /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUIImages.json; path = Assets/Data/LUIImages.json; sourceTree = SOURCE_ROOT; };
@@ -377,11 +376,12 @@
 		15E1838E17E4EC6C00CE0DEA /* FTNoJobCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTNoJobCell.m; sourceTree = "<group>"; };
 		15E1839317E4FFC900CE0DEA /* FTChartOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTChartOverlay.h; sourceTree = "<group>"; };
 		15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTChartOverlay.m; sourceTree = "<group>"; };
+		555178B81DE25862004C2B26 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		555178B91DE25862004C2B26 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		55558EFA1CCBED2C00023C30 /* FTJobFolderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTJobFolderViewController.h; sourceTree = "<group>"; };
 		55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobFolderViewController.m; sourceTree = "<group>"; };
 		555EDC701D98377B003BD21F /* FTHTTPCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTHTTPCodes.h; path = Source/FTHTTPCodes.h; sourceTree = "<group>"; };
 		555EDC711D98377B003BD21F /* FTHTTPCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTHTTPCodes.m; path = Source/FTHTTPCodes.m; sourceTree = "<group>"; };
-		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,13 +398,13 @@
 				15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */,
 				15D2461C17CFA1B600793614 /* Security.framework in Frameworks */,
 				15D2461D17CFA1B600793614 /* Social.framework in Frameworks */,
-				15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */,
 				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
+				555178BB1DE25862004C2B26 /* Crashlytics.framework in Frameworks */,
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
+				555178BA1DE25862004C2B26 /* Fabric.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
-				A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1098,12 +1098,12 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				555178B81DE25862004C2B26 /* Fabric.framework */,
+				555178B91DE25862004C2B26 /* Crashlytics.framework */,
 				15BF186C1B14CE55001B44E6 /* CoreLocation.framework */,
 				15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */,
 				15BF18601B14C92F001B44E6 /* libc++.dylib */,
 				15BF18611B14C92F001B44E6 /* libz.dylib */,
-				15BF18621B14C92F001B44E6 /* Fabric.framework */,
-				A0885E3B180293650000EA51 /* Crashlytics.framework */,
 				15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */,
 				15D2461317CFA1B600793614 /* CoreText.framework */,
 				15D2461417CFA1B600793614 /* MessageUI.framework */,
@@ -1454,6 +1454,7 @@
 				15D245CC17CF9C2A00793614 /* Sources */,
 				15D245CD17CF9C2A00793614 /* Frameworks */,
 				15D245CE17CF9C2A00793614 /* Resources */,
+				555178B71DE25801004C2B26 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1476,7 +1477,7 @@
 				TargetAttributes = {
 					15D245CF17CF9C2A00793614 = {
 						DevelopmentTeam = B88BRQ88KH;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -1534,6 +1535,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		555178B71DE25801004C2B26 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15D245CC17CF9C2A00793614 /* Sources */ = {
@@ -1692,13 +1709,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = B88BRQ88KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -1717,9 +1735,10 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.iJenkins;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.Jenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25627238-52f3-432d-907a-b7020fd7252f";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.BluDesign.Jenkins";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1814,6 +1833,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -1832,9 +1852,10 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.iJenkins;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.Jenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "85c6a90b-ddeb-44fe-be74-08567f20eca4";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.BluDesign.Jenkins";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1845,13 +1866,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = B88BRQ88KH;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iJenkins/iJenkins-Prefix.pch";
@@ -1870,9 +1892,10 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.iJenkins;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BluDesign.Jenkins;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25627238-52f3-432d-907a-b7020fd7252f";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc com.BluDesign.Jenkins";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

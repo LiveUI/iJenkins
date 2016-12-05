@@ -1,0 +1,50 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.70.0"
+
+default_platform :ios
+
+platform :ios do
+
+  desc "Download Profiles and Certificates"
+  lane :profiles do
+    match(type: "development",
+          app_identifier: "com.BluDesign.Jenkins",
+          git_url: "git@bitbucket.org:chanhuff/certificates.git",
+          username: "contact@bludesign.biz")
+    match(type: "adhoc",
+          app_identifier: "com.BluDesign.Jenkins",
+          git_url: "git@bitbucket.org:chanhuff/certificates.git",
+          username: "contact@bludesign.biz")
+    match(type: "appstore",
+          app_identifier: "com.BluDesign.Jenkins",
+          git_url: "git@bitbucket.org:chanhuff/certificates.git",
+          username: "contact@bludesign.biz")
+    sigh(adhoc: true,
+          app_identifier: "com.BluDesign.Jenkins",
+          username: "contact@bludesign.biz",
+          output_path: "./profiles",
+          force: true)
+    sigh(development: true,
+          app_identifier: "com.BluDesign.Jenkins",
+          username: "contact@bludesign.biz",
+          output_path: "./profiles",
+          force: true)
+    sigh(app_identifier: "com.BluDesign.Jenkins",
+          username: "contact@bludesign.biz",
+          output_path: "./profiles",
+          force: true)
+  end
+
+end
