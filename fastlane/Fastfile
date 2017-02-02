@@ -1,50 +1,73 @@
-# Customise this file, documentation can be found here:
-# https://github.com/fastlane/fastlane/tree/master/docs
-# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
-# can also be listed using the `fastlane actions` command
-
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "1.70.0"
+opt_out_usage
+fastlane_version "2.13.0"
 
 default_platform :ios
 
 platform :ios do
 
-  desc "Download Profiles and Certificates"
+  desc "Submit a new Beta Build to Fabric"
+  lane :deploy_fabric do
+    clear_derived_data
+    clear_simulators
+    setup_jenkins
+    changelog = sh("git log --graph --pretty=format:'%s' --abbrev-commit #{ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD^^^^^'}..HEAD")
+    puts changelog
+    gym(scheme: "iJenkins",
+        clean: true,
+        include_symbols: true,
+        include_bitcode: true,
+        output_name: "iJenkins",
+        output_directory: "./fastlane/builds",
+        export_method: "ad-hoc")
+    upload_symbols_to_crashlytics(
+      binary_path: "./Crashlytics/iOS/Crashlytics.framework/uploadDSYM",
+      api_token: "#{ENV['FABRIC_API_TOKEN']}"
+    )
+    crashlytics(
+      crashlytics_path: "./Crashlytics/iOS/Crashlytics.framework",
+      api_token: "#{ENV['FABRIC_API_TOKEN']}",
+      build_secret: "#{ENV['FABRIC_BUILD_SECRET']}",
+      groups: "beta",
+      notes: "#{changelog.to_s}",
+      ipa_path: "./fastlane/builds/iJenkins.ipa",
+      notifications: true
+    )
+  end
+
+  desc "Generate and Download Certificates and Profiles"
   lane :profiles do
+    force = false
     match(type: "development",
+          force: force,
           app_identifier: "com.BluDesign.Jenkins",
           git_url: "git@bitbucket.org:chanhuff/certificates.git",
-          username: "contact@bludesign.biz")
+          username: "contact@bludesign.biz",
+          force_for_new_devices: true)
     match(type: "adhoc",
+          force: force,
           app_identifier: "com.BluDesign.Jenkins",
           git_url: "git@bitbucket.org:chanhuff/certificates.git",
-          username: "contact@bludesign.biz")
+          username: "contact@bludesign.biz",
+          force_for_new_devices: true)
     match(type: "appstore",
+          force: force,
           app_identifier: "com.BluDesign.Jenkins",
           git_url: "git@bitbucket.org:chanhuff/certificates.git",
-          username: "contact@bludesign.biz")
-    sigh(adhoc: true,
-          app_identifier: "com.BluDesign.Jenkins",
           username: "contact@bludesign.biz",
-          output_path: "./profiles",
-          force: true)
-    sigh(development: true,
-          app_identifier: "com.BluDesign.Jenkins",
-          username: "contact@bludesign.biz",
-          output_path: "./profiles",
-          force: true)
-    sigh(app_identifier: "com.BluDesign.Jenkins",
-          username: "contact@bludesign.biz",
-          output_path: "./profiles",
-          force: true)
+          force_for_new_devices: true)
+  end
+
+  def clear_simulators
+    sh("osascript -e 'tell application \"iOS Simulator\" to quit'")
+    sh("osascript -e 'tell application \"Simulator\" to quit'")
+    sh("xcrun simctl erase all")
+  end
+
+  error do |lane, exception|
+    slack(
+      message: exception.message,
+      success: false
+    )
   end
 
 end

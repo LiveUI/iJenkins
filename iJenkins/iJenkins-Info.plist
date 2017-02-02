@@ -21,15 +21,15 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.1</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>105</string>
+	<string>1.0</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string></string>
+		<string>FABRIC_API_KEY</string>
 		<key>Kits</key>
 		<array>
 			<dict>
