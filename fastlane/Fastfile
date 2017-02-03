@@ -20,11 +20,11 @@ platform :ios do
         output_directory: "./fastlane/builds",
         export_method: "ad-hoc")
     upload_symbols_to_crashlytics(
-      binary_path: "./Crashlytics/iOS/Crashlytics.framework/uploadDSYM",
+      binary_path: "./Crashlytics.framework/uploadDSYM",
       api_token: "#{ENV['FABRIC_API_TOKEN']}"
     )
     crashlytics(
-      crashlytics_path: "./Crashlytics/iOS/Crashlytics.framework",
+      crashlytics_path: "./Crashlytics.framework",
       api_token: "#{ENV['FABRIC_API_TOKEN']}",
       build_secret: "#{ENV['FABRIC_BUILD_SECRET']}",
       groups: "beta",
