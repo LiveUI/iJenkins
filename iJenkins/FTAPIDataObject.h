@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 - (NSOperationQueuePriority)queuePriority;
 - (NSString *)suffix;
 - (NSInteger)depth;
+- (NSString *)tree;
 - (FTAPIDataObjectOutputType)outputType;
 
 
@@ -58,6 +59,7 @@ typedef NS_ENUM(NSInteger, FTAPIDataObjectOutputType) {
 
 - (NSString *)suffix;
 - (NSInteger)depth;
+- (NSString *)tree;
 - (FTAPIDataObjectOutputType)outputType;
 
 

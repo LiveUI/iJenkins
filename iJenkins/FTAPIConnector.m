@@ -223,9 +223,18 @@ static FTAccount *_sharedAccount = nil;
     }
     BOOL isQM = !([url rangeOfString:@"?"].location == NSNotFound);
     if (crumbRequestField && crumb) {
-        url = [NSString stringWithFormat:@"%@%@depth=%ld&%@=%@", url, (isQM ? @"&" : @"?"), (long)data.depth, crumbRequestField, crumb];
+        if (data.tree) {
+            url = [NSString stringWithFormat:@"%@%@depth=%ld&%@=%@&tree=%@", url, (isQM ? @"&" : @"?"), (long)data.depth, crumbRequestField, crumb, data.tree];
+        } else {
+            url = [NSString stringWithFormat:@"%@%@depth=%ld&%@=%@", url, (isQM ? @"&" : @"?"), (long)data.depth, crumbRequestField, crumb];
+
+        }
     } else {
-        url = [NSString stringWithFormat:@"%@%@depth=%ld", url, (isQM ? @"&" : @"?"), (long)data.depth];
+        if (data.tree) {
+            url = [NSString stringWithFormat:@"%@%@depth=%ld&tree=%@", url, (isQM ? @"&" : @"?"), (long)data.depth, data.tree];
+        } else {
+            url = [NSString stringWithFormat:@"%@%@depth=%ld", url, (isQM ? @"&" : @"?"), (long)data.depth];
+        }
     }
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     dFTAPIConnectorDebugFull NSLog(@"Request URL: %@", url);
