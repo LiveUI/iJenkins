@@ -91,7 +91,20 @@
 }
 
 - (UIColor *)realColor {
-    return [UIColor colorForJenkinsColorCode:_color];
+    NSString *color;
+    if (_childJobs.count > 0) {
+        for (FTAPIJobDataObject *job in _childJobs) {
+            if (color == nil) {
+                color = job.color;
+            } else if (![color isEqualToString:job.color]) {
+                color = @"notbuilt";
+            }
+        }
+    }
+    if (color == nil) {
+        color = _color;
+    }
+    return [UIColor colorForJenkinsColorCode:color];
 }
 
 
