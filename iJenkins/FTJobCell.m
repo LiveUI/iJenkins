@@ -133,18 +133,16 @@
     else {
         if (_job.childJobs.count > 0) {
             [self setDescriptionText:[NSString stringWithFormat:@"Folder: %lu Jobs", (unsigned long)_job.childJobs.count]];
-            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
         else if (_job.jobDetail.lastBuild.number == 0) {
-            [self setAccessoryType:UITableViewCellAccessoryNone];
             [self setDescriptionText:FTLangGet(@"No build has been executed yet")];
         }
         else {
-            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             NSString *description = (_job.jobDetail.healthReport.desc.length > 0) ? _job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
             [self setDescriptionText:description];
         }
         [self resetScoreIcon];
+        [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         
         [UIView animateWithDuration:0.15 animations:^{
             [_buildScoreView setAlpha:1];

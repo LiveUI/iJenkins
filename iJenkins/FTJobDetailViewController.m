@@ -156,6 +156,9 @@
 #pragma mark Table view delegate & data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (_job.jobDetail.builds.count <= 1) {
+        return 1;
+    }
     return 2;
 }
 
@@ -166,6 +169,9 @@
             break;
             
         case 1: {
+            if (_job.jobDetail.builds.count <= 1) {
+                return 0;
+            }
             NSInteger limit = [[FTAccountsManager sharedManager] selectedAccount].loadMaxItems;
             if (limit == 0) {
                 limit = INT_MAX;
