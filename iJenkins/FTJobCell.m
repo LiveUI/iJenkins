@@ -91,7 +91,12 @@
 }
 
 - (void)resetScoreIcon {
-    NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+    NSString *iconName;
+    if (_job.jobDetail.healthReport.iconUrl == nil && _job.childJobs.count > 0) {
+        iconName = @"IJ_health-80plus.png";
+    } else {
+        iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+    }
     UIImage *img = [UIImage imageNamed:iconName];
     [_buildScoreView setImage:img];
     if (_job.childJobs.count == 0) {
