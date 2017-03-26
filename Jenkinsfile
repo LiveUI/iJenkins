@@ -30,7 +30,7 @@ node('xcode') {
 
         stage('Build') {
             sh "agvtool new-version -all ${buildNumber}"
-            sh "xcodebuild clean build -sdk ${buildSDK} PROVISIONING_PROFILE=\"${provisioningProfile}\""
+            sh "xcodebuild clean build -sdk ${buildSDK} PROVISIONING_PROFILE=\"${provisioningProfile}\" -configuration Release"
         }
 
         stage('Test') {
@@ -38,12 +38,12 @@ node('xcode') {
 
         stage('Package') {
             sh "mkdir -p target"
-            sh "xcodebuild -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath \"target/${scheme}.xcarchive\" -configuration Release PROVISIONING_PROFILE=\"${provisioningProfile}\" archive "
+            sh "xcodebuild clean build -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath \"target/${scheme}.xcarchive\" -configuration Release PROVISIONING_PROFILE=\"${provisioningProfile}\" archive "
             sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/${scheme}_${buildNumber}.ipa\""
         }
 
         stage('Upload App') {
-            sh "pilot upload --ipa target/${scheme}_${buildNumber}.ipa"
+            sh "fastlane pilot upload --ipa target/${scheme}_${buildNumber}.ipa"
         }
 
     } catch (e) {
