@@ -121,6 +121,20 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>Load Full Tree</string>
+				<key>description</key>
+				<string>Load all job detail on refresh.</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>default</key>
+				<string>0</string>
+				<key>type</key>
+				<string>switch</string>
+				<key>variable</key>
+				<string>loadTree</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>Load max builds</string>
 				<key>description</key>
 				<string>0 for all items in build history</string>

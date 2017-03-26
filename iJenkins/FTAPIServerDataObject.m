@@ -104,11 +104,17 @@
 }
 
 - (NSString *)tree {
-    return @"*,views[name,url],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]]]]]]";
+    if ([[FTAccountsManager sharedManager] selectedAccount].loadTree) {
+        return @"*,views[name,url],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]]]]]]";
+    }
+    return [super tree];
 }
 
 - (NSInteger)depth {
-    return 10;
+    if ([[FTAccountsManager sharedManager] selectedAccount].loadTree) {
+        return 10;
+    }
+    return [super depth];
 }
 
 @end

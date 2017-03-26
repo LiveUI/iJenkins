@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, FTAccountType) {
 @property (nonatomic) BOOL overrideJenkinsUrl;
 @property (nonatomic) NSInteger loadMaxItems;
 @property (nonatomic) double buildLogMaxSize;
+@property (nonatomic) BOOL loadTree;
 
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *passwordOrToken;

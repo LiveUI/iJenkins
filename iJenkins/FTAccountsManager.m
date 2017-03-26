@@ -33,6 +33,7 @@ static FTAccountsManager *staticManager = nil;
     [acc setBuildLogMaxSize:[[dic valueForKey:@"buildLogMaxSize"] integerValue]];
     [acc setUsername:[dic valueForKey:@"username"]];
     [acc setPasswordOrToken:[dic valueForKey:@"password"]];
+    [acc setLoadTree:[dic valueForKey:@"loadTree"]];
     return acc;
 }
 
