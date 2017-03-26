@@ -1464,6 +1464,7 @@
 				15D245CC17CF9C2A00793614 /* Sources */,
 				15D245CD17CF9C2A00793614 /* Frameworks */,
 				15D245CE17CF9C2A00793614 /* Resources */,
+				0D7275061E88280700665047 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1546,6 +1547,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D7275061E88280700665047 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" ${FABRIC_API_KEY} ${FABRIC_SECRET_KEY}";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15D245CC17CF9C2A00793614 /* Sources */ = {
