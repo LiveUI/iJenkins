@@ -23,5 +23,6 @@
 - (void)resetScoreIcon;
 - (void)resetStatusColor;
 
+- (BOOL)hasScore;
 
 @end

@@ -11,8 +11,11 @@
 
 @implementation FTQueueJobCell
 
-
 #pragma mark Data
+
+- (BOOL)hasScore {
+    return NO;
+}
 
 - (void)fillData {
     [self resetStatusColor];
@@ -20,7 +23,9 @@
     if (!self.job.jobDetail) {
         if (desc) [self setDescriptionText:FTLangGet(@"Loading ...")];
         [self.buildScoreView setAlpha:0];
-        [self.buildIdView setText:@"#?"];
+        if (self.buildIdView.text.length == 0) {
+            [self.buildIdView setText:@"#?"];
+        }
     }
     else {
         if (desc) {
@@ -34,8 +39,9 @@
                 NSString *description = (self.job.jobDetail.healthReport.desc.length > 0) ? self.job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
                 [self setDescriptionText:description];
             }
-            [self resetScoreIcon];
-            [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
+            if (self.job.jobDetail != nil) {
+                [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
+            }
             
             [UIView animateWithDuration:0.15 animations:^{
                 [self.buildScoreView setAlpha:1];
@@ -44,8 +50,9 @@
     }
     if (!desc) {
         [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        [self resetScoreIcon];
-        [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
+        if (self.job.jobDetail != nil) {
+            [self.buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)self.job.jobDetail.lastBuild.number]];
+        }
         [self.detailTextLabel setText:[NSString stringWithFormat:@"%@: %ld.0%%", FTLangGet(@"Progress"), (long)self.job.executor.progress]];
     }
 }

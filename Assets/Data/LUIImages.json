@@ -3,7 +3,7 @@
     "code": 200,
     "data": [],
     "app": {
-        "name": "iJenkins",
+        "name": "Jenkins2Go",
         "production": false
     }
 }

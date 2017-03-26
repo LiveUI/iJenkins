@@ -89,6 +89,11 @@
     return 1;
 }
 
+
+- (NSString *)tree {
+    return nil;
+}
+
 /**
  *  Defines if the API is for JSON or plain text values
  *

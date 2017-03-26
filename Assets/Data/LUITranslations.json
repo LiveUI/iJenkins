@@ -71,7 +71,7 @@
                 "Copy URL": "Copy URL",
                 "Open in browser": "Open in browser",
                 "No instances available at the moment": "No instances available at the moment",
-                "Open source project": "iJenkins is open source!",
+                "Open source project": "Jenkins2Go is open source!",
                 "All source code available on github.com": "All source code available on github.com",
                 "SSH Automator": "SSH Automator",
                 "Mobilise your SSH tasks and deployments": "Mobilise your SSH tasks and deployments",
@@ -288,7 +288,7 @@
         }
     },
     "app": {
-        "name": "iJenkins",
+        "name": "Jenkins2Go",
         "production": false
     }
 }

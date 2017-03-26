@@ -103,6 +103,14 @@
     }
 }
 
+- (NSString *)tree {
+    return @"*,views[name,url],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]],jobs[*,scm[*],healthReport[*],builds[*,actions[*,causes[*]]],lastBuild[*,actions[*,causes[*]]],lastFailedBuild[*,actions[*,causes[*]]],lastSuccessfulBuild[*,actions[*,causes[*]]],lastUnstableBuild[*,actions[*,causes[*]]],lastUnsuccessfulBuild[*,actions[*,causes[*]]],firstBuild[*,actions[*,causes[*]]]]]]]";
+}
+
+- (NSInteger)depth {
+    return 10;
+}
+
 @end
 
 

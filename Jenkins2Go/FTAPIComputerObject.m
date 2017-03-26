@@ -109,6 +109,11 @@
     NSInteger count = urlParts.count;
     count -= 2;
     if ([(NSString *)urlParts.lastObject length] == 0) count--;
+    if (count >= 6) {
+        FTAPIJobDataObject *parentJob = [[FTAPIJobDataObject alloc] init];
+        parentJob.name = urlParts[count - 2];
+        [_currentExecutable setParentJob:parentJob];
+    }
     [d setValue:urlParts[count] forKey:@"name"];
     [_currentExecutable processData:d];
     _currentWorkUnit = data[@"currentWorkUnit"];

@@ -25,7 +25,11 @@
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     [self.detailTextLabel setBackgroundColor:[UIColor clearColor]];
     UIEdgeInsets edgeInset = self.separatorInset;
-    edgeInset.left = 60;
+    if (self.hasScore) {
+        edgeInset.left = 60;
+    } else {
+        edgeInset.left = 38;
+    }
     self.separatorInset = edgeInset;
 }
 
@@ -87,13 +91,15 @@
 }
 
 - (void)resetScoreIcon {
-    if (_job.childJobs.count > 0) {
-        [_buildScoreView setImage:nil];
-        [_buildIdView setText:nil];
+    NSString *iconName;
+    if (_job.jobDetail.healthReport.iconUrl == nil && _job.childJobs.count > 0) {
+        iconName = @"IJ_health-80plus.png";
     } else {
-        NSString *iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
-        UIImage *img = [UIImage imageNamed:iconName];
-        [_buildScoreView setImage:img];
+        iconName = [NSString stringWithFormat:@"IJ_%@", _job.jobDetail.healthReport.iconUrl];
+    }
+    UIImage *img = [UIImage imageNamed:iconName];
+    [_buildScoreView setImage:img];
+    if (_job.childJobs.count == 0) {
         [_buildIdView setText:[NSString stringWithFormat:@"#%ld", (long)_job.jobDetail.lastBuild.number]];
     }
 }
@@ -132,18 +138,16 @@
     else {
         if (_job.childJobs.count > 0) {
             [self setDescriptionText:[NSString stringWithFormat:@"Folder: %lu Jobs", (unsigned long)_job.childJobs.count]];
-            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         }
         else if (_job.jobDetail.lastBuild.number == 0) {
-            [self setAccessoryType:UITableViewCellAccessoryNone];
             [self setDescriptionText:FTLangGet(@"No build has been executed yet")];
         }
         else {
-            [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             NSString *description = (_job.jobDetail.healthReport.desc.length > 0) ? _job.jobDetail.healthReport.desc : FTLangGet(FT_NA);
             [self setDescriptionText:description];
         }
         [self resetScoreIcon];
+        [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         
         [UIView animateWithDuration:0.15 animations:^{
             [_buildScoreView setAlpha:1];
@@ -165,5 +169,8 @@
     [self fillData];
 }
 
+- (BOOL)hasScore {
+    return YES;
+}
 
 @end

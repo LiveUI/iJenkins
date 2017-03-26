@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4E17F21E87C3E8009B7D2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E17F11E87C3E8009B7D2E /* Fabric.framework */; };
+		0D4E17F41E87C3F3009B7D2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */; };
+		0D4E17F71E87D147009B7D2E /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F51E87D147009B7D2E /* LUIImages.json */; };
+		0D4E17F81E87D147009B7D2E /* LUITranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F61E87D147009B7D2E /* LUITranslations.json */; };
 		1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510727F17CFEA6300FD083B /* FTAPIConnector.m */; };
 		1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728217CFEA6F00FD083B /* FTAPIDataObject.m */; };
 		1510728717CFEBB100FD083B /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728617CFEBB100FD083B /* FTConfig.m */; };
@@ -94,7 +98,6 @@
 		156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156EC66E1A6E7112009BB672 /* Assets.xcassets */; };
 		15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18601B14C92F001B44E6 /* libc++.dylib */; };
 		15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18611B14C92F001B44E6 /* libz.dylib */; };
-		15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF18621B14C92F001B44E6 /* Fabric.framework */; };
 		15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186C1B14CE55001B44E6 /* CoreLocation.framework */; };
 		15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */; };
 		15BF18771B14D178001B44E6 /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 15BF18751B14D178001B44E6 /* LUIImages.json */; };
@@ -143,10 +146,13 @@
 		15E1839617E4FFC900CE0DEA /* FTChartOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E1839417E4FFC900CE0DEA /* FTChartOverlay.m */; };
 		55558EFC1CCBED2C00023C30 /* FTJobFolderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */; };
 		555EDC721D98377B003BD21F /* FTHTTPCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 555EDC711D98377B003BD21F /* FTHTTPCodes.m */; };
-		A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0885E3B180293650000EA51 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D4E17F11E87C3E8009B7D2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		0D4E17F51E87D147009B7D2E /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LUIImages.json; sourceTree = "<group>"; };
+		0D4E17F61E87D147009B7D2E /* LUITranslations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LUITranslations.json; sourceTree = "<group>"; };
 		1510727E17CFEA6300FD083B /* FTAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTAPIConnector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1510727F17CFEA6300FD083B /* FTAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAPIConnector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1510728117CFEA6F00FD083B /* FTAPIDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIDataObject.h; sourceTree = "<group>"; };
@@ -389,6 +395,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4E17F41E87C3F3009B7D2E /* Crashlytics.framework in Frameworks */,
+				0D4E17F21E87C3E8009B7D2E /* Fabric.framework in Frameworks */,
 				15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */,
 				15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */,
 				15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */,
@@ -398,13 +406,11 @@
 				15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */,
 				15D2461C17CFA1B600793614 /* Security.framework in Frameworks */,
 				15D2461D17CFA1B600793614 /* Social.framework in Frameworks */,
-				15BF18651B14C92F001B44E6 /* Fabric.framework in Frameworks */,
 				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
-				A0885E3C180293650000EA51 /* Crashlytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +624,8 @@
 		1510733D17D210F700FD083B /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0D4E17F51E87D147009B7D2E /* LUIImages.json */,
+				0D4E17F61E87D147009B7D2E /* LUITranslations.json */,
 				1510733E17D2111100FD083B /* AccountDetailTemplate.plist */,
 				154466141803330A00025022 /* ManageJenkinsTemplate.plist */,
 			);
@@ -1098,6 +1106,8 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */,
+				0D4E17F11E87C3E8009B7D2E /* Fabric.framework */,
 				15BF186C1B14CE55001B44E6 /* CoreLocation.framework */,
 				15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */,
 				15BF18601B14C92F001B44E6 /* libc++.dylib */,
@@ -1527,8 +1537,10 @@
 				15BF18771B14D178001B44E6 /* LUIImages.json in Resources */,
 				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
+				0D4E17F81E87D147009B7D2E /* LUITranslations.json in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
 				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
+				0D4E17F71E87D147009B7D2E /* LUIImages.json in Resources */,
 				156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1692,14 +1704,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 79M2U9B889;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
@@ -1720,7 +1733,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jenkins2go;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
+				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1817,6 +1831,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
@@ -1858,6 +1873,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";

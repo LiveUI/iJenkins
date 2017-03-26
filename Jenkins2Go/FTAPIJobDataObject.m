@@ -52,14 +52,24 @@
     _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _urlString = data[@"url"];
     NSMutableArray *childJobs = [NSMutableArray array];
+    BOOL hasDetail = false;
     for (NSDictionary *job in data[@"jobs"]) {
         FTAPIJobDataObject *jobObject = [[FTAPIJobDataObject alloc] init];
         [jobObject processData:job];
         [jobObject setParentJob:self];
         [childJobs addObject:jobObject];
+        if (job[@"healthReport"] != nil) {
+            hasDetail = true;
+        }
     }
     if (childJobs.count > 0) {
         self.childJobs = childJobs;
+    } else if (data[@"scm"][@"type"] != nil) {
+        hasDetail = true;
+    }
+    if (hasDetail) {
+        _jobDetail = [[FTAPIJobDetailDataObject alloc] init];
+        [_jobDetail processData:data];
     }
 }
 
@@ -81,7 +91,20 @@
 }
 
 - (UIColor *)realColor {
-    return [UIColor colorForJenkinsColorCode:_color];
+    NSString *color;
+    if (_childJobs.count > 0) {
+        for (FTAPIJobDataObject *job in _childJobs) {
+            if (color == nil) {
+                color = job.color;
+            } else if (![color isEqualToString:job.color]) {
+                color = @"notbuilt";
+            }
+        }
+    }
+    if (color == nil) {
+        color = _color;
+    }
+    return [UIColor colorForJenkinsColorCode:color];
 }
 
 
