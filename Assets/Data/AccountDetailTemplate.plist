@@ -121,9 +121,9 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>Load Full Tree</string>
+				<string>Load all job details</string>
 				<key>description</key>
-				<string>Load all job detail on refresh.</string>
+				<string>Recommended for sub folder setups</string>
 				<key>placeholder</key>
 				<string></string>
 				<key>default</key>
