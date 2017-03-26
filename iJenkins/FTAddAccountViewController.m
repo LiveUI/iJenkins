@@ -31,6 +31,7 @@
     [super.tableView setAutoresizingWidthAndHeight];
     [super.tableView setDataSource:self];
     [super.tableView setDelegate:self];
+    [super.tableView setCellLayoutMarginsFollowReadableWidth:NO];
     [self.view addSubview:super.tableView];
 }
 

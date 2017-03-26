@@ -76,6 +76,7 @@
     [_tableView setAutoresizingWidthAndHeight];
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
+    [_tableView setCellLayoutMarginsFollowReadableWidth:NO];
     [self.view addSubview:_tableView];
 }
 
