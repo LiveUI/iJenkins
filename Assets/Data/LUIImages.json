@@ -1,9 +1,0 @@
-{
-    "timestamp": 1433088005,
-    "code": 200,
-    "data": [],
-    "app": {
-        "name": "iJenkins",
-        "production": false
-    }
-}

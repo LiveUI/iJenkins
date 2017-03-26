@@ -1518,14 +1518,14 @@
 				151072D217D0BA3400FD083B /* IJ_health-00to19@2x.png in Resources */,
 				151072D417D0BA3400FD083B /* IJ_health-20to39@2x.png in Resources */,
 				15BF18781B14D178001B44E6 /* LUITranslations.json in Resources */,
-				151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
+                151072DA17D0BA3400FD083B /* IJ_health-80plus@2x.png in Resources */,
 				1510732B17D10EFA00FD083B /* Default-568h@2x.png in Resources */,
 				15D245DE17CF9C2A00793614 /* InfoPlist.strings in Resources */,
 				1510732C17D10EFA00FD083B /* Default.png in Resources */,
 				1510732F17D10EFA00FD083B /* Icon120.png in Resources */,
 				1510732D17D10EFA00FD083B /* Default@2x.png in Resources */,
 				15BF18771B14D178001B44E6 /* LUIImages.json in Resources */,
-				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
+                1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
 				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
@@ -1700,6 +1700,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";
@@ -1858,6 +1859,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/Thirdparty\"",
 					"$(PROJECT_DIR)/Thirdparty",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jenkins2Go/Jenkins2Go-Prefix.pch";

@@ -19,6 +19,9 @@
 
 @interface FTJobDetailViewController ()
 
+@property (nonatomic) BOOL isLoadingDetail;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 
@@ -37,6 +40,12 @@
     
     [self createBuildNowButton];
     [self createTableView];
+    
+    _refreshControl = [[UIRefreshControl alloc] init];
+    [_refreshControl addTarget:self action:@selector(refreshActionCalled:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:_refreshControl];
+    [_refreshControl centerHorizontally];
+    [_refreshControl setYOrigin:-60];
 }
 
 #pragma mark Data
@@ -64,6 +73,20 @@
     [self.navigationItem setRightBarButtonItem:edit];
     
     [self buildThis];
+}
+
+- (void)refreshActionCalled:(UIRefreshControl *)sender {
+    if (!_isLoadingDetail) {
+        _isLoadingDetail = YES;
+        FTAPIJobDetailDataObject *jobDetailObject = [[FTAPIJobDetailDataObject alloc] initWithJobName:_job.name jobMethod:_job.methodName];
+        [FTAPIConnector connectWithObject:jobDetailObject andOnCompleteBlock:^(id<FTAPIDataAbstractObject> dataObject, NSError *error) {
+            _isLoadingDetail = NO;
+            _job.jobDetail = jobDetailObject;
+            [self.tableView reloadData];
+            [_refreshControl endRefreshing];
+            _isLoadingDetail = NO;
+        }];
+    }
 }
 
 #pragma mark Creating cells
@@ -133,6 +156,9 @@
 #pragma mark Table view delegate & data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (_job.jobDetail.builds.count <= 1) {
+        return 1;
+    }
     return 2;
 }
 
@@ -143,6 +169,9 @@
             break;
             
         case 1: {
+            if (_job.jobDetail.builds.count <= 1) {
+                return 0;
+            }
             NSInteger limit = [[FTAccountsManager sharedManager] selectedAccount].loadMaxItems;
             if (limit == 0) {
                 limit = INT_MAX;

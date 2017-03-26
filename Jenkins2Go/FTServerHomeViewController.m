@@ -266,12 +266,7 @@
     [cell reset];
     
     FTAPIJobDataObject *job = [self jobAtIndexPath:indexPath];
-    if (job.jobDetail.lastBuild.number > 0) {
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    }
-    else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
@@ -288,12 +283,7 @@
     }
     [cell reset];
     
-    if (job.jobDetail.lastBuild.number > 0) {
-        [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    }
-    else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
-    }
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     [job setDelegate:cell];
     [cell setJob:job];
     [cell.textLabel setText:job.name];
@@ -420,8 +410,7 @@
     if (job.childJobs.count > 0) {
         FTJobFolderViewController *c = [[FTJobFolderViewController alloc] initWithJob:job];
         [self.navigationController pushViewController:c animated:YES];
-    }
-    if (job.jobDetail.lastBuild.number > 0) {
+    } else {
         FTJobDetailViewController *c = [[FTJobDetailViewController alloc] init];
         [c setTitle:job.name];
         [c setJob:job];

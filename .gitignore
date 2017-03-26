@@ -1,6 +1,11 @@
-# Xcode
+## Mac OS X
 .DS_Store
+
+## Build generated
 build/
+DerivedData
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,11 +14,31 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-*.xcworkspace
-!default.xcworkspace
 xcuserdata
-profile
+
+## Other
+*.xccheckout
 *.moved-aside
-DerivedData
+*.xcuserstate
+*.xcscmblueprint
 .idea/
 target/
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+## Swift Package Manager
+.build/
+
+## fastlane
+fastlane/builds
+fastlane/report.xml
+fastlane/screenshots
+fastlane/profiles
+fastlane/Appfile
+fastlane/Deliverfile

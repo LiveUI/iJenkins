@@ -20,6 +20,7 @@
 
 
 typedef void(^FTAPIConnectorCompletionHandler) (id <FTAPIDataAbstractObject> dataObject, NSError *error);
+typedef void(^FTAPICrumbCompletionHandler) (NSString *crumbRequestField, NSString *crumb, NSError *error);
 
 typedef void (^FTAPIConnectorProgressDownloadHandler) (NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead);
 typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite);
@@ -41,7 +42,7 @@ typedef void (^FTAPIConnectorProgressUploadHandler) (NSUInteger bytesWritten, lo
 
 + (void)connectWithObject:(id <FTAPIDataAbstractObject>)object andOnCompleteBlock:(FTAPIConnectorCompletionHandler)complete;
 
-- (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data;
+- (NSURLRequest *)requestForDataObject:(id <FTAPIDataAbstractObject>)data crumbRequestField:(NSString *)crumbRequestField crumb:(NSString *)crumb;
 
 
 @end
