@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D4E17F21E87C3E8009B7D2E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E17F11E87C3E8009B7D2E /* Fabric.framework */; };
-		0D4E17F41E87C3F3009B7D2E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */; };
 		0D4E17F71E87D147009B7D2E /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F51E87D147009B7D2E /* LUIImages.json */; };
 		0D4E17F81E87D147009B7D2E /* LUITranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F61E87D147009B7D2E /* LUITranslations.json */; };
+		0DE4F6AB1E88B1E10078F613 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4F6A81E88B1E10078F613 /* Crashlytics.framework */; };
+		0DE4F6AC1E88B1E10078F613 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4F6A91E88B1E10078F613 /* Fabric.framework */; };
 		1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510727F17CFEA6300FD083B /* FTAPIConnector.m */; };
 		1510728317CFEA6F00FD083B /* FTAPIDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728217CFEA6F00FD083B /* FTAPIDataObject.m */; };
 		1510728717CFEBB100FD083B /* FTConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510728617CFEBB100FD083B /* FTConfig.m */; };
@@ -149,10 +149,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D4E17F11E87C3E8009B7D2E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		0D4E17F51E87D147009B7D2E /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LUIImages.json; sourceTree = "<group>"; };
 		0D4E17F61E87D147009B7D2E /* LUITranslations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LUITranslations.json; sourceTree = "<group>"; };
+		0DE4F6A81E88B1E10078F613 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		0DE4F6A91E88B1E10078F613 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		0DEABD1E1E88AF0C00207F51 /* Jenkins2Go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Jenkins2Go.entitlements; sourceTree = "<group>"; };
 		1510727E17CFEA6300FD083B /* FTAPIConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = FTAPIConnector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		1510727F17CFEA6300FD083B /* FTAPIConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FTAPIConnector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		1510728117CFEA6F00FD083B /* FTAPIDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIDataObject.h; sourceTree = "<group>"; };
@@ -302,7 +303,6 @@
 		156EC66E1A6E7112009BB672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15BF18601B14C92F001B44E6 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = "libc++.dylib"; sourceTree = "<group>"; };
 		15BF18611B14C92F001B44E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libz.dylib; sourceTree = "<group>"; };
-		15BF18621B14C92F001B44E6 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Thirdparty/Fabric.framework; sourceTree = "<group>"; };
 		15BF186C1B14CE55001B44E6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		15BF18751B14D178001B44E6 /* LUIImages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = LUIImages.json; path = Assets/Data/LUIImages.json; sourceTree = SOURCE_ROOT; };
@@ -387,7 +387,6 @@
 		55558EFB1CCBED2C00023C30 /* FTJobFolderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTJobFolderViewController.m; sourceTree = "<group>"; };
 		555EDC701D98377B003BD21F /* FTHTTPCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FTHTTPCodes.h; path = Source/FTHTTPCodes.h; sourceTree = "<group>"; };
 		555EDC711D98377B003BD21F /* FTHTTPCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FTHTTPCodes.m; path = Source/FTHTTPCodes.m; sourceTree = "<group>"; };
-		A0885E3B180293650000EA51 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Thirdparty/Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,8 +394,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D4E17F41E87C3F3009B7D2E /* Crashlytics.framework in Frameworks */,
-				0D4E17F21E87C3E8009B7D2E /* Fabric.framework in Frameworks */,
 				15BF186E1B14CE55001B44E6 /* CoreLocation.framework in Frameworks */,
 				15BF186F1B14CE55001B44E6 /* CoreTelephony.framework in Frameworks */,
 				15E1836C17E332D600CE0DEA /* MobileCoreServices.framework in Frameworks */,
@@ -406,10 +403,12 @@
 				15BF18641B14C92F001B44E6 /* libz.dylib in Frameworks */,
 				15D2461C17CFA1B600793614 /* Security.framework in Frameworks */,
 				15D2461D17CFA1B600793614 /* Social.framework in Frameworks */,
+				0DE4F6AB1E88B1E10078F613 /* Crashlytics.framework in Frameworks */,
 				15D2461E17CFA1B600793614 /* SystemConfiguration.framework in Frameworks */,
 				15D245D417CF9C2A00793614 /* UIKit.framework in Frameworks */,
 				15D245D617CF9C2A00793614 /* Foundation.framework in Frameworks */,
 				15D245D817CF9C2A00793614 /* CoreGraphics.framework in Frameworks */,
+				0DE4F6AC1E88B1E10078F613 /* Fabric.framework in Frameworks */,
 				15BF18631B14C92F001B44E6 /* libc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1106,14 +1105,12 @@
 		15D245D217CF9C2A00793614 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0D4E17F31E87C3F3009B7D2E /* Crashlytics.framework */,
-				0D4E17F11E87C3E8009B7D2E /* Fabric.framework */,
+				0DE4F6A81E88B1E10078F613 /* Crashlytics.framework */,
+				0DE4F6A91E88B1E10078F613 /* Fabric.framework */,
 				15BF186C1B14CE55001B44E6 /* CoreLocation.framework */,
 				15BF186D1B14CE55001B44E6 /* CoreTelephony.framework */,
 				15BF18601B14C92F001B44E6 /* libc++.dylib */,
 				15BF18611B14C92F001B44E6 /* libz.dylib */,
-				15BF18621B14C92F001B44E6 /* Fabric.framework */,
-				A0885E3B180293650000EA51 /* Crashlytics.framework */,
 				15E1836B17E332D600CE0DEA /* MobileCoreServices.framework */,
 				15D2461317CFA1B600793614 /* CoreText.framework */,
 				15D2461417CFA1B600793614 /* MessageUI.framework */,
@@ -1131,6 +1128,7 @@
 		15D245D917CF9C2A00793614 /* Jenkins2Go */ = {
 			isa = PBXGroup;
 			children = (
+				0DEABD1E1E88AF0C00207F51 /* Jenkins2Go.entitlements */,
 				15D245E217CF9C2A00793614 /* FTAppDelegate.h */,
 				15D245E317CF9C2A00793614 /* FTAppDelegate.m */,
 				15D245F617CF9C3C00793614 /* Controllers */,
@@ -1488,6 +1486,14 @@
 					15D245CF17CF9C2A00793614 = {
 						DevelopmentTeam = 79M2U9B889;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1720,6 +1726,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jenkins2Go/Jenkins2Go.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 2;
@@ -1752,6 +1759,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
+				SDKROOT = iphoneos10.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1839,6 +1847,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jenkins2Go/Jenkins2Go.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 2;
@@ -1871,6 +1880,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
+				SDKROOT = iphoneos10.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1881,6 +1891,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Jenkins2Go/Jenkins2Go.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 2;
@@ -1913,6 +1924,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
+				SDKROOT = iphoneos10.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
