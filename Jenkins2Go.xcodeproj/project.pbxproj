@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D4E17F71E87D147009B7D2E /* LUIImages.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F51E87D147009B7D2E /* LUIImages.json */; };
-		0D4E17F81E87D147009B7D2E /* LUITranslations.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D4E17F61E87D147009B7D2E /* LUITranslations.json */; };
 		0DE4F6AB1E88B1E10078F613 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4F6A81E88B1E10078F613 /* Crashlytics.framework */; };
 		0DE4F6AC1E88B1E10078F613 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE4F6A91E88B1E10078F613 /* Fabric.framework */; };
 		1510728017CFEA6300FD083B /* FTAPIConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510727F17CFEA6300FD083B /* FTAPIConnector.m */; };
@@ -1480,7 +1478,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FT;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Fuerte Innovations";
 				TargetAttributes = {
 					15D245CF17CF9C2A00793614 = {
@@ -1544,10 +1542,8 @@
 				15BF18771B14D178001B44E6 /* LUIImages.json in Resources */,
 				1510732E17D10EFA00FD083B /* Icon114.png in Resources */,
 				154465DA17FC4BC900025022 /* Icon80.png in Resources */,
-				0D4E17F81E87D147009B7D2E /* LUITranslations.json in Resources */,
 				151072D117D0BA3400FD083B /* IJ_health-00to19.png in Resources */,
 				151072D917D0BA3400FD083B /* IJ_health-80plus.png in Resources */,
-				0D4E17F71E87D147009B7D2E /* LUIImages.json in Resources */,
 				156EC66F1A6E7112009BB672 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1759,7 +1755,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
-				SDKROOT = iphoneos10.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1880,7 +1876,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
-				SDKROOT = iphoneos10.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -1924,7 +1920,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "24e85926-1410-4e00-9018-9645e714b9f0";
 				PROVISIONING_PROFILE_SPECIFIER = "Distribution Jenkins2Go";
-				SDKROOT = iphoneos10.2;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
