@@ -8,6 +8,14 @@
 
 #import "FTAPIJobDetailDataObject.h"
 
+enum {
+  FOLDER,
+  MULTI_BRANCH,
+  CLASSIC,
+  PIPELINE
+};
+
+typedef NSInteger FTJobType;
 
 @class FTAPIJobDataObject, FTAPIComputerExecutorObject;
 
@@ -25,6 +33,7 @@
 @property (nonatomic, strong, readonly) UIColor *realColor;
 @property (nonatomic) BOOL animating;
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic) FTJobType *type;
 @property (nonatomic, strong) NSString *urlString;
 @property (nonatomic, strong) NSArray *childJobs;
 @property (nonatomic, strong) FTAPIJobDataObject *parentJob;

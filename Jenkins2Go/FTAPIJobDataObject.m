@@ -51,6 +51,23 @@
     _animating = (colorPieces.count > 1);
     _name = [data[@"name"] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     _urlString = data[@"url"];
+    NSString *rawType = data[@"_class"];
+    NSArray *items = @[@"org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject", @"com.cloudbees.hudson.plugins.folder.Folder"	, @"org.jenkinsci.plugins.workflow.job.WorkflowJob"	];
+    int item = [items indexOfObject:rawType];
+    switch (item) {
+      case 0:
+        _type = MULTI_BRANCH;
+        break;
+      case 1:
+        _type = FOLDER;
+        break;
+      case 2:
+        _type = PIPELINE;
+        break;
+      default:
+        _type = CLASSIC;
+        break;
+    }
     NSMutableArray *childJobs = [NSMutableArray array];
     BOOL hasDetail = false;
     for (NSDictionary *job in data[@"jobs"]) {
