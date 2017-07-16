@@ -3,7 +3,7 @@ Jenkins2Go
 
 ###### Fork of [iJenkins](https://github.com/rafiki270/iJenkins) with some changes:
 
-- Support for top level folders
+- Support for folders
 - Updated cell insets to work with iOS 9 SDK
 - Added ATS exception
 - Removed demo accounts and translations

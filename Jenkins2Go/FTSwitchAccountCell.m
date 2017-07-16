@@ -60,6 +60,9 @@
     else if ([variable isEqualToString:@"xpath"]) {
         [_cellSwitch setOn:account.xpath];
     }
+    else if ([variable isEqualToString:@"loadTree"]) {
+        [_cellSwitch setOn:account.loadTree];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -78,6 +81,9 @@
     }
     else if ([variable isEqualToString:@"xpath"]) {
         [self.account setXpath:sender.isOn];
+    }
+    else if ([variable isEqualToString:@"loadTree"]) {
+        [self.account setLoadTree:sender.isOn];
     }
     [super cellDidChangeValue];
 }

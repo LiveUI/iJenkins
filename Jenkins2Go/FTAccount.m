@@ -34,6 +34,7 @@
     _username = @"";
     _passwordOrToken = @"";
     _pathSuffix = @"";
+    _loadTree = NO;
     [self originalDictionary];
 }
 
@@ -47,6 +48,7 @@
         [_originalDictionary setValue:[NSNumber numberWithBool:_overrideJenkinsUrl] forKey:@"overrideJenkinsUrl"];
         [_originalDictionary setValue:[NSNumber numberWithInteger:_loadMaxItems] forKey:@"loadMaxItems"];
         [_originalDictionary setValue:[NSNumber numberWithDouble:_buildLogMaxSize] forKey:@"buildLogMaxSize"];
+        [_originalDictionary setValue:[NSNumber numberWithBool:_loadTree] forKey:@"loadTree"];
         
         // Add blank strings to dictionary to allow revert back
         [_originalDictionary setValue:_host forKey:@"host"];
@@ -122,6 +124,11 @@ withString:@"/"];
     [self.originalDictionary setValue:passwordOrToken forKey:@"password"];
 }
 
+- (void)setLoadTree:(BOOL)loadTree {
+    _loadTree = loadTree;
+    [self.originalDictionary setValue:[NSNumber numberWithBool:loadTree] forKey:@"loadTree"];
+}
+
 - (void)setOverridingDictionary:(NSMutableDictionary *)overridingDictionary {
     // Enumerate each key to reset the Account back to it was before
     [overridingDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
@@ -136,6 +143,7 @@ withString:@"/"];
         if ([key isEqual:@"buildLogMaxSize"])   [self setBuildLogMaxSize:[obj doubleValue]];
         if ([key isEqual:@"username"])          [self setUsername:obj];
         if ([key isEqual:@"password"])          [self setPasswordOrToken:obj];
+        if ([key isEqual:@"loadTree"])          [self setLoadTree:[obj boolValue]];
     }];
 }
 
