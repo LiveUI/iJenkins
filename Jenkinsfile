@@ -12,8 +12,8 @@ node('xcode') {
     def buildUrl = env.BUILD_URL
     def appName = 'Jenkins2Go'
     def scheme = 'Jenkins2Go'
-    def buildSDK = 'iphoneos10.2'
-    def provisioningProfile = 'Distribution Jenkins2Go'
+    def buildSDK = 'iphoneos10.3' // see `xcodebuild -showsdks`
+    def provisioningProfile = 'Distribution - Jenkins2Go'
 
     // PRINT ENVIRONMENT TO JOB
     echo "workspace directory is $workspace"
