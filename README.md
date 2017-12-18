@@ -3,7 +3,7 @@
 [![Slack](https://img.shields.io/badge/join-slack-745EAF.svg?style=flat)](http://bit.ly/2B0dEyt)
 [![Platforms](https://img.shields.io/badge/platforms-iOS-ff0000.svg?style=flat)](http://cocoapods.org/pods/FASwift)
 
-## 
+New version is coming! :)
 
 ## Slack
 
