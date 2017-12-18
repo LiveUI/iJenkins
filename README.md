@@ -1,22 +1,15 @@
-Jenkins2Go
-========
+# iJenkins
 
-###### Fork of [iJenkins](https://github.com/rafiki270/iJenkins) with some changes:
+[![Slack](https://img.shields.io/badge/join-slack-745EAF.svg?style=flat)](http://bit.ly/2B0dEyt)
+[![Platforms](https://img.shields.io/badge/platforms-iOS-ff0000.svg?style=flat)](http://cocoapods.org/pods/FASwift)
 
-- Support for folders
-- Updated cell insets to work with iOS 9 SDK
-- Added ATS exception
-- Removed demo accounts and translations
-- Uses keyboard notifications to adjust table view
-- Shows if job is in progress
-- Skip to bottom of build log
-- Suppressed deprecated warnings for now
+## 
 
--------
+## Slack
 
-On iTunes here:
-https://itunes.apple.com/us/app/jenkins2go/id1158754319?mt=8
+Get help using and installing this product on our Slack: http://bit.ly/2B0dEyt, channel <b>#help-boost</b>
 
+## Info
 
 Open iPhone client for Jenkins CI (iOS 9 only) ... Don't forget to get the submodules too!!!!! :)
 
@@ -28,7 +21,8 @@ Cheers,
 
 Ondrej & the mobile team in manGoweb.cz!
 
+## License
 
-Distributed under MIT license attached.
+Distributed under MIT license.
 
 
