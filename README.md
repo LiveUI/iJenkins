@@ -7,7 +7,7 @@ New version is coming! :)
 
 ## Slack
 
-Get help using and installing this product on our Slack: http://bit.ly/2B0dEyt, channel <b>#help-boost</b>
+To chat to us (or others) about this product, get on our Slack: http://bit.ly/2B0dEyt, channel <b>#general-ijenkins</b>
 
 ## Info
 
